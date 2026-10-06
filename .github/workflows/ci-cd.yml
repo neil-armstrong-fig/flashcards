@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 # Allow one deploy at a time, and let a newer push supersede a queued one.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-cd-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

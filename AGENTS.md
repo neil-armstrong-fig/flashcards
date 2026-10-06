@@ -180,7 +180,7 @@ Several sessions may share this working tree and nothing announces a new one. Fo
 
 ## CI and deployment
 
-`.github/workflows/ci.yml` runs `checks`, then the acceptance suite against a production build, then deploys `main` to GitHub
+`.github/workflows/ci-cd.yml` runs `checks`, then the acceptance suite against a production build, then deploys `main` to GitHub
 Pages gated on both, then runs the same suite against the live URL. The app is always served from the root of its own
 (sub)domain, so there is no base path and the DSL navigates with `goto("./")`. The custom domain is set in the repo's Pages
 settings with no `CNAME` file, because the deploy is an Actions artifact (`MANUAL-SETUP-STEPS.md`).

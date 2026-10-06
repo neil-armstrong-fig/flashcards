@@ -31,7 +31,7 @@ Decisions:
 - Acceptance tests: Playwright wrapped in a Given/When/Then mapping (`AcceptanceCriteriaMapping.ts`) over a DSL layer (`*Dsl` with no
   locators, paired with `playwright/*Playwright`). Test ids are a typed contract (`testid-contract.md`). Specs arrange in `beforeEach`
   and assert in `then`, enforced by lint (only `get*`, `is*` and `can*` are allowed inside `then`). Desktop and mobile (Pixel 5) projects.
-- CI (`.github/workflows/ci.yml`): checks, then the acceptance suite against the production build, then deploy to Pages, then the same
+- CI (`.github/workflows/ci-cd.yml`): checks, then the acceptance suite against the production build, then deploy to Pages, then the same
   suite against the live URL.
 - Process docs: root and per-folder `AGENTS.md`, `MANUAL-SETUP-STEPS.md` (everything outside the repo), `docs/` for research notes.
 
@@ -40,7 +40,7 @@ Decisions:
 ```
 language-learning/
   AGENTS.md  REFERENCES.md  MANUAL-SETUP-STEPS.md  TODO.md  docs/
-  pnpm-workspace.yaml  .nvmrc  .github/workflows/ci.yml
+  pnpm-workspace.yaml  .nvmrc  .github/workflows/ci-cd.yml
   shared/            vocabulary the app and the specs both use (Rating, Language...), and config/* for every package
   webapp/            Vite + React + Redux + Tailwind PWA
     src/react/               components, nested by who uses them

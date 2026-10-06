@@ -21,7 +21,7 @@ Then: `provision` (4c), the Worker's custom domain (4d), the audio upload (`pnpm
 
 1. Create the GitHub repository (public, open source) and push `main`.
 2. Settings, Pages: set **Source** to **GitHub Actions**.
-3. The first push to `main` runs `.github/workflows/ci.yml`: checks, acceptance tests on the production build, deploy, then
+3. The first push to `main` runs `.github/workflows/ci-cd.yml`: checks, acceptance tests on the production build, deploy, then
    the same acceptance suite against the live URL.
 
 Until a custom domain is set, the live URL is the project Pages URL (`https://<user>.github.io/<repo>/`). The app is built
@@ -113,7 +113,7 @@ It makes the D1 database (migrations applied), the two KV namespaces and the `fl
 ### 4e. GitHub Actions secrets
 
 `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `ALCHEMY_PASSWORD`, `AZURE_SPEECH_KEY`, `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_SECRET`,
-`ALLOWED_EMAILS`; and the variables above. From then on every green `main` runs `deploy-api` in `.github/workflows/ci.yml`. Until
+`ALLOWED_EMAILS`; and the variables above. From then on every green `main` runs `deploy-api` in `.github/workflows/ci-cd.yml`. Until
 `CLOUDFLARE_API_TOKEN` exists that job does nothing.
 
 ### 4f. Limits (the spend guard)
