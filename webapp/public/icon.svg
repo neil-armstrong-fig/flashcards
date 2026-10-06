@@ -1,0 +1,3 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="96" fill="#0f1b22"/><g transform="translate(256 256) scale(1) translate(-256 -256)">
+<path fill="#6ee7b7" d="M136 118h240a56 56 0 0 1 56 56v108a56 56 0 0 1-56 56H262l-84 72a8 8 0 0 1-13-6v-66h-29a56 56 0 0 1-56-56V174a56 56 0 0 1 56-56z"/>
+<circle cx="188" cy="228" r="24" fill="#0f1b22"/><circle cx="256" cy="228" r="24" fill="#0f1b22"/><circle cx="324" cy="228" r="24" fill="#0f1b22"/></g></svg>

@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/*
+ * Colours as theme tokens, so that no hex value lives in JSX, taken from the author's site (https://github.com/neil-armstrong-fig/personal-site) (its paper, ink and action
+ * colours). The tokens below are the dark palette; the light one
+ * replaces them when the learner chooses it, or when the device asks for it and the learner has chosen nothing
+ * (`ThemeApplier` sets `data-theme` on the root for a choice, and leaves it off to follow the device).
+ */
+@theme {
+  --color-ground: #000000;
+  --color-ground-raised: #0b100e;
+  --color-ink: #d6dedb;
+  --color-ink-muted: #9fb4bb;
+  --color-accent: #8fc4a8;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-ground: #f4f7f6;
+    --color-ground-raised: #e1e9e6;
+    --color-ink: #18262d;
+    --color-ink-muted: #4a5d66;
+    --color-accent: #244b3b;
+
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  --color-ground: #f4f7f6;
+  --color-ground-raised: #e1e9e6;
+  --color-ink: #18262d;
+  --color-ink-muted: #4a5d66;
+  --color-accent: #244b3b;
+
+  color-scheme: light;
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--color-ground);
+    color: var(--color-ink);
+    font-family: system-ui, sans-serif;
+  }
+
+  /* Tailwind's reset leaves buttons with the arrow, so anything a learner can press says so. */
+  button:not(:disabled),
+  [role="button"],
+  a[href],
+  summary,
+  select,
+  label[for] {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+
+  @media (hover: hover) {
+    button:not(:disabled),
+    a[href] {
+      transition: filter 120ms ease;
+    }
+
+    button:not(:disabled):hover,
+    a[href]:hover {
+      filter: brightness(1.15);
+    }
+  }
+}

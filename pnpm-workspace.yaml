@@ -1,0 +1,134 @@
+packages:
+  - shared
+  - content
+  - webapp
+  - acceptance-tests
+  - tools
+  - api
+  - infra
+
+# Refuse `pnpm add` commands that would bypass an existing catalog version.
+catalogMode: strict
+
+# Supply chain, adopted from janggi (https://github.com/neil-armstrong-fig/janggi). Nothing updates dependencies automatically: a version is changed by hand, in the
+# catalog below. Refuse every release, direct or transitive, less than seven days old, and fail rather than quietly pick
+# an older one.
+minimumReleaseAge: 10080
+minimumReleaseAgeStrict: true
+minimumReleaseAgeIgnoreMissingTime: false
+
+# Refuse a package whose publisher is less trusted than the one that published its earlier releases, and one that pulls
+# code from a git repository or a tarball URL instead of the registry.
+trustPolicy: no-downgrade
+# Reviewed and let through, each by exact version: old releases whose publisher evidence is thinner than a later
+# release's, which the policy reads as a downgrade. semver is the long-standing npm-maintained one; the other is the
+# maintained fork of rollup-plugin-off-main-thread that workbox-build depends on.
+trustPolicyExclude:
+  - semver@6.3.1
+  - "@trickfilm400/rollup-plugin-off-main-thread@3.0.0-pre1"
+blockExoticSubdeps: true
+
+# Revalidate the registry's metadata behind the lockfile rather than taking it on trust, and fail an install that meets an
+# install script nobody has reviewed (the `allowBuilds` list below is the review).
+trustLockfile: false
+strictDepBuilds: true
+# esbuild's and workerd's install scripts are needed for `wrangler dev` and Alchemy's local runtime; sharp's (an image
+# library Wrangler optionally pulls in) is not, and stays off. Copied from janggi.
+allowBuilds:
+  esbuild: true
+  sharp: false
+  workerd: true
+
+# Alchemy loads `undici` itself, if it can find one, and hands its Agent to Node's built-in `fetch`. It declares no dependency
+# on it, so it finds whichever copy pnpm hoisted, which may be one whose Agent the built-in fetch refuses, so that no request
+# to Cloudflare is ever made. Giving Alchemy its own, same-major copy fixes it (as in janggi).
+packageExtensions:
+  alchemy@0.94.0:
+    dependencies:
+      undici: 7.29.0
+
+# Every external dependency is declared here once, exact-pinned, and each package says `catalog:`. A version changes in
+# one place for every package that uses it. Versions are copied from janggi, which has already vetted them.
+catalog:
+  # Writes the SQL migrations from the schema; Wrangler applies them. For `api/`, as in janggi.
+  drizzle-kit: 0.31.11
+  # Typed queries over D1, the API's database. For `api/`, as in janggi.
+  drizzle-orm: 0.45.3
+  # The OAuth 2.0 and OpenID Connect client the Google sign-in uses: dependency-free, does the state and ID token checks. As in janggi.
+  oauth4webapi: 3.8.8
+  # TypeScript infrastructure as code for Cloudflare, for `infra/`; the 0.x line, since `latest` is the 2.0 beta rewrite.
+  alchemy: 0.94.0
+  # Type declarations for the Workers runtime; the API's Worker is checked against them. Held at the version wrangler needs.
+  "@cloudflare/workers-types": 5.20260921.1
+  # Runs TypeScript on Node with the tsconfig `paths` aliases, which Alchemy needs to run `infra/` with `@src`; esbuild-based.
+  tsx: 4.23.15
+  # Cloudflare Workers CLI, for running the API locally. Held at a release older than the 7-day window.
+  wrangler: 4.136.3
+  # Builds conditional class lists in JSX.
+  clsx: 2.1.1
+  # Revised Romanization of Korean as it is pronounced (liaison, assimilation, tensing), for the card form; dependency-free, MIT. Chosen over
+  # @romanize/korean and romaja by trying all three on 42 words (`docs/romanisation.md`).
+  koroman: 1.0.16
+  # The linter, in every package.
+  eslint: 10.10.0
+  # Switches off the ESLint rules Prettier owns.
+  eslint-config-prettier: 10.1.8
+  # Rules of hooks, for the webapp.
+  eslint-plugin-react-hooks: 7.1.1
+  # React 19 aware lint rules for the webapp; the legacy eslint-plugin-react is deliberately not used.
+  "@eslint-react/eslint-plugin": 5.18.10
+  # ESLint's recommended JavaScript rules, in every package's base config.
+  "@eslint/js": 10.0.1
+  # Browser and Node global definitions for ESLint.
+  globals: 17.12.0
+  # Runs the acceptance specs against the real app.
+  "@playwright/test": 1.63.0
+  # Formats every package.
+  prettier: 3.9.6
+  # The UI.
+  react: 19.2.8
+  # React's DOM renderer.
+  react-dom: 19.2.8
+  # Binds the store to React.
+  react-redux: 9.3.0
+  # Routes the app's screens (hash routes, so GitHub Pages and the service worker need no fallback) instead of a hand-rolled switch.
+  react-router: 8.4.0
+  # The store and slices.
+  "@reduxjs/toolkit": 2.12.0
+  # The Free Spaced Repetition Scheduler (FSRS); wrapped by `webapp/src/spaced-repetition/` so it is swappable.
+  # Latest stable, published more than the 7-day minimum release age ago (the 6.x line is still beta).
+  ts-fsrs: 5.4.2
+  # Tailwind CSS v4, the utility styles.
+  tailwindcss: 4.3.3
+  # Tailwind CSS's first-party Vite integration.
+  "@tailwindcss/vite": 4.3.3
+  # Peer of Testing Library's React hooks helper.
+  "@testing-library/dom": 10.4.1
+  # `renderHook`, for testing hooks alone; components are covered by the acceptance specs.
+  "@testing-library/react": 16.3.3
+  # Node.js declarations; held to the supported Node 24 line rather than the latest major.
+  "@types/node": 24.13.3
+  # React 19 type declarations.
+  "@types/react": 19.2.18
+  # React DOM type declarations.
+  "@types/react-dom": 19.2.7
+  # Compiler; held at 6.0.3 because typescript-eslint cannot read the AST of TypeScript 7.
+  typescript: 6.0.3
+  # TypeScript-aware ESLint parser and rules.
+  typescript-eslint: 8.69.0
+  # Dev server and bundler for the webapp.
+  vite: 8.2.2
+  # Builds the service worker and manifest.
+  vite-plugin-pwa: 1.3.0
+  # Vite's React plugin.
+  "@vitejs/plugin-react": 6.1.1
+  # The DOM for the few hook tests that need one; the rest run on node.
+  jsdom: 30.0.1
+  # Unit test runner.
+  vitest: 5.0.0
+  # Precache manifest generation for the service worker.
+  workbox-build: 7.4.1
+  # The service worker's precache.
+  workbox-precaching: 7.4.1
+  # The page side of the service worker's release updates.
+  workbox-window: 7.4.1

@@ -1,0 +1,1490 @@
+{
+  "ko": {
+    "물": {
+      "female-normal": "ko/female-normal/c2f16032c0b9c1ea.mp3",
+      "female-slower": "ko/female-slower/e3140ac138549d43.mp3",
+      "male-normal": "ko/male-normal/38cad2a0729f0e5f.mp3",
+      "male-slower": "ko/male-slower/cdc3518def916436.mp3"
+    },
+    "불": {
+      "female-normal": "ko/female-normal/31d301ca3f12c3e3.mp3",
+      "female-slower": "ko/female-slower/7db2c50ab7e68a51.mp3",
+      "male-normal": "ko/male-normal/a908a62119988742.mp3",
+      "male-slower": "ko/male-slower/9fb799982d91aa8d.mp3"
+    },
+    "밥": {
+      "female-normal": "ko/female-normal/7b49d0772c06f975.mp3",
+      "female-slower": "ko/female-slower/47c36b3a0c9acdc9.mp3",
+      "male-normal": "ko/male-normal/a6d1050ee0c72249.mp3",
+      "male-slower": "ko/male-slower/6e6b57655db0cef6.mp3"
+    },
+    "집": {
+      "female-normal": "ko/female-normal/197f3875bc72b072.mp3",
+      "female-slower": "ko/female-slower/894e3e410008e499.mp3",
+      "male-normal": "ko/male-normal/5e57bd2ff81ed1ae.mp3",
+      "male-slower": "ko/male-slower/9314e3fda20f8f8e.mp3"
+    },
+    "사람": {
+      "female-normal": "ko/female-normal/c24bfb0b173abc60.mp3",
+      "female-slower": "ko/female-slower/a10117753fbe1aa4.mp3",
+      "male-normal": "ko/male-normal/e6f927811c5148db.mp3",
+      "male-slower": "ko/male-slower/ccc1302cc89d1414.mp3"
+    },
+    "학교": {
+      "female-normal": "ko/female-normal/6840cdc794037954.mp3",
+      "female-slower": "ko/female-slower/03cd9112d50ef31c.mp3",
+      "male-normal": "ko/male-normal/646b561aeae6a7ae.mp3",
+      "male-slower": "ko/male-slower/d5d0ac47cb59df06.mp3"
+    },
+    "친구": {
+      "female-normal": "ko/female-normal/c92950cc7461d968.mp3",
+      "female-slower": "ko/female-slower/f09e4e229f40d208.mp3",
+      "male-normal": "ko/male-normal/2b7cea92afeeda86.mp3",
+      "male-slower": "ko/male-slower/f1ac7475fcc1fad2.mp3"
+    },
+    "책": {
+      "female-normal": "ko/female-normal/facd2174f6db3344.mp3",
+      "female-slower": "ko/female-slower/c7e0eab73ebd9e22.mp3",
+      "male-normal": "ko/male-normal/10e6be057b22ac8d.mp3",
+      "male-slower": "ko/male-slower/36274f2ce2bef35e.mp3"
+    },
+    "시간": {
+      "female-normal": "ko/female-normal/7b66d76c93f8154d.mp3",
+      "female-slower": "ko/female-slower/c8e98f3f598a5d2d.mp3",
+      "male-normal": "ko/male-normal/9bfcc390e67622a4.mp3",
+      "male-slower": "ko/male-slower/b6b7beaa42797092.mp3"
+    },
+    "나라": {
+      "female-normal": "ko/female-normal/c4ca836533fc6dac.mp3",
+      "female-slower": "ko/female-slower/e3868548bf91243b.mp3",
+      "male-normal": "ko/male-normal/0eac387d72506aac.mp3",
+      "male-slower": "ko/male-slower/4259f519391232d5.mp3"
+    },
+    "한국": {
+      "female-normal": "ko/female-normal/aba1aa12897aba4f.mp3",
+      "female-slower": "ko/female-slower/f1d92bf498e8a8a7.mp3",
+      "male-normal": "ko/male-normal/1d68066c51f30b09.mp3",
+      "male-slower": "ko/male-slower/a2fb607771e27bae.mp3"
+    }
+  },
+  "en": {
+    "water": {
+      "female-normal": "en/female-normal/8679fdf67aa05272.mp3"
+    },
+    "rice, a meal": {
+      "female-normal": "en/female-normal/91f853a8cc321b2e.mp3"
+    },
+    "house, home": {
+      "female-normal": "en/female-normal/82b5fb0674395820.mp3"
+    },
+    "person": {
+      "female-normal": "en/female-normal/0e28c8afdccca065.mp3"
+    },
+    "school": {
+      "female-normal": "en/female-normal/739d7cf9d5634990.mp3"
+    },
+    "friend": {
+      "female-normal": "en/female-normal/17a13ccd387ea4b4.mp3"
+    },
+    "book": {
+      "female-normal": "en/female-normal/357e43052fe906da.mp3"
+    },
+    "time": {
+      "female-normal": "en/female-normal/0e3d1b0d6dd13320.mp3"
+    },
+    "country": {
+      "female-normal": "en/female-normal/a66d6482b58dc553.mp3"
+    },
+    "Korea": {
+      "female-normal": "en/female-normal/dac2bba51feb618a.mp3"
+    }
+  },
+  "ja": {
+    "あ": {
+      "female-normal": "ja/female-normal/eebc49b930150d59.mp3",
+      "female-slower": "ja/female-slower/d47c7f37040eb641.mp3",
+      "male-normal": "ja/male-normal/34fd17df0ecce658.mp3",
+      "male-slower": "ja/male-slower/37888a49eca17252.mp3"
+    },
+    "い": {
+      "female-normal": "ja/female-normal/60b323024043cf8b.mp3",
+      "female-slower": "ja/female-slower/2e114afdb4dd5962.mp3",
+      "male-normal": "ja/male-normal/9f8176ffc1eed0a2.mp3",
+      "male-slower": "ja/male-slower/7e410a3e87f7c868.mp3"
+    },
+    "う": {
+      "female-normal": "ja/female-normal/f4470b4e3fd44660.mp3",
+      "female-slower": "ja/female-slower/1f8e902c897897ce.mp3",
+      "male-normal": "ja/male-normal/95fdd7f3f5be264d.mp3",
+      "male-slower": "ja/male-slower/68f0cb24b5878821.mp3"
+    },
+    "え": {
+      "female-normal": "ja/female-normal/67f96f30dfef4306.mp3",
+      "female-slower": "ja/female-slower/544cfa34af8b3414.mp3",
+      "male-normal": "ja/male-normal/0f73367e1942b3c6.mp3",
+      "male-slower": "ja/male-slower/f7c5bbcf5e7c4b71.mp3"
+    },
+    "お": {
+      "female-normal": "ja/female-normal/6c70dd223df83a3a.mp3",
+      "female-slower": "ja/female-slower/923a5e5bd4a8ba08.mp3",
+      "male-normal": "ja/male-normal/7c008cc3ea2b0809.mp3",
+      "male-slower": "ja/male-slower/a506adc3f2bd8133.mp3"
+    },
+    "か": {
+      "female-normal": "ja/female-normal/daad11f531b9fea7.mp3",
+      "female-slower": "ja/female-slower/d3afa5e2b02181a7.mp3",
+      "male-normal": "ja/male-normal/e927e948191d4f6e.mp3",
+      "male-slower": "ja/male-slower/271e3294d2a4c9f0.mp3"
+    },
+    "き": {
+      "female-normal": "ja/female-normal/832020623081d7ac.mp3",
+      "female-slower": "ja/female-slower/64bbd1b6a67e676e.mp3",
+      "male-normal": "ja/male-normal/f9957b6b3271b8d8.mp3",
+      "male-slower": "ja/male-slower/e6a08d52d44b3ee4.mp3"
+    },
+    "く": {
+      "female-normal": "ja/female-normal/ac7f1d69568b5b19.mp3",
+      "female-slower": "ja/female-slower/14dadd2d079755b7.mp3",
+      "male-normal": "ja/male-normal/23583dd64cadfb85.mp3",
+      "male-slower": "ja/male-slower/8d891fef879f39c1.mp3"
+    },
+    "け": {
+      "female-normal": "ja/female-normal/80d829e19b9246d2.mp3",
+      "female-slower": "ja/female-slower/a7d2a7c338af1b05.mp3",
+      "male-normal": "ja/male-normal/0b43ea2c4dce5b06.mp3",
+      "male-slower": "ja/male-slower/31ac31d34c8828e4.mp3"
+    },
+    "こ": {
+      "female-normal": "ja/female-normal/65647ab96c94f941.mp3",
+      "female-slower": "ja/female-slower/7c6ba116ae1639dd.mp3",
+      "male-normal": "ja/male-normal/6ae6d82faa55c4ee.mp3",
+      "male-slower": "ja/male-slower/8d3d39a152818d9b.mp3"
+    },
+    "さ": {
+      "female-normal": "ja/female-normal/812132a4a5ef2276.mp3",
+      "female-slower": "ja/female-slower/9a1af3ff211fd69d.mp3",
+      "male-normal": "ja/male-normal/a77e492f4e6d7600.mp3",
+      "male-slower": "ja/male-slower/886a1929ab4a167d.mp3"
+    },
+    "し": {
+      "female-normal": "ja/female-normal/3499bcc4d444f767.mp3",
+      "female-slower": "ja/female-slower/0bd69605a92c7723.mp3",
+      "male-normal": "ja/male-normal/30602a9fcf7ed4b2.mp3",
+      "male-slower": "ja/male-slower/3d78f55960be97ea.mp3"
+    },
+    "す": {
+      "female-normal": "ja/female-normal/5d801d2353b882f0.mp3",
+      "female-slower": "ja/female-slower/d64965f46c4b44b2.mp3",
+      "male-normal": "ja/male-normal/326c80cf1eaa51c9.mp3",
+      "male-slower": "ja/male-slower/702dcd19ee6fef41.mp3"
+    },
+    "せ": {
+      "female-normal": "ja/female-normal/92cd9d5c46b2ffc0.mp3",
+      "female-slower": "ja/female-slower/4416a9f8bacc8bbc.mp3",
+      "male-normal": "ja/male-normal/91c209004980b1a9.mp3",
+      "male-slower": "ja/male-slower/10be2b391e300a33.mp3"
+    },
+    "そ": {
+      "female-normal": "ja/female-normal/c4778fa130575123.mp3",
+      "female-slower": "ja/female-slower/0a9cf14d15ffcf45.mp3",
+      "male-normal": "ja/male-normal/2ad60ed8997d18e7.mp3",
+      "male-slower": "ja/male-slower/8d06746753597589.mp3"
+    },
+    "た": {
+      "female-normal": "ja/female-normal/1b0b22820a5470d3.mp3",
+      "female-slower": "ja/female-slower/45141b7deebc1bbc.mp3",
+      "male-normal": "ja/male-normal/6b64b370d6ff3355.mp3",
+      "male-slower": "ja/male-slower/0503081b1ee4270f.mp3"
+    },
+    "ち": {
+      "female-normal": "ja/female-normal/fa43261b80bb3da1.mp3",
+      "female-slower": "ja/female-slower/31dcc8a86a5a5c4a.mp3",
+      "male-normal": "ja/male-normal/585052deeab22d73.mp3",
+      "male-slower": "ja/male-slower/4d3659df9dd88fa5.mp3"
+    },
+    "つ": {
+      "female-normal": "ja/female-normal/6dbc074355cbf803.mp3",
+      "female-slower": "ja/female-slower/27669959d3f4584d.mp3",
+      "male-normal": "ja/male-normal/6cd6c46956f4b594.mp3",
+      "male-slower": "ja/male-slower/c64731515fe0ead1.mp3"
+    },
+    "て": {
+      "female-normal": "ja/female-normal/79a50a61232471bd.mp3",
+      "female-slower": "ja/female-slower/3812f6edcc9fcaa1.mp3",
+      "male-normal": "ja/male-normal/d6f5e7605c5c3751.mp3",
+      "male-slower": "ja/male-slower/6e44e1a721395514.mp3"
+    },
+    "と": {
+      "female-normal": "ja/female-normal/d7cd4e776e7584ab.mp3",
+      "female-slower": "ja/female-slower/401ec4e383569e50.mp3",
+      "male-normal": "ja/male-normal/f55844f91e730f21.mp3",
+      "male-slower": "ja/male-slower/9721a08cf106c04a.mp3"
+    },
+    "な": {
+      "female-normal": "ja/female-normal/2fda473364fcf2f7.mp3",
+      "female-slower": "ja/female-slower/ff7b053d499f0047.mp3",
+      "male-normal": "ja/male-normal/b1ace1ccc071c0f7.mp3",
+      "male-slower": "ja/male-slower/5170873edb1d356e.mp3"
+    },
+    "に": {
+      "female-normal": "ja/female-normal/fd2b0eb7598fd2f2.mp3",
+      "female-slower": "ja/female-slower/5c6030fb33cf8c0b.mp3",
+      "male-normal": "ja/male-normal/34446d53bd7a1c72.mp3",
+      "male-slower": "ja/male-slower/b5ef29f2d7ac0b84.mp3"
+    },
+    "ぬ": {
+      "female-normal": "ja/female-normal/a9a4c1d4181a3fa3.mp3",
+      "female-slower": "ja/female-slower/9a70a0052e2c10db.mp3",
+      "male-normal": "ja/male-normal/3aff96c397a70fd8.mp3",
+      "male-slower": "ja/male-slower/9d2e45e4a0e0951a.mp3"
+    },
+    "ね": {
+      "female-normal": "ja/female-normal/2275cbd1ec37a576.mp3",
+      "female-slower": "ja/female-slower/39de6f12d4a2f5ca.mp3",
+      "male-normal": "ja/male-normal/9b6a0a03fcefc83c.mp3",
+      "male-slower": "ja/male-slower/2726fcb865b5762f.mp3"
+    },
+    "の": {
+      "female-normal": "ja/female-normal/1ece1fdd17f9dd52.mp3",
+      "female-slower": "ja/female-slower/6ac7835976688477.mp3",
+      "male-normal": "ja/male-normal/f0becbe4d8cc0240.mp3",
+      "male-slower": "ja/male-slower/c2e739ce5a3e1556.mp3"
+    },
+    "は": {
+      "female-normal": "ja/female-normal/59219625d928ee5a.mp3",
+      "female-slower": "ja/female-slower/ed28567c6a88f5fe.mp3",
+      "male-normal": "ja/male-normal/4f2f13f231d83d91.mp3",
+      "male-slower": "ja/male-slower/67393b3814a6ff85.mp3"
+    },
+    "ひ": {
+      "female-normal": "ja/female-normal/7ac24e63e3013547.mp3",
+      "female-slower": "ja/female-slower/5db8765428aa78aa.mp3",
+      "male-normal": "ja/male-normal/5d6c5a8cf72eab3c.mp3",
+      "male-slower": "ja/male-slower/02acd572b106087b.mp3"
+    },
+    "ふ": {
+      "female-normal": "ja/female-normal/2110e8179ce55320.mp3",
+      "female-slower": "ja/female-slower/910d35169fbe6833.mp3",
+      "male-normal": "ja/male-normal/a114ab6f71168139.mp3",
+      "male-slower": "ja/male-slower/b9865e4a4f2a8f4e.mp3"
+    },
+    "へ": {
+      "female-normal": "ja/female-normal/7978f2910552ab76.mp3",
+      "female-slower": "ja/female-slower/65a2b040caf3aba3.mp3",
+      "male-normal": "ja/male-normal/27138b4890b4f46d.mp3",
+      "male-slower": "ja/male-slower/84730fb18d042ce2.mp3"
+    },
+    "ほ": {
+      "female-normal": "ja/female-normal/bedab5681f16bed4.mp3",
+      "female-slower": "ja/female-slower/68f91fb957356d32.mp3",
+      "male-normal": "ja/male-normal/a604f6063be4e15b.mp3",
+      "male-slower": "ja/male-slower/1e1c3b6f6af2c2ba.mp3"
+    },
+    "ま": {
+      "female-normal": "ja/female-normal/6e4f314487d900f3.mp3",
+      "female-slower": "ja/female-slower/dcd55b78d69a1903.mp3",
+      "male-normal": "ja/male-normal/c9adf996d872dc22.mp3",
+      "male-slower": "ja/male-slower/27e0d9edc1e5e046.mp3"
+    },
+    "み": {
+      "female-normal": "ja/female-normal/ae6191b990c462b3.mp3",
+      "female-slower": "ja/female-slower/defa0651ec428b01.mp3",
+      "male-normal": "ja/male-normal/efece049fb650bc3.mp3",
+      "male-slower": "ja/male-slower/1ba0ff67e84b0afa.mp3"
+    },
+    "む": {
+      "female-normal": "ja/female-normal/3e4571519b8c3e37.mp3",
+      "female-slower": "ja/female-slower/f314c8ae4832cf70.mp3",
+      "male-normal": "ja/male-normal/a3b60a24823e0353.mp3",
+      "male-slower": "ja/male-slower/7ea622dcff8defe0.mp3"
+    },
+    "め": {
+      "female-normal": "ja/female-normal/6795526e904065a6.mp3",
+      "female-slower": "ja/female-slower/c4f2cd03e6839e2d.mp3",
+      "male-normal": "ja/male-normal/7f62e61bb97600f0.mp3",
+      "male-slower": "ja/male-slower/18e314c9b1204abd.mp3"
+    },
+    "も": {
+      "female-normal": "ja/female-normal/3ef1ffc649848ab3.mp3",
+      "female-slower": "ja/female-slower/0fe665f086d9888e.mp3",
+      "male-normal": "ja/male-normal/0142d09e76365611.mp3",
+      "male-slower": "ja/male-slower/3790b349833eea8d.mp3"
+    },
+    "や": {
+      "female-normal": "ja/female-normal/a27ff1dc5c012158.mp3",
+      "female-slower": "ja/female-slower/204ec7eda2071b8b.mp3",
+      "male-normal": "ja/male-normal/cac4a8e9c7fd2a70.mp3",
+      "male-slower": "ja/male-slower/9380b9a089560b6b.mp3"
+    },
+    "ゆ": {
+      "female-normal": "ja/female-normal/abe1aec645cf61e9.mp3",
+      "female-slower": "ja/female-slower/d29e20ab70f248ac.mp3",
+      "male-normal": "ja/male-normal/fbd5a69a2cc7ebb9.mp3",
+      "male-slower": "ja/male-slower/cbe6e3fb2c2b6b9f.mp3"
+    },
+    "よ": {
+      "female-normal": "ja/female-normal/ad6b91703b7601d1.mp3",
+      "female-slower": "ja/female-slower/e3bbc09ebb534e84.mp3",
+      "male-normal": "ja/male-normal/44d07d490887bcfc.mp3",
+      "male-slower": "ja/male-slower/99ff18779382f114.mp3"
+    },
+    "ら": {
+      "female-normal": "ja/female-normal/b52741192be9ed73.mp3",
+      "female-slower": "ja/female-slower/0cdb4850afc7ac45.mp3",
+      "male-normal": "ja/male-normal/3bb53dfd7f6c34fb.mp3",
+      "male-slower": "ja/male-slower/a68eb9281cd5c824.mp3"
+    },
+    "り": {
+      "female-normal": "ja/female-normal/6dc665994d4848d1.mp3",
+      "female-slower": "ja/female-slower/76f353969462cfea.mp3",
+      "male-normal": "ja/male-normal/611ccd617ce68fd5.mp3",
+      "male-slower": "ja/male-slower/ce24ef84c6419708.mp3"
+    },
+    "る": {
+      "female-normal": "ja/female-normal/48a76db8c9beb4c4.mp3",
+      "female-slower": "ja/female-slower/873502ca91ce2a45.mp3",
+      "male-normal": "ja/male-normal/3f6d03a0b42e6c7e.mp3",
+      "male-slower": "ja/male-slower/5380aaf4cc58376d.mp3"
+    },
+    "れ": {
+      "female-normal": "ja/female-normal/ddd231f61e4ec982.mp3",
+      "female-slower": "ja/female-slower/90834e37e16e5100.mp3",
+      "male-normal": "ja/male-normal/599ecd558043bbf3.mp3",
+      "male-slower": "ja/male-slower/57e6d07ea38d9eac.mp3"
+    },
+    "ろ": {
+      "female-normal": "ja/female-normal/3f0a8bfcbbfcd89e.mp3",
+      "female-slower": "ja/female-slower/27af03c96873a18f.mp3",
+      "male-normal": "ja/male-normal/c6e36ff2d7fe2af1.mp3",
+      "male-slower": "ja/male-slower/2d6a9b1678f7689c.mp3"
+    },
+    "わ": {
+      "female-normal": "ja/female-normal/b4906a1ce6f22bc5.mp3",
+      "female-slower": "ja/female-slower/4fa6e0d4de1c89d8.mp3",
+      "male-normal": "ja/male-normal/5ee0451353a30f2b.mp3",
+      "male-slower": "ja/male-slower/16e7a9c096d476b2.mp3"
+    },
+    "を": {
+      "female-normal": "ja/female-normal/f2cd74ffa45bab82.mp3",
+      "female-slower": "ja/female-slower/a1ff9fbd0139b137.mp3",
+      "male-normal": "ja/male-normal/7268bccde200fa84.mp3",
+      "male-slower": "ja/male-slower/080843451473ab17.mp3"
+    },
+    "ん": {
+      "female-normal": "ja/female-normal/d89068dc0f67ea89.mp3",
+      "female-slower": "ja/female-slower/e221bc54da880ff5.mp3",
+      "male-normal": "ja/male-normal/63ece78f451657fa.mp3",
+      "male-slower": "ja/male-slower/2f3ad27287d0083b.mp3"
+    },
+    "が": {
+      "female-normal": "ja/female-normal/dd8041caab33436f.mp3",
+      "female-slower": "ja/female-slower/034e3b5aafd4fb4c.mp3",
+      "male-normal": "ja/male-normal/90d4b2d9f37dac56.mp3",
+      "male-slower": "ja/male-slower/59a6032c1d486623.mp3"
+    },
+    "ぎ": {
+      "female-normal": "ja/female-normal/1459a73579444cb5.mp3",
+      "female-slower": "ja/female-slower/e06d6d42fa785480.mp3",
+      "male-normal": "ja/male-normal/85f4484aa9971426.mp3",
+      "male-slower": "ja/male-slower/2e1b6d7ef74e3742.mp3"
+    },
+    "ぐ": {
+      "female-normal": "ja/female-normal/8772b6abee76b61d.mp3",
+      "female-slower": "ja/female-slower/85ed5437b1da5893.mp3",
+      "male-normal": "ja/male-normal/4afc0627cda82550.mp3",
+      "male-slower": "ja/male-slower/d8e428b74b601639.mp3"
+    },
+    "げ": {
+      "female-normal": "ja/female-normal/2299fa7a112bda5d.mp3",
+      "female-slower": "ja/female-slower/67e4b16ba20abd9b.mp3",
+      "male-normal": "ja/male-normal/bc0ff55edbaf94d9.mp3",
+      "male-slower": "ja/male-slower/ea82fd2194ae45ca.mp3"
+    },
+    "ご": {
+      "female-normal": "ja/female-normal/6ecf0a54fd148c34.mp3",
+      "female-slower": "ja/female-slower/7349a610a9eb8c28.mp3",
+      "male-normal": "ja/male-normal/1f0fdba64c468144.mp3",
+      "male-slower": "ja/male-slower/c6300d556da99c9c.mp3"
+    },
+    "ざ": {
+      "female-normal": "ja/female-normal/48e457a33b718846.mp3",
+      "female-slower": "ja/female-slower/78f8df01bb87b496.mp3",
+      "male-normal": "ja/male-normal/d5d1553e5d52c42f.mp3",
+      "male-slower": "ja/male-slower/da2046b013b54180.mp3"
+    },
+    "じ": {
+      "female-normal": "ja/female-normal/f5056fc98c23721d.mp3",
+      "female-slower": "ja/female-slower/39ad2df82b1aeda4.mp3",
+      "male-normal": "ja/male-normal/f456ea4a7e53efa0.mp3",
+      "male-slower": "ja/male-slower/77ddaf3ffeaaeaa7.mp3"
+    },
+    "ず": {
+      "female-normal": "ja/female-normal/29c33d4a46c2dc02.mp3",
+      "female-slower": "ja/female-slower/085ccb7ebd921c78.mp3",
+      "male-normal": "ja/male-normal/af19d0da2d4f71a9.mp3",
+      "male-slower": "ja/male-slower/96cfac6e0562803f.mp3"
+    },
+    "ぜ": {
+      "female-normal": "ja/female-normal/59cf8f3428177bd5.mp3",
+      "female-slower": "ja/female-slower/9ac06f57d46b6a9f.mp3",
+      "male-normal": "ja/male-normal/18def9b687318961.mp3",
+      "male-slower": "ja/male-slower/c9bd5178c5e674c5.mp3"
+    },
+    "ぞ": {
+      "female-normal": "ja/female-normal/ab4ad91cdd97a66e.mp3",
+      "female-slower": "ja/female-slower/1a447700894ae431.mp3",
+      "male-normal": "ja/male-normal/5b2f89c57ba44a38.mp3",
+      "male-slower": "ja/male-slower/30e8cd892230592b.mp3"
+    },
+    "だ": {
+      "female-normal": "ja/female-normal/212ef32c3a78af5c.mp3",
+      "female-slower": "ja/female-slower/20ffb33b511320cc.mp3",
+      "male-normal": "ja/male-normal/e22e8a0860e9fcf8.mp3",
+      "male-slower": "ja/male-slower/2edcbce6fdb6c850.mp3"
+    },
+    "ぢ": {
+      "female-normal": "ja/female-normal/60f87bf0abab4173.mp3",
+      "female-slower": "ja/female-slower/1913c655a55960e3.mp3",
+      "male-normal": "ja/male-normal/ea442c298523d243.mp3",
+      "male-slower": "ja/male-slower/d912c0eb0464eeaa.mp3"
+    },
+    "づ": {
+      "female-normal": "ja/female-normal/ead2296bb1a57e4d.mp3",
+      "female-slower": "ja/female-slower/bff276882d058154.mp3",
+      "male-normal": "ja/male-normal/c83dce2a9aa00827.mp3",
+      "male-slower": "ja/male-slower/110ec101ec12d56b.mp3"
+    },
+    "で": {
+      "female-normal": "ja/female-normal/267fe733f2047d7e.mp3",
+      "female-slower": "ja/female-slower/d2168e2943b09dc7.mp3",
+      "male-normal": "ja/male-normal/7e15fd93f8b4eec7.mp3",
+      "male-slower": "ja/male-slower/805539533e20f840.mp3"
+    },
+    "ど": {
+      "female-normal": "ja/female-normal/46ea0e8d5e17ad5f.mp3",
+      "female-slower": "ja/female-slower/a5b95a1dbe0c7578.mp3",
+      "male-normal": "ja/male-normal/1e5f470f139aaf18.mp3",
+      "male-slower": "ja/male-slower/13e152b4e2e762d0.mp3"
+    },
+    "ば": {
+      "female-normal": "ja/female-normal/1bc0286b5ba3e4bd.mp3",
+      "female-slower": "ja/female-slower/e8575b8add34c125.mp3",
+      "male-normal": "ja/male-normal/ad884b6acd4e618d.mp3",
+      "male-slower": "ja/male-slower/45df3c59293513e5.mp3"
+    },
+    "び": {
+      "female-normal": "ja/female-normal/8b131f58dbcffb61.mp3",
+      "female-slower": "ja/female-slower/1527c84abcdc0a3a.mp3",
+      "male-normal": "ja/male-normal/5d696c0fab8a4a2d.mp3",
+      "male-slower": "ja/male-slower/2fb44e5d30e0bb02.mp3"
+    },
+    "ぶ": {
+      "female-normal": "ja/female-normal/2de61f5b03f2f9a1.mp3",
+      "female-slower": "ja/female-slower/972c75f1f71130a2.mp3",
+      "male-normal": "ja/male-normal/d2509f24cf5f98f9.mp3",
+      "male-slower": "ja/male-slower/d6b7e03eb0494b65.mp3"
+    },
+    "べ": {
+      "female-normal": "ja/female-normal/9c4f101abcd0a055.mp3",
+      "female-slower": "ja/female-slower/3deef08b25c64ce3.mp3",
+      "male-normal": "ja/male-normal/4ad628e2b1fe41d2.mp3",
+      "male-slower": "ja/male-slower/a1a05b6c2399ecbf.mp3"
+    },
+    "ぼ": {
+      "female-normal": "ja/female-normal/27d7fb39169734e0.mp3",
+      "female-slower": "ja/female-slower/174263da01bd37da.mp3",
+      "male-normal": "ja/male-normal/2ab68242cfa348a5.mp3",
+      "male-slower": "ja/male-slower/5f578ea568802d78.mp3"
+    },
+    "ぱ": {
+      "female-normal": "ja/female-normal/5123223b8f720c19.mp3",
+      "female-slower": "ja/female-slower/4f50e992c8e78ff0.mp3",
+      "male-normal": "ja/male-normal/7e0ade95867b51a3.mp3",
+      "male-slower": "ja/male-slower/eaf02b584a8be93b.mp3"
+    },
+    "ぴ": {
+      "female-normal": "ja/female-normal/3fe1454f07c563c3.mp3",
+      "female-slower": "ja/female-slower/066480594432f82e.mp3",
+      "male-normal": "ja/male-normal/512b1d8e0fab1378.mp3",
+      "male-slower": "ja/male-slower/19ad0410d4732a79.mp3"
+    },
+    "ぷ": {
+      "female-normal": "ja/female-normal/e8bc1d6c57beb3b7.mp3",
+      "female-slower": "ja/female-slower/25a58c75c825bd7b.mp3",
+      "male-normal": "ja/male-normal/a561882dec2b34ff.mp3",
+      "male-slower": "ja/male-slower/0182647fe8f31c66.mp3"
+    },
+    "ぺ": {
+      "female-normal": "ja/female-normal/42ad7f001edabd43.mp3",
+      "female-slower": "ja/female-slower/8d0f961f60323288.mp3",
+      "male-normal": "ja/male-normal/99e8df1df8042d3d.mp3",
+      "male-slower": "ja/male-slower/1823d2441fff074d.mp3"
+    },
+    "ぽ": {
+      "female-normal": "ja/female-normal/3f038eedad07ebbf.mp3",
+      "female-slower": "ja/female-slower/b9190d654190c9cd.mp3",
+      "male-normal": "ja/male-normal/367b70701ac56b34.mp3",
+      "male-slower": "ja/male-slower/b8172cc9a2f393da.mp3"
+    },
+    "きゃ": {
+      "female-normal": "ja/female-normal/96b445926aef1e8c.mp3",
+      "female-slower": "ja/female-slower/969404daa1de3e2c.mp3",
+      "male-normal": "ja/male-normal/6160bf48215fa930.mp3",
+      "male-slower": "ja/male-slower/4ed0204c93a701de.mp3"
+    },
+    "きゅ": {
+      "female-normal": "ja/female-normal/c38456231ea9c9ce.mp3",
+      "female-slower": "ja/female-slower/67495434ed0786a9.mp3",
+      "male-normal": "ja/male-normal/c41d5df64a63adf2.mp3",
+      "male-slower": "ja/male-slower/9c982c81e3f9e0ac.mp3"
+    },
+    "きょ": {
+      "female-normal": "ja/female-normal/0a6effc14e529910.mp3",
+      "female-slower": "ja/female-slower/f9c6e99a8a42bc3f.mp3",
+      "male-normal": "ja/male-normal/a9a49be4a33a69cf.mp3",
+      "male-slower": "ja/male-slower/a649659ab8ca1bd9.mp3"
+    },
+    "しゃ": {
+      "female-normal": "ja/female-normal/f49a58f6f0d64010.mp3",
+      "female-slower": "ja/female-slower/afbd8e777eddee70.mp3",
+      "male-normal": "ja/male-normal/cbc62d2b5344334f.mp3",
+      "male-slower": "ja/male-slower/1792bbbd02d7a18f.mp3"
+    },
+    "しゅ": {
+      "female-normal": "ja/female-normal/a3805d62b5544820.mp3",
+      "female-slower": "ja/female-slower/757ad8572d0ef8ad.mp3",
+      "male-normal": "ja/male-normal/a1f360c617560131.mp3",
+      "male-slower": "ja/male-slower/62384c5bdae11f99.mp3"
+    },
+    "しょ": {
+      "female-normal": "ja/female-normal/5cc05c4014371f20.mp3",
+      "female-slower": "ja/female-slower/8ed9d393e4a6e9b7.mp3",
+      "male-normal": "ja/male-normal/5980a75ab10658d7.mp3",
+      "male-slower": "ja/male-slower/fac0f200843de02d.mp3"
+    },
+    "ちゃ": {
+      "female-normal": "ja/female-normal/fd17dc2ac386f156.mp3",
+      "female-slower": "ja/female-slower/0ff3bfeedded82a0.mp3",
+      "male-normal": "ja/male-normal/8f04386d075166d6.mp3",
+      "male-slower": "ja/male-slower/8da792e0c11534a0.mp3"
+    },
+    "ちゅ": {
+      "female-normal": "ja/female-normal/cc8e3573586b83a0.mp3",
+      "female-slower": "ja/female-slower/7a4696df2c75e7b3.mp3",
+      "male-normal": "ja/male-normal/fc573addb1e83b32.mp3",
+      "male-slower": "ja/male-slower/0638d00e13dacaa4.mp3"
+    },
+    "ちょ": {
+      "female-normal": "ja/female-normal/b0ce7a95d3c7cf0e.mp3",
+      "female-slower": "ja/female-slower/2284bbc98b46d360.mp3",
+      "male-normal": "ja/male-normal/2973e58e754e9f5e.mp3",
+      "male-slower": "ja/male-slower/3d0a14cf48e2f22d.mp3"
+    },
+    "にゃ": {
+      "female-normal": "ja/female-normal/0d4127c1f1142da4.mp3",
+      "female-slower": "ja/female-slower/f5be04be9cdb1f99.mp3",
+      "male-normal": "ja/male-normal/727b2ec6f7281b40.mp3",
+      "male-slower": "ja/male-slower/7d24f3e6fd59fcca.mp3"
+    },
+    "にゅ": {
+      "female-normal": "ja/female-normal/eeb4663f02f340d7.mp3",
+      "female-slower": "ja/female-slower/57e934915f106790.mp3",
+      "male-normal": "ja/male-normal/ff4398f52112b585.mp3",
+      "male-slower": "ja/male-slower/55f27e4065ae8c9b.mp3"
+    },
+    "にょ": {
+      "female-normal": "ja/female-normal/3187bf9b413db6e6.mp3",
+      "female-slower": "ja/female-slower/a9094e10c8f8b24c.mp3",
+      "male-normal": "ja/male-normal/6c02e18332f37661.mp3",
+      "male-slower": "ja/male-slower/acfbf989f0636345.mp3"
+    },
+    "ひゃ": {
+      "female-normal": "ja/female-normal/f5c6383403c51d99.mp3",
+      "female-slower": "ja/female-slower/47881c71ec2a99e8.mp3",
+      "male-normal": "ja/male-normal/3e9690b76852aa78.mp3",
+      "male-slower": "ja/male-slower/46c475233479e444.mp3"
+    },
+    "ひゅ": {
+      "female-normal": "ja/female-normal/a62bb377dd81f123.mp3",
+      "female-slower": "ja/female-slower/6f319bda63322231.mp3",
+      "male-normal": "ja/male-normal/36bfc80436279146.mp3",
+      "male-slower": "ja/male-slower/558fedbbb5bd8e6d.mp3"
+    },
+    "ひょ": {
+      "female-normal": "ja/female-normal/4a754a70d52d1c84.mp3",
+      "female-slower": "ja/female-slower/2bc0a70b6890ebe6.mp3",
+      "male-normal": "ja/male-normal/bc3b4861660cb78a.mp3",
+      "male-slower": "ja/male-slower/2d203727af54a433.mp3"
+    },
+    "みゃ": {
+      "female-normal": "ja/female-normal/396f63bb26962622.mp3",
+      "female-slower": "ja/female-slower/19c1a868a4673bfe.mp3",
+      "male-normal": "ja/male-normal/f438a4fb6c269420.mp3",
+      "male-slower": "ja/male-slower/2e1adbaea3da53ae.mp3"
+    },
+    "みゅ": {
+      "female-normal": "ja/female-normal/d9537986deb7c05f.mp3",
+      "female-slower": "ja/female-slower/4400e21d21938ef2.mp3",
+      "male-normal": "ja/male-normal/d63e3a4efc9f7c43.mp3",
+      "male-slower": "ja/male-slower/0d327fe9b9c6ef2f.mp3"
+    },
+    "みょ": {
+      "female-normal": "ja/female-normal/5d866e18cea9246a.mp3",
+      "female-slower": "ja/female-slower/6a52ca29c169de81.mp3",
+      "male-normal": "ja/male-normal/1db83f4698b62109.mp3",
+      "male-slower": "ja/male-slower/d03c9e299c35f8ec.mp3"
+    },
+    "りゃ": {
+      "female-normal": "ja/female-normal/67623ce9e51292c4.mp3",
+      "female-slower": "ja/female-slower/01fa6409c7124088.mp3",
+      "male-normal": "ja/male-normal/75dd9af5f4166864.mp3",
+      "male-slower": "ja/male-slower/23b89a570814e52c.mp3"
+    },
+    "りゅ": {
+      "female-normal": "ja/female-normal/9ea89413ced85f20.mp3",
+      "female-slower": "ja/female-slower/483e650bfb5f25a3.mp3",
+      "male-normal": "ja/male-normal/1d10b34777ec8fa6.mp3",
+      "male-slower": "ja/male-slower/4b1a2a8d29ee1e79.mp3"
+    },
+    "りょ": {
+      "female-normal": "ja/female-normal/65287ca931a3a597.mp3",
+      "female-slower": "ja/female-slower/3138511ee13e05d5.mp3",
+      "male-normal": "ja/male-normal/c5cd4980e96dbbd1.mp3",
+      "male-slower": "ja/male-slower/3d56db32c457a483.mp3"
+    },
+    "ぎゃ": {
+      "female-normal": "ja/female-normal/4d47d01461dce133.mp3",
+      "female-slower": "ja/female-slower/39edc0b12c47af29.mp3",
+      "male-normal": "ja/male-normal/2958be4f88cad486.mp3",
+      "male-slower": "ja/male-slower/5670f0d3c83c2930.mp3"
+    },
+    "ぎゅ": {
+      "female-normal": "ja/female-normal/6535699190a2d8c5.mp3",
+      "female-slower": "ja/female-slower/ec4522e2beff63b1.mp3",
+      "male-normal": "ja/male-normal/382239c8d545b3e6.mp3",
+      "male-slower": "ja/male-slower/9321884b7900f71a.mp3"
+    },
+    "ぎょ": {
+      "female-normal": "ja/female-normal/3942b5c43ac4aea1.mp3",
+      "female-slower": "ja/female-slower/456f1f3e90ca8c59.mp3",
+      "male-normal": "ja/male-normal/3fd534fea9122554.mp3",
+      "male-slower": "ja/male-slower/bae63250ec6a62c6.mp3"
+    },
+    "じゃ": {
+      "female-normal": "ja/female-normal/8012ab9ecd417ae7.mp3",
+      "female-slower": "ja/female-slower/012e726ed20dee58.mp3",
+      "male-normal": "ja/male-normal/ad4cb5ed314f9ac7.mp3",
+      "male-slower": "ja/male-slower/04b6785125934eba.mp3"
+    },
+    "じゅ": {
+      "female-normal": "ja/female-normal/4d570c6e8cfa917f.mp3",
+      "female-slower": "ja/female-slower/8e7a033890be1404.mp3",
+      "male-normal": "ja/male-normal/17bc6e4dd5c490d8.mp3",
+      "male-slower": "ja/male-slower/0a95bed697f7ce35.mp3"
+    },
+    "じょ": {
+      "female-normal": "ja/female-normal/9a9c273e1bbc1b17.mp3",
+      "female-slower": "ja/female-slower/dbb2354b61c28874.mp3",
+      "male-normal": "ja/male-normal/bc933b59e78274a1.mp3",
+      "male-slower": "ja/male-slower/7fc47e4af4ddc910.mp3"
+    },
+    "びゃ": {
+      "female-normal": "ja/female-normal/0f94ce5bce8add19.mp3",
+      "female-slower": "ja/female-slower/7690dba1b90f42a9.mp3",
+      "male-normal": "ja/male-normal/9fcf5fef2eb5f4ae.mp3",
+      "male-slower": "ja/male-slower/56c0d9a37a188fdb.mp3"
+    },
+    "びゅ": {
+      "female-normal": "ja/female-normal/16d343e6bf3355fe.mp3",
+      "female-slower": "ja/female-slower/870222ebe3ff2314.mp3",
+      "male-normal": "ja/male-normal/a96b829f8bfa53e4.mp3",
+      "male-slower": "ja/male-slower/d4ed7e6c40a657a5.mp3"
+    },
+    "びょ": {
+      "female-normal": "ja/female-normal/6c0f17bbba8e5518.mp3",
+      "female-slower": "ja/female-slower/54bd800c0a205523.mp3",
+      "male-normal": "ja/male-normal/ff36d53f98c5f414.mp3",
+      "male-slower": "ja/male-slower/d6161790a211386d.mp3"
+    },
+    "ぴゃ": {
+      "female-normal": "ja/female-normal/12c6af331e860b50.mp3",
+      "female-slower": "ja/female-slower/b0e772e784646602.mp3",
+      "male-normal": "ja/male-normal/7c2a4c38b8c90575.mp3",
+      "male-slower": "ja/male-slower/b74c48ec7079ecb1.mp3"
+    },
+    "ぴゅ": {
+      "female-normal": "ja/female-normal/4ba075e9a234f202.mp3",
+      "female-slower": "ja/female-slower/afdeac36a912f8fc.mp3",
+      "male-normal": "ja/male-normal/d0e4a910e0834745.mp3",
+      "male-slower": "ja/male-slower/cde211bbfd679bd7.mp3"
+    },
+    "ぴょ": {
+      "female-normal": "ja/female-normal/6bdbc59e0849940b.mp3",
+      "female-slower": "ja/female-slower/f7b7f337892bb501.mp3",
+      "male-normal": "ja/male-normal/515c62e21bbfba9d.mp3",
+      "male-slower": "ja/male-slower/34a2711f28279359.mp3"
+    },
+    "ア": {
+      "female-normal": "ja/female-normal/73b4ff6c590a72ba.mp3",
+      "female-slower": "ja/female-slower/3521b22be202df15.mp3",
+      "male-normal": "ja/male-normal/3891d2bfad413aa7.mp3",
+      "male-slower": "ja/male-slower/4f3fe0a18acf2814.mp3"
+    },
+    "イ": {
+      "female-normal": "ja/female-normal/a102eeaf8a424169.mp3",
+      "female-slower": "ja/female-slower/23dca7ae6a6f714e.mp3",
+      "male-normal": "ja/male-normal/2bbe85713f24a917.mp3",
+      "male-slower": "ja/male-slower/bec2f0f712d838cf.mp3"
+    },
+    "ウ": {
+      "female-normal": "ja/female-normal/9b9cc6e13d5c81c8.mp3",
+      "female-slower": "ja/female-slower/dff118074c7a1a2f.mp3",
+      "male-normal": "ja/male-normal/72f389e86619c745.mp3",
+      "male-slower": "ja/male-slower/14765fe5831c9cb7.mp3"
+    },
+    "エ": {
+      "female-normal": "ja/female-normal/ac265fdfe99b7783.mp3",
+      "female-slower": "ja/female-slower/186198c9839ea2b1.mp3",
+      "male-normal": "ja/male-normal/c59dee5b0da48fd8.mp3",
+      "male-slower": "ja/male-slower/72dde6ba795e2585.mp3"
+    },
+    "オ": {
+      "female-normal": "ja/female-normal/419ee79037977ff2.mp3",
+      "female-slower": "ja/female-slower/d2368ff035fed175.mp3",
+      "male-normal": "ja/male-normal/b3afdfc290717b8a.mp3",
+      "male-slower": "ja/male-slower/e35c988358acd338.mp3"
+    },
+    "カ": {
+      "female-normal": "ja/female-normal/2039f184d986477b.mp3",
+      "female-slower": "ja/female-slower/f8353641f84323a4.mp3",
+      "male-normal": "ja/male-normal/e94b35bffa53d916.mp3",
+      "male-slower": "ja/male-slower/c4fa48f3e3c4f554.mp3"
+    },
+    "キ": {
+      "female-normal": "ja/female-normal/668aac85f5bd71e8.mp3",
+      "female-slower": "ja/female-slower/7083bd27b8a0b21d.mp3",
+      "male-normal": "ja/male-normal/6310a9f2c9a1c10f.mp3",
+      "male-slower": "ja/male-slower/6d6e54292dcd50cc.mp3"
+    },
+    "ク": {
+      "female-normal": "ja/female-normal/9a4a0876f9c103dd.mp3",
+      "female-slower": "ja/female-slower/05b8026e6bb6d95b.mp3",
+      "male-normal": "ja/male-normal/1ea9d64642c9ffd0.mp3",
+      "male-slower": "ja/male-slower/d4324a7fe9bbe174.mp3"
+    },
+    "ケ": {
+      "female-normal": "ja/female-normal/eb4bc15c9f32238f.mp3",
+      "female-slower": "ja/female-slower/0029b67b69359522.mp3",
+      "male-normal": "ja/male-normal/378e4f9ef2a9c439.mp3",
+      "male-slower": "ja/male-slower/e2fbff4046669a11.mp3"
+    },
+    "コ": {
+      "female-normal": "ja/female-normal/0335cbbb50c95037.mp3",
+      "female-slower": "ja/female-slower/b4cba9ec52120f66.mp3",
+      "male-normal": "ja/male-normal/9ac2d974159d8b89.mp3",
+      "male-slower": "ja/male-slower/6abfd950824e384f.mp3"
+    },
+    "サ": {
+      "female-normal": "ja/female-normal/3e3610677f7d6a87.mp3",
+      "female-slower": "ja/female-slower/5764fab07b13dac9.mp3",
+      "male-normal": "ja/male-normal/3b54308fd89410ed.mp3",
+      "male-slower": "ja/male-slower/de8fc123793b2700.mp3"
+    },
+    "シ": {
+      "female-normal": "ja/female-normal/52359a2311f1af97.mp3",
+      "female-slower": "ja/female-slower/ec4200717c65b5c5.mp3",
+      "male-normal": "ja/male-normal/e9c3ef52f735a527.mp3",
+      "male-slower": "ja/male-slower/26805224795d306e.mp3"
+    },
+    "ス": {
+      "female-normal": "ja/female-normal/e69789e560af88ea.mp3",
+      "female-slower": "ja/female-slower/f5e66462eff22dc0.mp3",
+      "male-normal": "ja/male-normal/2a2681f595e36bb3.mp3",
+      "male-slower": "ja/male-slower/92a7f7e07f70a845.mp3"
+    },
+    "セ": {
+      "female-normal": "ja/female-normal/b5c418f0971a5684.mp3",
+      "female-slower": "ja/female-slower/35a3810da81e5916.mp3",
+      "male-normal": "ja/male-normal/765db727de5dd39e.mp3",
+      "male-slower": "ja/male-slower/5709c95441c8b21a.mp3"
+    },
+    "ソ": {
+      "female-normal": "ja/female-normal/f938b1f3d8e274dd.mp3",
+      "female-slower": "ja/female-slower/7b148dd673c68292.mp3",
+      "male-normal": "ja/male-normal/103876a67939ee92.mp3",
+      "male-slower": "ja/male-slower/73f7a08cd634891e.mp3"
+    },
+    "タ": {
+      "female-normal": "ja/female-normal/8b9497f974df6f43.mp3",
+      "female-slower": "ja/female-slower/201fb28dcef35a0a.mp3",
+      "male-normal": "ja/male-normal/7020a26b78623f80.mp3",
+      "male-slower": "ja/male-slower/cd53a13ffa92b223.mp3"
+    },
+    "チ": {
+      "female-normal": "ja/female-normal/b562006f7851c344.mp3",
+      "female-slower": "ja/female-slower/82a78825d0f97528.mp3",
+      "male-normal": "ja/male-normal/f3b08c1f992912be.mp3",
+      "male-slower": "ja/male-slower/a9955163bd192b3a.mp3"
+    },
+    "ツ": {
+      "female-normal": "ja/female-normal/a273f4d7c6b31297.mp3",
+      "female-slower": "ja/female-slower/301d3c3f6bc84da9.mp3",
+      "male-normal": "ja/male-normal/3be45ee0f14f73f7.mp3",
+      "male-slower": "ja/male-slower/2d002064899336af.mp3"
+    },
+    "テ": {
+      "female-normal": "ja/female-normal/24d3a8e31f33b385.mp3",
+      "female-slower": "ja/female-slower/51da9aaba6747651.mp3",
+      "male-normal": "ja/male-normal/8892b9faba57cbba.mp3",
+      "male-slower": "ja/male-slower/7e100596cba9880d.mp3"
+    },
+    "ト": {
+      "female-normal": "ja/female-normal/8bb77e016c6fa6af.mp3",
+      "female-slower": "ja/female-slower/6cfbb505abf61357.mp3",
+      "male-normal": "ja/male-normal/9fc6a2c74926a0dc.mp3",
+      "male-slower": "ja/male-slower/45d68f0c48a62d4b.mp3"
+    },
+    "ナ": {
+      "female-normal": "ja/female-normal/5c67e31257777629.mp3",
+      "female-slower": "ja/female-slower/61bfe303124c03fa.mp3",
+      "male-normal": "ja/male-normal/cafc7182098445cc.mp3",
+      "male-slower": "ja/male-slower/d235ed06452864ca.mp3"
+    },
+    "ニ": {
+      "female-normal": "ja/female-normal/ac8f2d272e8f90e3.mp3",
+      "female-slower": "ja/female-slower/2999bc8bc70f12df.mp3",
+      "male-normal": "ja/male-normal/5d8d17f0907b3e6d.mp3",
+      "male-slower": "ja/male-slower/1daeeddaabddc46d.mp3"
+    },
+    "ヌ": {
+      "female-normal": "ja/female-normal/be9fab32847191f2.mp3",
+      "female-slower": "ja/female-slower/40e267df9830e255.mp3",
+      "male-normal": "ja/male-normal/c2f6ae22b9509947.mp3",
+      "male-slower": "ja/male-slower/406c63122cb10796.mp3"
+    },
+    "ネ": {
+      "female-normal": "ja/female-normal/116b12a75277491a.mp3",
+      "female-slower": "ja/female-slower/3d244c654bfab3f5.mp3",
+      "male-normal": "ja/male-normal/230a97f5ef29604c.mp3",
+      "male-slower": "ja/male-slower/ceabcdccc578cd12.mp3"
+    },
+    "ノ": {
+      "female-normal": "ja/female-normal/d9ae514ecb6f7d1e.mp3",
+      "female-slower": "ja/female-slower/8b0f98464a6979dc.mp3",
+      "male-normal": "ja/male-normal/058ce6702fb3c0fe.mp3",
+      "male-slower": "ja/male-slower/f49bfbd0bbc1d1a6.mp3"
+    },
+    "ハ": {
+      "female-normal": "ja/female-normal/3ffabb7adae4ec72.mp3",
+      "female-slower": "ja/female-slower/09794cfa30be666c.mp3",
+      "male-normal": "ja/male-normal/4a264a2ad94cb45a.mp3",
+      "male-slower": "ja/male-slower/a168e3f72e21e1bd.mp3"
+    },
+    "ヒ": {
+      "female-normal": "ja/female-normal/33af4d269acd1de6.mp3",
+      "female-slower": "ja/female-slower/681a25333251566d.mp3",
+      "male-normal": "ja/male-normal/85825af38fbbe922.mp3",
+      "male-slower": "ja/male-slower/607286d1a8c36e8c.mp3"
+    },
+    "フ": {
+      "female-normal": "ja/female-normal/831c7d306cbce3fe.mp3",
+      "female-slower": "ja/female-slower/bda2afc7e6c35bcd.mp3",
+      "male-normal": "ja/male-normal/6f2ae95ceda07781.mp3",
+      "male-slower": "ja/male-slower/087dd6cd16ff36d7.mp3"
+    },
+    "ヘ": {
+      "female-normal": "ja/female-normal/4cde1bbeda3ee8a1.mp3",
+      "female-slower": "ja/female-slower/f2fabde402d35716.mp3",
+      "male-normal": "ja/male-normal/3f5b80af45fb5cde.mp3",
+      "male-slower": "ja/male-slower/045fd3b4448c76bb.mp3"
+    },
+    "ホ": {
+      "female-normal": "ja/female-normal/78a2a234c5525231.mp3",
+      "female-slower": "ja/female-slower/0d22449c94c27452.mp3",
+      "male-normal": "ja/male-normal/ef66c8e777079ae6.mp3",
+      "male-slower": "ja/male-slower/b831fbcc146de658.mp3"
+    },
+    "マ": {
+      "female-normal": "ja/female-normal/de9afb48424bbfb4.mp3",
+      "female-slower": "ja/female-slower/15cd0c5da7d68afc.mp3",
+      "male-normal": "ja/male-normal/8d28cdffba403f16.mp3",
+      "male-slower": "ja/male-slower/98ffc061d8130476.mp3"
+    },
+    "ミ": {
+      "female-normal": "ja/female-normal/505ca70daabe6c4b.mp3",
+      "female-slower": "ja/female-slower/e16dbe6b36048855.mp3",
+      "male-normal": "ja/male-normal/0e2dfbfbdda5909c.mp3",
+      "male-slower": "ja/male-slower/5959914b4254c4d4.mp3"
+    },
+    "ム": {
+      "female-normal": "ja/female-normal/e81a88606f67fa94.mp3",
+      "female-slower": "ja/female-slower/75dfae81070a6c9d.mp3",
+      "male-normal": "ja/male-normal/eb81a161268afdcc.mp3",
+      "male-slower": "ja/male-slower/25ff350f98ad9c2f.mp3"
+    },
+    "メ": {
+      "female-normal": "ja/female-normal/da3a80ba85d1cebb.mp3",
+      "female-slower": "ja/female-slower/ece40fc9a89be248.mp3",
+      "male-normal": "ja/male-normal/84cea6867c39db82.mp3",
+      "male-slower": "ja/male-slower/9c119833261b7112.mp3"
+    },
+    "モ": {
+      "female-normal": "ja/female-normal/7d0184e06a5d2f2e.mp3",
+      "female-slower": "ja/female-slower/50f5581f0c670ed0.mp3",
+      "male-normal": "ja/male-normal/1f0e0a9b0802fdd8.mp3",
+      "male-slower": "ja/male-slower/0c0c71ca00583552.mp3"
+    },
+    "ヤ": {
+      "female-normal": "ja/female-normal/9672aeb21c73080f.mp3",
+      "female-slower": "ja/female-slower/5277bd365d90bc6e.mp3",
+      "male-normal": "ja/male-normal/b639e1cb8846b99c.mp3",
+      "male-slower": "ja/male-slower/5163b3a23a348ce9.mp3"
+    },
+    "ユ": {
+      "female-normal": "ja/female-normal/0018b16e282d2421.mp3",
+      "female-slower": "ja/female-slower/9a6788d7e3147a39.mp3",
+      "male-normal": "ja/male-normal/20ad50734aa90f19.mp3",
+      "male-slower": "ja/male-slower/e6802193c3aad340.mp3"
+    },
+    "ヨ": {
+      "female-normal": "ja/female-normal/713f109ff8bc8011.mp3",
+      "female-slower": "ja/female-slower/4601244814e177e9.mp3",
+      "male-normal": "ja/male-normal/2e2109a57bf5eab2.mp3",
+      "male-slower": "ja/male-slower/ec879037aa147cbe.mp3"
+    },
+    "ラ": {
+      "female-normal": "ja/female-normal/7a5b02857c6e4752.mp3",
+      "female-slower": "ja/female-slower/4be1021a383979ad.mp3",
+      "male-normal": "ja/male-normal/58e3d26689078abe.mp3",
+      "male-slower": "ja/male-slower/fb3188d7309969f1.mp3"
+    },
+    "リ": {
+      "female-normal": "ja/female-normal/825634cdd9b9e2ab.mp3",
+      "female-slower": "ja/female-slower/715e2c3f5a9f21c0.mp3",
+      "male-normal": "ja/male-normal/63caf4c8cbb28ab8.mp3",
+      "male-slower": "ja/male-slower/0c7d540ad117ec8f.mp3"
+    },
+    "ル": {
+      "female-normal": "ja/female-normal/f8c367a4a4decd29.mp3",
+      "female-slower": "ja/female-slower/e6b2bcf81adf1ac0.mp3",
+      "male-normal": "ja/male-normal/b410c0faa7b9a0b6.mp3",
+      "male-slower": "ja/male-slower/75968612ed0bf1f3.mp3"
+    },
+    "レ": {
+      "female-normal": "ja/female-normal/eaa10b8176ea12f9.mp3",
+      "female-slower": "ja/female-slower/0cab6661f977bd5f.mp3",
+      "male-normal": "ja/male-normal/f788ffd960762161.mp3",
+      "male-slower": "ja/male-slower/3612cbd32b365620.mp3"
+    },
+    "ロ": {
+      "female-normal": "ja/female-normal/26f6ba3a72b7887d.mp3",
+      "female-slower": "ja/female-slower/8fc7f676c7fbdc81.mp3",
+      "male-normal": "ja/male-normal/8c1fbedb70b472d6.mp3",
+      "male-slower": "ja/male-slower/237eb987f004ca74.mp3"
+    },
+    "ワ": {
+      "female-normal": "ja/female-normal/3f64f0fe41a178fb.mp3",
+      "female-slower": "ja/female-slower/e25506655b224f3a.mp3",
+      "male-normal": "ja/male-normal/82edf6a7a9f58cdc.mp3",
+      "male-slower": "ja/male-slower/5b8fc564b502106e.mp3"
+    },
+    "ヲ": {
+      "female-normal": "ja/female-normal/c0e4ca05624809de.mp3",
+      "female-slower": "ja/female-slower/709897295c5d7112.mp3",
+      "male-normal": "ja/male-normal/9c74e93a5bcc1cef.mp3",
+      "male-slower": "ja/male-slower/4d3061078a92168f.mp3"
+    },
+    "ン": {
+      "female-normal": "ja/female-normal/8ce160b6da40f0b8.mp3",
+      "female-slower": "ja/female-slower/b1e6c50434a1c30f.mp3",
+      "male-normal": "ja/male-normal/bae4e95359946223.mp3",
+      "male-slower": "ja/male-slower/cc33067ae8d463e3.mp3"
+    },
+    "ガ": {
+      "female-normal": "ja/female-normal/c200f41c78de22d1.mp3",
+      "female-slower": "ja/female-slower/2c0d24856f988434.mp3",
+      "male-normal": "ja/male-normal/23fa2735b401f682.mp3",
+      "male-slower": "ja/male-slower/e7deff152724763c.mp3"
+    },
+    "ギ": {
+      "female-normal": "ja/female-normal/ba2002a2c9851000.mp3",
+      "female-slower": "ja/female-slower/5038eb4b30f4a7f3.mp3",
+      "male-normal": "ja/male-normal/aa2adf943aa2311d.mp3",
+      "male-slower": "ja/male-slower/94df5bcb8a37748d.mp3"
+    },
+    "グ": {
+      "female-normal": "ja/female-normal/efb0bebc0f85114f.mp3",
+      "female-slower": "ja/female-slower/7347cddee5713a84.mp3",
+      "male-normal": "ja/male-normal/6861fd2d5e9ca7fa.mp3",
+      "male-slower": "ja/male-slower/dca8ae9d3ed7a78e.mp3"
+    },
+    "ゲ": {
+      "female-normal": "ja/female-normal/2284ad542aa07bf0.mp3",
+      "female-slower": "ja/female-slower/eb045967408f03dd.mp3",
+      "male-normal": "ja/male-normal/b985fab27cb55a99.mp3",
+      "male-slower": "ja/male-slower/aef6f68618656734.mp3"
+    },
+    "ゴ": {
+      "female-normal": "ja/female-normal/3a58c73dd6243713.mp3",
+      "female-slower": "ja/female-slower/c8c095b098c2e486.mp3",
+      "male-normal": "ja/male-normal/bf3a18fd7b880edc.mp3",
+      "male-slower": "ja/male-slower/7605a56c1beae50b.mp3"
+    },
+    "ザ": {
+      "female-normal": "ja/female-normal/e3cd2d3d974d8686.mp3",
+      "female-slower": "ja/female-slower/4248b520fc3439cd.mp3",
+      "male-normal": "ja/male-normal/86a8eb3b7250a9de.mp3",
+      "male-slower": "ja/male-slower/79601836403d7214.mp3"
+    },
+    "ジ": {
+      "female-normal": "ja/female-normal/0aa60a66ba5e9be6.mp3",
+      "female-slower": "ja/female-slower/29d33771e7d09c54.mp3",
+      "male-normal": "ja/male-normal/b80841b2195b5378.mp3",
+      "male-slower": "ja/male-slower/76905febdef3f54b.mp3"
+    },
+    "ズ": {
+      "female-normal": "ja/female-normal/dd9ca260d0c17c58.mp3",
+      "female-slower": "ja/female-slower/0312143d9cd0f75d.mp3",
+      "male-normal": "ja/male-normal/5f9f7f7fad63d5eb.mp3",
+      "male-slower": "ja/male-slower/f31176776710522c.mp3"
+    },
+    "ゼ": {
+      "female-normal": "ja/female-normal/d85edb92220b04ec.mp3",
+      "female-slower": "ja/female-slower/110da5b2ec9f7a47.mp3",
+      "male-normal": "ja/male-normal/f347e99587819123.mp3",
+      "male-slower": "ja/male-slower/cccdda4218575156.mp3"
+    },
+    "ゾ": {
+      "female-normal": "ja/female-normal/652ca9da71522f75.mp3",
+      "female-slower": "ja/female-slower/5797cdbaea11c5a1.mp3",
+      "male-normal": "ja/male-normal/90351a25e9c32f43.mp3",
+      "male-slower": "ja/male-slower/e67833f89d4553dd.mp3"
+    },
+    "ダ": {
+      "female-normal": "ja/female-normal/d1e86930d1827838.mp3",
+      "female-slower": "ja/female-slower/18da44239a9a99a0.mp3",
+      "male-normal": "ja/male-normal/1b4175e0d0d770ef.mp3",
+      "male-slower": "ja/male-slower/fbf13c44260f2742.mp3"
+    },
+    "ヂ": {
+      "female-normal": "ja/female-normal/49f32cd850a7e07d.mp3",
+      "female-slower": "ja/female-slower/03841ce4137f0f06.mp3",
+      "male-normal": "ja/male-normal/b84531d3d9c42236.mp3",
+      "male-slower": "ja/male-slower/da34281d5e3af46c.mp3"
+    },
+    "ヅ": {
+      "female-normal": "ja/female-normal/31ff29eeec59d166.mp3",
+      "female-slower": "ja/female-slower/4c6bf8d57b3af095.mp3",
+      "male-normal": "ja/male-normal/87b78bff405b743c.mp3",
+      "male-slower": "ja/male-slower/b7c6182e7cb47886.mp3"
+    },
+    "デ": {
+      "female-normal": "ja/female-normal/3bb1f41691a86c61.mp3",
+      "female-slower": "ja/female-slower/27af3fa3e7502cdb.mp3",
+      "male-normal": "ja/male-normal/c7bd240bec380ea6.mp3",
+      "male-slower": "ja/male-slower/f224b09b899dc84e.mp3"
+    },
+    "ド": {
+      "female-normal": "ja/female-normal/7f9684e08a36492b.mp3",
+      "female-slower": "ja/female-slower/e109989a2c72d135.mp3",
+      "male-normal": "ja/male-normal/cdd73a21da6a00c7.mp3",
+      "male-slower": "ja/male-slower/5a009afe17fdba5c.mp3"
+    },
+    "バ": {
+      "female-normal": "ja/female-normal/5034e3cf8cee8857.mp3",
+      "female-slower": "ja/female-slower/2dd26e1838c37bfc.mp3",
+      "male-normal": "ja/male-normal/4f2a3eec58fefe6e.mp3",
+      "male-slower": "ja/male-slower/bcdf4f57654092f2.mp3"
+    },
+    "ビ": {
+      "female-normal": "ja/female-normal/a6ff954e045ccc30.mp3",
+      "female-slower": "ja/female-slower/e9c2a3112dd983da.mp3",
+      "male-normal": "ja/male-normal/ccd2f70a4ae5c5aa.mp3",
+      "male-slower": "ja/male-slower/4885a592380de267.mp3"
+    },
+    "ブ": {
+      "female-normal": "ja/female-normal/6167b280a365d58e.mp3",
+      "female-slower": "ja/female-slower/a37e31f70f205ac0.mp3",
+      "male-normal": "ja/male-normal/e8585ce0d7c1d8e6.mp3",
+      "male-slower": "ja/male-slower/6878ed308767700a.mp3"
+    },
+    "ベ": {
+      "female-normal": "ja/female-normal/c9f858e6a3e30fb9.mp3",
+      "female-slower": "ja/female-slower/e4dddb5c92d73965.mp3",
+      "male-normal": "ja/male-normal/566b646b73a90fcd.mp3",
+      "male-slower": "ja/male-slower/32cd5aace443fe5d.mp3"
+    },
+    "ボ": {
+      "female-normal": "ja/female-normal/8569918b15c7195e.mp3",
+      "female-slower": "ja/female-slower/c671c9bff197b14e.mp3",
+      "male-normal": "ja/male-normal/04dce60190564db2.mp3",
+      "male-slower": "ja/male-slower/7a2608a767e07d1c.mp3"
+    },
+    "パ": {
+      "female-normal": "ja/female-normal/0b4be831f253746c.mp3",
+      "female-slower": "ja/female-slower/15a74b354bc23777.mp3",
+      "male-normal": "ja/male-normal/67c540d1670c72fb.mp3",
+      "male-slower": "ja/male-slower/e61604811b23e8c8.mp3"
+    },
+    "ピ": {
+      "female-normal": "ja/female-normal/3f2f5877521527b9.mp3",
+      "female-slower": "ja/female-slower/ee8cecc0a5e4b2ad.mp3",
+      "male-normal": "ja/male-normal/1807389191c0928d.mp3",
+      "male-slower": "ja/male-slower/d0c54449a7f9784d.mp3"
+    },
+    "プ": {
+      "female-normal": "ja/female-normal/83be76010a073330.mp3",
+      "female-slower": "ja/female-slower/1cf16c223dad2025.mp3",
+      "male-normal": "ja/male-normal/cfb7a470e69a6340.mp3",
+      "male-slower": "ja/male-slower/302ccbeeba8c5cfe.mp3"
+    },
+    "ペ": {
+      "female-normal": "ja/female-normal/f528d4d5a765d4fb.mp3",
+      "female-slower": "ja/female-slower/e7aa3569655a596e.mp3",
+      "male-normal": "ja/male-normal/6fe8df83b74b3b9d.mp3",
+      "male-slower": "ja/male-slower/e70360d94b3579c4.mp3"
+    },
+    "ポ": {
+      "female-normal": "ja/female-normal/a2c375327065e6e3.mp3",
+      "female-slower": "ja/female-slower/085c6a7cac2b5313.mp3",
+      "male-normal": "ja/male-normal/66d27c913649c56e.mp3",
+      "male-slower": "ja/male-slower/16cabcb137a7eb7a.mp3"
+    },
+    "キャ": {
+      "female-normal": "ja/female-normal/4e27d706b59f096c.mp3",
+      "female-slower": "ja/female-slower/dca5cc5e69bf1c8b.mp3",
+      "male-normal": "ja/male-normal/32802e5e596fca63.mp3",
+      "male-slower": "ja/male-slower/bec24f3215d9b3af.mp3"
+    },
+    "キュ": {
+      "female-normal": "ja/female-normal/f35fcbca3034934e.mp3",
+      "female-slower": "ja/female-slower/658bccae57e8b65a.mp3",
+      "male-normal": "ja/male-normal/a51dac8465d9d9ff.mp3",
+      "male-slower": "ja/male-slower/c7c5b004f6e0b6a9.mp3"
+    },
+    "キョ": {
+      "female-normal": "ja/female-normal/f04427b0228371c8.mp3",
+      "female-slower": "ja/female-slower/8676ba334bc40edd.mp3",
+      "male-normal": "ja/male-normal/1696c0b04b670b3d.mp3",
+      "male-slower": "ja/male-slower/f6ce6badccedf8b5.mp3"
+    },
+    "シャ": {
+      "female-normal": "ja/female-normal/9e1af4d0a85ba513.mp3",
+      "female-slower": "ja/female-slower/43d975abc8efd008.mp3",
+      "male-normal": "ja/male-normal/230e8bbb09e04997.mp3",
+      "male-slower": "ja/male-slower/8a322f8798756e4f.mp3"
+    },
+    "シュ": {
+      "female-normal": "ja/female-normal/fd0f5355fba4036f.mp3",
+      "female-slower": "ja/female-slower/dc0050c299488045.mp3",
+      "male-normal": "ja/male-normal/ad66d1affb88a1e4.mp3",
+      "male-slower": "ja/male-slower/ed433cdc731f394d.mp3"
+    },
+    "ショ": {
+      "female-normal": "ja/female-normal/cb4d3b3396f6dda0.mp3",
+      "female-slower": "ja/female-slower/7cf69932de266971.mp3",
+      "male-normal": "ja/male-normal/047e78eb09c9e617.mp3",
+      "male-slower": "ja/male-slower/c56303427ebd8591.mp3"
+    },
+    "チャ": {
+      "female-normal": "ja/female-normal/26f405caf75318f0.mp3",
+      "female-slower": "ja/female-slower/6a461170a4100377.mp3",
+      "male-normal": "ja/male-normal/e3dd08efe8ac543f.mp3",
+      "male-slower": "ja/male-slower/642dbf40e3d81857.mp3"
+    },
+    "チュ": {
+      "female-normal": "ja/female-normal/38b91e53776183b2.mp3",
+      "female-slower": "ja/female-slower/85826ebb0bfbfb40.mp3",
+      "male-normal": "ja/male-normal/5ad0421b1ee0aaa7.mp3",
+      "male-slower": "ja/male-slower/d41438fe9b32cd21.mp3"
+    },
+    "チョ": {
+      "female-normal": "ja/female-normal/bbd5e42b87a8ef82.mp3",
+      "female-slower": "ja/female-slower/c81464b182129bb4.mp3",
+      "male-normal": "ja/male-normal/4417674ff2ea547d.mp3",
+      "male-slower": "ja/male-slower/6d2fc4e508e25d0a.mp3"
+    },
+    "ニャ": {
+      "female-normal": "ja/female-normal/e712365bfbea51b4.mp3",
+      "female-slower": "ja/female-slower/ed11259f41147a92.mp3",
+      "male-normal": "ja/male-normal/b771445196c0a7da.mp3",
+      "male-slower": "ja/male-slower/af218481eff7d742.mp3"
+    },
+    "ニュ": {
+      "female-normal": "ja/female-normal/f1e29377fbd2ccb7.mp3",
+      "female-slower": "ja/female-slower/4903ee0f8f84f279.mp3",
+      "male-normal": "ja/male-normal/86ad6f40ef0de77e.mp3",
+      "male-slower": "ja/male-slower/886ced69ed95559f.mp3"
+    },
+    "ニョ": {
+      "female-normal": "ja/female-normal/0e3db1b0129f8491.mp3",
+      "female-slower": "ja/female-slower/dd94f55003e8f1ed.mp3",
+      "male-normal": "ja/male-normal/29bbf7908e9ca005.mp3",
+      "male-slower": "ja/male-slower/d16bc5f7fb960c76.mp3"
+    },
+    "ヒャ": {
+      "female-normal": "ja/female-normal/5626df2d4041b0c5.mp3",
+      "female-slower": "ja/female-slower/2f1a42ccfd886038.mp3",
+      "male-normal": "ja/male-normal/4818b2411a699974.mp3",
+      "male-slower": "ja/male-slower/0e7fde3f9089768f.mp3"
+    },
+    "ヒュ": {
+      "female-normal": "ja/female-normal/d576102a18012c97.mp3",
+      "female-slower": "ja/female-slower/9ff9579cc5414096.mp3",
+      "male-normal": "ja/male-normal/078703e6fcff9fa6.mp3",
+      "male-slower": "ja/male-slower/4299a351f4ff5e36.mp3"
+    },
+    "ヒョ": {
+      "female-normal": "ja/female-normal/4364efe56b5d834a.mp3",
+      "female-slower": "ja/female-slower/021962320f4d0c1f.mp3",
+      "male-normal": "ja/male-normal/8e0ab770f1be6c32.mp3",
+      "male-slower": "ja/male-slower/9e5e654ee75f0726.mp3"
+    },
+    "ミャ": {
+      "female-normal": "ja/female-normal/a46d298ab717d19d.mp3",
+      "female-slower": "ja/female-slower/bb4b68c95ae36a77.mp3",
+      "male-normal": "ja/male-normal/32d09a6685aa98d1.mp3",
+      "male-slower": "ja/male-slower/0ee84c2ee1fd78ac.mp3"
+    },
+    "ミュ": {
+      "female-normal": "ja/female-normal/6b47f4121c02a074.mp3",
+      "female-slower": "ja/female-slower/dc881e4fea9c40c2.mp3",
+      "male-normal": "ja/male-normal/fcea71e1be6ae0f7.mp3",
+      "male-slower": "ja/male-slower/ac7c5366fbe4366e.mp3"
+    },
+    "ミョ": {
+      "female-normal": "ja/female-normal/82c3b8505c3cfdf2.mp3",
+      "female-slower": "ja/female-slower/0d6ec3944c23359c.mp3",
+      "male-normal": "ja/male-normal/92c65366eb58f2f7.mp3",
+      "male-slower": "ja/male-slower/b6f6712dda91e40d.mp3"
+    },
+    "リャ": {
+      "female-normal": "ja/female-normal/2afd4f09221b1dbd.mp3",
+      "female-slower": "ja/female-slower/a203651bf56a5825.mp3",
+      "male-normal": "ja/male-normal/e099ac579567ff59.mp3",
+      "male-slower": "ja/male-slower/9fc7d574f625e6bd.mp3"
+    },
+    "リュ": {
+      "female-normal": "ja/female-normal/f987e622c88aa90d.mp3",
+      "female-slower": "ja/female-slower/98a5186969f72f7f.mp3",
+      "male-normal": "ja/male-normal/aca567809b0e14d1.mp3",
+      "male-slower": "ja/male-slower/ed4609a4c04c8c50.mp3"
+    },
+    "リョ": {
+      "female-normal": "ja/female-normal/954525045fa696d2.mp3",
+      "female-slower": "ja/female-slower/5eb5ef4ead333ba0.mp3",
+      "male-normal": "ja/male-normal/cdcac3becdc346cb.mp3",
+      "male-slower": "ja/male-slower/0bc23126ae1d76ad.mp3"
+    },
+    "ギャ": {
+      "female-normal": "ja/female-normal/0ea51d42efbcab15.mp3",
+      "female-slower": "ja/female-slower/ad4e11f3eb99b5be.mp3",
+      "male-normal": "ja/male-normal/b989354de19f8789.mp3",
+      "male-slower": "ja/male-slower/8892d2bd86a567f0.mp3"
+    },
+    "ギュ": {
+      "female-normal": "ja/female-normal/2e28faf705abe99f.mp3",
+      "female-slower": "ja/female-slower/e0c0046b4de2d235.mp3",
+      "male-normal": "ja/male-normal/a016c06153c1536f.mp3",
+      "male-slower": "ja/male-slower/4c17477e181a212f.mp3"
+    },
+    "ギョ": {
+      "female-normal": "ja/female-normal/351740a6157f6c0e.mp3",
+      "female-slower": "ja/female-slower/fdae594a51b6e977.mp3",
+      "male-normal": "ja/male-normal/f7980727842bd8e5.mp3",
+      "male-slower": "ja/male-slower/1711dabd020fd468.mp3"
+    },
+    "ジャ": {
+      "female-normal": "ja/female-normal/5802a6ee62b482fa.mp3",
+      "female-slower": "ja/female-slower/78a0e2049725fa4b.mp3",
+      "male-normal": "ja/male-normal/2da99000b0aa6456.mp3",
+      "male-slower": "ja/male-slower/c83a212ff62755ae.mp3"
+    },
+    "ジュ": {
+      "female-normal": "ja/female-normal/58846e57a821f663.mp3",
+      "female-slower": "ja/female-slower/26f7a307182382d0.mp3",
+      "male-normal": "ja/male-normal/d7d887d939c0b06a.mp3",
+      "male-slower": "ja/male-slower/1f667fa5b092092e.mp3"
+    },
+    "ジョ": {
+      "female-normal": "ja/female-normal/21c6e89b2352ca86.mp3",
+      "female-slower": "ja/female-slower/7260c7a9a4e5e718.mp3",
+      "male-normal": "ja/male-normal/8c31ce02189ebcc1.mp3",
+      "male-slower": "ja/male-slower/7e582147844a6d70.mp3"
+    },
+    "ビャ": {
+      "female-normal": "ja/female-normal/e6d7d01f17e06bbd.mp3",
+      "female-slower": "ja/female-slower/2a689a285e5b11de.mp3",
+      "male-normal": "ja/male-normal/810d07c7936de37e.mp3",
+      "male-slower": "ja/male-slower/adc4e3b9b353497b.mp3"
+    },
+    "ビュ": {
+      "female-normal": "ja/female-normal/99b81d4cb31ff2e0.mp3",
+      "female-slower": "ja/female-slower/c27357e40df1983e.mp3",
+      "male-normal": "ja/male-normal/6ef756223ed311cb.mp3",
+      "male-slower": "ja/male-slower/5fa3cef705a952b5.mp3"
+    },
+    "ビョ": {
+      "female-normal": "ja/female-normal/623f06a1d10610d5.mp3",
+      "female-slower": "ja/female-slower/7a7ccbd517a5a4a4.mp3",
+      "male-normal": "ja/male-normal/b3bb62c09a67273e.mp3",
+      "male-slower": "ja/male-slower/eeb91de4e09b3000.mp3"
+    },
+    "ピャ": {
+      "female-normal": "ja/female-normal/bcc413db5597acde.mp3",
+      "female-slower": "ja/female-slower/c2f77cb89b7fba74.mp3",
+      "male-normal": "ja/male-normal/51d227e31240d024.mp3",
+      "male-slower": "ja/male-slower/cf4fea13c53cc5e8.mp3"
+    },
+    "ピュ": {
+      "female-normal": "ja/female-normal/89c221fefaaf044f.mp3",
+      "female-slower": "ja/female-slower/a086ec0bf55b6d59.mp3",
+      "male-normal": "ja/male-normal/cbda96f92da1c2e3.mp3",
+      "male-slower": "ja/male-slower/6325eed7f38131bc.mp3"
+    },
+    "ピョ": {
+      "female-normal": "ja/female-normal/c647e8cdba502ce1.mp3",
+      "female-slower": "ja/female-slower/5f5602e3d01bc123.mp3",
+      "male-normal": "ja/male-normal/6d29db65b328b1b2.mp3",
+      "male-slower": "ja/male-slower/1428861e025d10fc.mp3"
+    },
+    "ファ": {
+      "female-normal": "ja/female-normal/038e06fadb562601.mp3",
+      "female-slower": "ja/female-slower/9b67efb33bdf2e6d.mp3",
+      "male-normal": "ja/male-normal/6550f2fd3e5cbebd.mp3",
+      "male-slower": "ja/male-slower/8f46993fff50db21.mp3"
+    },
+    "フィ": {
+      "female-normal": "ja/female-normal/f8e084442998b06c.mp3",
+      "female-slower": "ja/female-slower/9558a47dc028bf8b.mp3",
+      "male-normal": "ja/male-normal/f424d7e72ac4f26f.mp3",
+      "male-slower": "ja/male-slower/255fa425a18b78aa.mp3"
+    },
+    "フェ": {
+      "female-normal": "ja/female-normal/5750415f2a8a39c9.mp3",
+      "female-slower": "ja/female-slower/3e2ba8b957f8505d.mp3",
+      "male-normal": "ja/male-normal/f0c1483b06387355.mp3",
+      "male-slower": "ja/male-slower/d603ae6a7cd05584.mp3"
+    },
+    "フォ": {
+      "female-normal": "ja/female-normal/637838d2947e800c.mp3",
+      "female-slower": "ja/female-slower/9bef3c772da755c7.mp3",
+      "male-normal": "ja/male-normal/1ba3f33d845f031f.mp3",
+      "male-slower": "ja/male-slower/f3c90a874ff6dbf4.mp3"
+    },
+    "ヴ": {
+      "female-normal": "ja/female-normal/0967627ca5386082.mp3",
+      "female-slower": "ja/female-slower/caf4858277d375eb.mp3",
+      "male-normal": "ja/male-normal/208ee8de5c0bdda1.mp3",
+      "male-slower": "ja/male-slower/8dd03b0480e5240f.mp3"
+    },
+    "ヴァ": {
+      "female-normal": "ja/female-normal/7322e618488b2ee6.mp3",
+      "female-slower": "ja/female-slower/6d3e1db1c3600ce7.mp3",
+      "male-normal": "ja/male-normal/666dd640b1a64fa1.mp3",
+      "male-slower": "ja/male-slower/fca93980fea697a3.mp3"
+    },
+    "ヴィ": {
+      "female-normal": "ja/female-normal/62480de1d5d5ebc9.mp3",
+      "female-slower": "ja/female-slower/c57729ca7fe82c6e.mp3",
+      "male-normal": "ja/male-normal/da21e4c9a3dd5d71.mp3",
+      "male-slower": "ja/male-slower/aacd9b5ab4de25ae.mp3"
+    },
+    "ヴェ": {
+      "female-normal": "ja/female-normal/d16db8289f3e9147.mp3",
+      "female-slower": "ja/female-slower/9401afcc8a62fe48.mp3",
+      "male-normal": "ja/male-normal/c4463c3dcb5a0d98.mp3",
+      "male-slower": "ja/male-slower/b69df2b523cbc83e.mp3"
+    },
+    "ヴォ": {
+      "female-normal": "ja/female-normal/76e7ce9a50033fa7.mp3",
+      "female-slower": "ja/female-slower/d2f60830847fdf75.mp3",
+      "male-normal": "ja/male-normal/717091d6da20aadd.mp3",
+      "male-slower": "ja/male-slower/6c2968941ecafb99.mp3"
+    },
+    "ウィ": {
+      "female-normal": "ja/female-normal/6fecac982f84d348.mp3",
+      "female-slower": "ja/female-slower/6e2787a3a5593a33.mp3",
+      "male-normal": "ja/male-normal/4a38189ebe646c1f.mp3",
+      "male-slower": "ja/male-slower/5d32cac2c8932c28.mp3"
+    },
+    "ウェ": {
+      "female-normal": "ja/female-normal/142c628ea3fd6c23.mp3",
+      "female-slower": "ja/female-slower/1aa183c7eae27e87.mp3",
+      "male-normal": "ja/male-normal/38303ce27a90d896.mp3",
+      "male-slower": "ja/male-slower/214556658deb8e49.mp3"
+    },
+    "ウォ": {
+      "female-normal": "ja/female-normal/4c41d89374695787.mp3",
+      "female-slower": "ja/female-slower/3bc1041145c14571.mp3",
+      "male-normal": "ja/male-normal/b7af37e40eec3930.mp3",
+      "male-slower": "ja/male-slower/b1f092aa12e61d7b.mp3"
+    },
+    "ティ": {
+      "female-normal": "ja/female-normal/75997641a6fca558.mp3",
+      "female-slower": "ja/female-slower/fe0dca8ec0486a82.mp3",
+      "male-normal": "ja/male-normal/a1bba5c8bbc51d85.mp3",
+      "male-slower": "ja/male-slower/dc6c43766f2fb061.mp3"
+    },
+    "ディ": {
+      "female-normal": "ja/female-normal/a8739822e97e188b.mp3",
+      "female-slower": "ja/female-slower/462206d311e46122.mp3",
+      "male-normal": "ja/male-normal/f5cb02daab23ebfc.mp3",
+      "male-slower": "ja/male-slower/0d2626c1b44fcfce.mp3"
+    },
+    "トゥ": {
+      "female-normal": "ja/female-normal/cb7c766394206a05.mp3",
+      "female-slower": "ja/female-slower/cb9ddeee34789f95.mp3",
+      "male-normal": "ja/male-normal/326add057ed86a3a.mp3",
+      "male-slower": "ja/male-slower/525b3590f9004758.mp3"
+    },
+    "ドゥ": {
+      "female-normal": "ja/female-normal/b44184379b76598d.mp3",
+      "female-slower": "ja/female-slower/fa43f5f8d0b76eb4.mp3",
+      "male-normal": "ja/male-normal/5bfd66206b3a904e.mp3",
+      "male-slower": "ja/male-slower/66b1cc9f2b1eb456.mp3"
+    },
+    "チェ": {
+      "female-normal": "ja/female-normal/5ca078bd6f368c4a.mp3",
+      "female-slower": "ja/female-slower/bbba0d55615e74d0.mp3",
+      "male-normal": "ja/male-normal/eb59ce12ecf22c42.mp3",
+      "male-slower": "ja/male-slower/cc59ae061492c2e8.mp3"
+    },
+    "シェ": {
+      "female-normal": "ja/female-normal/0003d225faffb866.mp3",
+      "female-slower": "ja/female-slower/e78afabe331a9b0d.mp3",
+      "male-normal": "ja/male-normal/37fc20818f8eeee9.mp3",
+      "male-slower": "ja/male-slower/2f9cceec66cfd876.mp3"
+    },
+    "ジェ": {
+      "female-normal": "ja/female-normal/9f015e0e23d218f8.mp3",
+      "female-slower": "ja/female-slower/8754e95bcf342fd3.mp3",
+      "male-normal": "ja/male-normal/2ea72651a3d7b7d0.mp3",
+      "male-slower": "ja/male-slower/6e7e584af84e2e82.mp3"
+    },
+    "ツァ": {
+      "female-normal": "ja/female-normal/3597eb64762d3c59.mp3",
+      "female-slower": "ja/female-slower/c8f8bad2cd8f1620.mp3",
+      "male-normal": "ja/male-normal/8336bb9df734a3e1.mp3",
+      "male-slower": "ja/male-slower/3c004bf3402fa2c1.mp3"
+    },
+    "ツェ": {
+      "female-normal": "ja/female-normal/9eb685acbfe2fa55.mp3",
+      "female-slower": "ja/female-slower/4e0c1499adc11ac1.mp3",
+      "male-normal": "ja/male-normal/a446cc0b2f8099d1.mp3",
+      "male-slower": "ja/male-slower/25c732c5a176c736.mp3"
+    },
+    "ツォ": {
+      "female-normal": "ja/female-normal/8575ee7ca801f60d.mp3",
+      "female-slower": "ja/female-slower/8d7915df1422754f.mp3",
+      "male-normal": "ja/male-normal/93d9c7f9f803da3f.mp3",
+      "male-slower": "ja/male-slower/99c5baf223036c18.mp3"
+    },
+    "イェ": {
+      "female-normal": "ja/female-normal/c07ce4002822de06.mp3",
+      "female-slower": "ja/female-slower/d6c6752deb239cce.mp3",
+      "male-normal": "ja/male-normal/9513ff60af9840a2.mp3",
+      "male-slower": "ja/male-slower/f828a65ff9dd092a.mp3"
+    }
+  }
+}

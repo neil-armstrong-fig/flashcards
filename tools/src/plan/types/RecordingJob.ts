@@ -1,0 +1,17 @@
+import type {SpokenLanguage} from "@language-learning/shared/language/SpokenLanguage";
+import type {RecordingVariant} from "@language-learning/shared/audio/RecordingVariant";
+
+/** One recording to have: what is said, who says it, how fast, and where the file goes. */
+export interface RecordingJob {
+  readonly language: SpokenLanguage;
+  readonly text: string;
+  readonly variant: RecordingVariant;
+  /** The Azure voice that says it. */
+  readonly voiceName: string;
+  /** The Azure locale the voice speaks, such as `ko-KR`. */
+  readonly locale: string;
+  /** The SSML prosody rate, or `default` for none. */
+  readonly rate: string;
+  /** The path under `audio/`. */
+  readonly file: string;
+}

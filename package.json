@@ -1,0 +1,30 @@
+{
+  "name": "language-learning",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.3.4",
+  "engines": {
+    "node": ">=24.13.1"
+  },
+  "scripts": {
+    "start": "pnpm --filter @language-learning/webapp start",
+    "api:dev": "pnpm --filter @language-learning/api start",
+    "start:local": "pnpm --parallel --filter @language-learning/api --filter @language-learning/webapp start",
+    "start:preview": "pnpm --filter @language-learning/webapp start:preview",
+    "build": "pnpm --recursive build",
+    "checks": "pnpm --recursive checks",
+    "lint": "pnpm --recursive lint",
+    "lint:fix": "pnpm --recursive lint:fix",
+    "format": "pnpm --recursive format",
+    "format:check": "pnpm --recursive format:check",
+    "type-check": "pnpm --recursive type-check",
+    "test": "pnpm --recursive test",
+    "install-browsers": "pnpm --filter @language-learning/acceptance-tests install-browsers",
+    "acceptance-tests": "pnpm --filter @language-learning/acceptance-tests acceptance-tests",
+    "acceptance-tests:pwa": "pnpm --filter @language-learning/acceptance-tests acceptance-tests:pwa",
+    "acceptance-tests:headed": "pnpm --filter @language-learning/acceptance-tests acceptance-tests:headed",
+    "acceptance-tests:ui": "pnpm --filter @language-learning/acceptance-tests acceptance-tests:ui",
+    "acceptance-tests:report": "pnpm --filter @language-learning/acceptance-tests acceptance-tests:report"
+  }
+}

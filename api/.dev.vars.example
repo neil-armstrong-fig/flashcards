@@ -1,0 +1,8 @@
+# Names only. `pnpm api:dev` reads these from the root .env.dev (git-ignored): add them there. Never commit values.
+AZURE_SPEECH_KEY=
+GOOGLE_OAUTH_CLIENT_ID=
+GOOGLE_OAUTH_SECRET=
+# The Google accounts that may sign in (comma-separated). Overrides the placeholder in wrangler.jsonc.
+ALLOWED_EMAILS=
+# `wrangler dev` may report another host than the one registered with Google, so say it outright.
+GOOGLE_REDIRECT_URI=http://localhost:8787/api/auth/google/callback

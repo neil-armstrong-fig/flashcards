@@ -1,0 +1,10 @@
+import {Link} from "react-router";
+import {ROUTES} from "@src/react/routes/Routes";
+
+export function BrowseButton(): React.JSX.Element {
+  return (
+    <Link to={ROUTES.browse} data-testid="open-browse" className="self-start text-ink-muted underline">
+      Browse all cards
+    </Link>
+  );
+}

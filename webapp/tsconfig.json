@@ -1,0 +1,12 @@
+{
+  "extends": "../shared/config/tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "types": ["vite/client", "vite-plugin-pwa/client", "vite-plugin-pwa/react", "vitest/globals"],
+    "paths": {
+      "@src/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "vite.config.ts", "vitest.config.ts", "eslint.config.js", "prettier.config.js"]
+}

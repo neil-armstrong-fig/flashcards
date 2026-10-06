@@ -1,0 +1,5 @@
+{
+  // Prettier and ESLint are not optional here: `pnpm checks` runs both, and without the extensions
+  // the editor silently disagrees with the gate.
+  "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint", "ms-playwright.playwright", "vitest.explorer"]
+}

@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+build/
+dist/
+dev-dist/
+*.tsbuildinfo
+
+# Test output
+coverage/
+screenshots/
+playwright-report/
+test-results/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+.env.dev
+.env.*
+!.env.example
+
+# Local Worker secrets for `wrangler dev` (names in api/.dev.vars.example)
+.dev.vars
+
+# Cloudflare tooling state
+.wrangler/
+.alchemy/
+
+# Caches
+.eslintcache
+.vite/
+
+# Editors
+.idea/
+.DS_Store
+
+# Local working material (voice samples, drafts, scratch scripts): never committed, never published
+/private-source/
+
+# Local scratch notes, not for the repo
+todo.txt
+
+
+# Recordings are served from a private bucket, never from the public site (docs/online.md); the generator writes to private-source/recordings/
+webapp/public/audio/

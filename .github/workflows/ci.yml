@@ -1,0 +1,217 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Allow one deploy at a time, and let a newer push supersede a queued one.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  checks:
+    name: Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Lint, format, types and unit tests across every package.
+      - run: pnpm checks
+
+      - run: pnpm --filter @language-learning/webapp compile
+
+  acceptance-tests:
+    name: Acceptance tests (local)
+    runs-on: ubuntu-latest
+    # Split across runners rather than run with more workers on one, so Playwright's 5s action and expect timeouts see
+    # no extra contention. The suite is small at the moment: raise the shard list as it grows (the shard count is the
+    # length of this list).
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # --with-deps installs the system libraries Chromium needs on a bare runner.
+      - run: pnpm --filter @language-learning/acceptance-tests exec playwright install --with-deps chromium
+
+      # Test the production build, not the dev server.
+      - run: pnpm --filter @language-learning/webapp compile
+
+      - name: Serve the build
+        run: pnpm --filter @language-learning/webapp preview &
+
+      - name: Wait for the server
+        run: |
+          for _ in $(seq 1 60); do
+            curl -sf http://localhost:3000 >/dev/null && exit 0
+            sleep 1
+          done
+          echo "The preview server never came up" >&2
+          exit 1
+
+      - run: pnpm acceptance-tests --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+
+      - run: pnpm acceptance-tests:pwa
+
+      - if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report-local-${{ matrix.shard }}
+          path: acceptance-tests/playwright-report/
+          retention-days: 7
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: [checks, acceptance-tests]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    outputs:
+      page-url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # The app is always served from the root of its own (sub)domain, so the build the tests ran against is the one deployed.
+      - name: Build for Pages
+        run: pnpm --filter @language-learning/webapp compile
+        env:
+          # Where the speech API is (MANUAL-SETUP-STEPS.md, step 4). Unset, the app looks for a local one.
+          VITE_API_ORIGIN: ${{ vars.VITE_API_ORIGIN }}
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: webapp/build
+
+      - id: deployment
+        uses: actions/deploy-pages@v5
+
+  deploy-api:
+    name: Deploy the API to Cloudflare
+    needs: [checks, acceptance-tests]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      # Inert until the owner has added the secrets (infra/AGENTS.md): a secret cannot be tested in an `if`, so the step looks
+      # for itself. Once the token is there, an API that cannot be deployed fails the build rather than being skipped. Alchemy
+      # creates or adopts the D1 database, the KV namespaces and the Worker by name, so a clean runner with no state works as long as neither is
+      # renamed or removed (the tradeoff janggi's (https://github.com/neil-armstrong-fig/janggi) docs/alchemy-state.md describes).
+      - name: Deploy the API with Alchemy
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "No CLOUDFLARE_API_TOKEN: the API is not deployed."
+            exit 0
+          fi
+          pnpm --filter @language-learning/infra provision
+        env:
+          ALCHEMY_CI_STATE_STORE_CHECK: "false"
+          ALCHEMY_TELEMETRY_DISABLED: 1
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          ALCHEMY_PASSWORD: ${{ secrets.ALCHEMY_PASSWORD }}
+          AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          GOOGLE_OAUTH_SECRET: ${{ secrets.GOOGLE_OAUTH_SECRET }}
+          ALLOWED_EMAILS: ${{ secrets.ALLOWED_EMAILS }}
+          SITE_ORIGINS: ${{ vars.SITE_ORIGINS }}
+
+  acceptance-tests-production:
+    name: Acceptance tests (production)
+    needs: deploy
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm --filter @language-learning/acceptance-tests exec playwright install --with-deps chromium
+
+      # Pages can serve the previous build for a moment after the deployment reports success.
+      - name: Wait for the deployment
+        run: |
+          for _ in $(seq 1 60); do
+            curl -sf "$WEBAPP_URL" >/dev/null && exit 0
+            sleep 5
+          done
+          echo "$WEBAPP_URL never came up" >&2
+          exit 1
+        env:
+          WEBAPP_URL: ${{ needs.deploy.outputs.page-url }}
+
+      - run: pnpm acceptance-tests --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+
+      - run: pnpm acceptance-tests:pwa
+        env:
+          WEBAPP_URL: ${{ needs.deploy.outputs.page-url }}
+
+      - if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright-report-production-${{ matrix.shard }}
+          path: acceptance-tests/playwright-report/
+          retention-days: 7

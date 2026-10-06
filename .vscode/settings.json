@@ -1,0 +1,52 @@
+{
+  // Prettier owns formatting here (shared/config/prettier.base.js), and `pnpm format:check` is part
+  // of the gate — so the editor must not hold a different opinion. Needs esbenp.prettier-vscode;
+  // see extensions.json. Without that extension installed, save does nothing.
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Never format a file Prettier has no config for, rather than guessing at defaults.
+  "prettier.requireConfig": true,
+
+  // Per language, so a formatter that ships with another extension cannot win by being more
+  // specific than the global default above.
+  "[typescript]": {"editor.defaultFormatter": "esbenp.prettier-vscode"},
+  "[typescriptreact]": {"editor.defaultFormatter": "esbenp.prettier-vscode"},
+  "[javascript]": {"editor.defaultFormatter": "esbenp.prettier-vscode"},
+  "[json]": {"editor.defaultFormatter": "esbenp.prettier-vscode"},
+  "[jsonc]": {"editor.defaultFormatter": "esbenp.prettier-vscode"},
+  "[css]": {"editor.defaultFormatter": "esbenp.prettier-vscode"},
+  "[html]": {"editor.defaultFormatter": "esbenp.prettier-vscode"},
+  "[markdown]": {"editor.defaultFormatter": "esbenp.prettier-vscode"},
+  "[yaml]": {"editor.defaultFormatter": "esbenp.prettier-vscode"},
+
+  // pnpm workspace: one eslint.config.js per package, and no ESLint at the root. Without
+  // this the extension picks one config for the whole tree and the per-package import boundaries
+  // stop being reported in the editor.
+  "eslint.workingDirectories": [{"mode": "auto"}],
+  "eslint.validate": ["javascript", "typescript", "typescriptreact"],
+
+  // Use the workspace's TypeScript, not the one bundled with VS Code. This repo is pinned to
+  // 6.0.3 on purpose (see AGENTS.md), so a different compiler in the editor would report a
+  // different set of errors than `pnpm type-check`. There is no root install — webapp holds the
+  // copy every package resolves to the same version of.
+  "typescript.tsdk": "webapp/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  // Report type errors across the project rather than only in open tabs. This is what makes the
+  // IDE diagnostics Claude reads actually cover the codebase. Experimental, and it costs some CPU
+  // on a cold start — turn it off if the language server feels slow.
+  "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  // `../` imports are a lint error; auto-import should reach for the @src/* alias instead, while
+  // still writing ./x for a sibling file.
+  "typescript.preferences.importModuleSpecifier": "project-relative",
+
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/build": true,
+    "**/test-results": true,
+    "**/playwright-report": true,
+    "pnpm-lock.yaml": true
+  }
+}
