@@ -14,7 +14,7 @@ it("keeps only the cards studied in the deck", async () => {
   const {store} = await openedStudyStore();
   const cards = cardsInDeck(selectCards(store.getState()), {kind: "deck", deckId: "ja-hiragana"});
 
-  expect(cards).toHaveLength(208);
+  expect(cards).toHaveLength(142);
   expect(cards.every(card => card.id.startsWith("ja-hiragana-"))).toBe(true);
 });
 

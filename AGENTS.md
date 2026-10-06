@@ -53,6 +53,8 @@ pnpm acceptance-tests:pwa  # the service-worker specs (offline, new release): ne
 pnpm install-browsers      # one-time Playwright chromium download
 pnpm api:dev               # the API on :8787 with wrangler (reads the root .env.dev: names in api/.dev.vars.example; MANUAL-SETUP-STEPS.md 4a)
 pnpm start:local           # the API and the dev server together, the app talking to the local API
+pnpm provision:local      # deploy the API infrastructure from here, loading the root .env.dev (needs the names in MANUAL-SETUP-STEPS.md 4c)
+pnpm start:deployed        # the dev server and a local :8787 proxy to the deployed API; reads and writes real account data
 ```
 
 If port 3000 is taken (the developer's own dev server, for one), do not kill it: serve your own build with

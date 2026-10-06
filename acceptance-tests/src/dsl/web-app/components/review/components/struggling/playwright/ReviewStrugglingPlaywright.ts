@@ -1,5 +1,6 @@
 import type {Page} from "@playwright/test";
 import {BaseComponent} from "@src/dsl/playwright/BaseComponent";
+import {withMoreOptions} from "@src/dsl/web-app/components/review/playwright/with-more-options/WithMoreOptions";
 
 export class ReviewStrugglingPlaywright extends BaseComponent {
   constructor(page: Page) {
@@ -7,12 +8,14 @@ export class ReviewStrugglingPlaywright extends BaseComponent {
   }
 
   async markHard(): Promise<void> {
-    await this.page.getByTestId("mark-hard").click();
-    await this.page.getByTestId("marked-hard").waitFor();
+    await withMoreOptions(this.page, async () => {
+      await this.page.getByTestId("mark-hard").click();
+      await this.page.getByTestId("marked-hard").waitFor();
+    });
   }
 
   async onStrugglingList(): Promise<boolean> {
-    return await this.page.getByTestId("marked-hard").isVisible();
+    return await withMoreOptions(this.page, async () => await this.page.getByTestId("marked-hard").isVisible());
   }
 
   async strugglingNotice(): Promise<number> {

@@ -22,7 +22,7 @@ given("the learner starts a session on the hiragana deck", () => {
     const recordings = await webApp.review.sound.getRecordingsPlayed();
 
     expect(recordings).toHaveLength(1);
-    expect(recordings[0]).toMatchObject({language: "ja", voice: "female", speed: "normal", found: true});
+    expect(recordings[0]).toMatchObject({language: "ja", voice: "male", speed: "normal", found: true});
   });
 
   when("they show the answer", () => {
@@ -83,6 +83,7 @@ given("the learner has learned three starter words' cards and a quarter of a yea
   when("they allow the deck only one review a day", () => {
     beforeEach(async ({webApp}) => {
       await webApp.home.openSettings();
+      await webApp.settings.limits.unlockReviewsPerDay("ko-starter");
       await webApp.settings.limits.setMaxReviewsPerDay(1, "ko-starter");
       await webApp.settings.close();
     });

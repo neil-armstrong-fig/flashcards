@@ -68,8 +68,14 @@ to a stored shape is a new migration, never an edit to an old one.
 
 ```bash
 pnpm start:local            # from the repo root: this API on :8787 and the app on :3000 (the one origin it allows)
+pnpm start:deployed         # the app on :3000 and a :8787 proxy to the deployed API (real account data)
 pnpm --filter @flashcards/api test    # plain node: the code is plain functions, `cloudflare:workers` is a stub
 ```
+
+`start:deployed` runs `src/development/DeployedApiProxy.ts` instead of this Worker locally. The browser still talks to
+`localhost:8787`, so the `SameSite=Lax` session and OAuth cookies work; the proxy forwards every `/api/*` request to the deployed
+custom domain. The deployed Worker accepts the local app origin, and Google returns a local sign-in through that proxy. This mode
+needs no `.env.dev`, but every read and write is against the deployed account.
 
 Needs these in the root `.env.dev` (git-ignored; names in `.dev.vars.example`): `AZURE_SPEECH_KEY`, `GOOGLE_OAUTH_CLIENT_ID`,
 `GOOGLE_OAUTH_SECRET`, `ALLOWED_EMAILS` and `GOOGLE_REDIRECT_URI`. `start` passes `--env-file ../.env.dev`, so every name in it becomes a

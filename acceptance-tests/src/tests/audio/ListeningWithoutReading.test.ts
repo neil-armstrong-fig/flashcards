@@ -10,25 +10,40 @@ given("the learner has not asked to hide the words", () => {
   });
 });
 
-given("the learner chooses to listen without reading", () => {
+given("the learner is reviewing the starter deck and hides the Korean word from the more options", () => {
   beforeEach(async ({webApp}) => {
-    await webApp.home.openSettings();
-    await webApp.settings.struggling.setListenOnly(true);
-    await webApp.settings.close();
+    await webApp.home.startReviewing();
+    await webApp.review.moreOptions.setTargetTextHidden(true);
   });
 
-  when("they open the settings again", () => {
+  then("the word is not shown on the card in front of them", async ({webApp}) => {
+    expect(await webApp.review.isFrontHidden()).toBe(true);
+  });
+
+  when("they turn it back on", () => {
     beforeEach(async ({webApp}) => {
-      await webApp.home.openSettings();
+      await webApp.review.moreOptions.setTargetTextHidden(false);
     });
 
-    then("the choice shows as on", async ({webApp}) => {
-      expect(await webApp.settings.struggling.isListenOnly()).toBe(true);
+    then("the word is shown again", async ({webApp}) => {
+      expect(await webApp.review.isFrontHidden()).toBe(false);
     });
   });
 
-  when("they start reviewing", () => {
+  when("they leave and start another deck", () => {
     beforeEach(async ({webApp}) => {
+      await webApp.review.leaveSession();
+      await webApp.home.startReviewing("ja-hiragana");
+    });
+
+    then("that deck still shows its words, as the choice is for the starter deck alone", async ({webApp}) => {
+      expect(await webApp.review.isFrontHidden()).toBe(false);
+    });
+  });
+
+  when("they reopen the app and start the deck again", () => {
+    beforeEach(async ({webApp}) => {
+      await webApp.reload();
       await webApp.home.startReviewing();
     });
 
@@ -58,17 +73,6 @@ given("the learner chooses to listen without reading", () => {
         expect(await webApp.review.sound.getRecordingsPlayed()).toHaveLength(2);
         expect(await webApp.review.isFrontHidden()).toBe(true);
       });
-    });
-  });
-
-  when("they reopen the app and start reviewing", () => {
-    beforeEach(async ({webApp}) => {
-      await webApp.reload();
-      await webApp.home.startReviewing();
-    });
-
-    then("the word is still hidden", async ({webApp}) => {
-      expect(await webApp.review.isFrontHidden()).toBe(true);
     });
   });
 });

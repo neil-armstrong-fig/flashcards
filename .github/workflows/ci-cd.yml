@@ -204,6 +204,8 @@ jobs:
           WEBAPP_URL: ${{ needs.deploy.outputs.page-url }}
 
       - run: pnpm acceptance-tests --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+        env:
+          WEBAPP_URL: ${{ needs.deploy.outputs.page-url }}
 
       - run: pnpm acceptance-tests:pwa
         env:

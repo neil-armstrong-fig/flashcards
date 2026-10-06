@@ -3,6 +3,9 @@ import {EditCardForm} from "@src/react/pages/browse/components/browse-card/compo
 import {DeleteCardButton} from "@src/react/pages/browse/components/browse-card/components/delete-card-button/DeleteCardButton";
 import {similarsToggled} from "@src/redux/slices/browse/BrowseSlice";
 import {useState} from "react";
+import {similarOf} from "@src/redux/slices/similar/similars/SimilarOf";
+import type {MouseEvent} from "react";
+import {isTapOnBackground} from "@src/react/audio/hooks/use-tap-to-play/is-tap-on-background/IsTapOnBackground";
 import {SimilarPanel} from "@src/react/components/similar-panel/SimilarPanel";
 import {SpeakerIcon} from "@src/react/components/speaker-icon/SpeakerIcon";
 import {statusLabelOf} from "@src/react/pages/browse/components/browse-card/status-label/StatusLabel";
@@ -18,7 +21,7 @@ interface Props {
   readonly row: BrowseRow;
 }
 
-/** One card in the list: its two sides, how the Korean is said, where it is in its life, and a button to hear the Korean word. */
+/** One card in the list: its two sides, how the Korean is said, where it is in its life, and a button to hear the word being learned. */
 export function BrowseCard({row}: Props): React.JSX.Element {
   const dispatch = useAppDispatch();
   const choices = useAudioChoices();
@@ -27,10 +30,28 @@ export function BrowseCard({row}: Props): React.JSX.Element {
   const note = useAppSelector(state => selectNoteById(state, row.noteId));
   const struggling = useAppSelector(state => selectIsStruggling(state, row.id));
   const similarsOpen = useAppSelector(state => state.browse.similarsOpenFor === row.id);
+  const learnedSimilars = useAppSelector(state => state.similar.words[row.noteId]);
   const [editing, setEditing] = useState(false);
+  const hasSimilars = (similarOf(note, learnedSimilars)?.words.length ?? 0) > 0;
+
+  function play(): void {
+    if (row.spoken) {
+      speakWord(row.spoken, choices);
+    }
+  }
+
+  function tapToPlay(event: MouseEvent): void {
+    if (isTapOnBackground(event)) {
+      play();
+    }
+  }
 
   return (
-    <li data-testid="browse-card" className="flex flex-col gap-3 rounded-xl bg-ground-raised p-4">
+    <li
+      data-testid="browse-card"
+      onClick={tapToPlay}
+      className="flex cursor-pointer flex-col gap-3 rounded-xl bg-ground-raised p-4"
+    >
       <div className="flex items-center gap-3">
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <p className="flex items-baseline gap-3">
@@ -63,8 +84,8 @@ export function BrowseCard({row}: Props): React.JSX.Element {
         <button
           type="button"
           data-testid="browse-card-play"
-          aria-label={`Play ${row.korean}`}
-          onClick={() => speakWord(row.korean, choices)}
+          aria-label={`Play ${row.spoken?.text ?? row.front}`}
+          onClick={play}
           className="flex size-12 shrink-0 items-center justify-center rounded-full bg-ground text-accent"
         >
           <SpeakerIcon className="size-6" />
@@ -76,8 +97,9 @@ export function BrowseCard({row}: Props): React.JSX.Element {
           type="button"
           data-testid="browse-card-similars"
           aria-expanded={similarsOpen}
+          data-has-similars={hasSimilars}
           onClick={() => dispatch(similarsToggled(row.id))}
-          className="self-start text-sm text-ink-muted underline"
+          className={`self-start text-sm underline ${hasSimilars ? "font-semibold text-accent" : "text-ink-muted"}`}
         >
           Similars
         </button>

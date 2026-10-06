@@ -53,7 +53,7 @@ export async function finishSignIn(request: Request): Promise<Response> {
       code,
       state: attempt.state,
       codeVerifier: attempt.codeVerifier,
-      redirectUri: googleRedirectUri(request),
+      redirectUri: googleRedirectUri(request, attempt.returnTo),
     });
 
     if (

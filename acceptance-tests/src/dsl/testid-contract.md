@@ -38,17 +38,22 @@ or removing one means changing both sides in the same commit.
 | `rate-easy`                       | review screen              | (as above)                                                                                                                 |
 | `cards-remaining`                 | review screen              | Cards left in this session, digits only                                                                                    |
 | `session-complete`                | review screen              | Present instead of a card when nothing is left to review                                                                   |
-| `mark-hard`                       | review screen              | Button: say this card is hard (replaced by `marked-hard` once it is on the list)                                           |
-| `marked-hard`                     | review screen              | Shown instead of `mark-hard` while the card is on the Struggling list                                                      |
-| `note-add`                        | review screen              | Button: write a note on this card (shown while the card has none)                                                          |
-| `note-input`                      | review screen              | Text box for the note, after `note-add`                                                                                    |
-| `note-save`                       | review screen              | Button: keep the note                                                                                                      |
-| `note-text`                       | review screen              | The card's note, shown once it has one                                                                                     |
-| `note-remove`                     | review screen              | Button beside the note: take it off                                                                                        |
-| `picture-input`                   | review screen              | File input: choose a picture for this card (present once the kept pictures have loaded)                                    |
-| `picture`                         | review screen              | The card's picture (an image), shown once it has one                                                                       |
-| `picture-remove`                  | review screen              | Button beside the picture: take it off                                                                                     |
-| `picture-error`                   | review screen              | Why a chosen or pasted file was refused                                                                                    |
+| `mark-hard`                       | review screen              | In the more options. Button: say this card is hard (replaced by `marked-hard` once it is on the list)                      |
+| `marked-hard`                     | review screen              | In the more options. Shown instead of `mark-hard` while the card is on the Struggling list                                 |
+| `note-add`                        | review screen              | In the more options. Button: write a note on this card (shown while the card has none)                                     |
+| `note-input`                      | review screen              | In the more options. Text box for the note, after `note-add`                                                               |
+| `note-save`                       | review screen              | In the more options. Button: keep the note                                                                                 |
+| `note-text`                       | review screen              | On the card. The card's note, shown once it has one                                                                        |
+| `note-remove`                     | review screen              | In the more options. Button: take the note off (shown while the card has one)                                              |
+| `picture-input`                   | review screen              | In the more options. File input: choose a picture for this card                                                            |
+| `picture`                         | review screen              | On the card. The card's picture (an image), shown once it has one                                                          |
+| `picture-area`                    | review screen              | On the card. Present once the kept pictures have loaded, with or without a picture in it                                   |
+| `picture-add`                     | review screen              | In the more options. Button: choose a picture for this card (shown while the card has none)                                |
+| `more-options`                    | review screen              | Button: open the dialog holding the rarely used actions                                                                    |
+| `more-options-dialog`             | review screen              | The dialog of rarely used actions: picture, note, hard, bury, suspend                                                      |
+| `more-options-close`              | review screen              | Button in the dialog: close it                                                                                             |
+| `picture-remove`                  | review screen              | In the more options. Button: take the picture off                                                                          |
+| `picture-error`                   | review screen              | In the more options. Why a chosen or pasted file was refused                                                               |
 | `fade-offer`                      | review screen              | Shown when the card's note or picture can fade: three good answers in a row since they were added                          |
 | `fade-remove`                     | review screen              | Button in the offer: remove the note and picture                                                                           |
 | `fade-keep`                       | review screen              | Button in the offer: keep them, and ask again after three more good answers                                                |
@@ -58,28 +63,32 @@ or removing one means changing both sides in the same commit.
 | `review-struggling`               | review screen              | Button on the completion screen, shown when cards are struggling: open the list                                            |
 | `struggling-notice-count`         | review screen              | Inside it: how many cards are struggling, digits only                                                                      |
 | `finish-session`                  | review screen              | Button, shown with the completion message, back to home                                                                    |
+| `leave-session`                   | review screen              | Button in the header, leaves the session early and goes home                                                               |
 | `rate-<rating>-interval`          | review screen              | Inside each rating button: when the card returns, e.g. `10m`                                                               |
 | `open-settings`                   | home screen                | Button that opens the settings screen                                                                                      |
 | `settings-screen`                 | settings screen            | Present while the settings are on screen                                                                                   |
 | `new-cards-per-day-<deck id>`     | settings screen            | Number field: new cards of that deck introduced each study day                                                             |
-| `max-reviews-per-day-<deck id>`   | settings screen            | Number field: review cards of that deck done each study day                                                                |
+| `max-reviews-per-day-<deck id>`   | settings screen            | Number field: review cards of that deck done each study day. Disabled while the limits are locked                          |
+| `limits-unlocked-<deck id>`       | settings screen            | Checkbox: let that deck's reviews per day be set apart from its new cards (locked, they are ten for each new card)         |
+| `deck-voice-<deck id>-male`       | settings screen            | Radio: the voice that speaks that deck. `deck-voice-<deck id>-female` likewise                                             |
+| `deck-speed-<deck id>-normal`     | settings screen            | Radio: the speed that deck is spoken at. `deck-speed-<deck id>-slower` likewise                                            |
 | `daily-goal-input`                | settings screen            | Number field: the daily goal, in cards                                                                                     |
 | `close-settings`                  | settings screen            | Button back to the home screen                                                                                             |
-| `bury-card`                       | review screen              | Button: hide this card until tomorrow                                                                                      |
-| `suspend-card`                    | review screen              | Button: hide this card until it is brought back                                                                            |
+| `bury-card`                       | review screen              | In the more options. Button: hide this card until tomorrow                                                                 |
+| `suspend-card`                    | review screen              | In the more options. Button: hide this card until it is brought back                                                       |
 | `suspended-count`                 | settings screen            | How many cards are suspended, digits only                                                                                  |
 | `unsuspend-all`                   | settings screen            | Button: bring every suspended card back                                                                                    |
 | `replay-audio`                    | review screen              | Button: play the card's recording again                                                                                    |
 | `card-front-hidden`               | review screen              | Inside `card-front` instead of the word, when listening only                                                               |
 | `desired-retention`               | settings screen            | Number box: the percentage of reviewed cards the learner wants to remember (70 to 97)                                      |
 | `theme-system`                    | settings screen            | Radio: the colours follow the device. `theme-light` and `theme-dark` likewise                                              |
-| `voice-female`                    | settings screen            | Radio: the female voice. `voice-male` likewise                                                                             |
-| `speed-normal`                    | settings screen            | Radio: normal speed. `speed-slower` likewise                                                                               |
-| `listen-only`                     | settings screen            | Checkbox: keep the Korean word off the front of the card                                                                   |
+| `voice-female`                    | settings screen            | Radio: the female voice when browsing. `voice-male` likewise                                                               |
+| `speed-normal`                    | settings screen            | Radio: normal speed when browsing. `speed-slower` likewise                                                                 |
+| `hide-target`                     | review screen              | In the more options. Checkbox: keep the target-language word off the front of the cards of this deck, when it comes first  |
 | `release-update`                  | any screen                 | Notice that a new release is ready (compiled build only)                                                                   |
 | `release-update-refresh`          | release notice             | Button: switch to the new release and reload                                                                               |
 | `release-update-later`            | release notice             | Button: dismiss the notice until the next visit                                                                            |
-| `similar-open`                    | review screen              | Button: open or close compare sounds; only once answer shown                                                               |
+| `similar-open`                    | review screen              | Button: open or close compare sounds; only once answer shown; `data-has-similars="true"` when a similar is there to hear   |
 | `similar-panel`                   | review screen              | The panel itself, present while open                                                                                       |
 | `similar-play-own`                | similar panel              | Button: play the card's own Korean word                                                                                    |
 | `similar-row`                     | similar panel              | One similar: holds the next three                                                                                          |
@@ -118,7 +127,7 @@ or removing one means changing both sides in the same commit.
 | `browse-nothing-found`            | browse screen              | Shown when a search matches no card                                                                                        |
 | `browse-switch-voice`             | browse screen              | Button: switch female/male (the one voice setting)                                                                         |
 | `browse-switch-speed`             | browse screen              | Button: switch normal/slower                                                                                               |
-| `browse-card-similars`            | browse card                | Button: open this word's similars panel                                                                                    |
+| `browse-card-similars`            | browse card                | Button: open this word's similars panel; `data-has-similars="true"` when the word has a similar to hear                    |
 | `similar-delete`                  | similar row                | Button: delete a similar the learner added                                                                                 |
 | `new-card-word`                   | browse screen              | Field: the Korean word of a card of the learner's own                                                                      |
 | `new-card-meaning`                | browse screen              | Field: its meaning in English                                                                                              |

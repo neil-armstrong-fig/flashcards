@@ -30,6 +30,10 @@ The Free Spaced Repetition Scheduler (FSRS), through `ts-fsrs` 5.4.2, called onl
   "tomorrow" is available from the start of tomorrow, not from the hour you last saw it.
 - **Learn ahead is 20 minutes.** When nothing else is waiting, a learning card due within 20 minutes is shown early rather than
   ending the session with it still waiting.
+- **Reviews follow new cards, ten for each.** Each deck's reviews a day are locked to ten times its new cards a day, so the daily work
+  stays in balance (a new card comes back for review about ten times in the long run). Unlocking a deck sets them apart; locking again
+  puts them back to ten times. Choosing no new cards leaves the reviews as they are, so pausing new words does not pause reviewing.
+  Limits kept before the lock existed are unlocked unless they already keep the ratio, so no one's choice changes.
 - **New cards are limited to 20 a day.** The count is derived from the review log (answers whose card was new that study day),
   not stored, so there is nothing to keep in step with it.
 - "Due today" on the home screen and "remaining" in a session count the same set: learning cards due before the end of the

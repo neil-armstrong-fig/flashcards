@@ -12,6 +12,9 @@
   --color-ink: #d6dedb;
   --color-ink-muted: #9fb4bb;
   --color-accent: #8fc4a8;
+  --color-voice-male: #7fb2e5;
+  --color-voice-female: #e59cc0;
+  --color-on-voice: #000000;
 }
 
 :root {
@@ -25,6 +28,9 @@
     --color-ink: #18262d;
     --color-ink-muted: #4a5d66;
     --color-accent: #244b3b;
+    --color-voice-male: #1f5f9e;
+    --color-voice-female: #a02d66;
+    --color-on-voice: #ffffff;
 
     color-scheme: light;
   }
@@ -36,6 +42,9 @@
   --color-ink: #18262d;
   --color-ink-muted: #4a5d66;
   --color-accent: #244b3b;
+  --color-voice-male: #1f5f9e;
+  --color-voice-female: #a02d66;
+  --color-on-voice: #ffffff;
 
   color-scheme: light;
 }

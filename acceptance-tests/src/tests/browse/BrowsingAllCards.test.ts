@@ -55,7 +55,7 @@ given("the learner opens the list of every card", () => {
     then("the Korean word is heard, in the voice and speed they chose", async ({webApp}) => {
       const [recording] = await webApp.review.sound.getRecordingsPlayed();
 
-      expect(recording).toMatchObject({language: "ko", voice: "female", speed: "normal", found: true});
+      expect(recording).toMatchObject({language: "ko", voice: "male", speed: "normal", found: true});
     });
   });
 

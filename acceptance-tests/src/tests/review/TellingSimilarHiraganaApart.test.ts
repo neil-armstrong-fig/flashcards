@@ -53,6 +53,7 @@ given("the learner is reviewing hiragana and the card for あ comes up", () => {
 async function takeOnEveryCard(webApp: WebApp): Promise<void> {
   await webApp.home.openSettings();
   await webApp.settings.limits.setNewCardsPerDay(999, "ja-hiragana");
+  await webApp.settings.limits.unlockReviewsPerDay("ja-hiragana");
   await webApp.settings.limits.setMaxReviewsPerDay(9999, "ja-hiragana");
   await webApp.settings.close();
 }

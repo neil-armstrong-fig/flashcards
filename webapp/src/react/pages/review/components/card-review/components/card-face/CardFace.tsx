@@ -1,3 +1,4 @@
+import {selectDeckPreferences} from "@src/redux/slices/settings/selectors/SelectDeckPreferences";
 import {selectCardById} from "@src/redux/slices/deck/selectors/SelectCardById";
 import {SpeakerIcon} from "@src/react/components/speaker-icon/SpeakerIcon";
 import {useAppSelector} from "@src/redux/shared/Hooks";
@@ -6,18 +7,22 @@ import {useAppSelector} from "@src/redux/shared/Hooks";
 export function CardFace(): React.JSX.Element | undefined {
   const currentCardId = useAppSelector(state => state.study.session?.currentCardId);
   const answerShown = useAppSelector(state => state.study.session?.answerShown === true);
-  const listenOnly = useAppSelector(state => state.settings.listenOnly);
+  const hideTarget = useAppSelector(state => {
+    const deckId = state.study.session?.deckId;
+
+    return deckId !== undefined && selectDeckPreferences(state, deckId).hideTarget;
+  });
   const card = useAppSelector(state => selectCardById(state, currentCardId));
 
   if (!card) {
     return undefined;
   }
 
-  // Only a card that shows the Korean word on its front can hide it: the other direction asks for the word, and shows English.
-  const frontHidden = listenOnly && card.direction === "to-english" && !answerShown;
+  // Only a card that shows the target-language word on its front can hide it: the other direction asks for the word, and shows English.
+  const frontHidden = hideTarget && card.direction === "to-english" && !answerShown;
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-4 text-center">
+    <div className="flex flex-1 cursor-pointer flex-col items-center justify-center gap-4 text-center">
       <p data-testid="card-front" className="text-6xl">
         {!frontHidden && card.front}
 

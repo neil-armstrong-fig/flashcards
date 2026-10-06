@@ -22,14 +22,6 @@ export class SettingsStrugglingPlaywright extends BaseComponent {
     return await this.page.getByTestId("set-aside-when-struggling").isChecked();
   }
 
-  async setListenOnly(on: boolean): Promise<void> {
-    await this.page.getByTestId("listen-only").setChecked(on);
-  }
-
-  async listenOnly(): Promise<boolean> {
-    return await this.page.getByTestId("listen-only").isChecked();
-  }
-
   async suspendedCount(): Promise<number> {
     return Number(await this.page.getByTestId("suspended-count").innerText());
   }

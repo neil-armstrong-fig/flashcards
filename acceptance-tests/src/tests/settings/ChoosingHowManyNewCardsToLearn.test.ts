@@ -9,6 +9,43 @@ given("the learner opens the settings", () => {
     expect(await webApp.settings.limits.getNewCardsPerDay()).toBe(20);
   });
 
+  then("the reviews a day are locked to ten for each new card, so two hundred", async ({webApp}) => {
+    expect(await webApp.settings.limits.isReviewsPerDayLocked()).toBe(true);
+    expect(await webApp.settings.limits.getMaxReviewsPerDay()).toBe(200);
+  });
+
+  when("they choose three new cards a day", () => {
+    beforeEach(async ({webApp}) => {
+      await webApp.settings.limits.setNewCardsPerDay(3);
+    });
+
+    then("the reviews a day follow, at thirty", async ({webApp}) => {
+      expect(await webApp.settings.limits.getMaxReviewsPerDay()).toBe(30);
+    });
+
+    when("they unlock the reviews and choose seven", () => {
+      beforeEach(async ({webApp}) => {
+        await webApp.settings.limits.unlockReviewsPerDay();
+        await webApp.settings.limits.setMaxReviewsPerDay(7);
+      });
+
+      then("the new cards a day stay at three", async ({webApp}) => {
+        expect(await webApp.settings.limits.getNewCardsPerDay()).toBe(3);
+        expect(await webApp.settings.limits.getMaxReviewsPerDay()).toBe(7);
+      });
+
+      when("they lock them again", () => {
+        beforeEach(async ({webApp}) => {
+          await webApp.settings.limits.lockReviewsPerDay();
+        });
+
+        then("the reviews a day are back to ten for each new card", async ({webApp}) => {
+          expect(await webApp.settings.limits.getMaxReviewsPerDay()).toBe(30);
+        });
+      });
+    });
+  });
+
   when("they choose three new cards a day and go back", () => {
     beforeEach(async ({webApp}) => {
       await webApp.settings.limits.setNewCardsPerDay(3);
@@ -48,6 +85,16 @@ given("the learner opens the settings", () => {
 
     then("nothing is due today", async ({webApp}) => {
       expect(await webApp.home.getCardsDueToday()).toBe(0);
+    });
+
+    when("they open the settings again", () => {
+      beforeEach(async ({webApp}) => {
+        await webApp.home.openSettings();
+      });
+
+      then("the reviews a day stay as they were, so pausing new cards does not pause reviewing", async ({webApp}) => {
+        expect(await webApp.settings.limits.getMaxReviewsPerDay()).toBe(200);
+      });
     });
   });
 });

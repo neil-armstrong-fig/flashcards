@@ -13,7 +13,7 @@ given("the learner has opened the app once and then loses their connection", () 
     then("the word is still spoken", async ({webApp}) => {
       const [recording] = await webApp.review.sound.getRecordingsPlayed();
 
-      expect(recording).toMatchObject({voice: "female", speed: "normal", found: true});
+      expect(recording).toMatchObject({voice: "male", speed: "normal", found: true});
     });
   });
 

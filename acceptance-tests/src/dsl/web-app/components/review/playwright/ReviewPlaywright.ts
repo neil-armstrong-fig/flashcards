@@ -1,6 +1,7 @@
 import type {Locator, Page} from "@playwright/test";
 import type {Rating} from "@flashcards/shared/study/Rating";
 import {BaseComponent} from "@src/dsl/playwright/BaseComponent";
+import {withMoreOptions} from "@src/dsl/web-app/components/review/playwright/with-more-options/WithMoreOptions";
 
 const RATING_KEYS: Record<Rating, string> = {again: "1", hard: "2", good: "3", easy: "4"};
 
@@ -87,6 +88,11 @@ export class ReviewPlaywright extends BaseComponent {
     await this.page.getByTestId("review-screen").waitFor({state: "detached"});
   }
 
+  async leaveSession(): Promise<void> {
+    await this.page.getByTestId("leave-session").click();
+    await this.page.getByTestId("review-screen").waitFor({state: "detached"});
+  }
+
   async shapeSimilars(): Promise<string[]> {
     await this.page.getByTestId("card-front").waitFor();
 
@@ -109,8 +115,10 @@ export class ReviewPlaywright extends BaseComponent {
   async setAside(how: AsideWay): Promise<void> {
     const before = await this.page.getByTestId("card-front").innerText();
 
-    await this.page.getByTestId(`${how}-card`).click();
-    await this.waitForTheCardToChange(before);
+    await withMoreOptions(this.page, async () => {
+      await this.page.getByTestId(`${how}-card`).click();
+      await this.waitForTheCardToChange(before);
+    });
   }
 
   /** The card on screen was not answered, so an unanswered front is not proof it moved on: only a different card, or the end, is. */

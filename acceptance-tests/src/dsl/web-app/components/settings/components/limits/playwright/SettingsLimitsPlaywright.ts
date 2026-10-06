@@ -38,4 +38,12 @@ export class SettingsLimitsPlaywright extends BaseComponent {
   async dailyGoal(): Promise<number> {
     return Number(await this.page.getByTestId("daily-goal-input").inputValue());
   }
+
+  async setLimitsUnlocked(unlocked: boolean, deck: DeckId): Promise<void> {
+    await this.page.getByTestId(`limits-unlocked-${deck}`).setChecked(unlocked);
+  }
+
+  async limitsUnlocked(deck: DeckId): Promise<boolean> {
+    return await this.page.getByTestId(`limits-unlocked-${deck}`).isChecked();
+  }
 }

@@ -1,3 +1,4 @@
+import type {DeckPreferences} from "@src/redux/slices/settings/types/DeckPreferences";
 import type {DeckLimits} from "@src/redux/slices/settings/types/DeckLimits";
 import type {Speed} from "@flashcards/shared/audio/Speed";
 import type {Theme} from "@flashcards/shared/theme/Theme";
@@ -8,9 +9,11 @@ export interface SettingsState {
   readonly dailyGoalCards: number;
   /** The daily limits of each deck, by deck id. A deck with none kept has the defaults. */
   readonly deckLimits: Readonly<Record<string, DeckLimits>>;
-  /** Which speaker is played. */
+  /** How each deck is heard and shown, by deck id. A deck with none kept has the defaults. */
+  readonly deckPreferences: Readonly<Record<string, DeckPreferences>>;
+  /** Which speaker is played where no deck is being studied, as when browsing every card. */
   readonly voice: Voice;
-  /** How fast it speaks. */
+  /** How fast it speaks, where no deck is being studied. */
   readonly speed: Speed;
   /** How many times a card must be forgotten (a lapse) before it counts as struggling. */
   readonly strugglingAfter: number;
@@ -20,6 +23,4 @@ export interface SettingsState {
   readonly desiredRetentionPercent: number;
   /** The colours: one of the two palettes, or whichever the device asks for. */
   readonly theme: Theme;
-  /** Keep the target-language word off the front of the card, so the learner has to listen. */
-  readonly listenOnly: boolean;
 }

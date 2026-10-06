@@ -1,5 +1,6 @@
 import {endSession} from "@src/redux/slices/study/actions/session/thunks/EndSession";
 import {selectStrugglingCount} from "@src/redux/shared/struggling/SelectStrugglingCount";
+import {useLeaveSession} from "@src/react/pages/review/hooks/use-leave-session/UseLeaveSession";
 import {useNavigate} from "react-router";
 import {ROUTES} from "@src/react/routes/Routes";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
@@ -8,12 +9,8 @@ import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
 export function SessionComplete(): React.JSX.Element {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const backToHome = useLeaveSession();
   const struggling = useAppSelector(selectStrugglingCount);
-
-  function backToHome(): void {
-    dispatch(endSession());
-    void navigate(ROUTES.home);
-  }
 
   function seeStruggling(): void {
     dispatch(endSession());

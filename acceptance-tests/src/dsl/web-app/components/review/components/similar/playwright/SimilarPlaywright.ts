@@ -11,6 +11,10 @@ export class SimilarPlaywright extends BaseComponent {
     return await this.page.getByTestId("similar-open").isVisible();
   }
 
+  async isHighlighted(): Promise<boolean> {
+    return (await this.page.getByTestId("similar-open").getAttribute("data-has-similars")) === "true";
+  }
+
   async canAdd(): Promise<boolean> {
     return await this.page.getByTestId("similar-add").isVisible();
   }

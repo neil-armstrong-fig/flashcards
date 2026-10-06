@@ -1,14 +1,15 @@
 import {nextChoice} from "@src/audio/next-choice/NextChoice";
-import {speedChosen} from "@src/redux/slices/settings/SettingsSlice";
+import {deckSpeedChosen, speedChosen} from "@src/redux/slices/settings/SettingsSlice";
 import {SPEEDS} from "@flashcards/shared/audio/Speed";
-import {useAppDispatch} from "@src/redux/shared/Hooks";
+import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
 import {useAudioChoices} from "@src/react/audio/hooks/use-audio-choices/UseAudioChoices";
 import type {AudioChoices} from "@src/audio/types/AudioChoices";
 
-/** Switches between normal and slower speed, keeps the choice, and says again, at the new speed, whatever `replay` says (nothing, if it is not given), so the two can be compared. */
+/** Switches between normal and slower speed, keeps the choice for the deck being studied (or for browsing, outside a deck), and says again, at the new speed, whatever `replay` says (nothing, if it is not given), so the two can be compared. */
 export function useSwitchSpeed(replay?: (choices: AudioChoices) => void): () => void {
   const dispatch = useAppDispatch();
   const choices = useAudioChoices();
+  const deckId = useAppSelector(state => state.study.session?.deckId);
 
   return (): void => {
     const next = nextChoice(SPEEDS, choices.speed);
@@ -17,7 +18,12 @@ export function useSwitchSpeed(replay?: (choices: AudioChoices) => void): () => 
       return;
     }
 
-    dispatch(speedChosen(next));
+    if (deckId === undefined) {
+      dispatch(speedChosen(next));
+    } else {
+      dispatch(deckSpeedChosen({deckId, speed: next}));
+    }
+
     replay?.({...choices, speed: next});
   };
 }

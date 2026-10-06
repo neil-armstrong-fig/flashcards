@@ -81,8 +81,26 @@ export class BrowseDsl {
     }
   }
 
+  /** Taps the text of the card whose front is `front`, not a button, which plays its Korean word. */
+  async tapCard(front: string): Promise<void> {
+    try {
+      await this.playwright.tapCard(front);
+    } catch (error) {
+      throw new DslError(`Failed to tap the card ${front}`, error);
+    }
+  }
+
   /** Switches between the female and male voice for everything the app says. It is the same setting as in the settings. */
   /** Whether the learner can make a card of their own: only while signed in. */
+  /** Whether the similars button on the row whose front is `front` is picked out, which it is only when the word has a similar to hear. */
+  async isSimilarsHighlighted(front: string): Promise<boolean> {
+    try {
+      return await this.playwright.similarsHighlighted(front);
+    } catch (error) {
+      throw new DslError(`Failed to tell whether the similars button of ${front} is highlighted`, error);
+    }
+  }
+
   /** Whether the row whose front is `front` is marked as a struggling card. */
   async isCardStruggling(front: string): Promise<boolean> {
     try {

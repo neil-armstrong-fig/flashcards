@@ -13,6 +13,7 @@
     "type-check": "tsc --noEmit",
     "test": "vitest run",
     "start": "wrangler dev --port 8787 --env-file ../.env.dev",
+    "start:deployed": "wrangler dev --config wrangler.deployed.jsonc --port 8787 --env-file deployed-api.vars",
     "db:generate": "drizzle-kit generate",
     "db:migrate:local": "wrangler d1 migrations apply flashcards --local"
   },

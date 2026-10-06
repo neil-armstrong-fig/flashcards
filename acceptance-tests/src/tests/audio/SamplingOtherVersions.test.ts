@@ -15,10 +15,10 @@ given("the learner has just heard a Korean word on a card", () => {
       await webApp.review.sound.switchVoice();
     });
 
-    then("the word is spoken again by the male voice at the same speed", async ({webApp}) => {
+    then("the word is spoken again by the female voice at the same speed", async ({webApp}) => {
       const [, second] = await webApp.review.sound.getRecordingsPlayed();
 
-      expect(second).toMatchObject({language: "ko", voice: "male", speed: "normal", found: true});
+      expect(second).toMatchObject({language: "ko", voice: "female", speed: "normal", found: true});
     });
 
     when("they switch it again", () => {
@@ -26,7 +26,7 @@ given("the learner has just heard a Korean word on a card", () => {
         await webApp.review.sound.switchVoice();
       });
 
-      then("the female voice is back", async ({webApp}) => {
+      then("the male voice is back", async ({webApp}) => {
         const [first, , third] = await webApp.review.sound.getRecordingsPlayed();
 
         expect(third?.file).toBe(first?.file);
@@ -39,10 +39,10 @@ given("the learner has just heard a Korean word on a card", () => {
         await webApp.home.startReviewing();
       });
 
-      then("the male voice is the one they hear, because the switch was kept", async ({webApp}) => {
+      then("the female voice is the one they hear, because the switch was kept", async ({webApp}) => {
         const [recording] = await webApp.review.sound.getRecordingsPlayed();
 
-        expect(recording).toMatchObject({voice: "male"});
+        expect(recording).toMatchObject({voice: "female"});
       });
     });
 
@@ -52,8 +52,8 @@ given("the learner has just heard a Korean word on a card", () => {
         await webApp.home.openSettings();
       });
 
-      then("the male voice is the one chosen there", async ({webApp}) => {
-        expect(await webApp.settings.voice.getVoice()).toBe("male");
+      then("the female voice is the one chosen for the starter deck there", async ({webApp}) => {
+        expect(await webApp.settings.voice.getDeckVoice("ko-starter")).toBe("female");
       });
     });
   });
@@ -66,7 +66,7 @@ given("the learner has just heard a Korean word on a card", () => {
     then("the word is spoken again by the same voice, slower", async ({webApp}) => {
       const [, second] = await webApp.review.sound.getRecordingsPlayed();
 
-      expect(second).toMatchObject({language: "ko", voice: "female", speed: "slower", found: true});
+      expect(second).toMatchObject({language: "ko", voice: "male", speed: "slower", found: true});
     });
 
     when("they switch the voice too", () => {
@@ -74,10 +74,10 @@ given("the learner has just heard a Korean word on a card", () => {
         await webApp.review.sound.switchVoice();
       });
 
-      then("the male voice is heard, slower", async ({webApp}) => {
+      then("the female voice is heard, slower", async ({webApp}) => {
         const [, , third] = await webApp.review.sound.getRecordingsPlayed();
 
-        expect(third).toMatchObject({voice: "male", speed: "slower"});
+        expect(third).toMatchObject({voice: "female", speed: "slower"});
       });
     });
   });

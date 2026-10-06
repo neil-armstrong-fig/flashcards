@@ -27,7 +27,7 @@ given("the learner is on the hiragana card for か, which sounds much like が",
     then("it is a Japanese recording, different from か, in the same voice and speed", async ({webApp}) => {
       const [own, , similar] = await webApp.review.sound.getRecordingsPlayed();
 
-      expect(similar).toMatchObject({language: "ja", voice: "female", speed: "normal", found: true});
+      expect(similar).toMatchObject({language: "ja", voice: "male", speed: "normal", found: true});
       expect(similar?.file).not.toBe(own?.file);
     });
   });

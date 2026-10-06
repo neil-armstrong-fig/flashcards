@@ -34,9 +34,11 @@ GitHub Pages (static app, public)        Cloudflare (private)
   else to the network. Signing out takes the recordings off the device.
 - **Who is signed in:** the whole app sits behind sign-in. Signed out, the learner sees only the sign-in screen. A Google account on
   `ALLOWED_EMAILS` is the only way in (`api/AGENTS.md`).
-- **Where the cookie works:** the app and the Worker share a registrable domain, so the `SameSite=Lax` session cookie is sent on the
-  app's requests to the Worker, and `ALLOWED_ORIGINS` and CORS name the app's origin only. The API host is one label below the
-  domain (`flashcards-api`, not `api.flashcards`) because Cloudflare's free certificate covers `*.<domain>` and no deeper.
+- **Where the cookie works:** the deployed app and Worker share a registrable domain, so the `SameSite=Lax` session cookie is sent on
+  the app's requests to the Worker. For `pnpm start:deployed`, a local proxy keeps both browser-facing hosts on `localhost` and
+  forwards `/api/*` to the Worker; its allowed origins include the local app for return-address and CSRF checks. The deployed API
+  host is one label below the domain (`flashcards-api`, not `api.flashcards`) because Cloudflare's free certificate covers
+  `*.<domain>` and no deeper.
 
 ## What is left
 

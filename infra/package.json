@@ -14,6 +14,7 @@
     "test": "vitest run",
     "dev": "NODE_OPTIONS=--import=tsx alchemy dev ./src/ApiInfrastructure.ts",
     "provision": "NODE_OPTIONS=--import=tsx alchemy deploy ./src/ApiInfrastructure.ts --stage prod",
+    "provision:local": "set -a && . ../.env.dev && set +a && NODE_OPTIONS=--import=tsx alchemy deploy ./src/ApiInfrastructure.ts --stage prod",
     "destroy": "NODE_OPTIONS=--import=tsx alchemy destroy ./src/ApiInfrastructure.ts --stage prod"
   },
   "dependencies": {

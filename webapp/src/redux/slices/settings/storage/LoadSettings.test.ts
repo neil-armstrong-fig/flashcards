@@ -10,16 +10,26 @@ it("loads the settings that were kept", () => {
   const kept = {
     dailyGoalCards: 45,
     deckLimits: {
-      "ko-starter": {newCardsPerDay: 5, maxReviewsPerDay: 50},
-      "ja-hiragana": {newCardsPerDay: 20, maxReviewsPerDay: 200},
-      "ja-katakana": {newCardsPerDay: 20, maxReviewsPerDay: 200},
+      "ko-starter": {newCardsPerDay: 5, maxReviewsPerDay: 50, limitsUnlocked: false},
+      "ja-hiragana": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
+      "ja-hiragana-combined": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
+      "ja-katakana": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
+      "ja-katakana-combined": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
+      "ja-katakana-foreign": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
+    },
+    deckPreferences: {
+      "ko-starter": {voice: "female", speed: "slower", hideTarget: true},
+      "ja-hiragana": {voice: "male", speed: "normal", hideTarget: false},
+      "ja-hiragana-combined": {voice: "male", speed: "normal", hideTarget: false},
+      "ja-katakana": {voice: "male", speed: "normal", hideTarget: false},
+      "ja-katakana-combined": {voice: "male", speed: "normal", hideTarget: false},
+      "ja-katakana-foreign": {voice: "male", speed: "normal", hideTarget: false},
     },
     desiredRetentionPercent: 80,
     strugglingAfter: 3,
     setAsideWhenStruggling: true,
     voice: "male",
     speed: "slower",
-    listenOnly: true,
     theme: "light",
   };
 
@@ -34,21 +44,19 @@ it("gives the audio settings their defaults when what was kept predates them", (
     desiredRetentionPercent: 90,
     strugglingAfter: 8,
     setAsideWhenStruggling: false,
-    voice: "female",
+    voice: "male",
     speed: "normal",
-    listenOnly: false,
     theme: "system",
   });
 });
 
 it.each([
-  ["a voice that does not exist", {voice: "robot"}, {voice: "female"}],
+  ["a voice that does not exist", {voice: "robot"}, {voice: "male"}],
   ["a speed that does not exist", {speed: "glacial"}, {speed: "normal"}],
   ["a struggling threshold out of range", {strugglingAfter: 0}, {strugglingAfter: 8}],
   ["a set-aside flag that is not a boolean", {setAsideWhenStruggling: 1}, {setAsideWhenStruggling: false}],
   ["a retention out of range", {desiredRetentionPercent: 50}, {desiredRetentionPercent: 90}],
   ["colours that do not exist", {theme: "sepia"}, {theme: "system"}],
-  ["a listen-only flag that is not a boolean", {listenOnly: "yes"}, {listenOnly: false}],
 ])("does not trust %s", (_name, stored, expected) => {
   holding(stored);
   expect(loadSettings()).toMatchObject(expected);
@@ -60,9 +68,8 @@ it("starts from the defaults when nothing was kept", () => {
     dailyGoalCards: 20,
     strugglingAfter: 8,
     setAsideWhenStruggling: false,
-    voice: "female",
+    voice: "male",
     speed: "normal",
-    listenOnly: false,
   });
 });
 
@@ -86,10 +93,19 @@ it("loads the limits of a deck apart from the other decks'", () => {
   expect(loadSettings().deckLimits["ja-hiragana"]).toEqual({
     newCardsPerDay: 3,
     maxReviewsPerDay: 30,
+    limitsUnlocked: false,
   });
   holding(kept);
   expect(loadSettings().deckLimits["ko-starter"]).toEqual({
     newCardsPerDay: 20,
     maxReviewsPerDay: 200,
+    limitsUnlocked: false,
   });
+});
+
+it("gives every deck the voice, speed and listen-only choice kept before there was one for each", () => {
+  holding({voice: "female", speed: "slower", listenOnly: true});
+
+  expect(loadSettings().deckPreferences["ko-starter"]).toEqual({voice: "female", speed: "slower", hideTarget: true});
+  expect(loadSettings().deckPreferences["ja-katakana"]).toEqual({voice: "female", speed: "slower", hideTarget: true});
 });

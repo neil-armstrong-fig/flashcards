@@ -28,11 +28,11 @@ given("the learner is on a card for 물 with the answer shown, and opens the sim
       then("a recording of it is heard", async ({webApp}) => {
         const recordings = await webApp.review.sound.getRecordingsPlayed();
 
-        expect(recordings.at(-1)).toMatchObject({language: "ko", voice: "female", speed: "normal", found: true});
+        expect(recordings.at(-1)).toMatchObject({language: "ko", voice: "male", speed: "normal", found: true});
       });
     });
 
-    when("they switch to the male voice and slower, then play it", () => {
+    when("they switch to the female voice and slower, then play it", () => {
       beforeEach(async ({webApp}) => {
         await webApp.review.similar.switchVoice();
         await webApp.review.similar.switchSpeed();
@@ -42,7 +42,7 @@ given("the learner is on a card for 물 with the answer shown, and opens the sim
       then("it is there in that voice and speed too, because every version was kept", async ({webApp}) => {
         const recordings = await webApp.review.sound.getRecordingsPlayed();
 
-        expect(recordings.at(-1)).toMatchObject({voice: "male", speed: "slower", found: true});
+        expect(recordings.at(-1)).toMatchObject({voice: "female", speed: "slower", found: true});
       });
     });
 

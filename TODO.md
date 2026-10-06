@@ -10,13 +10,19 @@ Task tracker. Design and rationale are in `docs/PLAN.md`; credits are in `REFERE
 ## Where we are
 
 Everything listed as done is built and green: `pnpm checks` in every package, the acceptance suite on desktop and Pixel 5, and the
-service-worker project (`pnpm acceptance-tests:pwa`). Nothing is deployed. Run the suite with `pnpm start:preview`, then
-`pnpm acceptance-tests`. `pnpm start:local` runs the API and the app together.
+service-worker project (`pnpm acceptance-tests:pwa`). Run the suite with `pnpm start:preview`, then `pnpm acceptance-tests`.
+`pnpm start:local` runs the API and the app together; `pnpm start:deployed` runs the app through a local proxy to the deployed API,
+using real account data.
 
 **Works today:**
 
-- Three decks (Korean starter words, Japanese hiragana with 104 notes, Japanese katakana with 127), each studied both ways and each in
-  its own session with its own limits.
+- Six decks (Korean starter words; Japanese hiragana and katakana with the 71 basic and voiced kana; combined hiragana and combined
+  katakana with 33 each; katakana for foreign sounds with 23), each studied both ways and each in its own session with its own limits,
+  voice, speed and choice of hiding the word.
+- Review screen: a back button to leave early, tap anywhere but a button to hear the card, male/female (blue/pink, male first) and
+  rabbit/turtle switches, the rarely used actions (picture, note, hard, bury, suspend, hide the word) in a "More" dialog, and the
+  similars buttons picked out when a word has a similar to hear.
+- Reviews per day are locked to ten for each new card (a deck can unlock them); with no new cards the reviews are left alone.
 - Review loop: four ratings, learning steps and learn-ahead, interval labels on the buttons, keyboard shortcuts, suspend and bury,
   look ahead, and studying only new or only struggling cards.
 - One daily goal in cards; desired retention (70 to 97 percent); colours (Match device, Light, Dark); PNG app icons.

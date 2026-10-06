@@ -62,4 +62,13 @@ export class SoundDsl {
       throw new DslError("Failed to replay the recording", error);
     }
   }
+
+  /** Taps the card itself, not a button, which plays what is on the card again. */
+  async tapTheCard(): Promise<void> {
+    try {
+      await this.playwright.tapTheCard();
+    } catch (error) {
+      throw new DslError("Failed to tap the card", error);
+    }
+  }
 }

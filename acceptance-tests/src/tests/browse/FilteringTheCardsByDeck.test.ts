@@ -14,8 +14,8 @@ given("the learner opens the list of every card", () => {
       await webApp.browse.chooseDeck("ja-hiragana");
     });
 
-    then("only its 104 words, each both ways, are listed", async ({webApp}) => {
-      expect(await webApp.browse.getCardCount()).toBe(208);
+    then("only its 71 words, each both ways, are listed", async ({webApp}) => {
+      expect(await webApp.browse.getCardCount()).toBe(142);
     });
 
     when("they search for the sound shi", () => {
@@ -47,8 +47,28 @@ given("the learner opens the list of every card", () => {
       await webApp.browse.chooseDeck("ja-katakana");
     });
 
-    then("its 127 words, each both ways, are listed", async ({webApp}) => {
-      expect(await webApp.browse.getCardCount()).toBe(254);
+    then("its 71 words, each both ways, are listed", async ({webApp}) => {
+      expect(await webApp.browse.getCardCount()).toBe(142);
+    });
+  });
+
+  when("they choose the combined hiragana deck", () => {
+    beforeEach(async ({webApp}) => {
+      await webApp.browse.chooseDeck("ja-hiragana-combined");
+    });
+
+    then("only its 33 words, each both ways, are listed", async ({webApp}) => {
+      expect(await webApp.browse.getCardCount()).toBe(66);
+    });
+  });
+
+  when("they choose the katakana deck for foreign sounds", () => {
+    beforeEach(async ({webApp}) => {
+      await webApp.browse.chooseDeck("ja-katakana-foreign");
+    });
+
+    then("only its 23 words, each both ways, are listed", async ({webApp}) => {
+      expect(await webApp.browse.getCardCount()).toBe(46);
     });
   });
 });

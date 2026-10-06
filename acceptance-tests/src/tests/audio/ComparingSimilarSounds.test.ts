@@ -31,7 +31,7 @@ given("the learner is on a card for 물, which sounds like 불 to them", () => {
       then("it is a different recording from the card's own word, in the same voice and speed", async ({webApp}) => {
         const [own, , similar] = await webApp.review.sound.getRecordingsPlayed();
 
-        expect(similar).toMatchObject({language: "ko", voice: "female", speed: "normal", found: true});
+        expect(similar).toMatchObject({language: "ko", voice: "male", speed: "normal", found: true});
         expect(similar?.file).not.toBe(own?.file);
       });
     });
@@ -61,16 +61,16 @@ given("the learner is on a card for 물, which sounds like 불 to them", () => {
       });
     });
 
-    when("they switch to the male voice and play the similar", () => {
+    when("they switch to the female voice and play the similar", () => {
       beforeEach(async ({webApp}) => {
         await webApp.review.similar.switchVoice();
         await webApp.review.similar.play("불");
       });
 
-      then("it is the male recording", async ({webApp}) => {
+      then("it is the female recording", async ({webApp}) => {
         const recordings = await webApp.review.sound.getRecordingsPlayed();
 
-        expect(recordings.at(-1)).toMatchObject({voice: "male", found: true});
+        expect(recordings.at(-1)).toMatchObject({voice: "female", found: true});
       });
     });
   });

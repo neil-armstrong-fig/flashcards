@@ -13,8 +13,8 @@ bundles and uploads it.
 
 - **The domain.** The Worker gets its `workers.dev` address, **but sign-in needs a custom domain** on the app's registrable domain (the session cookie is `SameSite=Lax`): a dashboard step, `MANUAL-SETUP-STEPS.md` 4d. The webapp finds the API at
   `VITE_API_ORIGIN` at build time (`MANUAL-SETUP-STEPS.md`, step 4).
-- **The site's address.** `SITE_ORIGINS` is the comma-separated origins the Worker answers. It defaults to the dev server only,
-  because the app's own address is not decided (`TODO.md`): set it before a deploy that matters.
+- **The site's address.** `SITE_ORIGINS` is the comma-separated deployed origins the Worker answers. The local dev server is always
+  added for `pnpm start:deployed`; set the deployed origins before a deploy that matters.
 - **The Google OAuth client**, which Google lets nobody create from code. Create one (`MANUAL-SETUP-STEPS.md` 4a) and give this its id and secret.
 - **GitHub**: repository secrets and variables, Pages. Manual.
 

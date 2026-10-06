@@ -4,6 +4,7 @@ import {DslError} from "@src/dsl/errors/DslError";
 import {SimilarDsl} from "@src/dsl/web-app/components/review/components/similar/SimilarDsl";
 import {ReviewPlaywright} from "@src/dsl/web-app/components/review/playwright/ReviewPlaywright";
 import {MemoryAidDsl} from "@src/dsl/web-app/components/review/components/memory-aid/MemoryAidDsl";
+import {MoreOptionsDsl} from "@src/dsl/web-app/components/review/components/more-options/MoreOptionsDsl";
 import {SoundDsl} from "@src/dsl/web-app/components/review/components/sound/SoundDsl";
 import {ReviewStrugglingDsl} from "@src/dsl/web-app/components/review/components/struggling/ReviewStrugglingDsl";
 
@@ -13,6 +14,7 @@ export class ReviewDsl {
 
   readonly similar: SimilarDsl;
   readonly memoryAid: MemoryAidDsl;
+  readonly moreOptions: MoreOptionsDsl;
   readonly sound: SoundDsl;
   readonly struggling: ReviewStrugglingDsl;
 
@@ -20,6 +22,7 @@ export class ReviewDsl {
     this.playwright = new ReviewPlaywright(page);
     this.similar = new SimilarDsl(page);
     this.memoryAid = new MemoryAidDsl(page);
+    this.moreOptions = new MoreOptionsDsl(page);
     this.sound = new SoundDsl(page);
     this.struggling = new ReviewStrugglingDsl(page);
   }
@@ -151,6 +154,15 @@ export class ReviewDsl {
       await this.playwright.finishSession();
     } catch (error) {
       throw new DslError("Failed to finish the session", error);
+    }
+  }
+
+  /** Leaves the session before it is finished, back to the home screen. */
+  async leaveSession(): Promise<void> {
+    try {
+      await this.playwright.leaveSession();
+    } catch (error) {
+      throw new DslError("Failed to leave the session early", error);
     }
   }
 

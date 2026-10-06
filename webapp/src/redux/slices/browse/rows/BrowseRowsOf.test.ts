@@ -29,11 +29,11 @@ it("lists every card in deck order, both directions of each word", () => {
   expect(rows.map(row => row.front)).toEqual(["물", "학교", "water", "school"]);
 });
 
-it("says the Korean word of a card whichever side it is on", () => {
+it("says the word being learned, with its language, whichever side the card shows it on", () => {
   const rows = browseRowsOf(CARDS, everyCardNew(), NOW, "");
 
-  expect(rows.find(row => row.front === "water")?.korean).toBe("물");
-  expect(rows.find(row => row.front === "물")?.korean).toBe("물");
+  expect(rows.find(row => row.front === "water")?.spoken).toEqual({language: "ko", text: "물"});
+  expect(rows.find(row => row.front === "물")?.spoken).toEqual({language: "ko", text: "물"});
 });
 
 it.each([

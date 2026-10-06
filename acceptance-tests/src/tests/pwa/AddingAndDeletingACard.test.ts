@@ -36,21 +36,21 @@ given("the learner opens the list of every card", () => {
       then("the Korean word is heard from either card, in the voice chosen", async ({webApp}) => {
         const [korean, english] = await webApp.review.sound.getRecordingsPlayed();
 
-        expect(korean).toMatchObject({language: "ko", voice: "female", speed: "normal", found: true});
+        expect(korean).toMatchObject({language: "ko", voice: "male", speed: "normal", found: true});
         expect(english).toMatchObject({language: "ko", found: true});
       });
     });
 
-    when("they switch to the male voice and play it", () => {
+    when("they switch to the female voice and play it", () => {
       beforeEach(async ({webApp}) => {
         await webApp.browse.switchVoice();
         await webApp.browse.play("코끼리");
       });
 
-      then("the male recording is there too, because every version was kept", async ({webApp}) => {
+      then("the female recording is there too, because every version was kept", async ({webApp}) => {
         const [recording] = await webApp.review.sound.getRecordingsPlayed();
 
-        expect(recording).toMatchObject({voice: "male", found: true});
+        expect(recording).toMatchObject({voice: "female", found: true});
       });
     });
 

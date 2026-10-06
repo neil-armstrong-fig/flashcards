@@ -78,6 +78,9 @@ verification is needed. It is a private **test app** with just your own account 
 6. Create the local database once: `pnpm --filter @flashcards/api db:migrate:local`.
 7. `pnpm start:local`, open `http://localhost:3000`, you land on the **Sign in with Google** screen.
 
+Once the Worker is deployed, `pnpm start:deployed` instead runs the app locally with a proxy on `localhost:8787` to the deployed
+API. Sign-in still returns through the registered local callback above, and every read and write uses the real deployed account.
+
 Session cookies are `SameSite=Lax`, so the app and the API must share a registrable domain: `localhost` does, and when deployed the
 Worker must have a custom domain one label below the app's (for example `languages-api.example.dev` for `languages.example.dev`),
 **not** `workers.dev`.
@@ -93,12 +96,14 @@ Worker must have a custom domain one label below the app's (for example `languag
 
 From a machine, with these set in the environment (`infra/AGENTS.md` says what each is): `CLOUDFLARE_API_TOKEN`,
 `CLOUDFLARE_ACCOUNT_ID`, `AZURE_SPEECH_KEY`, `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_SECRET`, `ALLOWED_EMAILS`, `ALCHEMY_PASSWORD` (any
-long random string, e.g. `openssl rand -base64 32`; keep it, CI needs the same one), and `SITE_ORIGINS` (the app's address, once
-decided; until then only `http://localhost:3000` is allowed):
+long random string, e.g. `openssl rand -base64 32`; keep it, CI needs the same one), and `SITE_ORIGINS` (the deployed app's address;
+the infrastructure always adds `http://localhost:3000` for `pnpm start:deployed`):
 
 ```bash
 pnpm --filter @flashcards/infra provision
 ```
+
+From a machine with all of those in the root `.env.dev`, `pnpm provision:local` loads that file and runs the same deploy.
 
 It makes the D1 database (migrations applied), the two KV namespaces and the `flashcards-api` Worker. The script is called
 `provision` because `pnpm deploy` is a built-in pnpm command.

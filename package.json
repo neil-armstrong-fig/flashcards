@@ -10,7 +10,9 @@
   "scripts": {
     "start": "pnpm --filter @flashcards/webapp start",
     "api:dev": "pnpm --filter @flashcards/api start",
-    "start:local": "pnpm --parallel --filter @flashcards/api --filter @flashcards/webapp start",
+    "start:local": "trap 'kill 0' INT TERM EXIT; pnpm --filter @flashcards/api start & pnpm --filter @flashcards/webapp start & wait",
+    "start:deployed": "trap 'kill 0' INT TERM EXIT; pnpm --filter @flashcards/api start:deployed & pnpm --filter @flashcards/webapp start:deployed & wait",
+    "provision:local": "pnpm --filter @flashcards/infra provision:local",
     "start:preview": "pnpm --filter @flashcards/webapp start:preview",
     "build": "pnpm --recursive build",
     "checks": "pnpm --recursive checks",

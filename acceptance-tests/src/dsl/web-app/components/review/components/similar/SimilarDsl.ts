@@ -19,6 +19,15 @@ export class SimilarDsl {
     }
   }
 
+  /** Whether the compare sounds button is picked out, which it is only when there is a similar word to hear. */
+  async isHighlighted(): Promise<boolean> {
+    try {
+      return await this.playwright.isHighlighted();
+    } catch (error) {
+      throw new DslError("Failed to tell whether the compare sounds button is highlighted", error);
+    }
+  }
+
   /** Whether the learner can ask for a word of their own: only when signed in. */
   async canAdd(): Promise<boolean> {
     try {

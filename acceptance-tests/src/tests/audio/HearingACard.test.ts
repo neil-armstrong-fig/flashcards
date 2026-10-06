@@ -12,15 +12,27 @@ given("the learner starts reviewing the starter deck", () => {
     expect(await webApp.review.isAnswerShown()).toBe(false);
   });
 
-  then("it is spoken by the female voice at normal speed", async ({webApp}) => {
+  then("it is spoken by the male voice at normal speed", async ({webApp}) => {
     const [recording] = await webApp.review.sound.getRecordingsPlayed();
 
-    expect(recording).toMatchObject({language: "ko", voice: "female", speed: "normal", found: true});
+    expect(recording).toMatchObject({language: "ko", voice: "male", speed: "normal", found: true});
   });
 
   when("they replay it", () => {
     beforeEach(async ({webApp}) => {
       await webApp.review.sound.replay();
+    });
+
+    then("the same recording plays again", async ({webApp}) => {
+      const [first, second] = await webApp.review.sound.getRecordingsPlayed();
+
+      expect(second?.file).toBe(first?.file);
+    });
+  });
+
+  when("they tap the card rather than a button", () => {
+    beforeEach(async ({webApp}) => {
+      await webApp.review.sound.tapTheCard();
     });
 
     then("the same recording plays again", async ({webApp}) => {

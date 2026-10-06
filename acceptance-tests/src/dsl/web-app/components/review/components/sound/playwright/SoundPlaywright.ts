@@ -8,8 +8,13 @@ export class SoundPlaywright extends BaseComponent {
     super(page);
   }
 
-  /** Every recording played so far, once each has been looked for (the fake audio element fetches it as it plays). */
+  /**
+   * Every recording played so far, once each has been looked for (the fake audio element fetches it as it plays). A recording the
+   * device does not yet hold is fetched before it plays, so this waits for the network to go quiet first: a recording still on its way
+   * is not left out.
+   */
   async recordingsPlayed(): Promise<readonly PlayedRecording[]> {
+    await this.page.waitForLoadState("networkidle");
     await this.page.waitForFunction(() => window.fakeAudio.played.every(entry => entry.found !== undefined));
 
     const entries = await this.page.evaluate(() => window.fakeAudio.played);
@@ -22,6 +27,14 @@ export class SoundPlaywright extends BaseComponent {
     const before = await this.page.evaluate(() => window.fakeAudio.played.length);
 
     await this.page.getByTestId("replay-audio").click();
+    await this.page.waitForFunction(count => window.fakeAudio.played.length > count, before);
+  }
+
+  /** Taps the card's text and waits until the fake audio element has been asked to play again. */
+  async tapTheCard(): Promise<void> {
+    const before = await this.page.evaluate(() => window.fakeAudio.played.length);
+
+    await this.page.getByTestId("card-front").click();
     await this.page.waitForFunction(count => window.fakeAudio.played.length > count, before);
   }
 

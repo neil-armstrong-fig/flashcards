@@ -66,8 +66,10 @@ A recording is identified by its text, voice (`female` or `male`) and speed (`no
   card, so a word's two cards share its four files.
 - **Playback.** A card speaks its front when it comes up and its answer when the answer is shown, in both directions, so a learner
   can listen while walking, think, then look and rate. A replay button repeats what was said last. Under it, while Korean is being
-  spoken, two switches (voice, speed) flip the choice and speak the word again. "Listen without reading" in the settings hides the
-  Korean word on the front of a Korean-to-English card until the answer is shown. Playing happens in the thunks that bring up a
+  spoken, two switches (voice, speed) flip the choice and speak the word again. Voice (male by default) and speed are chosen for each deck,
+  in the settings or by the switches, since a voice can sound odd on one deck and not another; the list of every card has one of its own.
+  "Hide the word when it comes first", in the card's more options, hides the target-language word on the front of a to-English card
+  until the answer is shown, for that deck. Tapping the card anywhere but a button plays it again. Playing happens in the thunks that bring up a
   card (`startSession`, `answerCard`, `setCardAside`), not in a component effect, so StrictMode cannot double it. One audio element
   lives for the whole app, because a phone lets an element a tap has started carry on later.
 - **Compare sounds.** Once the answer is shown (never on the front), a button opens a panel: the card's own word and its similars,
@@ -81,7 +83,8 @@ A recording is identified by its text, voice (`female` or `male`) and speed (`no
   so a word asked for twice is paid for once.
 - **Offline.** Recordings are fetched with the session cookie, kept in the Cache API (`recordings-v1`) as they are played, and a deck
   can be kept offline in one go (`docs/online.md`). The worker is registered only in a production build, so the offline specs live
-  in `tests/pwa/` and run with `pnpm acceptance-tests:pwa` against `pnpm start:preview`.
+  in `tests/pwa/` and run with `pnpm acceptance-tests:pwa` against `pnpm start:preview`. On the dev server (`pnpm start`, `start:local`, `start:deployed`) there is no worker, so Vite proxies `/audio/*` to
+  the API on :8787 with the session cookie, and recordings play but are not kept for offline; `kept-audio/` needs a production build.
 - **The acceptance specs fake the audio element** (`acceptance-tests/src/dsl/web-app/playwright/fake-audio/`): it writes down each
   `play()` and fetches the file, so a recording the app cannot serve shows as not found.
 

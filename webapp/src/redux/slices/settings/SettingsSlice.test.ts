@@ -1,6 +1,9 @@
 import {
   dailyGoalChosen,
-  listenOnlyChosen,
+  deckSpeedChosen,
+  deckTargetHiddenChosen,
+  deckVoiceChosen,
+  limitsUnlockedChosen,
   maxReviewsPerDayChosen,
   newCardsPerDayChosen,
   setAsideWhenStrugglingChosen,
@@ -12,22 +15,34 @@ import {
   voiceChosen,
 } from "@src/redux/slices/settings/SettingsSlice";
 
-it("starts with a daily goal of twenty cards, each deck on the default limits, and the female voice at normal speed with words shown", () => {
+it("starts with a daily goal of twenty cards, each deck on the default limits and preferences, and the male voice at normal speed", () => {
   const state = settingsReducer(undefined, {type: "unknown"});
+  const limits = {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false};
+  const preferences = {voice: "male", speed: "normal", hideTarget: false};
 
   expect(state).toEqual({
     dailyGoalCards: 20,
     deckLimits: {
-      "ko-starter": {newCardsPerDay: 20, maxReviewsPerDay: 200},
-      "ja-hiragana": {newCardsPerDay: 20, maxReviewsPerDay: 200},
-      "ja-katakana": {newCardsPerDay: 20, maxReviewsPerDay: 200},
+      "ko-starter": limits,
+      "ja-hiragana": limits,
+      "ja-hiragana-combined": limits,
+      "ja-katakana": limits,
+      "ja-katakana-combined": limits,
+      "ja-katakana-foreign": limits,
+    },
+    deckPreferences: {
+      "ko-starter": preferences,
+      "ja-hiragana": preferences,
+      "ja-hiragana-combined": preferences,
+      "ja-katakana": preferences,
+      "ja-katakana-combined": preferences,
+      "ja-katakana-foreign": preferences,
     },
     desiredRetentionPercent: 90,
     strugglingAfter: 8,
     setAsideWhenStruggling: false,
-    voice: "female",
+    voice: "male",
     speed: "normal",
-    listenOnly: false,
     theme: "system",
   });
 });
@@ -43,7 +58,7 @@ it("keeps the daily goal at least one card", () => {
 it("allows no new cards at all in a deck, and leaves the other decks alone", () => {
   const state = settingsReducer(undefined, newCardsPerDayChosen({deckId: "ko-starter", count: 0}));
 
-  expect(state.deckLimits["ko-starter"]).toEqual({newCardsPerDay: 0, maxReviewsPerDay: 200});
+  expect(state.deckLimits["ko-starter"]).toMatchObject({newCardsPerDay: 0, maxReviewsPerDay: 200});
   expect(state.deckLimits["ja-hiragana"]?.newCardsPerDay).toBe(20);
 });
 
@@ -53,14 +68,43 @@ it("caps new cards a day", () => {
   expect(state.deckLimits["ko-starter"]?.newCardsPerDay).toBe(999);
 });
 
-it("sets the reviews a deck may ask for in a day, without touching its new cards", () => {
-  const state = settingsReducer(undefined, maxReviewsPerDayChosen({deckId: "ja-hiragana", count: 50}));
+it("keeps the reviews at ten for each new card while the limits are locked", () => {
+  const state = settingsReducer(undefined, newCardsPerDayChosen({deckId: "ja-hiragana", count: 3}));
 
-  expect(state.deckLimits["ja-hiragana"]).toEqual({newCardsPerDay: 20, maxReviewsPerDay: 50});
+  expect(state.deckLimits["ja-hiragana"]).toEqual({newCardsPerDay: 3, maxReviewsPerDay: 30, limitsUnlocked: false});
+  expect(state.deckLimits["ko-starter"]?.maxReviewsPerDay).toBe(200);
 });
 
-it("replaces the voice with the one chosen", () => {
-  expect(settingsReducer(undefined, voiceChosen("male")).voice).toBe("male");
+it("ignores a choice of reviews a day while the limits are locked", () => {
+  const state = settingsReducer(undefined, maxReviewsPerDayChosen({deckId: "ja-hiragana", count: 50}));
+
+  expect(state.deckLimits["ja-hiragana"]).toEqual({newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false});
+});
+
+it("sets the reviews a deck may ask for in a day once unlocked, without touching its new cards", () => {
+  const unlocked = settingsReducer(undefined, limitsUnlockedChosen({deckId: "ja-hiragana", unlocked: true}));
+  const state = settingsReducer(unlocked, maxReviewsPerDayChosen({deckId: "ja-hiragana", count: 50}));
+
+  expect(state.deckLimits["ja-hiragana"]).toEqual({newCardsPerDay: 20, maxReviewsPerDay: 50, limitsUnlocked: true});
+});
+
+it("leaves the reviews where they were when new cards change while unlocked", () => {
+  const unlocked = settingsReducer(undefined, limitsUnlockedChosen({deckId: "ja-hiragana", unlocked: true}));
+  const state = settingsReducer(unlocked, newCardsPerDayChosen({deckId: "ja-hiragana", count: 3}));
+
+  expect(state.deckLimits["ja-hiragana"]).toEqual({newCardsPerDay: 3, maxReviewsPerDay: 200, limitsUnlocked: true});
+});
+
+it("puts the reviews back to ten for each new card when the limits are locked again", () => {
+  const unlocked = settingsReducer(undefined, limitsUnlockedChosen({deckId: "ja-hiragana", unlocked: true}));
+  const set = settingsReducer(unlocked, maxReviewsPerDayChosen({deckId: "ja-hiragana", count: 7}));
+  const state = settingsReducer(set, limitsUnlockedChosen({deckId: "ja-hiragana", unlocked: false}));
+
+  expect(state.deckLimits["ja-hiragana"]).toEqual({newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false});
+});
+
+it("replaces the voice for browsing with the one chosen", () => {
+  expect(settingsReducer(undefined, voiceChosen("female")).voice).toBe("female");
 });
 
 it("replaces the desired retention, held between 70 and 97 percent", () => {
@@ -77,11 +121,24 @@ it("replaces the speed with the one chosen", () => {
   expect(settingsReducer(undefined, speedChosen("slower")).speed).toBe("slower");
 });
 
-it("turns listening without reading on and off", () => {
-  const on = settingsReducer(undefined, listenOnlyChosen(true));
+it("sets the voice, the speed and whether the words are hidden for one deck, and leaves the other decks alone", () => {
+  let state = settingsReducer(undefined, deckVoiceChosen({deckId: "ja-hiragana", voice: "female"}));
 
-  expect(on.listenOnly).toBe(true);
-  expect(settingsReducer(on, listenOnlyChosen(false)).listenOnly).toBe(false);
+  state = settingsReducer(state, deckSpeedChosen({deckId: "ja-hiragana", speed: "slower"}));
+  state = settingsReducer(state, deckTargetHiddenChosen({deckId: "ja-hiragana", hidden: true}));
+
+  expect(state.deckPreferences["ja-hiragana"]).toEqual({voice: "female", speed: "slower", hideTarget: true});
+  expect(state.deckPreferences["ko-starter"]).toEqual({voice: "male", speed: "normal", hideTarget: false});
+  expect(state.voice).toBe("male");
+});
+
+it("turns the words back on for a deck", () => {
+  const hidden = settingsReducer(undefined, deckTargetHiddenChosen({deckId: "ko-starter", hidden: true}));
+
+  expect(
+    settingsReducer(hidden, deckTargetHiddenChosen({deckId: "ko-starter", hidden: false})).deckPreferences["ko-starter"]
+      ?.hideTarget,
+  ).toBe(false);
 });
 
 it("replaces how many lapses make a card struggle, between one and ninety-nine", () => {

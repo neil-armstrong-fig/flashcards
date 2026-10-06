@@ -22,7 +22,11 @@ export async function startSignIn(request: Request): Promise<Response> {
   const state = randomToken();
   const codeVerifier = randomToken();
   const returnTo = returnAddress(parameterOf(new URL(request.url).searchParams, "return"), allowedOrigins());
-  const authorization = await googleAuthorizationUrl({state, codeVerifier, redirectUri: googleRedirectUri(request)});
+  const authorization = await googleAuthorizationUrl({
+    state,
+    codeVerifier,
+    redirectUri: googleRedirectUri(request, returnTo),
+  });
 
   return respondRedirect(authorization.href, [oauthCookie({state, codeVerifier, returnTo})]);
 }

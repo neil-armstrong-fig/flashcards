@@ -11,6 +11,12 @@ export default defineConfig({
   server: {
     port: 3000,
     strictPort: true,
+    proxy: {
+      // The service worker serves recordings from the cache, but it is registered only in a production build. Without it the dev server
+      // answers `/audio/...` with the app's page, which no audio element can play, so here the API answers it, with the session cookie
+      // (`localhost` cookies are shared across ports). The local Worker and the deployed-API proxy both listen on 8787.
+      "/audio/": {target: "http://localhost:8787", rewrite: path => `/api${path}`},
+    },
   },
   preview: {
     port: 3000,

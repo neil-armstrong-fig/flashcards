@@ -1,9 +1,8 @@
 import {Link} from "react-router";
 import {Account} from "@src/react/pages/settings/components/account/Account";
 import {DailyGoalSetting} from "@src/react/pages/settings/components/daily-goal-setting/DailyGoalSetting";
-import {DeckLimits} from "@src/react/pages/settings/components/deck-limits/DeckLimits";
+import {DeckSettings} from "@src/react/pages/settings/components/deck-settings/DeckSettings";
 import {DesiredRetentionSetting} from "@src/react/pages/settings/components/desired-retention-setting/DesiredRetentionSetting";
-import {ListenOnlySetting} from "@src/react/pages/settings/components/listen-only-setting/ListenOnlySetting";
 import {ROUTES} from "@src/react/routes/Routes";
 import {SetAsideWhenStrugglingSetting} from "@src/react/pages/settings/components/set-aside-when-struggling-setting/SetAsideWhenStrugglingSetting";
 import {SpeedSetting} from "@src/react/pages/settings/components/speed-setting/SpeedSetting";
@@ -20,7 +19,7 @@ export function SettingsPage(): React.JSX.Element {
 
       <DailyGoalSetting />
 
-      <DeckLimits />
+      <DeckSettings />
 
       <DesiredRetentionSetting />
 
@@ -33,8 +32,6 @@ export function SettingsPage(): React.JSX.Element {
       <SpeedSetting />
 
       <ThemeSetting />
-
-      <ListenOnlySetting />
 
       <Account />
 

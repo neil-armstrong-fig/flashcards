@@ -71,6 +71,7 @@ the hand-made `public/icon.svg`, with PNGs rasterised from it (`icon-192.png`, `
 
 ```bash
 pnpm --filter @flashcards/webapp start     # or `pnpm start` from the root
+pnpm start:deployed                        # from the root: this app through a local proxy to the deployed API
 pnpm --filter @flashcards/webapp test      # Vitest
 pnpm --filter @flashcards/webapp compile   # tsc --noEmit && vite build, output in build/
 ```

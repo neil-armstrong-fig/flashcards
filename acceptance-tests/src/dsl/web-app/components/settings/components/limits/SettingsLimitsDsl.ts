@@ -78,4 +78,30 @@ export class SettingsLimitsDsl {
       throw new DslError("Failed to read how much the learner asks to remember", error);
     }
   }
+
+  /** Lets a deck's reviews per day be set apart from its new cards per day, instead of staying at ten for each new card. */
+  async unlockReviewsPerDay(deck: DeckId = STARTER_DECK_ID): Promise<void> {
+    try {
+      await this.playwright.setLimitsUnlocked(true, deck);
+    } catch (error) {
+      throw new DslError(`Failed to unlock ${deck} reviews per day`, error);
+    }
+  }
+
+  /** Ties a deck's reviews per day to its new cards per day again: ten for each new card. */
+  async lockReviewsPerDay(deck: DeckId = STARTER_DECK_ID): Promise<void> {
+    try {
+      await this.playwright.setLimitsUnlocked(false, deck);
+    } catch (error) {
+      throw new DslError(`Failed to lock ${deck} reviews per day`, error);
+    }
+  }
+
+  async isReviewsPerDayLocked(deck: DeckId = STARTER_DECK_ID): Promise<boolean> {
+    try {
+      return !(await this.playwright.limitsUnlocked(deck));
+    } catch (error) {
+      throw new DslError(`Failed to tell whether ${deck} reviews per day are locked`, error);
+    }
+  }
 }

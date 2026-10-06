@@ -1,5 +1,6 @@
 import type {Page} from "@playwright/test";
 import {BaseComponent} from "@src/dsl/playwright/BaseComponent";
+import {withMoreOptions} from "@src/dsl/web-app/components/review/playwright/with-more-options/WithMoreOptions";
 
 /** A one-pixel PNG: all the specs need is a file the browser can decode. */
 const A_PICTURE = Buffer.from(
@@ -13,10 +14,12 @@ export class MemoryAidPlaywright extends BaseComponent {
   }
 
   async addPicture(): Promise<void> {
-    await this.page
-      .getByTestId("picture-input")
-      .setInputFiles({name: "mule.png", mimeType: "image/png", buffer: A_PICTURE});
-    await this.page.getByTestId("picture").waitFor();
+    await withMoreOptions(this.page, async () => {
+      await this.page
+        .getByTestId("picture-input")
+        .setInputFiles({name: "mule.png", mimeType: "image/png", buffer: A_PICTURE});
+      await this.page.getByTestId("picture").waitFor({state: "attached"});
+    });
   }
 
   async pastePicture(): Promise<void> {
@@ -31,20 +34,24 @@ export class MemoryAidPlaywright extends BaseComponent {
   }
 
   async addTextFileAsPicture(): Promise<void> {
-    await this.page
-      .getByTestId("picture-input")
-      .setInputFiles({name: "notes.txt", mimeType: "text/plain", buffer: Buffer.from("not a picture")});
-    await this.page.getByTestId("picture-error").waitFor();
+    await withMoreOptions(this.page, async () => {
+      await this.page
+        .getByTestId("picture-input")
+        .setInputFiles({name: "notes.txt", mimeType: "text/plain", buffer: Buffer.from("not a picture")});
+      await this.page.getByTestId("picture-error").waitFor();
+    });
   }
 
   async removePicture(): Promise<void> {
-    await this.page.getByTestId("picture-remove").click();
-    await this.page.getByTestId("picture").waitFor({state: "detached"});
+    await withMoreOptions(this.page, async () => {
+      await this.page.getByTestId("picture-remove").click();
+      await this.page.getByTestId("picture").waitFor({state: "detached"});
+    });
   }
 
   async pictureShown(): Promise<boolean> {
     await this.page.getByTestId("card-front").waitFor();
-    await this.page.getByTestId("picture-input").waitFor({state: "attached"});
+    await this.page.getByTestId("picture-area").waitFor({state: "attached"});
     const picture = this.page.getByTestId("picture");
 
     if ((await picture.count()) === 0) {
@@ -59,13 +66,15 @@ export class MemoryAidPlaywright extends BaseComponent {
   }
 
   async pictureError(): Promise<string | undefined> {
-    const error = this.page.getByTestId("picture-error");
+    return await withMoreOptions(this.page, async () => {
+      const error = this.page.getByTestId("picture-error");
 
-    if (!(await error.isVisible())) {
-      return undefined;
-    }
+      if (!(await error.isVisible())) {
+        return undefined;
+      }
 
-    return await error.innerText();
+      return await error.innerText();
+    });
   }
 
   async removeTheAids(): Promise<void> {
@@ -80,28 +89,32 @@ export class MemoryAidPlaywright extends BaseComponent {
 
   async removingTheAidsOffered(): Promise<boolean> {
     await this.page.getByTestId("card-front").waitFor();
-    await this.page.getByTestId("picture-input").waitFor({state: "attached"});
+    await this.page.getByTestId("picture-area").waitFor({state: "attached"});
 
     return (await this.page.getByTestId("fade-offer").count()) > 0;
   }
 
   async promptedToAddAMemoryAid(): Promise<boolean> {
     await this.page.getByTestId("card-front").waitFor();
-    await this.page.getByTestId("picture-input").waitFor({state: "attached"});
+    await this.page.getByTestId("picture-area").waitFor({state: "attached"});
 
     return (await this.page.getByTestId("aid-prompt").count()) > 0;
   }
 
   async addNote(text: string): Promise<void> {
-    await this.page.getByTestId("note-add").click();
-    await this.page.getByTestId("note-input").fill(text);
-    await this.page.getByTestId("note-save").click();
-    await this.page.getByTestId("note-text").waitFor();
+    await withMoreOptions(this.page, async () => {
+      await this.page.getByTestId("note-add").click();
+      await this.page.getByTestId("note-input").fill(text);
+      await this.page.getByTestId("note-save").click();
+      await this.page.getByTestId("note-text").waitFor();
+    });
   }
 
   async removeNote(): Promise<void> {
-    await this.page.getByTestId("note-remove").click();
-    await this.page.getByTestId("note-add").waitFor();
+    await withMoreOptions(this.page, async () => {
+      await this.page.getByTestId("note-remove").click();
+      await this.page.getByTestId("note-add").waitFor();
+    });
   }
 
   async note(): Promise<string | undefined> {

@@ -6,12 +6,12 @@ import {showAnswer} from "@src/redux/slices/study/actions/answering/thunks/ShowA
 import {startSession} from "@src/redux/slices/study/actions/session/thunks/StartSession";
 import type {AppStore} from "@src/redux/Store";
 
-/** Studies a katakana deck, answering cards easily until the one asked for is on screen. */
-async function storeShowing(cardId: string): Promise<AppStore> {
+/** Studies a deck, answering cards easily until the one asked for is on screen. */
+async function storeShowing(cardId: string, deckId = "ja-katakana"): Promise<AppStore> {
   const {store} = await openedStudyStore();
 
-  store.dispatch(newCardsPerDayChosen({deckId: "ja-katakana", count: 999}));
-  store.dispatch(startSession("ja-katakana"));
+  store.dispatch(newCardsPerDayChosen({deckId, count: 999}));
+  store.dispatch(startSession(deckId));
 
   while (store.getState().study.session?.currentCardId !== cardId) {
     expect(store.getState().study.session?.currentCardId).toBeDefined();
@@ -31,8 +31,8 @@ it("gives nothing when no session is open", async () => {
 });
 
 it("gives why a katakana for foreign sounds exists, from either of its cards", async () => {
-  const asking = await storeShowing("ja-katakana-fa/to-english");
-  const answering = await storeShowing("ja-katakana-fa/from-english");
+  const asking = await storeShowing("ja-katakana-fa/to-english", "ja-katakana-foreign");
+  const answering = await storeShowing("ja-katakana-fa/from-english", "ja-katakana-foreign");
 
   expect(selectCurrentExplanation(asking.getState())).toContain("foreign words");
   expect(selectCurrentExplanation(answering.getState())).toBe(selectCurrentExplanation(asking.getState()));

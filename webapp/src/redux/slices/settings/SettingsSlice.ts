@@ -11,6 +11,8 @@ import {
 import type {Speed} from "@flashcards/shared/audio/Speed";
 import type {Theme} from "@flashcards/shared/theme/Theme";
 import type {Voice} from "@flashcards/shared/audio/Voice";
+import {DEFAULT_DECK_PREFERENCES} from "@src/redux/slices/settings/limits/DefaultDeckPreferences";
+import {reviewsLinkedToNewCards} from "@src/redux/slices/settings/limits/ReviewsLinkedToNewCards";
 import {DEFAULT_DECK_LIMITS} from "@src/redux/slices/settings/limits/DefaultDeckLimits";
 import {INITIAL_SETTINGS_STATE} from "@src/redux/slices/settings/initial-state/InitialSettingsState";
 
@@ -18,6 +20,30 @@ import {INITIAL_SETTINGS_STATE} from "@src/redux/slices/settings/initial-state/I
 interface DeckLimitChange {
   readonly deckId: string;
   readonly count: number;
+}
+
+/** A new voice for one deck. */
+interface DeckVoiceChange {
+  readonly deckId: string;
+  readonly voice: Voice;
+}
+
+/** A new speed for one deck. */
+interface DeckSpeedChange {
+  readonly deckId: string;
+  readonly speed: Speed;
+}
+
+/** Whether one deck keeps the target-language word off the front of its cards. */
+interface DeckTargetHiddenChange {
+  readonly deckId: string;
+  readonly hidden: boolean;
+}
+
+/** Whether one deck's reviews a day may be set apart from its new cards. */
+interface DeckLimitsUnlockedChange {
+  readonly deckId: string;
+  readonly unlocked: boolean;
 }
 
 const settingsSlice = createSlice({
@@ -32,14 +58,47 @@ const settingsSlice = createSlice({
       const {deckId, count} = action.payload;
       const limits = state.deckLimits[deckId] ?? DEFAULT_DECK_LIMITS;
 
-      state.deckLimits[deckId] = {...limits, newCardsPerDay: clampToLimits(count, NEW_CARDS_PER_DAY_LIMITS)};
+      const newCardsPerDay = clampToLimits(count, NEW_CARDS_PER_DAY_LIMITS);
+
+      if (limits.limitsUnlocked) {
+        state.deckLimits[deckId] = {...limits, newCardsPerDay};
+
+        return;
+      }
+
+      state.deckLimits[deckId] = {
+        ...limits,
+        newCardsPerDay,
+        maxReviewsPerDay: reviewsLinkedToNewCards(newCardsPerDay, limits.maxReviewsPerDay),
+      };
     },
 
     maxReviewsPerDayChosen: (state, action: PayloadAction<DeckLimitChange>) => {
       const {deckId, count} = action.payload;
       const limits = state.deckLimits[deckId] ?? DEFAULT_DECK_LIMITS;
 
+      if (!limits.limitsUnlocked) {
+        return;
+      }
+
       state.deckLimits[deckId] = {...limits, maxReviewsPerDay: clampToLimits(count, MAX_REVIEWS_PER_DAY_LIMITS)};
+    },
+
+    limitsUnlockedChosen: (state, action: PayloadAction<DeckLimitsUnlockedChange>) => {
+      const {deckId, unlocked} = action.payload;
+      const limits = state.deckLimits[deckId] ?? DEFAULT_DECK_LIMITS;
+
+      if (unlocked) {
+        state.deckLimits[deckId] = {...limits, limitsUnlocked: true};
+
+        return;
+      }
+
+      state.deckLimits[deckId] = {
+        ...limits,
+        limitsUnlocked: false,
+        maxReviewsPerDay: reviewsLinkedToNewCards(limits.newCardsPerDay, limits.maxReviewsPerDay),
+      };
     },
 
     desiredRetentionChosen: (state, action: PayloadAction<number>) => {
@@ -66,8 +125,25 @@ const settingsSlice = createSlice({
       state.theme = action.payload;
     },
 
-    listenOnlyChosen: (state, action: PayloadAction<boolean>) => {
-      state.listenOnly = action.payload;
+    deckVoiceChosen: (state, action: PayloadAction<DeckVoiceChange>) => {
+      const {deckId, voice} = action.payload;
+
+      state.deckPreferences[deckId] = {...(state.deckPreferences[deckId] ?? DEFAULT_DECK_PREFERENCES), voice};
+    },
+
+    deckSpeedChosen: (state, action: PayloadAction<DeckSpeedChange>) => {
+      const {deckId, speed} = action.payload;
+
+      state.deckPreferences[deckId] = {...(state.deckPreferences[deckId] ?? DEFAULT_DECK_PREFERENCES), speed};
+    },
+
+    deckTargetHiddenChosen: (state, action: PayloadAction<DeckTargetHiddenChange>) => {
+      const {deckId, hidden} = action.payload;
+
+      state.deckPreferences[deckId] = {
+        ...(state.deckPreferences[deckId] ?? DEFAULT_DECK_PREFERENCES),
+        hideTarget: hidden,
+      };
     },
   },
 });
@@ -76,12 +152,15 @@ export const {
   dailyGoalChosen,
   newCardsPerDayChosen,
   maxReviewsPerDayChosen,
+  limitsUnlockedChosen,
   desiredRetentionChosen,
   strugglingAfterChosen,
   setAsideWhenStrugglingChosen,
   voiceChosen,
   speedChosen,
-  listenOnlyChosen,
+  deckVoiceChosen,
+  deckSpeedChosen,
+  deckTargetHiddenChosen,
   themeChosen,
 } = settingsSlice.actions;
 export const settingsReducer = settingsSlice.reducer;

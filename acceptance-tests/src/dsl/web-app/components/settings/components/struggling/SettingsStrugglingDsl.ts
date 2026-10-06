@@ -45,22 +45,6 @@ export class SettingsStrugglingDsl {
     }
   }
 
-  async setListenOnly(on: boolean): Promise<void> {
-    try {
-      await this.playwright.setListenOnly(on);
-    } catch (error) {
-      throw new DslError(`Failed to set listening without reading to ${on}`, error);
-    }
-  }
-
-  async isListenOnly(): Promise<boolean> {
-    try {
-      return await this.playwright.listenOnly();
-    } catch (error) {
-      throw new DslError("Failed to tell whether listening without reading is on", error);
-    }
-  }
-
   async getSuspendedCount(): Promise<number> {
     try {
       return await this.playwright.suspendedCount();

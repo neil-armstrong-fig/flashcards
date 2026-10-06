@@ -69,6 +69,23 @@ export class BrowsePlaywright extends BaseComponent {
     await this.page.waitForFunction(count => window.fakeAudio.played.length > count, before);
   }
 
+  /** Taps the text of the row whose front is `front`, and waits until the fake audio element has been asked to play. */
+  async tapCard(front: string): Promise<void> {
+    const before = await this.page.evaluate(() => window.fakeAudio.played.length);
+
+    await this.page.getByTestId("browse-card-front").getByText(front, {exact: true}).click();
+    await this.page.waitForFunction(count => window.fakeAudio.played.length > count, before);
+  }
+
+  async similarsHighlighted(front: string): Promise<boolean> {
+    const button = this.page
+      .getByTestId("browse-card")
+      .filter({has: this.page.getByTestId("browse-card-front").getByText(front, {exact: true})})
+      .getByTestId("browse-card-similars");
+
+    return (await button.getAttribute("data-has-similars")) === "true";
+  }
+
   async cardStruggling(front: string): Promise<boolean> {
     const row = this.page
       .getByTestId("browse-card")

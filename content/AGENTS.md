@@ -12,13 +12,13 @@ It is compiled as raw source by whoever imports it, like `shared`, so one folder
 src/types/     Deck, VocabNote (a word and the facts about it), DeckCard (one question made from a note)
 src/cards/     CardOfNote, CardsOfNote and CardsOfDeck: how a note becomes cards, and the order a deck introduces them in
 src/korean/    StarterDeck.ts and its test
-src/japanese/  Kana (the table), HiraganaDeck, KatakanaDeck and their test, shape-similars/ (the katakana pairs commonly confused by shape, and `shapeSimilarsOf`)
+src/japanese/  Kana (the table; `kana-table/` holds the basic, voiced, combined and core groups), the five kana decks (core hiragana and katakana of 71 each, combined of 33 each, and `KatakanaForeignDeck` of 23, whose notes keep the ids they had in the two-deck days) and their test, shape-similars/ (the katakana pairs commonly confused by shape, and `shapeSimilarsOf`)
 src/decks/     ShippedDecks: every deck the app ships, in introduction order (the app and the audio tool both read it)
 src/audio/     AudioRecordings (the manifest as typed data), recordings.json. Reading the manifest (which file a text, voice and speed names) is the webapp's (`webapp/src/audio/audio-file/AudioFileOf`)
 src/CardDirection.ts   the two directions a card asks
 ```
 
-**A `kana` note** (`VocabNote.kind`) is a character and its sound: the sound in `meaning` is shown, never spoken, so its cards have no audio on that side. Ids are `ja-hiragana-<romaji>` and `ja-katakana-<romaji>`.
+**A `kana` note** (`VocabNote.kind`) is a character and its sound: the sound in `meaning` is shown, never spoken, so its cards have no audio on that side. Ids are `ja-hiragana-<romaji>` and `ja-katakana-<romaji>` whichever deck the note is in, so moving a note between decks keeps a learner's progress.
 
 **A note is not a card.** A word is stored once, as a `VocabNote`, and studied as **two cards: target language to English
 (reading it) and English to target language (saying it).** Every note type that follows (sentences, grammar, kana) generates

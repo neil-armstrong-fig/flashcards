@@ -1,5 +1,12 @@
 /** The decks the app ships, by the ids its test ids use. */
-export const DECK_IDS = ["ko-starter", "ja-hiragana", "ja-katakana"] as const;
+export const DECK_IDS = [
+  "ko-starter",
+  "ja-hiragana",
+  "ja-hiragana-combined",
+  "ja-katakana",
+  "ja-katakana-combined",
+  "ja-katakana-foreign",
+] as const;
 
 export type DeckId = (typeof DECK_IDS)[number];
 

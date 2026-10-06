@@ -1,6 +1,8 @@
 import {DEFAULT_DECK_LIMITS} from "@src/redux/slices/settings/limits/DefaultDeckLimits";
 import {INITIAL_SETTINGS_STATE} from "@src/redux/slices/settings/initial-state/InitialSettingsState";
 import {MAX_REVIEWS_PER_DAY_LIMITS, NEW_CARDS_PER_DAY_LIMITS} from "@src/redux/slices/settings/limits/SettingLimits";
+import {reviewsLinkedToNewCards} from "@src/redux/slices/settings/limits/ReviewsLinkedToNewCards";
+import {readBoolean} from "@src/redux/slices/settings/storage/read/ReadBoolean";
 import {readLimitedInteger} from "@src/redux/slices/settings/limits/ReadLimitedInteger";
 import type {DeckLimits} from "@src/redux/slices/settings/types/DeckLimits";
 
@@ -22,12 +24,17 @@ function readOneDeck(stored: unknown): DeckLimits {
     return DEFAULT_DECK_LIMITS;
   }
 
-  return {
-    newCardsPerDay:
-      readLimitedInteger(Reflect.get(stored, "newCardsPerDay"), NEW_CARDS_PER_DAY_LIMITS) ??
-      DEFAULT_DECK_LIMITS.newCardsPerDay,
-    maxReviewsPerDay:
-      readLimitedInteger(Reflect.get(stored, "maxReviewsPerDay"), MAX_REVIEWS_PER_DAY_LIMITS) ??
-      DEFAULT_DECK_LIMITS.maxReviewsPerDay,
-  };
+  const newCardsPerDay =
+    readLimitedInteger(Reflect.get(stored, "newCardsPerDay"), NEW_CARDS_PER_DAY_LIMITS) ??
+    DEFAULT_DECK_LIMITS.newCardsPerDay;
+  const maxReviewsPerDay =
+    readLimitedInteger(Reflect.get(stored, "maxReviewsPerDay"), MAX_REVIEWS_PER_DAY_LIMITS) ??
+    reviewsLinkedToNewCards(newCardsPerDay, DEFAULT_DECK_LIMITS.maxReviewsPerDay);
+
+  // Limits kept before they could be locked together are unlocked unless they happen to already keep the ratio, so no choice is changed.
+  const limitsUnlocked =
+    readBoolean(Reflect.get(stored, "limitsUnlocked")) ??
+    maxReviewsPerDay !== reviewsLinkedToNewCards(newCardsPerDay, DEFAULT_DECK_LIMITS.maxReviewsPerDay);
+
+  return {newCardsPerDay, maxReviewsPerDay, limitsUnlocked};
 }

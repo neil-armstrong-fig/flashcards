@@ -5,14 +5,14 @@ import {openedStudyStore} from "@src/testing/OpenedStudyStore";
 import {sessionEnded} from "@src/redux/slices/study/StudySlice";
 import {setCardAside} from "@src/redux/slices/study/actions/setting-aside/thunks/SetCardAside";
 import {showAnswer} from "@src/redux/slices/study/actions/answering/thunks/ShowAnswer";
-import {speedChosen, voiceChosen} from "@src/redux/slices/settings/SettingsSlice";
+import {deckSpeedChosen, deckVoiceChosen} from "@src/redux/slices/settings/SettingsSlice";
 import {startSession} from "@src/redux/slices/study/actions/session/thunks/StartSession";
 import {storeProviderOf} from "@src/testing/StoreProviderOf";
 import {useCardAudio} from "@src/react/audio/hooks/use-card-audio/UseCardAudio";
 
-const KOREAN_WATER = "audio/ko/female-normal/water.mp3";
+const KOREAN_WATER = "audio/ko/male-normal/water.mp3";
 const ENGLISH_WATER = "audio/en/female-normal/water.mp3";
-const KOREAN_RICE = "audio/ko/female-normal/rice.mp3";
+const KOREAN_RICE = "audio/ko/male-normal/rice.mp3";
 
 it("speaks the first card's Korean word when the review opens", async () => {
   const {store, audio} = await openedStudyStore();
@@ -74,12 +74,12 @@ it("speaks the next card's Korean word after the learner forgot a card", async (
 
 it("speaks in the voice and at the speed chosen", async () => {
   const {store, audio} = await openedStudyStore();
-  store.dispatch(voiceChosen("male"));
-  store.dispatch(speedChosen("slower"));
+  store.dispatch(deckVoiceChosen({deckId: "ko-starter", voice: "female"}));
+  store.dispatch(deckSpeedChosen({deckId: "ko-starter", speed: "slower"}));
 
   renderHook(() => useCardAudio(), {wrapper: storeProviderOf(store)});
 
-  expect(audio.played).toEqual(["audio/ko/male-slower/water.mp3"]);
+  expect(audio.played).toEqual(["audio/ko/female-slower/water.mp3"]);
 });
 
 it("does not speak when the voice or speed is changed: the switch does that", async () => {
@@ -87,8 +87,8 @@ it("does not speak when the voice or speed is changed: the switch does that", as
   renderHook(() => useCardAudio(), {wrapper: storeProviderOf(store)});
 
   act(() => {
-    store.dispatch(voiceChosen("male"));
-    store.dispatch(speedChosen("slower"));
+    store.dispatch(deckVoiceChosen({deckId: "ko-starter", voice: "female"}));
+    store.dispatch(deckSpeedChosen({deckId: "ko-starter", speed: "slower"}));
   });
 
   expect(audio.played).toEqual([KOREAN_WATER]);

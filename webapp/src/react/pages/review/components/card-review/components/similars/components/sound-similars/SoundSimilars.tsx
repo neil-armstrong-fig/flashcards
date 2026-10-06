@@ -12,14 +12,17 @@ export function SoundSimilars(): React.JSX.Element | undefined {
     return undefined;
   }
 
+  const hasSimilars = similar.words.length > 0;
+
   return (
     <div className="flex flex-col items-center gap-3">
       <button
         type="button"
         data-testid="similar-open"
         aria-expanded={open}
+        data-has-similars={hasSimilars}
         onClick={() => setOpen(!open)}
-        className="rounded-full bg-ground-raised px-4 py-2 text-sm"
+        className={`rounded-full px-4 py-2 text-sm ${hasSimilars ? "bg-accent font-semibold text-ground" : "bg-ground-raised"}`}
       >
         Compare sounds
       </button>
