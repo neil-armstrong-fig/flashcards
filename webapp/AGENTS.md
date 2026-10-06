@@ -28,7 +28,7 @@ Enforced by ESLint alongside the workspace table in the root `AGENTS.md`. A viol
   state and sound meet is `react/audio/`: it reads state, calls `audio/`, and dispatches. `environment/` imports packages only.
 - `spaced-repetition/` is plain TypeScript. It may not import React, Redux, the page, the store, or `content`.
   The page and the store call into them; they know nothing of either.
-- This package may import `@language-learning/shared` and `@language-learning/content` (the decks and recordings) and nothing else from the workspace.
+- This package may import `@flashcards/shared` and `@flashcards/content` (the decks and recordings) and nothing else from the workspace.
 
 Lint rules come from `@eslint-react/eslint-plugin` (React 19 aware) plus `eslint-plugin-react-hooks`. The legacy
 `eslint-plugin-react` is deliberately not used: do not reintroduce it.
@@ -70,7 +70,7 @@ the hand-made `public/icon.svg`, with PNGs rasterised from it (`icon-192.png`, `
 ## Commands
 
 ```bash
-pnpm --filter @language-learning/webapp start     # or `pnpm start` from the root
-pnpm --filter @language-learning/webapp test      # Vitest
-pnpm --filter @language-learning/webapp compile   # tsc --noEmit && vite build, output in build/
+pnpm --filter @flashcards/webapp start     # or `pnpm start` from the root
+pnpm --filter @flashcards/webapp test      # Vitest
+pnpm --filter @flashcards/webapp compile   # tsc --noEmit && vite build, output in build/
 ```

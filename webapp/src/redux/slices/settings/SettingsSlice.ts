@@ -8,9 +8,9 @@ import {
   NEW_CARDS_PER_DAY_LIMITS,
   STRUGGLING_AFTER_LIMITS,
 } from "@src/redux/slices/settings/limits/SettingLimits";
-import type {Speed} from "@language-learning/shared/audio/Speed";
-import type {Theme} from "@language-learning/shared/theme/Theme";
-import type {Voice} from "@language-learning/shared/audio/Voice";
+import type {Speed} from "@flashcards/shared/audio/Speed";
+import type {Theme} from "@flashcards/shared/theme/Theme";
+import type {Voice} from "@flashcards/shared/audio/Voice";
 import {DEFAULT_DECK_LIMITS} from "@src/redux/slices/settings/limits/DefaultDeckLimits";
 import {INITIAL_SETTINGS_STATE} from "@src/redux/slices/settings/initial-state/InitialSettingsState";
 

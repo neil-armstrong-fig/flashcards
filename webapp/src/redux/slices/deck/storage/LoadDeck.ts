@@ -3,7 +3,7 @@ import {INITIAL_DECK_STATE} from "@src/redux/slices/deck/initial-state/InitialDe
 import {readCustomNote} from "@src/redux/slices/deck/storage/ReadCustomNote";
 import {readJson} from "@src/redux/shared/device-storage/ReadJson";
 import type {DeckState} from "@src/redux/slices/deck/types/DeckState";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
 /** The cards the learner made, kept on this device. What is stored is untrusted: a card that does not check out is dropped. */
 export function loadDeck(): DeckState {

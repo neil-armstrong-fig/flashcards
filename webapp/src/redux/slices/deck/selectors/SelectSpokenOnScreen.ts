@@ -1,6 +1,6 @@
 import {selectCardById} from "@src/redux/slices/deck/selectors/SelectCardById";
 import type {RootState} from "@src/redux/Store";
-import type {SpokenText} from "@language-learning/content/types/SpokenText";
+import type {SpokenText} from "@flashcards/content/types/SpokenText";
 
 /**
  * What is spoken for the card on screen right now: its front while the answer is hidden, and its answer once shown. Nothing

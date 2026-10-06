@@ -10,6 +10,10 @@ export class HomePlaywright extends BaseComponent {
     super(page);
   }
 
+  async appTitle(): Promise<string> {
+    return await this.page.getByTestId("app-title").innerText();
+  }
+
   async cardsDueToday(deck: DeckId): Promise<number> {
     return Number(await this.page.getByTestId(`deck-due-${deck}`).innerText());
   }

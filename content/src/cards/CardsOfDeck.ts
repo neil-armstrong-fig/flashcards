@@ -1,7 +1,7 @@
-import {CARD_DIRECTIONS} from "@language-learning/content/CardDirection";
-import {cardOfNote} from "@language-learning/content/cards/CardOfNote";
-import type {Deck} from "@language-learning/content/types/Deck";
-import type {DeckCard} from "@language-learning/content/types/DeckCard";
+import {CARD_DIRECTIONS} from "@flashcards/content/CardDirection";
+import {cardOfNote} from "@flashcards/content/cards/CardOfNote";
+import type {Deck} from "@flashcards/content/types/Deck";
+import type {DeckCard} from "@flashcards/content/types/DeckCard";
 
 /**
  * Every card of a deck, in the order new ones are introduced: all the words one way, then all of them the other. A word's

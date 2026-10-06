@@ -1,7 +1,7 @@
 import {useAppSelector} from "@src/redux/shared/Hooks";
 import {useSwitchVoice} from "@src/react/audio/hooks/use-switch-voice/UseSwitchVoice";
 import type {AudioChoices} from "@src/audio/types/AudioChoices";
-import type {Voice} from "@language-learning/shared/audio/Voice";
+import type {Voice} from "@flashcards/shared/audio/Voice";
 
 const VOICE_LABELS = {female: "Female voice", male: "Male voice"} as const satisfies Record<Voice, string>;
 

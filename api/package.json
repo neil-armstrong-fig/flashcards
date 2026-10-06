@@ -1,5 +1,5 @@
 {
-  "name": "@language-learning/api",
+  "name": "@flashcards/api",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -17,7 +17,7 @@
     "db:migrate:local": "wrangler d1 migrations apply flashcards --local"
   },
   "dependencies": {
-    "@language-learning/shared": "workspace:*",
+    "@flashcards/shared": "workspace:*",
     "drizzle-orm": "catalog:"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-import {cardsOfNote} from "@language-learning/content/cards/CardsOfNote";
+import {cardsOfNote} from "@flashcards/content/cards/CardsOfNote";
 
 it("makes a card for each direction, with ids from the note's", () => {
   const cards = cardsOfNote({

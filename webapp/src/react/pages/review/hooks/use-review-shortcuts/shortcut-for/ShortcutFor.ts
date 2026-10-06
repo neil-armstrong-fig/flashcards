@@ -1,6 +1,6 @@
 import {REVIEW_KEYS} from "@src/react/pages/review/hooks/use-review-shortcuts/shortcut-for/ReviewKeys";
 import type {AsideKind} from "@src/redux/slices/study/types/AsideKind";
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 import type {ReviewScreenState} from "@src/react/pages/review/hooks/use-review-shortcuts/types/ReviewScreenState";
 import type {ReviewShortcut} from "@src/react/pages/review/hooks/use-review-shortcuts/types/ReviewShortcut";
 

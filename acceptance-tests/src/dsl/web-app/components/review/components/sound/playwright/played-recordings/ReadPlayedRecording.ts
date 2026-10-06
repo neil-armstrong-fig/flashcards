@@ -1,11 +1,11 @@
-import {SPEEDS} from "@language-learning/shared/audio/Speed";
-import {LANGUAGES} from "@language-learning/shared/language/Language";
-import {VOICES} from "@language-learning/shared/audio/Voice";
+import {SPEEDS} from "@flashcards/shared/audio/Speed";
+import {LANGUAGES} from "@flashcards/shared/language/Language";
+import {VOICES} from "@flashcards/shared/audio/Voice";
 import type {PlayedEntry} from "@src/dsl/web-app/types/PlayedEntry";
 import type {PlayedRecording} from "@src/dsl/web-app/components/review/components/sound/types/PlayedRecording";
-import type {SpokenLanguage} from "@language-learning/shared/language/SpokenLanguage";
-import type {Speed} from "@language-learning/shared/audio/Speed";
-import type {Voice} from "@language-learning/shared/audio/Voice";
+import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
+import type {Speed} from "@flashcards/shared/audio/Speed";
+import type {Voice} from "@flashcards/shared/audio/Voice";
 
 const SPOKEN_LANGUAGES: readonly SpokenLanguage[] = [...LANGUAGES, "en"];
 

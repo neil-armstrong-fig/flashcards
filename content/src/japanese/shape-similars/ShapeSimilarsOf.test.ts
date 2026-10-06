@@ -1,7 +1,7 @@
-import {KANA} from "@language-learning/content/japanese/Kana";
-import {HIRAGANA_SHAPE_PAIRS} from "@language-learning/content/japanese/shape-similars/HiraganaShapeSimilars";
-import {KATAKANA_SHAPE_PAIRS} from "@language-learning/content/japanese/shape-similars/KatakanaShapeSimilars";
-import {shapeSimilarsOf} from "@language-learning/content/japanese/shape-similars/ShapeSimilarsOf";
+import {KANA} from "@flashcards/content/japanese/Kana";
+import {HIRAGANA_SHAPE_PAIRS} from "@flashcards/content/japanese/shape-similars/HiraganaShapeSimilars";
+import {KATAKANA_SHAPE_PAIRS} from "@flashcards/content/japanese/shape-similars/KatakanaShapeSimilars";
+import {shapeSimilarsOf} from "@flashcards/content/japanese/shape-similars/ShapeSimilarsOf";
 
 it("gives the character it is taken for and that character's sound", () => {
   expect(shapeSimilarsOf("シ")).toEqual([{character: "ツ", sound: "tsu"}]);

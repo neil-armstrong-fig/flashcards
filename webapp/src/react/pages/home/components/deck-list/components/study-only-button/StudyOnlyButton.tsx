@@ -1,7 +1,7 @@
 import {selectDeckStudyOnlyCount} from "@src/redux/slices/study/selectors/SelectDeckStudyOnlyCount";
 import {startSession} from "@src/redux/slices/study/actions/session/thunks/StartSession";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
-import type {StudyFocus} from "@language-learning/shared/study/StudyFocus";
+import type {StudyFocus} from "@flashcards/shared/study/StudyFocus";
 
 interface Props {
   readonly deckId: string;

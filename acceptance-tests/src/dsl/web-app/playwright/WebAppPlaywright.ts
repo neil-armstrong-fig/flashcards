@@ -1,5 +1,7 @@
 import type {Page} from "@playwright/test";
 import {readManifestIcons} from "@src/dsl/web-app/playwright/install-icons/ReadManifestIcons";
+import {readManifestNames} from "@src/dsl/web-app/playwright/manifest-names/ReadManifestNames";
+import type {ManifestNames} from "@src/dsl/web-app/playwright/manifest-names/ManifestNames";
 import type {InstallIcon} from "@src/dsl/web-app/types/InstallIcon";
 import type {DeviceColours} from "@src/dsl/web-app/types/DeviceColours";
 import {BasePage} from "@src/dsl/playwright/BasePage";
@@ -72,17 +74,29 @@ export class WebAppPlaywright extends BasePage {
     });
   }
 
-  async installIcons(): Promise<InstallIcon[]> {
-    const manifestAddress = await this.page
-      .locator('link[rel="manifest"]')
-      .getAttribute("href")
-      .then(href => href ?? undefined);
+  /** What the browser's tab is titled, as a learner sees it in the tab strip or a bookmark. */
+  async tabTitle(): Promise<string> {
+    return await this.page.title();
+  }
 
-    if (manifestAddress === undefined) {
+  /** What the manifest calls the app, in full and for under its icon. Nothing when the app offers no manifest. */
+  async installNames(): Promise<ManifestNames> {
+    const manifestUrl = await this.manifestUrl();
+
+    if (manifestUrl === undefined) {
+      return {};
+    }
+
+    return readManifestNames(await (await this.page.request.get(manifestUrl)).json());
+  }
+
+  async installIcons(): Promise<InstallIcon[]> {
+    const manifestUrl = await this.manifestUrl();
+
+    if (manifestUrl === undefined) {
       return [];
     }
 
-    const manifestUrl = new URL(manifestAddress, this.page.url()).href;
     const icons = readManifestIcons(await (await this.page.request.get(manifestUrl)).json());
     const installIcons: InstallIcon[] = [];
 
@@ -98,6 +112,19 @@ export class WebAppPlaywright extends BasePage {
     }
 
     return installIcons;
+  }
+
+  private async manifestUrl(): Promise<string | undefined> {
+    const manifestAddress = await this.page
+      .locator('link[rel="manifest"]')
+      .getAttribute("href")
+      .then(href => href ?? undefined);
+
+    if (manifestAddress === undefined) {
+      return undefined;
+    }
+
+    return new URL(manifestAddress, this.page.url()).href;
   }
 
   async homeScreenIconForIphonesLoaded(): Promise<boolean> {

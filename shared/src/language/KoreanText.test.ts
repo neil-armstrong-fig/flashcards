@@ -1,4 +1,4 @@
-import {koreanWordFrom} from "@language-learning/shared/language/KoreanText";
+import {koreanWordFrom} from "@flashcards/shared/language/KoreanText";
 
 it("accepts a Korean word, trimmed", () => {
   expect(koreanWordFrom(" 불 ")).toBe("불");

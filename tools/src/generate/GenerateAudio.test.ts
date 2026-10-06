@@ -2,8 +2,8 @@ import {mkdtemp, readdir, readFile, rm} from "node:fs/promises";
 import {tmpdir} from "node:os";
 import {generateAudio} from "@src/generate/GenerateAudio";
 import {runtime} from "@src/runtime/Runtime";
-import type {AudioManifest} from "@language-learning/content/audio/types/AudioManifest";
-import type {Deck} from "@language-learning/content/types/Deck";
+import type {AudioManifest} from "@flashcards/content/audio/types/AudioManifest";
+import type {Deck} from "@flashcards/content/types/Deck";
 
 vi.mock("@src/runtime/Sleep", () => ({sleep: vi.fn(async () => undefined)}));
 

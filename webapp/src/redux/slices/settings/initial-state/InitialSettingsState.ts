@@ -1,6 +1,6 @@
 import {DEFAULT_DAILY_GOAL_CARDS} from "@src/redux/slices/settings/daily-goal/DailyGoal";
 import {DEFAULT_DECK_LIMITS} from "@src/redux/slices/settings/limits/DefaultDeckLimits";
-import {SHIPPED_DECKS} from "@language-learning/content/decks/ShippedDecks";
+import {SHIPPED_DECKS} from "@flashcards/content/decks/ShippedDecks";
 import type {SettingsState} from "@src/redux/slices/settings/types/SettingsState";
 
 /** Each deck starts with the default limits (`DefaultDeckLimits`), and the goal of twenty cards reviewed. The colours follow the device. The words are shown, and spoken by the female voice at normal speed. */

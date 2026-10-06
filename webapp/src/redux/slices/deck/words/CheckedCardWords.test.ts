@@ -1,5 +1,5 @@
 import {checkedCardWords} from "@src/redux/slices/deck/words/CheckedCardWords";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
 const ELEPHANT = {word: "코끼리", meaning: "elephant", romanisation: "kokkiri"};
 const KEPT: VocabNote = {id: "ko-custom-1", language: "ko", ...ELEPHANT};

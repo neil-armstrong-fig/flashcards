@@ -1,8 +1,8 @@
-import {englishMeaningFrom} from "@language-learning/shared/language/EnglishText";
+import {englishMeaningFrom} from "@flashcards/shared/language/EnglishText";
 import {isRecord} from "@src/json/IsRecord";
-import {koreanWordFrom} from "@language-learning/shared/language/KoreanText";
+import {koreanWordFrom} from "@flashcards/shared/language/KoreanText";
 import {noteIdFrom} from "@src/router/routes/notes/shared/utils/NoteIdFrom";
-import {romanisationFrom} from "@language-learning/shared/language/RomanisationText";
+import {romanisationFrom} from "@flashcards/shared/language/RomanisationText";
 import type {Note} from "@src/database/types/Note";
 
 /** A card to keep, or `undefined` for anything else. Nothing in the body is trusted until it has been checked. */

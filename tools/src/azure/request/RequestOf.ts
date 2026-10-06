@@ -1,4 +1,4 @@
-import {ssmlOf} from "@language-learning/shared/audio/azure/SsmlOf";
+import {ssmlOf} from "@flashcards/shared/audio/azure/SsmlOf";
 import type {RecordingJob} from "@src/plan/types/RecordingJob";
 
 const OUTPUT_FORMAT = "audio-24khz-48kbitrate-mono-mp3";
@@ -16,7 +16,7 @@ export function requestOf(job: RecordingJob, {region, key}: AzureAccount): Reque
       "Ocp-Apim-Subscription-Key": key,
       "Content-Type": "application/ssml+xml",
       "X-Microsoft-OutputFormat": OUTPUT_FORMAT,
-      "User-Agent": "language-learning-audio-tool",
+      "User-Agent": "flashcards-audio-tool",
     },
     body: ssmlOf(job),
   });

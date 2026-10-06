@@ -1,4 +1,4 @@
-import type {AzureVoice} from "@language-learning/shared/audio/azure/AzureVoice";
+import type {AzureVoice} from "@flashcards/shared/audio/azure/AzureVoice";
 
 /**
  * The one English voice, for the meaning on a card. English is not practised by listening, so there is one voice at normal

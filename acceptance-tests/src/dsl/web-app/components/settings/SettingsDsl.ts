@@ -1,5 +1,5 @@
 import type {Page} from "@playwright/test";
-import type {Theme} from "@language-learning/shared/theme/Theme";
+import type {Theme} from "@flashcards/shared/theme/Theme";
 import {DslError} from "@src/dsl/errors/DslError";
 import {SettingsPlaywright} from "@src/dsl/web-app/components/settings/playwright/SettingsPlaywright";
 import {SettingsLimitsDsl} from "@src/dsl/web-app/components/settings/components/limits/SettingsLimitsDsl";

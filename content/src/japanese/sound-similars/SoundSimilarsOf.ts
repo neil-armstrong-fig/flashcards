@@ -1,6 +1,6 @@
-import {SOUND_SIMILAR_GROUPS} from "@language-learning/content/japanese/sound-similars/SoundSimilarGroups";
-import {KANA} from "@language-learning/content/japanese/Kana";
-import type {Kana} from "@language-learning/content/japanese/Kana";
+import {SOUND_SIMILAR_GROUPS} from "@flashcards/content/japanese/sound-similars/SoundSimilarGroups";
+import {KANA} from "@flashcards/content/japanese/Kana";
+import type {Kana} from "@flashcards/content/japanese/Kana";
 
 type Script = "hiragana" | "katakana";
 

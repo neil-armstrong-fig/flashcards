@@ -1,9 +1,9 @@
-import {baseConfig, restrictedImports} from "@language-learning/shared/config/eslint.base.js";
+import {baseConfig, restrictedImports} from "@flashcards/shared/config/eslint.base.js";
 import eslintReact from "@eslint-react/eslint-plugin";
 import reactHooks from "eslint-plugin-react-hooks";
 import globals from "globals";
 
-const allowedPackages = ["@language-learning/shared", "@language-learning/content"];
+const allowedPackages = ["@flashcards/shared", "@flashcards/content"];
 
 /** The UI and state libraries, which the pure folders below must not reach for. */
 const noUiOrStore = ["react", "react-dom", "react-redux", "@reduxjs/toolkit"].map(name => ({
@@ -81,7 +81,7 @@ export default [
               "@src/redux/**",
               "@src/audio",
               "@src/audio/**",
-              "@language-learning/content/**",
+              "@flashcards/content/**",
             ],
             message:
               "spaced-repetition/ knows nothing of the page, the store, the audio or the decks. They call it; it calls none of them.",

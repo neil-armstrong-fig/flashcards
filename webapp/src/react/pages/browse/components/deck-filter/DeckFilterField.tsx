@@ -1,4 +1,4 @@
-import {SHIPPED_DECKS} from "@language-learning/content/decks/ShippedDecks";
+import {SHIPPED_DECKS} from "@flashcards/content/decks/ShippedDecks";
 import {ALL_DECKS} from "@src/redux/slices/browse/rows/AllDecks";
 import {deckFilterChosen} from "@src/redux/slices/browse/BrowseSlice";
 import type {DeckFilter} from "@src/redux/slices/browse/types/DeckFilter";

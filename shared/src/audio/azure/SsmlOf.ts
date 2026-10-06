@@ -1,4 +1,4 @@
-import type {SsmlSubject} from "@language-learning/shared/audio/azure/SsmlSubject";
+import type {SsmlSubject} from "@flashcards/shared/audio/azure/SsmlSubject";
 
 /** The SSML Azure is asked to speak: the text in the voice, wrapped in a prosody rate unless the rate is the default. */
 export function ssmlOf({text, voiceName, locale, rate}: SsmlSubject): string {

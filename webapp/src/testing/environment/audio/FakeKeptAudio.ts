@@ -1,4 +1,4 @@
-import type {SpokenLanguage} from "@language-learning/shared/language/SpokenLanguage";
+import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
 
 /** The speech API and the browser's cache of what a learner added, in memory for a test: keeps nothing, writes down the texts asked for, and can be told to fail. */
 export class FakeKeptAudio {

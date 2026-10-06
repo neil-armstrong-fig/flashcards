@@ -1,4 +1,4 @@
-import {vitestBaseConfig} from "@language-learning/shared/config/vitest.base.js";
+import {vitestBaseConfig} from "@flashcards/shared/config/vitest.base.js";
 import {defineConfig} from "vitest/config";
 
 /**

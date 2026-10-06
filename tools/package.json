@@ -1,5 +1,5 @@
 {
-  "name": "@language-learning/tools",
+  "name": "@flashcards/tools",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -16,8 +16,8 @@
     "upload-audio": "node --env-file=../.env.dev --import ./loader/register.js src/upload-main.ts"
   },
   "dependencies": {
-    "@language-learning/content": "workspace:*",
-    "@language-learning/shared": "workspace:*"
+    "@flashcards/content": "workspace:*",
+    "@flashcards/shared": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "catalog:",

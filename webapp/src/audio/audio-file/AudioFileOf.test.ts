@@ -1,5 +1,5 @@
 import {audioFileOf} from "@src/audio/audio-file/AudioFileOf";
-import type {AudioManifest} from "@language-learning/content/audio/types/AudioManifest";
+import type {AudioManifest} from "@flashcards/content/audio/types/AudioManifest";
 
 const MANIFEST: AudioManifest = {
   ko: {

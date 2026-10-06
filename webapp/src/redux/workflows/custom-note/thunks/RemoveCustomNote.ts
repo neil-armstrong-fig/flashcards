@@ -1,5 +1,5 @@
 import {failed, noteRemoved} from "@src/redux/slices/deck/DeckSlice";
-import {cardsOfNote} from "@language-learning/content/cards/CardsOfNote";
+import {cardsOfNote} from "@flashcards/content/cards/CardsOfNote";
 import {clearMemoryAidsOfCards} from "@src/redux/shared/memory-aids/actions/memory-aid/thunks/ClearMemoryAidsOfCards";
 import {cardsRemoved} from "@src/redux/slices/study/StudySlice";
 import {isCustomNoteId} from "@src/redux/slices/deck/ids/CustomNoteId";

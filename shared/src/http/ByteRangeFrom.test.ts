@@ -1,4 +1,4 @@
-import {byteRangeFrom} from "@language-learning/shared/http/ByteRangeFrom";
+import {byteRangeFrom} from "@flashcards/shared/http/ByteRangeFrom";
 
 it("is none where no range was asked for", () => {
   expect(byteRangeFrom(undefined)).toEqual({kind: "whole"});

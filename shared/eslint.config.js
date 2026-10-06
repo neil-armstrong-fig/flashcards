@@ -4,4 +4,4 @@ import {baseConfig} from "./config/eslint.base.js";
 // It may import itself, by its own name, and that is the only way one of its folders reaches another:
 // `../` is refused everywhere, and an `@src` alias cannot work here, because `shared` is compiled as raw
 // source by whichever package imports it.
-export default baseConfig({tsconfigRootDir: import.meta.dirname, allowedPackages: ["@language-learning/shared"]});
+export default baseConfig({tsconfigRootDir: import.meta.dirname, allowedPackages: ["@flashcards/shared"]});

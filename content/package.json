@@ -1,5 +1,5 @@
 {
-  "name": "@language-learning/content",
+  "name": "@flashcards/content",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -17,7 +17,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@language-learning/shared": "workspace:*"
+    "@flashcards/shared": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "catalog:",

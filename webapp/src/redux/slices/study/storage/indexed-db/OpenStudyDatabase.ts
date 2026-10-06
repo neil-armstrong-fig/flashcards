@@ -1,6 +1,6 @@
 import {STUDY_STORES} from "@src/redux/slices/study/storage/indexed-db/StudyStores";
 
-const DATABASE_NAME = "language-learning";
+const DATABASE_NAME = "flashcards";
 const DATABASE_VERSION = 1;
 
 /** Opened once, on first use, and kept for as long as the page lives. */

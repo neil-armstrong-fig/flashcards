@@ -1,5 +1,5 @@
 {
-  "name": "@language-learning/acceptance-tests",
+  "name": "@flashcards/acceptance-tests",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -20,7 +20,7 @@
     "acceptance-tests:report": "playwright show-report"
   },
   "dependencies": {
-    "@language-learning/shared": "workspace:*"
+    "@flashcards/shared": "workspace:*"
   },
   "devDependencies": {
     "@eslint/js": "catalog:",

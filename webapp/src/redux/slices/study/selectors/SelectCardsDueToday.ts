@@ -1,4 +1,4 @@
-import {SHIPPED_DECKS} from "@language-learning/content/decks/ShippedDecks";
+import {SHIPPED_DECKS} from "@flashcards/content/decks/ShippedDecks";
 import {selectDeckCardsDueToday} from "@src/redux/slices/study/selectors/SelectDeckCardsDueToday";
 import type {RootState} from "@src/redux/Store";
 

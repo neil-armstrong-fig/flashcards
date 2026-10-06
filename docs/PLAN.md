@@ -1,4 +1,4 @@
-# Language-learning app: design
+# Flash Cards: design
 
 > Living document. Task-level tracking is in `../TODO.md`. Update both when scope changes.
 
@@ -38,7 +38,7 @@ Decisions:
 ## Architecture
 
 ```
-language-learning/
+flashcards/
   AGENTS.md  REFERENCES.md  MANUAL-SETUP-STEPS.md  TODO.md  docs/
   pnpm-workspace.yaml  .nvmrc  .github/workflows/ci-cd.yml
   shared/            vocabulary the app and the specs both use (Rating, Language...), and config/* for every package

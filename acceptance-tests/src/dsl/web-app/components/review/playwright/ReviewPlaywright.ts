@@ -1,5 +1,5 @@
 import type {Locator, Page} from "@playwright/test";
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 import {BaseComponent} from "@src/dsl/playwright/BaseComponent";
 
 const RATING_KEYS: Record<Rating, string> = {again: "1", hard: "2", good: "3", easy: "4"};

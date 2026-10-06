@@ -57,7 +57,7 @@ slower sounds distorted. Single words barely change at -15%, which is accepted. 
 
 A recording is identified by its text, voice (`female` or `male`) and speed (`normal` or `slower`), never by its text alone.
 
-- **The generator** (`tools/`): `pnpm --filter @language-learning/tools generate-audio`, with the key loaded from `.env.dev` in a
+- **The generator** (`tools/`): `pnpm --filter @flashcards/tools generate-audio`, with the key loaded from `.env.dev` in a
   subshell. It writes `private-source/recordings/<language>/<voice>-<speed>/<hash>.mp3`, the hash being of the text, the voice's name
   and the rate, so a changed word regenerates and an unchanged one never costs again. The variant is in the folder so a spec can
   tell which recording played without recomputing a hash. Stale files are not deleted. `upload-audio` sends what is missing to R2.

@@ -1,4 +1,4 @@
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 import {shouldFadeAids} from "@src/spaced-repetition/card/fading/ShouldFadeAids";
 import type {ReviewLogEntry} from "@src/spaced-repetition/scheduling/types/ReviewLogEntry";
 

@@ -1,9 +1,9 @@
 import {browseRowsOf} from "@src/redux/slices/browse/rows/BrowseRowsOf";
-import {cardsOfDeck} from "@language-learning/content/cards/CardsOfDeck";
+import {cardsOfDeck} from "@flashcards/content/cards/CardsOfDeck";
 import {newCardState} from "@src/spaced-repetition/card/NewCardState";
 import {suspendCard} from "@src/spaced-repetition/card/setting-aside/SuspendCard";
 import type {CardState} from "@src/spaced-repetition/card/types/CardState";
-import type {Deck} from "@language-learning/content/types/Deck";
+import type {Deck} from "@flashcards/content/types/Deck";
 
 const NOW = new Date(2026, 9, 5, 10, 0);
 

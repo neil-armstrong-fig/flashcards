@@ -27,7 +27,7 @@ recomputed its expected outcome from the code under test would agree with it wha
   `baseConfig({tsconfigRootDir: import.meta.dirname, ...})` or it throws: the editor runs one ESLint server for the whole
   workspace and, without an explicit root, mixes up which package a file belongs to.
 - `src/` is consumed as raw TypeScript through the `exports` map. There is no build step: do not add one. Anything here is
-  imported as `@language-learning/shared/<path>`, and one folder inside reaches another by that same name (a sibling as
+  imported as `@flashcards/shared/<path>`, and one folder inside reaches another by that same name (a sibling as
   `./X`), because `../` is refused and an `@src` alias would resolve into the importing package.
 - Pure functions and plain types only. Nothing that touches the DOM, Playwright, Redux or React.
 - **`koroman` is the package's one external dependency** (`docs/romanisation.md`); keep to pure functions and add another only for a reason as good.

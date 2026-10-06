@@ -1,8 +1,8 @@
 import {answerCard} from "@src/redux/slices/study/actions/answering/thunks/AnswerCard";
 import {formatInterval} from "@src/react/pages/shared/utils/FormatInterval";
-import {RATINGS} from "@language-learning/shared/study/Rating";
+import {RATINGS} from "@flashcards/shared/study/Rating";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 
 const RATING_LABELS = {again: "Again", hard: "Hard", good: "Good", easy: "Easy"} as const satisfies Record<
   Rating,

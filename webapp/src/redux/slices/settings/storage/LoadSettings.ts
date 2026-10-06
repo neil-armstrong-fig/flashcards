@@ -9,9 +9,9 @@ import {readLimitedInteger} from "@src/redux/slices/settings/limits/ReadLimitedI
 import {readDeckLimits} from "@src/redux/slices/settings/storage/read/ReadDeckLimits";
 import {readBoolean} from "@src/redux/slices/settings/storage/read/ReadBoolean";
 import {readOneOf} from "@src/redux/slices/settings/storage/read/ReadOneOf";
-import {SPEEDS} from "@language-learning/shared/audio/Speed";
-import {THEMES} from "@language-learning/shared/theme/Theme";
-import {VOICES} from "@language-learning/shared/audio/Voice";
+import {SPEEDS} from "@flashcards/shared/audio/Speed";
+import {THEMES} from "@flashcards/shared/theme/Theme";
+import {VOICES} from "@flashcards/shared/audio/Voice";
 import {SETTINGS_STORAGE_KEY} from "@src/redux/slices/settings/storage/SettingsStorageKey";
 import type {SettingsState} from "@src/redux/slices/settings/types/SettingsState";
 

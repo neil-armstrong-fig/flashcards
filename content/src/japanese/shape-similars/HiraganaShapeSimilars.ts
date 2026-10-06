@@ -1,4 +1,4 @@
-import type {ShapePair} from "@language-learning/content/types/ShapePair";
+import type {ShapePair} from "@flashcards/content/types/ShapePair";
 
 /**
  * The hiragana learners commonly take for one another, in pairs: ぬ and め differ in the loop at the end of the stroke, わ, れ

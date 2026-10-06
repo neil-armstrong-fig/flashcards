@@ -1,6 +1,6 @@
 # AGENTS.md
 
-A spaced-repetition language-learning app (Korean first, then Japanese, then Dutch), installable as an offline-first PWA.
+Flash Cards: a spaced-repetition app for learning languages (Korean first, then Japanese, then Dutch), installable as an offline-first PWA.
 Standalone: no Anki integration; Anki's ideas are credited in `REFERENCES.md`. Practices (code, tests, structure) follow janggi
 (https://github.com/neil-armstrong-fig/janggi, `REFERENCES.md`). pnpm workspace, seven packages:
 
@@ -11,7 +11,7 @@ Standalone: no Anki integration; Anki's ideas are credited in `REFERENCES.md`. P
 | `api/`              | The Cloudflare Worker: Google sign-in, the learner's similar words (D1), speech (Azure key stays here)                | itself and `shared`                    | `api/AGENTS.md`                                                                              |
 | `infra/`            | The API's Cloudflare resources as code (Alchemy), and its deploy                         | nothing (names the Worker by path)     | `infra/AGENTS.md`                                                                            |
 | `tools/`            | Command-line tools: the audio generator (Azure AI Speech)                                | itself, `shared` and `content`         | `tools/AGENTS.md`                                                                            |
-| `acceptance-tests/` | The Playwright specs and the DSL that drives the app                                     | itself and `@language-learning/shared` | `acceptance-tests/AGENTS.md`, plus `src/dsl/` and `src/tests/`                               |
+| `acceptance-tests/` | The Playwright specs and the DSL that drives the app                                     | itself and `@flashcards/shared` | `acceptance-tests/AGENTS.md`, plus `src/dsl/` and `src/tests/`                               |
 | `shared/`           | Vocabulary the app and the specs both use, and the base tool config                      | nothing: the bottom of the graph       | `shared/AGENTS.md`                                                                           |
 
 The scheduling logic is a folder in `webapp/`, not a package, because nothing else uses it and `acceptance-tests` may not
@@ -40,7 +40,7 @@ consumer appears (an API). The decks became `content/` when `tools/` needed the 
 
 ## Commands
 
-Run from the repository root. While working, scope tools to what you changed (`pnpm --filter @language-learning/webapp exec
+Run from the repository root. While working, scope tools to what you changed (`pnpm --filter @flashcards/webapp exec
 vitest run src/redux`).
 
 ```bash
@@ -56,7 +56,7 @@ pnpm start:local           # the API and the dev server together, the app talkin
 ```
 
 If port 3000 is taken (the developer's own dev server, for one), do not kill it: serve your own build with
-`pnpm --filter @language-learning/webapp exec vite preview --port 3100` and run the specs with
+`pnpm --filter @flashcards/webapp exec vite preview --port 3100` and run the specs with
 `WEBAPP_URL=http://localhost:3100 pnpm acceptance-tests`. The build is a snapshot, so restart it after any change to the app
 or you test stale code. Stop a server you started by its PID (`lsof -ti :3100 | xargs -r kill`), never `pkill -f <text>`,
 which also matches the shell running the command.
@@ -136,7 +136,7 @@ package's `eslint.config.js`. Folder-level layering is in each package's `AGENTS
 rule rather than merging it, so the boundary silently vanishes for those files. Call `restrictedImports({...})`.
 
 `shared/` is compiled as raw source by whoever imports it, so inside `shared` a file imports another by the package's own name
-(`@language-learning/shared/study/Rating`), never `@src` (it would resolve into the importing package's tree).
+(`@flashcards/shared/study/Rating`), never `@src` (it would resolve into the importing package's tree).
 
 ## Private material and secrets
 
@@ -174,7 +174,7 @@ Several sessions may share this working tree and nothing announces a new one. Fo
   columns, rewrapping content you never touched. Edit them by hand.
 - **`pnpm setup` is a built-in pnpm command**, not ours. The script is `pnpm install-browsers`.
 - **On Linux/WSL, Chromium needs system libraries once**, or every spec fails on launch with `libnspr4.so`:
-  `pnpm --filter @language-learning/acceptance-tests exec playwright install-deps chromium` (needs sudo).
+  `pnpm --filter @flashcards/acceptance-tests exec playwright install-deps chromium` (needs sudo).
 - **Playwright reports every test's location as `AcceptanceCriteriaMapping.ts`**, because it reads the caller of `test()`.
   Failure output still points at the real spec line.
 

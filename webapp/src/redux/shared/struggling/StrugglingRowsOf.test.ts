@@ -1,7 +1,7 @@
 import {newCardState} from "@src/spaced-repetition/card/NewCardState";
 import {strugglingRowsOf} from "@src/redux/shared/struggling/StrugglingRowsOf";
 import type {CardState} from "@src/spaced-repetition/card/types/CardState";
-import type {DeckCard} from "@language-learning/content/types/DeckCard";
+import type {DeckCard} from "@flashcards/content/types/DeckCard";
 import type {ReviewLogEntry} from "@src/spaced-repetition/scheduling/types/ReviewLogEntry";
 
 const NOW = new Date(2026, 9, 5);

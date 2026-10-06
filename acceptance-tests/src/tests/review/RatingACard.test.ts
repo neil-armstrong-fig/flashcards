@@ -1,5 +1,5 @@
 import type {WebApp} from "@src/acceptance-criteria-mapping/AcceptanceCriteriaMapping";
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 import {beforeEach, expect, given, then, when} from "@src/acceptance-criteria-mapping/AcceptanceCriteriaMapping";
 
 const OTHER_CARDS_IN_THE_STARTER_DECK = 19;

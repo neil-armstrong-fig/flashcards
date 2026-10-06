@@ -1,6 +1,6 @@
 import {PICTURE_STORE} from "@src/redux/slices/card-pictures/indexed-db/PictureStore";
 
-const DATABASE_NAME = "language-learning-pictures";
+const DATABASE_NAME = "flashcards-pictures";
 const DATABASE_VERSION = 1;
 
 /** Opened once, on first use, and kept for as long as the page lives. */

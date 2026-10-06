@@ -1,6 +1,6 @@
 import {createHash} from "node:crypto";
-import type {SpokenLanguage} from "@language-learning/shared/language/SpokenLanguage";
-import type {RecordingVariant} from "@language-learning/shared/audio/RecordingVariant";
+import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
+import type {RecordingVariant} from "@flashcards/shared/audio/RecordingVariant";
 
 interface Naming {
   readonly language: SpokenLanguage;

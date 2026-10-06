@@ -1,5 +1,5 @@
-import {AUDIO_RECORDINGS} from "@language-learning/content/audio/AudioRecordings";
-import type {AudioManifest} from "@language-learning/content/audio/types/AudioManifest";
+import {AUDIO_RECORDINGS} from "@flashcards/content/audio/AudioRecordings";
+import type {AudioManifest} from "@flashcards/content/audio/types/AudioManifest";
 
 interface Runtime {
   /** Where the API runs: `wrangler dev` by default, and the deployed Worker when the build is given its address. */

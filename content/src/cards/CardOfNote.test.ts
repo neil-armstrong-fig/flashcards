@@ -1,5 +1,5 @@
-import {cardOfNote} from "@language-learning/content/cards/CardOfNote";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import {cardOfNote} from "@flashcards/content/cards/CardOfNote";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
 const water: VocabNote = {id: "ko-vocab-water", language: "ko", word: "물", meaning: "water", romanisation: "mul"};
 

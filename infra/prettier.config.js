@@ -1,1 +1,1 @@
-export {default} from "@language-learning/shared/config/prettier.base.js";
+export {default} from "@flashcards/shared/config/prettier.base.js";

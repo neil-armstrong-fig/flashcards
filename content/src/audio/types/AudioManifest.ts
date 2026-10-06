@@ -1,4 +1,4 @@
-import type {RecordingVariant} from "@language-learning/shared/audio/RecordingVariant";
+import type {RecordingVariant} from "@flashcards/shared/audio/RecordingVariant";
 
 /** Where each of one text's recordings is, as a path under `audio/`. A variant the generator has not made yet is absent. */
 export type RecordingFiles = Readonly<Partial<Record<RecordingVariant, string>>>;

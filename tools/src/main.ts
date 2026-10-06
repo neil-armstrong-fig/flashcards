@@ -1,9 +1,9 @@
 import {generateAudio} from "@src/generate/GenerateAudio";
 import {runtime} from "@src/runtime/Runtime";
-import {SHIPPED_DECKS} from "@language-learning/content/decks/ShippedDecks";
+import {SHIPPED_DECKS} from "@flashcards/content/decks/ShippedDecks";
 
 /**
- * `pnpm --filter @language-learning/tools generate-audio`. The key and region come from `.env.dev` (names only, in
+ * `pnpm --filter @flashcards/tools generate-audio`. The key and region come from `.env.dev` (names only, in
  * `.env.example`) and are never printed.
  */
 async function main(): Promise<void> {

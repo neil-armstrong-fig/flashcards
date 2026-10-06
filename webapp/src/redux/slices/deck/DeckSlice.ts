@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import type {PayloadAction} from "@reduxjs/toolkit";
 import {INITIAL_DECK_STATE} from "@src/redux/slices/deck/initial-state/InitialDeckState";
 import type {DeckState} from "@src/redux/slices/deck/types/DeckState";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
 const deckSlice = createSlice({
   name: "deck",

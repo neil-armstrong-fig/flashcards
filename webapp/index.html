@@ -14,7 +14,7 @@
         let theme = "system";
 
         try {
-          const stored = JSON.parse(localStorage.getItem("language-learning.settings.v1") ?? "null");
+          const stored = JSON.parse(localStorage.getItem("flashcards.settings.v1") ?? "null");
 
           if (stored?.theme === "light" || stored?.theme === "dark") {
             theme = stored.theme;
@@ -35,7 +35,7 @@
     <meta name="description" content="Spaced-repetition language study with audio, streaks and memory aids." />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%icon.svg" />
     <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
-    <title>Language Learning</title>
+    <title>Flash Cards</title>
   </head>
   <body>
     <div id="root"></div>

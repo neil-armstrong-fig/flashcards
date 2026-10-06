@@ -1,7 +1,7 @@
-import {englishMeaningFrom} from "@language-learning/shared/language/EnglishText";
-import {koreanWordFrom} from "@language-learning/shared/language/KoreanText";
-import {SPEEDS} from "@language-learning/shared/audio/Speed";
-import {VOICES} from "@language-learning/shared/audio/Voice";
+import {englishMeaningFrom} from "@flashcards/shared/language/EnglishText";
+import {koreanWordFrom} from "@flashcards/shared/language/KoreanText";
+import {SPEEDS} from "@flashcards/shared/audio/Speed";
+import {VOICES} from "@flashcards/shared/audio/Voice";
 import type {SpeechRequest} from "@src/speech/types/SpeechRequest";
 
 /** A request body that has been checked, or `undefined` for anything else. Nothing in it is trusted until it is. */

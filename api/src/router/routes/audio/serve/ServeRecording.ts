@@ -1,4 +1,4 @@
-import {byteRangeFrom} from "@language-learning/shared/http/ByteRangeFrom";
+import {byteRangeFrom} from "@flashcards/shared/http/ByteRangeFrom";
 import {headerOf} from "@src/router/request/HeaderOf";
 import {readRecording} from "@src/buckets/recordings/ReadRecording";
 

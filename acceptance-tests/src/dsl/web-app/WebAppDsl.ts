@@ -96,6 +96,33 @@ export class WebAppDsl {
     }
   }
 
+  /** What the browser's tab is titled. */
+  async getTabTitle(): Promise<string> {
+    try {
+      return await this.playwright.tabTitle();
+    } catch (error) {
+      throw new DslError("Failed to read the title of the browser tab", error);
+    }
+  }
+
+  /** The name the app gives itself in the install prompt, or nothing when it offers no manifest. */
+  async getInstallName(): Promise<string | undefined> {
+    try {
+      return (await this.playwright.installNames()).name;
+    } catch (error) {
+      throw new DslError("Failed to read the name the app offers for installing it", error);
+    }
+  }
+
+  /** The name that sits under the app's icon on a home screen, or nothing when it offers no manifest. */
+  async getHomeScreenName(): Promise<string | undefined> {
+    try {
+      return (await this.playwright.installNames()).shortName;
+    } catch (error) {
+      throw new DslError("Failed to read the name the app shows under its home screen icon", error);
+    }
+  }
+
   /** The icons the app's manifest offers for installing it, each with whether it loads. */
   async getInstallIcons(): Promise<InstallIcon[]> {
     try {

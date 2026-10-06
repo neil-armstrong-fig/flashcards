@@ -1,13 +1,13 @@
 # AGENTS.md: tools
 
-Command-line tools that make content for the app. Nothing imports this package. It may import `@language-learning/shared` and
-`@language-learning/content` (the words, and the manifest's types), never `webapp`.
+Command-line tools that make content for the app. Nothing imports this package. It may import `@flashcards/shared` and
+`@flashcards/content` (the words, and the manifest's types), never `webapp`.
 
 ## The audio generator
 
 ```bash
 (set -a; . ./.env.dev; set +a; cd tools && node --import ./loader/register.js src/main.ts)   # from the repo root
-pnpm --filter @language-learning/tools generate-audio                                          # the same, if .env.dev is wanted loaded by Node
+pnpm --filter @flashcards/tools generate-audio                                          # the same, if .env.dev is wanted loaded by Node
 ```
 
 It makes every recording the decks need that is not already in `private-source/recordings/` (git-ignored: the recordings are never in the repository or the public site), then writes
@@ -26,8 +26,8 @@ run keeps what it made. Stale files from a changed word are not deleted.
 ## Uploading the recordings
 
 ```bash
-pnpm --filter @language-learning/tools upload-audio            # into the local bucket `pnpm api:dev` serves from
-pnpm --filter @language-learning/tools upload-audio -- --remote   # into the real private R2 bucket
+pnpm --filter @flashcards/tools upload-audio            # into the local bucket `pnpm api:dev` serves from
+pnpm --filter @flashcards/tools upload-audio -- --remote   # into the real private R2 bucket
 ```
 
 It puts every recording in `private-source/recordings/` into the R2 bucket `flashcards-recordings` with `wrangler r2 bulk put`

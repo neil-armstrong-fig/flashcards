@@ -1,9 +1,9 @@
-import {cardsOfNote} from "@language-learning/content/cards/CardsOfNote";
+import {cardsOfNote} from "@flashcards/content/cards/CardsOfNote";
 import {cardsAdded} from "@src/redux/slices/study/StudySlice";
 import {noteAdded, noteEdited} from "@src/redux/slices/deck/DeckSlice";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
 import type {KeptNote} from "@src/redux/slices/account/types/KeptNote";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
 /** Puts a card kept online here, once its recordings are on this device: added, studied both ways, if it is new, and changed if its words are. */
 export function syncKeptNote({id, word, meaning, romanisation}: KeptNote): AppThunk {

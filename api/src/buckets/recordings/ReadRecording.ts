@@ -1,4 +1,4 @@
-import type {ByteRange} from "@language-learning/shared/http/types/ByteRange";
+import type {ByteRange} from "@flashcards/shared/http/types/ByteRange";
 import {workerEnvironment} from "@src/env/WorkerEnvironment";
 import type {RecordingsBucketOptions} from "@src/buckets/recordings/types/RecordingsBucketOptions";
 import type {StoredRecording} from "@src/buckets/recordings/types/StoredRecording";

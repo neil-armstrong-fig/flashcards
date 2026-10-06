@@ -1,5 +1,5 @@
 import {CARD_PHASES} from "@src/spaced-repetition/card/CardPhase";
-import {RATINGS} from "@language-learning/shared/study/Rating";
+import {RATINGS} from "@flashcards/shared/study/Rating";
 import type {ReviewLogEntry} from "@src/spaced-repetition/scheduling/types/ReviewLogEntry";
 
 /** A log entry from storage, or `undefined` if what was stored is not one. */

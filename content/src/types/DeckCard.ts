@@ -1,5 +1,5 @@
-import type {CardDirection} from "@language-learning/content/CardDirection";
-import type {SpokenText} from "@language-learning/content/types/SpokenText";
+import type {CardDirection} from "@flashcards/content/CardDirection";
+import type {SpokenText} from "@flashcards/content/types/SpokenText";
 
 /** One side-to-side question made from a note. Its `id` is the note's id and its direction, and is stable for ever. */
 export interface DeckCard {

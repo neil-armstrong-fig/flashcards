@@ -1,6 +1,6 @@
-import {recordingVariantFor} from "@language-learning/content/audio/RecordingVariantFor";
-import type {AudioManifest} from "@language-learning/content/audio/types/AudioManifest";
-import type {RecordingRequest} from "@language-learning/content/audio/types/RecordingRequest";
+import {recordingVariantFor} from "@flashcards/content/audio/RecordingVariantFor";
+import type {AudioManifest} from "@flashcards/content/audio/types/AudioManifest";
+import type {RecordingRequest} from "@flashcards/content/audio/types/RecordingRequest";
 
 /** The path under `audio/` of the recording asked for, or `undefined` when the manifest does not name one. */
 export function audioFileOf(

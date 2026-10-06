@@ -10,6 +10,9 @@ somewhere to live (D1) and a place for pictures (R2), which `docs/decks.md` and 
 
 ## The shape
 
+See [`architecture.md`](architecture.md) for the implemented Cloudflare
+resources, what its namespaces do and every current API route.
+
 ```
 GitHub Pages (static app, public)        Cloudflare (private)
   <app host>                      <--->    <api host>  (the Worker)

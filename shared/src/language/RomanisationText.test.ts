@@ -1,4 +1,4 @@
-import {romanisationFrom} from "@language-learning/shared/language/RomanisationText";
+import {romanisationFrom} from "@flashcards/shared/language/RomanisationText";
 
 it("accepts a romanisation, trimmed", () => {
   expect(romanisationFrom(" kokkiri ")).toBe("kokkiri");

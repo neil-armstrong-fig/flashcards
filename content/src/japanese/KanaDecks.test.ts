@@ -1,7 +1,7 @@
-import {cardsOfDeck} from "@language-learning/content/cards/CardsOfDeck";
-import {HIRAGANA_DECK} from "@language-learning/content/japanese/HiraganaDeck";
-import {KATAKANA_DECK} from "@language-learning/content/japanese/KatakanaDeck";
-import type {Deck} from "@language-learning/content/types/Deck";
+import {cardsOfDeck} from "@flashcards/content/cards/CardsOfDeck";
+import {HIRAGANA_DECK} from "@flashcards/content/japanese/HiraganaDeck";
+import {KATAKANA_DECK} from "@flashcards/content/japanese/KatakanaDeck";
+import type {Deck} from "@flashcards/content/types/Deck";
 
 const HIRAGANA = /^\p{Script=Hiragana}+$/u;
 const KATAKANA = /^\p{Script=Katakana}+$/u;

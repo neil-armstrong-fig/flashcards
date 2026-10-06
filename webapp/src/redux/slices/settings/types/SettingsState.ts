@@ -1,7 +1,7 @@
 import type {DeckLimits} from "@src/redux/slices/settings/types/DeckLimits";
-import type {Speed} from "@language-learning/shared/audio/Speed";
-import type {Theme} from "@language-learning/shared/theme/Theme";
-import type {Voice} from "@language-learning/shared/audio/Voice";
+import type {Speed} from "@flashcards/shared/audio/Speed";
+import type {Theme} from "@flashcards/shared/theme/Theme";
+import type {Voice} from "@flashcards/shared/audio/Voice";
 
 export interface SettingsState {
   /** How many cards the learner aims to review each day. */

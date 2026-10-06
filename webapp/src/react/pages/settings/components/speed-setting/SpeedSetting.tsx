@@ -1,8 +1,8 @@
 import {speedChosen} from "@src/redux/slices/settings/SettingsSlice";
 import {ChoiceSetting} from "@src/react/pages/settings/components/choice-setting/ChoiceSetting";
-import {SPEEDS} from "@language-learning/shared/audio/Speed";
+import {SPEEDS} from "@flashcards/shared/audio/Speed";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
-import type {Speed} from "@language-learning/shared/audio/Speed";
+import type {Speed} from "@flashcards/shared/audio/Speed";
 
 const SPEED_LABELS = {normal: "Normal", slower: "Slower"} as const satisfies Record<Speed, string>;
 

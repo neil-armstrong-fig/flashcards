@@ -1,6 +1,6 @@
 import {Rating as FreeSpacedRepetitionSchedulerRating} from "ts-fsrs";
 import type {Grade} from "ts-fsrs";
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 
 const GRADE_OF_RATING: Record<Rating, Grade> = {
   again: FreeSpacedRepetitionSchedulerRating.Again,

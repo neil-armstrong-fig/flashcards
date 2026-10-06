@@ -1,9 +1,9 @@
-import {englishMeaningFrom} from "@language-learning/shared/language/EnglishText";
-import {koreanWordFrom} from "@language-learning/shared/language/KoreanText";
-import {romanisationFrom} from "@language-learning/shared/language/RomanisationText";
+import {englishMeaningFrom} from "@flashcards/shared/language/EnglishText";
+import {koreanWordFrom} from "@flashcards/shared/language/KoreanText";
+import {romanisationFrom} from "@flashcards/shared/language/RomanisationText";
 import type {CardWords} from "@src/redux/slices/deck/types/CardWords";
 import type {CheckedWords} from "@src/redux/slices/deck/words/types/CheckedWords";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
 /**
  * What the learner typed for a card, checked: a Korean word of up to twelve characters, an English meaning of up to forty, and how it

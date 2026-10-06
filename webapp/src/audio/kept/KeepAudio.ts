@@ -3,7 +3,7 @@ import {keptAudioAddress} from "@src/audio/kept/versions/KeptAudioAddress";
 import {runtime} from "@src/environment/Runtime";
 import {versionsOf} from "@src/audio/kept/versions/VersionsOf";
 import type {KeptVersion} from "@src/audio/kept/types/KeptVersion";
-import type {SpokenLanguage} from "@language-learning/shared/language/SpokenLanguage";
+import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
 
 /**
  * Asks the speech API (`api/`) for the text in every version and keeps the recordings in the browser's cache, from which the service

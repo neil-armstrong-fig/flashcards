@@ -15,6 +15,15 @@ export class HomeDsl {
     this.playwright = new HomePlaywright(page);
   }
 
+  /** The name the screen gives the app at its top. */
+  async getAppTitle(): Promise<string> {
+    try {
+      return await this.playwright.appTitle();
+    } catch (error) {
+      throw new DslError("Failed to read the app's name from the home screen", error);
+    }
+  }
+
   /** How many cards of a deck are waiting today, within that deck's own limits. */
   async getCardsDueToday(deck: DeckId = STARTER_DECK_ID): Promise<number> {
     try {

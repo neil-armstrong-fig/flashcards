@@ -1,7 +1,7 @@
 import {afterEach, beforeEach, vi} from "vitest";
 import type {KeptNote} from "@src/redux/slices/account/types/KeptNote";
 import type {ReviewLogEntry} from "@src/spaced-repetition/scheduling/types/ReviewLogEntry";
-import type {SpokenLanguage} from "@language-learning/shared/language/SpokenLanguage";
+import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
 import type {StudyCard} from "@src/spaced-repetition/card/types/StudyCard";
 import {MemoryLocalStorage} from "@src/testing/environment/browser/MemoryLocalStorage";
 import {runtime} from "@src/environment/Runtime";

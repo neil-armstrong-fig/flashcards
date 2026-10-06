@@ -1,4 +1,4 @@
-import type {AudioManifest} from "@language-learning/content/audio/types/AudioManifest";
+import type {AudioManifest} from "@flashcards/content/audio/types/AudioManifest";
 
 /** Recordings for the first two words of the starter deck (물, 밥), and 불 which sounds like 물, in every voice and speed, and their English, so a test does not depend on what has been generated. */
 export const TEST_AUDIO_RECORDINGS: AudioManifest = {

@@ -1,6 +1,6 @@
-import type {AzureVoice} from "@language-learning/shared/audio/azure/AzureVoice";
-import type {Language} from "@language-learning/shared/language/Language";
-import type {Voice} from "@language-learning/shared/audio/Voice";
+import type {AzureVoice} from "@flashcards/shared/audio/azure/AzureVoice";
+import type {Language} from "@flashcards/shared/language/Language";
+import type {Voice} from "@flashcards/shared/audio/Voice";
 
 /**
  * The voice behind each choice the learner has, per language, chosen by ear (`docs/audio.md`). Dutch is added here when

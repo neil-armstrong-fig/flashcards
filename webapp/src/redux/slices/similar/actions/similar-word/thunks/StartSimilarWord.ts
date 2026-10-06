@@ -1,5 +1,5 @@
 import {addingFailed, addingStarted} from "@src/redux/slices/similar/SimilarSlice";
-import {koreanWordFrom} from "@language-learning/shared/language/KoreanText";
+import {koreanWordFrom} from "@flashcards/shared/language/KoreanText";
 import {similarOf} from "@src/redux/slices/similar/similars/SimilarOf";
 import {selectNoteById} from "@src/redux/slices/deck/selectors/SelectNoteById";
 import type {AppThunk} from "@src/redux/shared/AppThunk";

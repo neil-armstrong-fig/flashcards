@@ -1,6 +1,6 @@
-import type {NoteKind} from "@language-learning/content/types/NoteKind";
-import type {ShapeSimilar} from "@language-learning/content/types/ShapeSimilar";
-import type {Language} from "@language-learning/shared/language/Language";
+import type {NoteKind} from "@flashcards/content/types/NoteKind";
+import type {ShapeSimilar} from "@flashcards/content/types/ShapeSimilar";
+import type {Language} from "@flashcards/shared/language/Language";
 
 /**
  * A word to learn: the facts about it, not a card. Each note is studied as two cards, one in each direction (see

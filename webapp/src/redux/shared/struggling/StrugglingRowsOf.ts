@@ -1,6 +1,6 @@
 import {isStruggling} from "@src/spaced-repetition/card/IsStruggling";
 import type {CardState} from "@src/spaced-repetition/card/types/CardState";
-import type {DeckCard} from "@language-learning/content/types/DeckCard";
+import type {DeckCard} from "@flashcards/content/types/DeckCard";
 import type {ReviewLogEntry} from "@src/spaced-repetition/scheduling/types/ReviewLogEntry";
 import type {StrugglingRow} from "@src/redux/shared/struggling/types/StrugglingRow";
 

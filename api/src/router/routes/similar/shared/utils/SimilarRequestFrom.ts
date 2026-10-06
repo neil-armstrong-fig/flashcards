@@ -1,5 +1,5 @@
 import {isRecord} from "@src/json/IsRecord";
-import {koreanWordFrom} from "@language-learning/shared/language/KoreanText";
+import {koreanWordFrom} from "@flashcards/shared/language/KoreanText";
 import type {SimilarWord} from "@src/database/types/SimilarWord";
 
 /** The longest a note's id may be: ours are `ko-vocab-water`, so this is room, and not a place to put anything else. */

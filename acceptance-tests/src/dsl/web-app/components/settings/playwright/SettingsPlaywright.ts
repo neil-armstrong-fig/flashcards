@@ -1,6 +1,6 @@
 import type {Locator, Page} from "@playwright/test";
 import {BaseComponent} from "@src/dsl/playwright/BaseComponent";
-import type {Theme} from "@language-learning/shared/theme/Theme";
+import type {Theme} from "@flashcards/shared/theme/Theme";
 
 export class SettingsPlaywright extends BaseComponent {
   private readonly themeChoices: Record<Theme, Locator>;

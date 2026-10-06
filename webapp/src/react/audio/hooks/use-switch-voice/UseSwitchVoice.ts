@@ -1,7 +1,7 @@
 import {nextChoice} from "@src/audio/next-choice/NextChoice";
 import {useAppDispatch} from "@src/redux/shared/Hooks";
 import {useAudioChoices} from "@src/react/audio/hooks/use-audio-choices/UseAudioChoices";
-import {VOICES} from "@language-learning/shared/audio/Voice";
+import {VOICES} from "@flashcards/shared/audio/Voice";
 import {voiceChosen} from "@src/redux/slices/settings/SettingsSlice";
 import type {AudioChoices} from "@src/audio/types/AudioChoices";
 

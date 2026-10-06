@@ -1,5 +1,5 @@
 {
-  "name": "@language-learning/webapp",
+  "name": "@flashcards/webapp",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -18,8 +18,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@language-learning/content": "workspace:*",
-    "@language-learning/shared": "workspace:*",
+    "@flashcards/content": "workspace:*",
+    "@flashcards/shared": "workspace:*",
     "@reduxjs/toolkit": "catalog:",
     "clsx": "catalog:",
     "react": "catalog:",

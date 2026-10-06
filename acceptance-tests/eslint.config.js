@@ -1,10 +1,10 @@
-import {baseConfig, restrictedImports} from "@language-learning/shared/config/eslint.base.js";
+import {baseConfig, restrictedImports} from "@flashcards/shared/config/eslint.base.js";
 
 const acceptanceCriteriaMapping = "@src/acceptance-criteria-mapping/AcceptanceCriteriaMapping";
 
 const playwrightPackages = ["@playwright/test", "playwright", "playwright-core"];
 
-const sharedPackage = "@language-learning/shared";
+const sharedPackage = "@flashcards/shared";
 
 /**
  * Inside a `then`, a call on the DSL fixture (`webApp.x()`, `webApp.area.x()`, `webApp.area.sub.x()`) must be a question:

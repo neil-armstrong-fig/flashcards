@@ -1,9 +1,9 @@
 import {runtime} from "@src/environment/Runtime";
 import {audioFileOf} from "@src/audio/audio-file/AudioFileOf";
 import {keptAudioPath} from "@src/audio/kept/KeptAudioPath";
-import {recordingVariantFor} from "@language-learning/content/audio/RecordingVariantFor";
-import type {RecordingRequest} from "@language-learning/content/audio/types/RecordingRequest";
-import type {SpokenText} from "@language-learning/content/types/SpokenText";
+import {recordingVariantFor} from "@flashcards/content/audio/RecordingVariantFor";
+import type {RecordingRequest} from "@flashcards/content/audio/types/RecordingRequest";
+import type {SpokenText} from "@flashcards/content/types/SpokenText";
 
 /**
  * Where the recording asked for is: the one recorded ahead of time if the recordings manifest names it, else the one the learner asked for and

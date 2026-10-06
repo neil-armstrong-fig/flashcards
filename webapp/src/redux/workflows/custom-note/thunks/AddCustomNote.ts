@@ -1,10 +1,10 @@
 import {failed, noteAdded} from "@src/redux/slices/deck/DeckSlice";
 import {cardsAdded} from "@src/redux/slices/study/StudySlice";
-import {cardsOfNote} from "@language-learning/content/cards/CardsOfNote";
+import {cardsOfNote} from "@flashcards/content/cards/CardsOfNote";
 import {customNoteIdOf} from "@src/redux/slices/deck/ids/CustomNoteId";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
 import type {CardWords} from "@src/redux/slices/deck/types/CardWords";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 import {addKeptNote} from "@src/redux/api/AddKeptNote";
 
 /**

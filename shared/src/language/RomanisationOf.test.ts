@@ -1,4 +1,4 @@
-import {romanisationOf} from "@language-learning/shared/language/RomanisationOf";
+import {romanisationOf} from "@flashcards/shared/language/RomanisationOf";
 
 // Revised Romanization writes how a word is pronounced, not how it is spelt. Each row is a rule that a letter-for-letter
 // transliteration gets wrong, so a change of version of the library that quietly drops one fails here.

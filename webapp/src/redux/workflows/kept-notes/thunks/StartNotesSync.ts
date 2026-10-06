@@ -1,4 +1,4 @@
-import {cardsOfNote} from "@language-learning/content/cards/CardsOfNote";
+import {cardsOfNote} from "@flashcards/content/cards/CardsOfNote";
 import {cardsRemoved} from "@src/redux/slices/study/StudySlice";
 import {noteRemoved} from "@src/redux/slices/deck/DeckSlice";
 import {noteCleared} from "@src/redux/slices/similar/SimilarSlice";

@@ -1,7 +1,7 @@
 import type {CardState} from "@src/spaced-repetition/card/types/CardState";
 import {isStruggling} from "@src/spaced-repetition/card/IsStruggling";
 import {newCardState} from "@src/spaced-repetition/card/NewCardState";
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 import type {ReviewLogEntry} from "@src/spaced-repetition/scheduling/types/ReviewLogEntry";
 
 function answers(...ratings: Rating[]): ReviewLogEntry[] {

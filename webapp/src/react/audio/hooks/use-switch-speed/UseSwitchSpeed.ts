@@ -1,6 +1,6 @@
 import {nextChoice} from "@src/audio/next-choice/NextChoice";
 import {speedChosen} from "@src/redux/slices/settings/SettingsSlice";
-import {SPEEDS} from "@language-learning/shared/audio/Speed";
+import {SPEEDS} from "@flashcards/shared/audio/Speed";
 import {useAppDispatch} from "@src/redux/shared/Hooks";
 import {useAudioChoices} from "@src/react/audio/hooks/use-audio-choices/UseAudioChoices";
 import type {AudioChoices} from "@src/audio/types/AudioChoices";

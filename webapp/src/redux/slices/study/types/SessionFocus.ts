@@ -1,4 +1,4 @@
-import type {StudyFocus} from "@language-learning/shared/study/StudyFocus";
+import type {StudyFocus} from "@flashcards/shared/study/StudyFocus";
 
 /** What a session studies of the deck's day, with what deciding "struggling" needs, so a reducer can work it out from the log. */
 export interface SessionFocus {

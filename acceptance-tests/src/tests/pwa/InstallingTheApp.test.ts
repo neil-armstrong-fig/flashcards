@@ -31,4 +31,12 @@ given("the learner opens the app in a browser that can install it", () => {
   then("it offers a home screen icon for iPhones that loads", async ({webApp}) => {
     expect(await webApp.isHomeScreenIconForIphonesLoaded()).toBe(true);
   });
+
+  then("it is called Flash Cards in the install prompt", async ({webApp}) => {
+    expect(await webApp.getInstallName()).toBe("Flash Cards");
+  });
+
+  then("it is called Flash Cards under its icon on the home screen", async ({webApp}) => {
+    expect(await webApp.getHomeScreenName()).toBe("Flash Cards");
+  });
 });

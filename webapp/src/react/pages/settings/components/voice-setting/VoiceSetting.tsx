@@ -1,8 +1,8 @@
 import {voiceChosen} from "@src/redux/slices/settings/SettingsSlice";
 import {ChoiceSetting} from "@src/react/pages/settings/components/choice-setting/ChoiceSetting";
-import {VOICES} from "@language-learning/shared/audio/Voice";
+import {VOICES} from "@flashcards/shared/audio/Voice";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
-import type {Voice} from "@language-learning/shared/audio/Voice";
+import type {Voice} from "@flashcards/shared/audio/Voice";
 
 const VOICE_LABELS = {female: "Female", male: "Male"} as const satisfies Record<Voice, string>;
 

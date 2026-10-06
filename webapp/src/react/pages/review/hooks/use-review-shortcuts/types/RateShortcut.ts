@@ -1,4 +1,4 @@
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 
 export interface RateShortcut {
   readonly kind: "rate";

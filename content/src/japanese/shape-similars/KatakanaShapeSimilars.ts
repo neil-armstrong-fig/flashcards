@@ -1,4 +1,4 @@
-import type {ShapePair} from "@language-learning/content/types/ShapePair";
+import type {ShapePair} from "@flashcards/content/types/ShapePair";
 
 /**
  * The katakana learners commonly take for one another, in pairs: シ and ツ differ in the angle of the strokes, ソ and ン in

@@ -1,4 +1,4 @@
-import {byteRangeFrom} from "@language-learning/shared/http/ByteRangeFrom";
+import {byteRangeFrom} from "@flashcards/shared/http/ByteRangeFrom";
 
 /**
  * The answer to a request for a recording the worker holds whole. A browser asks for audio in parts (`Range`), and Safari will not

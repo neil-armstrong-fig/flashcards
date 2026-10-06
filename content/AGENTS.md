@@ -2,11 +2,11 @@
 
 The words to learn, as typed data, one folder per language (`korean/` now; `japanese/` and `dutch/` as their phases land), and
 the manifest of recordings made for them. Plain TypeScript and data, no behaviour beyond turning a note into cards: it may not
-import React or Redux, and it may import `@language-learning/shared` and nothing else in the workspace (lint enforces it). The
+import React or Redux, and it may import `@flashcards/shared` and nothing else in the workspace (lint enforces it). The
 webapp, the audio tool and later an API all sit above it.
 
 It is compiled as raw source by whoever imports it, like `shared`, so one folder here reaches another by the package's own name
-(`@language-learning/content/types/Deck`), never `@src`, and a same-folder `./x` is fine.
+(`@flashcards/content/types/Deck`), never `@src`, and a same-folder `./x` is fine.
 
 ```
 src/types/     Deck, VocabNote (a word and the facts about it), DeckCard (one question made from a note)

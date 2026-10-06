@@ -1,5 +1,5 @@
-import {cardsOfDeck} from "@language-learning/content/cards/CardsOfDeck";
-import type {Deck} from "@language-learning/content/types/Deck";
+import {cardsOfDeck} from "@flashcards/content/cards/CardsOfDeck";
+import type {Deck} from "@flashcards/content/types/Deck";
 
 const deck: Deck = {
   id: "d",

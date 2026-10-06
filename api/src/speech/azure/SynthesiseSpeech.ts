@@ -1,8 +1,8 @@
-import {AZURE_VOICES} from "@language-learning/shared/audio/azure/AzureVoices";
-import type {AzureVoice} from "@language-learning/shared/audio/azure/AzureVoice";
-import {ENGLISH_VOICE} from "@language-learning/shared/audio/azure/EnglishVoice";
-import {SPEED_RATES} from "@language-learning/shared/audio/azure/SpeedRates";
-import {ssmlOf} from "@language-learning/shared/audio/azure/SsmlOf";
+import {AZURE_VOICES} from "@flashcards/shared/audio/azure/AzureVoices";
+import type {AzureVoice} from "@flashcards/shared/audio/azure/AzureVoice";
+import {ENGLISH_VOICE} from "@flashcards/shared/audio/azure/EnglishVoice";
+import {SPEED_RATES} from "@flashcards/shared/audio/azure/SpeedRates";
+import {ssmlOf} from "@flashcards/shared/audio/azure/SsmlOf";
 import type {SpeechRequest} from "@src/speech/types/SpeechRequest";
 
 interface Azure {

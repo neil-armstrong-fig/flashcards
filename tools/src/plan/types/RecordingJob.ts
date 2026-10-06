@@ -1,5 +1,5 @@
-import type {SpokenLanguage} from "@language-learning/shared/language/SpokenLanguage";
-import type {RecordingVariant} from "@language-learning/shared/audio/RecordingVariant";
+import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
+import type {RecordingVariant} from "@flashcards/shared/audio/RecordingVariant";
 
 /** One recording to have: what is said, who says it, how fast, and where the file goes. */
 export interface RecordingJob {

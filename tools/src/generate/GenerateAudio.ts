@@ -5,7 +5,7 @@ import {recordingsNeeded} from "@src/plan/RecordingsNeeded";
 import {saveRecording} from "@src/generate/files/SaveRecording";
 import {synthesiseRecording} from "@src/azure/SynthesiseRecording";
 import {writeManifest} from "@src/generate/files/WriteManifest";
-import type {Deck} from "@language-learning/content/types/Deck";
+import type {Deck} from "@flashcards/content/types/Deck";
 
 interface GenerationSummary {
   /** Recordings the decks need. */

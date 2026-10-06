@@ -1,8 +1,8 @@
-import {englishMeaningFrom} from "@language-learning/shared/language/EnglishText";
+import {englishMeaningFrom} from "@flashcards/shared/language/EnglishText";
 import {isCustomNoteId} from "@src/redux/slices/deck/ids/CustomNoteId";
-import {koreanWordFrom} from "@language-learning/shared/language/KoreanText";
-import {romanisationFrom} from "@language-learning/shared/language/RomanisationText";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import {koreanWordFrom} from "@flashcards/shared/language/KoreanText";
+import {romanisationFrom} from "@flashcards/shared/language/RomanisationText";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
 /** A card the learner made, from a value that has come from outside (storage, the API), or `undefined` if it is not one. Never cast. */
 export function readCustomNote(value: unknown): VocabNote | undefined {

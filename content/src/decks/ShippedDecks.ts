@@ -1,7 +1,7 @@
-import {HIRAGANA_DECK} from "@language-learning/content/japanese/HiraganaDeck";
-import {KATAKANA_DECK} from "@language-learning/content/japanese/KatakanaDeck";
-import {STARTER_DECK} from "@language-learning/content/korean/StarterDeck";
-import type {Deck} from "@language-learning/content/types/Deck";
+import {HIRAGANA_DECK} from "@flashcards/content/japanese/HiraganaDeck";
+import {KATAKANA_DECK} from "@flashcards/content/japanese/KatakanaDeck";
+import {STARTER_DECK} from "@flashcards/content/korean/StarterDeck";
+import type {Deck} from "@flashcards/content/types/Deck";
 
 /**
  * Every deck the app ships, in the order the home screen lists them. A session studies one deck at a time, so the order only

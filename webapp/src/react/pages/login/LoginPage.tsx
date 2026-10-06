@@ -17,7 +17,9 @@ export function LoginPage({reason}: Props): React.JSX.Element {
       data-testid="login-screen"
       className="mx-auto flex min-h-screen max-w-xl flex-col items-center justify-center gap-6 p-6 text-center"
     >
-      <h1 className="text-3xl font-semibold">Language learning</h1>
+      <h1 data-testid="app-title" className="text-3xl font-semibold">
+        Flash Cards
+      </h1>
 
       {reason === "signIn" && (
         <>

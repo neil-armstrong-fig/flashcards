@@ -26,6 +26,10 @@ given("the learner has signed in with Google", () => {
         expect(await webApp.login.canReachTheApp()).toBe(false);
       });
 
+      then("the sign-in screen calls the app Flash Cards", async ({webApp}) => {
+        expect(await webApp.login.getAppTitle()).toBe("Flash Cards");
+      });
+
       when("they reopen the app", () => {
         beforeEach(async ({webApp}) => {
           await webApp.reload();

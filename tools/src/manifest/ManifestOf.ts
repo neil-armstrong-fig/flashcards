@@ -1,5 +1,5 @@
-import type {AudioManifest} from "@language-learning/content/audio/types/AudioManifest";
-import type {RecordingFiles} from "@language-learning/content/audio/types/AudioManifest";
+import type {AudioManifest} from "@flashcards/content/audio/types/AudioManifest";
+import type {RecordingFiles} from "@flashcards/content/audio/types/AudioManifest";
 import type {RecordingJob} from "@src/plan/types/RecordingJob";
 
 /** The manifest naming every job whose file exists, grouped by language and then by text, in the order the jobs came. */

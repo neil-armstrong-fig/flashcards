@@ -15,7 +15,7 @@ The app at **`flashcards.neilarmstrong.dev`** (GitHub Pages) and the Worker at *
 4. Keep `ALCHEMY_PASSWORD`, the Google client id and secret, the Azure key and the token somewhere safe (a password manager): the
    deploy and CI need the same values.
 
-Then: `provision` (4c), the Worker's custom domain (4d), the audio upload (`pnpm --filter @language-learning/tools upload-audio -- --remote`, with the token in `.env.dev`), the Actions secrets (4e).
+Then: `provision` (4c), the Worker's custom domain (4d), the audio upload (`pnpm --filter @flashcards/tools upload-audio -- --remote`, with the token in `.env.dev`), the Actions secrets (4e).
 
 ## 1. GitHub repository and Pages
 
@@ -75,7 +75,7 @@ verification is needed. It is a private **test app** with just your own account 
    `GOOGLE_REDIRECT_URI` (names in `api/.dev.vars.example`) there too. `pnpm api:dev` loads that one file (`wrangler dev --env-file ../.env.dev`),
    so there is no `api/.dev.vars` to keep in step, and Wrangler prefers one if it exists: delete it. Without any of these the API answers 500 and the app shows
    that sign-in cannot be reached. Never paste a secret into a chat, a doc or a commit.
-6. Create the local database once: `pnpm --filter @language-learning/api db:migrate:local`.
+6. Create the local database once: `pnpm --filter @flashcards/api db:migrate:local`.
 7. `pnpm start:local`, open `http://localhost:3000`, you land on the **Sign in with Google** screen.
 
 Session cookies are `SameSite=Lax`, so the app and the API must share a registrable domain: `localhost` does, and when deployed the
@@ -97,7 +97,7 @@ long random string, e.g. `openssl rand -base64 32`; keep it, CI needs the same o
 decided; until then only `http://localhost:3000` is allowed):
 
 ```bash
-pnpm --filter @language-learning/infra provision
+pnpm --filter @flashcards/infra provision
 ```
 
 It makes the D1 database (migrations applied), the two KV namespaces and the `flashcards-api` Worker. The script is called

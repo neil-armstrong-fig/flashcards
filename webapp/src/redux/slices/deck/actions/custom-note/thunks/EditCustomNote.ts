@@ -1,7 +1,7 @@
 import {editFailed, noteEdited} from "@src/redux/slices/deck/DeckSlice";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
 import type {CardWords} from "@src/redux/slices/deck/types/CardWords";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 import {editKeptNote} from "@src/redux/api/EditKeptNote";
 
 /**

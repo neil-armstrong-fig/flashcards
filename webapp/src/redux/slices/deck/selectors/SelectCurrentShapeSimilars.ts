@@ -1,7 +1,7 @@
 import {selectCardById} from "@src/redux/slices/deck/selectors/SelectCardById";
 import {selectNoteById} from "@src/redux/slices/deck/selectors/SelectNoteById";
 import type {RootState} from "@src/redux/Store";
-import type {ShapeSimilar} from "@language-learning/content/types/ShapeSimilar";
+import type {ShapeSimilar} from "@flashcards/content/types/ShapeSimilar";
 
 const NONE: readonly ShapeSimilar[] = [];
 

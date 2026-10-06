@@ -1,13 +1,13 @@
-import {AZURE_VOICES} from "@language-learning/shared/audio/azure/AzureVoices";
-import {ENGLISH_VARIANT} from "@language-learning/content/audio/RecordingVariantFor";
-import {ENGLISH_VOICE} from "@language-learning/shared/audio/azure/EnglishVoice";
+import {AZURE_VOICES} from "@flashcards/shared/audio/azure/AzureVoices";
+import {ENGLISH_VARIANT} from "@flashcards/content/audio/RecordingVariantFor";
+import {ENGLISH_VOICE} from "@flashcards/shared/audio/azure/EnglishVoice";
 import {recordingFileOf} from "@src/naming/RecordingFileOf";
-import {recordingVariantOf} from "@language-learning/shared/audio/RecordingVariantOf";
-import {SPEED_RATES} from "@language-learning/shared/audio/azure/SpeedRates";
-import {SPEEDS} from "@language-learning/shared/audio/Speed";
-import {VOICES} from "@language-learning/shared/audio/Voice";
-import type {Language} from "@language-learning/shared/language/Language";
-import type {Deck} from "@language-learning/content/types/Deck";
+import {recordingVariantOf} from "@flashcards/shared/audio/RecordingVariantOf";
+import {SPEED_RATES} from "@flashcards/shared/audio/azure/SpeedRates";
+import {SPEEDS} from "@flashcards/shared/audio/Speed";
+import {VOICES} from "@flashcards/shared/audio/Voice";
+import type {Language} from "@flashcards/shared/language/Language";
+import type {Deck} from "@flashcards/content/types/Deck";
 import type {RecordingJob} from "@src/plan/types/RecordingJob";
 
 /** Every recording the decks need: each word (or kana) and similar, once, in every voice at every speed, and each English meaning in the one English voice. The sound of a kana is not spoken, so it needs none. */

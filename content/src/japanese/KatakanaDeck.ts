@@ -1,8 +1,8 @@
-import {EXTENDED_KATAKANA} from "@language-learning/content/japanese/extended-katakana/ExtendedKatakana";
-import {shapeSimilarsOf} from "@language-learning/content/japanese/shape-similars/ShapeSimilarsOf";
-import {soundSimilarsOf} from "@language-learning/content/japanese/sound-similars/SoundSimilarsOf";
-import {KANA} from "@language-learning/content/japanese/Kana";
-import type {Deck} from "@language-learning/content/types/Deck";
+import {EXTENDED_KATAKANA} from "@flashcards/content/japanese/extended-katakana/ExtendedKatakana";
+import {shapeSimilarsOf} from "@flashcards/content/japanese/shape-similars/ShapeSimilarsOf";
+import {soundSimilarsOf} from "@flashcards/content/japanese/sound-similars/SoundSimilarsOf";
+import {KANA} from "@flashcards/content/japanese/Kana";
+import type {Deck} from "@flashcards/content/types/Deck";
 
 /** Every katakana, each studied both ways (the character to its sound, and the sound to the character): the basic, voiced and combined ones, then those made for foreign sounds. */
 export const KATAKANA_DECK: Deck = {

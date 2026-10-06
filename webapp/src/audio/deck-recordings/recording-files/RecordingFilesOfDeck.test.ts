@@ -1,6 +1,6 @@
 import {recordingFilesOfDeck} from "@src/audio/deck-recordings/recording-files/RecordingFilesOfDeck";
-import type {AudioManifest} from "@language-learning/content/audio/types/AudioManifest";
-import type {Deck} from "@language-learning/content/types/Deck";
+import type {AudioManifest} from "@flashcards/content/audio/types/AudioManifest";
+import type {Deck} from "@flashcards/content/types/Deck";
 
 const MANIFEST: AudioManifest = {
   ko: {

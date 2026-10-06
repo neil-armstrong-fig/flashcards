@@ -1,5 +1,5 @@
 {
-  "name": "language-learning",
+  "name": "flashcards",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -8,10 +8,10 @@
     "node": ">=24.13.1"
   },
   "scripts": {
-    "start": "pnpm --filter @language-learning/webapp start",
-    "api:dev": "pnpm --filter @language-learning/api start",
-    "start:local": "pnpm --parallel --filter @language-learning/api --filter @language-learning/webapp start",
-    "start:preview": "pnpm --filter @language-learning/webapp start:preview",
+    "start": "pnpm --filter @flashcards/webapp start",
+    "api:dev": "pnpm --filter @flashcards/api start",
+    "start:local": "pnpm --parallel --filter @flashcards/api --filter @flashcards/webapp start",
+    "start:preview": "pnpm --filter @flashcards/webapp start:preview",
     "build": "pnpm --recursive build",
     "checks": "pnpm --recursive checks",
     "lint": "pnpm --recursive lint",
@@ -20,11 +20,11 @@
     "format:check": "pnpm --recursive format:check",
     "type-check": "pnpm --recursive type-check",
     "test": "pnpm --recursive test",
-    "install-browsers": "pnpm --filter @language-learning/acceptance-tests install-browsers",
-    "acceptance-tests": "pnpm --filter @language-learning/acceptance-tests acceptance-tests",
-    "acceptance-tests:pwa": "pnpm --filter @language-learning/acceptance-tests acceptance-tests:pwa",
-    "acceptance-tests:headed": "pnpm --filter @language-learning/acceptance-tests acceptance-tests:headed",
-    "acceptance-tests:ui": "pnpm --filter @language-learning/acceptance-tests acceptance-tests:ui",
-    "acceptance-tests:report": "pnpm --filter @language-learning/acceptance-tests acceptance-tests:report"
+    "install-browsers": "pnpm --filter @flashcards/acceptance-tests install-browsers",
+    "acceptance-tests": "pnpm --filter @flashcards/acceptance-tests acceptance-tests",
+    "acceptance-tests:pwa": "pnpm --filter @flashcards/acceptance-tests acceptance-tests:pwa",
+    "acceptance-tests:headed": "pnpm --filter @flashcards/acceptance-tests acceptance-tests:headed",
+    "acceptance-tests:ui": "pnpm --filter @flashcards/acceptance-tests acceptance-tests:ui",
+    "acceptance-tests:report": "pnpm --filter @flashcards/acceptance-tests acceptance-tests:report"
   }
 }

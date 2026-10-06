@@ -1,4 +1,4 @@
-import type {ByteRange} from "@language-learning/shared/http/types/ByteRange";
+import type {ByteRange} from "@flashcards/shared/http/types/ByteRange";
 
 const RANGE = /^bytes=(\d*)-(\d*)$/;
 

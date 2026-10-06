@@ -3,9 +3,9 @@
     "allow": [
       "Bash(pnpm checks)",
       "Bash(pnpm acceptance-tests)",
-      "Bash(pnpm --filter @language-learning/webapp checks)",
-      "Bash(pnpm --filter @language-learning/acceptance-tests checks)",
-      "Bash(pnpm --filter @language-learning/shared checks)",
+      "Bash(pnpm --filter @flashcards/webapp checks)",
+      "Bash(pnpm --filter @flashcards/acceptance-tests checks)",
+      "Bash(pnpm --filter @flashcards/shared checks)",
       "mcp__ide__getDiagnostics"
     ]
   }

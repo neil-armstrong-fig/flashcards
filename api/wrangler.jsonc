@@ -5,7 +5,7 @@
   "compatibility_date": "2026-09-01",
   // For `wrangler dev` and the local database only. Production is declared in `infra/` and deployed by Alchemy, which keeps the same
   // names, bindings and limits: change them there too.
-  // The local database needs no id: `pnpm --filter @language-learning/api db:migrate:local` makes it under .wrangler/.
+  // The local database needs no id: `pnpm --filter @flashcards/api db:migrate:local` makes it under .wrangler/.
   "d1_databases": [
     {
       "binding": "DB",

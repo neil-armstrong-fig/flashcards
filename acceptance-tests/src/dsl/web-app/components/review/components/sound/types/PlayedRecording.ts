@@ -1,6 +1,6 @@
-import type {SpokenLanguage} from "@language-learning/shared/language/SpokenLanguage";
-import type {Speed} from "@language-learning/shared/audio/Speed";
-import type {Voice} from "@language-learning/shared/audio/Voice";
+import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
+import type {Speed} from "@flashcards/shared/audio/Speed";
+import type {Voice} from "@flashcards/shared/audio/Voice";
 
 /** One recording the app started playing, as the fake audio element saw it. */
 export interface PlayedRecording {

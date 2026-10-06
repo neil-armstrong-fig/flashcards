@@ -11,6 +11,10 @@ export class LoginPlaywright extends BaseComponent {
     return await this.page.getByTestId("login-screen").isVisible();
   }
 
+  async appTitle(): Promise<string> {
+    return await this.page.getByTestId("app-title").innerText();
+  }
+
   /** Whether any part of the app can be reached: its home screen, and its way into the settings. */
   async canReachTheApp(): Promise<boolean> {
     const home = await this.page.getByTestId("start-reviewing").isVisible();

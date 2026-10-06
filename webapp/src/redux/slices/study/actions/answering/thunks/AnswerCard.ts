@@ -2,7 +2,7 @@ import {answered, savingStarted} from "@src/redux/slices/study/StudySlice";
 import {queueSettingsOf} from "@src/redux/slices/study/queue/QueueSettingsOf";
 import {reportUnsaved} from "@src/redux/slices/study/actions/shared/utils/ReportUnsaved";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 import type {StudyCard} from "@src/spaced-repetition/card/types/StudyCard";
 import {reviewCard} from "@src/spaced-repetition/scheduling/ReviewCard";
 import {setAsideIfStruggling} from "@src/redux/slices/study/actions/answering/utils/SetAsideIfStruggling";

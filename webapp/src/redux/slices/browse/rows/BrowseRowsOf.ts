@@ -1,7 +1,7 @@
 import {cardStatusOf} from "@src/spaced-repetition/card/CardStatusOf";
 import type {BrowseRow} from "@src/redux/slices/browse/types/BrowseRow";
 import type {CardState} from "@src/spaced-repetition/card/types/CardState";
-import type {DeckCard} from "@language-learning/content/types/DeckCard";
+import type {DeckCard} from "@flashcards/content/types/DeckCard";
 
 /** Every card of the deck, in the order new ones are introduced, narrowed to those whose words, meaning or way of saying it contain `query`. */
 export function browseRowsOf(

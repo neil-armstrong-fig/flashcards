@@ -100,6 +100,7 @@ or removing one means changing both sides in the same commit.
 | `similar-switch-speed`            | similar panel              | Button: switch normal/slower and play the card's own word                                                                  |
 | `login-screen`                    | sign-in screen             | The sign-in screen: all there is until signed in                                                                           |
 | `app-home`                        | home screen                | Present while the home screen is on screen                                                                                 |
+| `app-title`                       | home and sign-in screens   | The app's name, as the heading at the top of either screen                                                                 |
 | `open-browse`                     | home screen                | Button that opens the list of every card                                                                                   |
 | `browse-screen`                   | browse screen              | Present while the list of cards is on screen                                                                               |
 | `close-browse`                    | browse screen              | Button back to the home screen                                                                                             |

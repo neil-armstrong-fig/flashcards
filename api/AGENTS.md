@@ -16,7 +16,7 @@ A Cloudflare Worker (modelled on janggi's `api/` (https://github.com/neil-armstr
   in the chosen voice and speed, `en` an English meaning (up to 40 characters) in the one English voice at normal speed. The **Azure key stays
   here**, never in the browser.
 
-It may import `@language-learning/shared` (the voice tables, SSML, the text checks) and nothing else in the workspace. The webapp
+It may import `@flashcards/shared` (the voice tables, SSML, the text checks) and nothing else in the workspace. The webapp
 may not import it at all.
 
 ## What is refused, and in what order
@@ -56,8 +56,8 @@ No ternaries here (lint): a guard that returns early reads one condition at a ti
 Drizzle writes the SQL and Wrangler applies it. **Never** run `drizzle-kit migrate` or `push` against D1 as well.
 
 ```bash
-pnpm --filter @language-learning/api db:generate         # after changing src/database/schema/, writes migrations/ (commit them)
-pnpm --filter @language-learning/api db:migrate:local    # makes or updates the local database under .wrangler/
+pnpm --filter @flashcards/api db:generate         # after changing src/database/schema/, writes migrations/ (commit them)
+pnpm --filter @flashcards/api db:migrate:local    # makes or updates the local database under .wrangler/
 ```
 
 Tables: `users` (Google subject, email), `sessions` (hash of the token, expiry), `similar_words` (account, note id, text), `notes`
@@ -68,7 +68,7 @@ to a stored shape is a new migration, never an edit to an old one.
 
 ```bash
 pnpm start:local            # from the repo root: this API on :8787 and the app on :3000 (the one origin it allows)
-pnpm --filter @language-learning/api test    # plain node: the code is plain functions, `cloudflare:workers` is a stub
+pnpm --filter @flashcards/api test    # plain node: the code is plain functions, `cloudflare:workers` is a stub
 ```
 
 Needs these in the root `.env.dev` (git-ignored; names in `.dev.vars.example`): `AZURE_SPEECH_KEY`, `GOOGLE_OAUTH_CLIENT_ID`,

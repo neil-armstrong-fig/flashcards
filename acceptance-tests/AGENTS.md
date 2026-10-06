@@ -3,7 +3,7 @@
 Playwright runs the specs, which drive the real app through a DSL. Four layers, and imports only ever point downwards:
 
 ```
-src/tests/                        the mapping, "@src/shared/*" and @language-learning/shared, nothing else
+src/tests/                        the mapping, "@src/shared/*" and @flashcards/shared, nothing else
 src/acceptance-criteria-mapping/  src/dsl/ and src/shared/; never src/tests/
 src/dsl/                          itself and src/shared/; never upwards
 src/shared/                       helpers more than one layer needs (none yet)
@@ -16,7 +16,7 @@ Every arrow above is a lint rule, so a violation fails `pnpm checks`. `src/dsl/A
 ## What a spec may reach
 
 The DSL, and nothing else: no `page`, `context`, `browser` or `testInfo`, and **never the `webapp` package**. A spec that
-imported the scheduler to work out what should be due would agree with it whatever the scheduler did. `@language-learning/shared`
+imported the scheduler to work out what should be due would agree with it whatever the scheduler did. `@flashcards/shared`
 is the exception and is meant to be used: it holds the vocabulary, so `webApp.review.rate("good")` is checked against the same
 `Rating` union the app is, and `"gud"` is a compile error. Enforced three ways: the argument type, `withDslOnly` rebuilding the
 argument object at runtime, and a lint rule banning Playwright and `@src/dsl/**` under `src/tests/`.

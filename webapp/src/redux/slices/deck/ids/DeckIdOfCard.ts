@@ -1,5 +1,5 @@
-import {SHIPPED_DECKS} from "@language-learning/content/decks/ShippedDecks";
-import {STARTER_DECK} from "@language-learning/content/korean/StarterDeck";
+import {SHIPPED_DECKS} from "@flashcards/content/decks/ShippedDecks";
+import {STARTER_DECK} from "@flashcards/content/korean/StarterDeck";
 import {noteIdOfCard} from "@src/spaced-repetition/queue/siblings/NoteIdOfCard";
 
 const DECK_OF_NOTE = new Map(SHIPPED_DECKS.flatMap(deck => deck.notes.map(note => [note.id, deck.id] as const)));

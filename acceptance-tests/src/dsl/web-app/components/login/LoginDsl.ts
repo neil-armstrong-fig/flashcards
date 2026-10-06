@@ -18,6 +18,15 @@ export class LoginDsl {
     }
   }
 
+  /** The name the screen gives the app at its top. */
+  async getAppTitle(): Promise<string> {
+    try {
+      return await this.playwright.appTitle();
+    } catch (error) {
+      throw new DslError("Failed to read the app's name from the sign-in screen", error);
+    }
+  }
+
   /** Whether the home screen or the way into the settings can be seen: not while the sign-in screen is up. */
   async canReachTheApp(): Promise<boolean> {
     try {

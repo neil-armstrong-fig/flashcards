@@ -1,7 +1,7 @@
-import type {CardDirection} from "@language-learning/content/CardDirection";
-import type {DeckCard} from "@language-learning/content/types/DeckCard";
-import type {SpokenText} from "@language-learning/content/types/SpokenText";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import type {CardDirection} from "@flashcards/content/CardDirection";
+import type {DeckCard} from "@flashcards/content/types/DeckCard";
+import type {SpokenText} from "@flashcards/content/types/SpokenText";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
 /** The card that asks `note` in one direction. */
 export function cardOfNote(note: VocabNote, direction: CardDirection): DeckCard {

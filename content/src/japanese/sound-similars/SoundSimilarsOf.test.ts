@@ -1,6 +1,6 @@
-import {KANA} from "@language-learning/content/japanese/Kana";
-import {SOUND_SIMILAR_GROUPS} from "@language-learning/content/japanese/sound-similars/SoundSimilarGroups";
-import {soundSimilarsOf} from "@language-learning/content/japanese/sound-similars/SoundSimilarsOf";
+import {KANA} from "@flashcards/content/japanese/Kana";
+import {SOUND_SIMILAR_GROUPS} from "@flashcards/content/japanese/sound-similars/SoundSimilarGroups";
+import {soundSimilarsOf} from "@flashcards/content/japanese/sound-similars/SoundSimilarsOf";
 
 function kana(romaji: string): (typeof KANA)[number] {
   const found = KANA.find(entry => entry.romaji === romaji);

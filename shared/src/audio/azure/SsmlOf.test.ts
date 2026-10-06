@@ -1,4 +1,4 @@
-import {ssmlOf} from "@language-learning/shared/audio/azure/SsmlOf";
+import {ssmlOf} from "@flashcards/shared/audio/azure/SsmlOf";
 
 const WATER = {text: "물", voiceName: "ko-KR-JiMinNeural", locale: "ko-KR", rate: "default"};
 

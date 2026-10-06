@@ -1,5 +1,5 @@
-import type {Language} from "@language-learning/shared/language/Language";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import type {Language} from "@flashcards/shared/language/Language";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
 export interface Deck {
   readonly id: string;

@@ -1,6 +1,6 @@
-# Language Learning
+# Flash Cards
 
-A spaced-repetition app for learning Korean, then Japanese, then Dutch. It installs as a PWA, works offline, and speaks every card.
+A spaced-repetition app for learning languages. Only personal access for now. It installs as a PWA, works offline, and speaks every card.
 
 ## Development
 

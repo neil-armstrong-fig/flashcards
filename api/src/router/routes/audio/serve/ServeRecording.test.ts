@@ -1,5 +1,5 @@
 import {serveRecording} from "@src/router/routes/audio/serve/ServeRecording";
-import type {ByteRange} from "@language-learning/shared/http/types/ByteRange";
+import type {ByteRange} from "@flashcards/shared/http/types/ByteRange";
 import type {StoredRecording} from "@src/buckets/recordings/types/StoredRecording";
 
 const KEY = "ko/female-normal/c2f16032c0b9c1ea.mp3";

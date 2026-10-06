@@ -1,4 +1,4 @@
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
 export interface DeckState {
   /** The cards the learner made, oldest first, as notes: each is studied as two cards. The deck's own notes are not here. */

@@ -29,7 +29,7 @@ jobs:
       # Lint, format, types and unit tests across every package.
       - run: pnpm checks
 
-      - run: pnpm --filter @language-learning/webapp compile
+      - run: pnpm --filter @flashcards/webapp compile
 
   acceptance-tests:
     name: Acceptance tests (local)
@@ -54,13 +54,13 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       # --with-deps installs the system libraries Chromium needs on a bare runner.
-      - run: pnpm --filter @language-learning/acceptance-tests exec playwright install --with-deps chromium
+      - run: pnpm --filter @flashcards/acceptance-tests exec playwright install --with-deps chromium
 
       # Test the production build, not the dev server.
-      - run: pnpm --filter @language-learning/webapp compile
+      - run: pnpm --filter @flashcards/webapp compile
 
       - name: Serve the build
-        run: pnpm --filter @language-learning/webapp preview &
+        run: pnpm --filter @flashcards/webapp preview &
 
       - name: Wait for the server
         run: |
@@ -114,7 +114,7 @@ jobs:
 
       # The app is always served from the root of its own (sub)domain, so the build the tests ran against is the one deployed.
       - name: Build for Pages
-        run: pnpm --filter @language-learning/webapp compile
+        run: pnpm --filter @flashcards/webapp compile
         env:
           # Where the speech API is (MANUAL-SETUP-STEPS.md, step 4). Unset, the app looks for a local one.
           VITE_API_ORIGIN: ${{ vars.VITE_API_ORIGIN }}
@@ -156,7 +156,7 @@ jobs:
             echo "No CLOUDFLARE_API_TOKEN: the API is not deployed."
             exit 0
           fi
-          pnpm --filter @language-learning/infra provision
+          pnpm --filter @flashcards/infra provision
         env:
           ALCHEMY_CI_STATE_STORE_CHECK: "false"
           ALCHEMY_TELEMETRY_DISABLED: 1
@@ -189,7 +189,7 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
-      - run: pnpm --filter @language-learning/acceptance-tests exec playwright install --with-deps chromium
+      - run: pnpm --filter @flashcards/acceptance-tests exec playwright install --with-deps chromium
 
       # Pages can serve the previous build for a moment after the deployment reports success.
       - name: Wait for the deployment

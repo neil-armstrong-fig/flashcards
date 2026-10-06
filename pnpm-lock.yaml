@@ -236,7 +236,7 @@ importers:
 
   acceptance-tests:
     dependencies:
-      '@language-learning/shared':
+      '@flashcards/shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
@@ -273,7 +273,7 @@ importers:
 
   api:
     dependencies:
-      '@language-learning/shared':
+      '@flashcards/shared':
         specifier: workspace:*
         version: link:../shared
       drizzle-orm:
@@ -322,7 +322,7 @@ importers:
 
   content:
     dependencies:
-      '@language-learning/shared':
+      '@flashcards/shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
@@ -356,7 +356,7 @@ importers:
 
   infra:
     dependencies:
-      '@language-learning/shared':
+      '@flashcards/shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
@@ -430,10 +430,10 @@ importers:
 
   tools:
     dependencies:
-      '@language-learning/content':
+      '@flashcards/content':
         specifier: workspace:*
         version: link:../content
-      '@language-learning/shared':
+      '@flashcards/shared':
         specifier: workspace:*
         version: link:../shared
     devDependencies:
@@ -467,10 +467,10 @@ importers:
 
   webapp:
     dependencies:
-      '@language-learning/content':
+      '@flashcards/content':
         specifier: workspace:*
         version: link:../content
-      '@language-learning/shared':
+      '@flashcards/shared':
         specifier: workspace:*
         version: link:../shared
       '@reduxjs/toolkit':

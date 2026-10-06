@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {romanisationOf} from "@language-learning/shared/language/RomanisationOf";
+import {romanisationOf} from "@flashcards/shared/language/RomanisationOf";
 import type {CardWords} from "@src/redux/slices/deck/types/CardWords";
 
 interface Props {

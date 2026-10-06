@@ -1,6 +1,6 @@
-import {baseConfig, restrictedImports} from "@language-learning/shared/config/eslint.base.js";
+import {baseConfig, restrictedImports} from "@flashcards/shared/config/eslint.base.js";
 
-const allowedPackages = ["@language-learning/shared", "@language-learning/content"];
+const allowedPackages = ["@flashcards/shared", "@flashcards/content"];
 
 /** The UI and state libraries, which a folder of plain data must not reach for. */
 const noUiOrStore = ["react", "react-dom", "react-redux", "@reduxjs/toolkit"].map(name => ({

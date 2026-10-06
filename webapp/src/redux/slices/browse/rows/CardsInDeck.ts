@@ -1,5 +1,5 @@
 import {deckIdOfCard} from "@src/redux/slices/deck/ids/DeckIdOfCard";
-import type {DeckCard} from "@language-learning/content/types/DeckCard";
+import type {DeckCard} from "@flashcards/content/types/DeckCard";
 import type {DeckFilter} from "@src/redux/slices/browse/types/DeckFilter";
 
 /** The cards studied in one deck, or all of them for `all`. A card the learner made counts as the Korean starter deck's. */

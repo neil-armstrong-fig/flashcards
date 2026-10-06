@@ -1,7 +1,7 @@
 import type {Locator, Page} from "@playwright/test";
 import {BaseComponent} from "@src/dsl/playwright/BaseComponent";
-import type {Speed} from "@language-learning/shared/audio/Speed";
-import type {Voice} from "@language-learning/shared/audio/Voice";
+import type {Speed} from "@flashcards/shared/audio/Speed";
+import type {Voice} from "@flashcards/shared/audio/Voice";
 
 export class SettingsVoicePlaywright extends BaseComponent {
   private readonly voiceChoices: Record<Voice, Locator>;

@@ -1,7 +1,7 @@
 import {createStore} from "@src/redux/Store";
 import {loadStudy} from "@src/redux/slices/study/actions/session/thunks/LoadStudy";
 import {testEnvironment} from "@src/testing/environment/TestEnvironment";
-import {STARTER_DECK} from "@language-learning/content/korean/StarterDeck";
+import {STARTER_DECK} from "@flashcards/content/korean/StarterDeck";
 import {startSession} from "@src/redux/slices/study/actions/session/thunks/StartSession";
 import type {AppStore} from "@src/redux/Store";
 import type {FakeAccountApi} from "@src/testing/environment/account/FakeAccountApi";

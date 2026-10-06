@@ -1,5 +1,5 @@
-import type {Deck} from "@language-learning/content/types/Deck";
-import type {VocabNote} from "@language-learning/content/types/VocabNote";
+import type {Deck} from "@flashcards/content/types/Deck";
+import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
 function word(
   slug: string,

@@ -3,9 +3,17 @@ import prettierConfig from "eslint-config-prettier";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
-export const ignores = ["**/build/**", "**/dist/**", "**/dev-dist/**", "**/coverage/**", "**/screenshots/**"];
+export const ignores = [
+  "**/build/**",
+  "**/dist/**",
+  "**/dev-dist/**",
+  "**/coverage/**",
+  "**/screenshots/**",
+  // What Alchemy writes when it deploys (the bundled Worker, its state): generated, git-ignored, not ours to lint.
+  "**/.alchemy/**",
+];
 
-const workspaceScope = "@language-learning";
+const workspaceScope = "@flashcards";
 
 // Reach for the `@src/*` alias instead of climbing out of a folder. Same-folder `./x` is fine.
 // This is also what makes the workspace boundary below airtight: with `../` unavailable, the only

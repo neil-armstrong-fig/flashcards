@@ -1,5 +1,5 @@
 {
-  "name": "@language-learning/shared",
+  "name": "@flashcards/shared",
   "version": "0.0.0",
   "private": true,
   "type": "module",

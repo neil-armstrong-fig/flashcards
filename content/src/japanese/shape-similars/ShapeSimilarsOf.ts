@@ -1,7 +1,7 @@
-import {KANA} from "@language-learning/content/japanese/Kana";
-import {HIRAGANA_SHAPE_PAIRS} from "@language-learning/content/japanese/shape-similars/HiraganaShapeSimilars";
-import {KATAKANA_SHAPE_PAIRS} from "@language-learning/content/japanese/shape-similars/KatakanaShapeSimilars";
-import type {ShapeSimilar} from "@language-learning/content/types/ShapeSimilar";
+import {KANA} from "@flashcards/content/japanese/Kana";
+import {HIRAGANA_SHAPE_PAIRS} from "@flashcards/content/japanese/shape-similars/HiraganaShapeSimilars";
+import {KATAKANA_SHAPE_PAIRS} from "@flashcards/content/japanese/shape-similars/KatakanaShapeSimilars";
+import type {ShapeSimilar} from "@flashcards/content/types/ShapeSimilar";
 
 /** The kana a character is easily taken for (in its own script), with their sounds, or none: a pair is listed once and works from either side. */
 export function shapeSimilarsOf(character: string): readonly ShapeSimilar[] {

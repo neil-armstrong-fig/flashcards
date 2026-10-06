@@ -11,7 +11,7 @@ import {secrets} from "@src/secrets/Secrets";
  * **Not here, on purpose:** the domain. The Worker is given its `workers.dev` address and a custom domain is attached by hand in
  * the dashboard, since which domain, and where its DNS lives, is the owner's.
  *
- * `pnpm --filter @language-learning/infra provision` runs it against the account `CLOUDFLARE_API_TOKEN` is for; see
+ * `pnpm --filter @flashcards/infra provision` runs it against the account `CLOUDFLARE_API_TOKEN` is for; see
  * `infra/AGENTS.md` for what to set first. Resources are adopted by name where they exist.
  */
 const app = await alchemy("flashcards", {password: secrets.ALCHEMY_PASSWORD});

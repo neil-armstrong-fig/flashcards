@@ -1,6 +1,6 @@
 import {recordingsNeeded} from "@src/plan/RecordingsNeeded";
 import type {RecordingJob} from "@src/plan/types/RecordingJob";
-import type {Deck} from "@language-learning/content/types/Deck";
+import type {Deck} from "@flashcards/content/types/Deck";
 
 const DECK: Deck = {
   id: "ko-test",

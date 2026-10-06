@@ -11,7 +11,7 @@ const BUCKET = "flashcards-recordings";
 const FOR_A_YEAR = "private, max-age=31536000, immutable";
 
 /**
- * `pnpm --filter @language-learning/tools upload-audio` puts every recording in `private-source/recordings/` into the **local** bucket
+ * `pnpm --filter @flashcards/tools upload-audio` puts every recording in `private-source/recordings/` into the **local** bucket
  * that `pnpm api:dev` serves from. `-- --remote` puts them in the real one, which needs `CLOUDFLARE_API_TOKEN` and
  * `CLOUDFLARE_ACCOUNT_ID` in the environment (`.env.dev`, never printed). Putting a recording again replaces it with the same bytes.
  */
@@ -32,7 +32,7 @@ async function main(): Promise<void> {
     await writeFile(listFile, JSON.stringify(list));
     await run("pnpm", [
       "--filter",
-      "@language-learning/api",
+      "@flashcards/api",
       "exec",
       "wrangler",
       "r2",

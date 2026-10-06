@@ -1,5 +1,5 @@
-import type {AudioManifest} from "@language-learning/content/audio/types/AudioManifest";
-import type {Deck} from "@language-learning/content/types/Deck";
+import type {AudioManifest} from "@flashcards/content/audio/types/AudioManifest";
+import type {Deck} from "@flashcards/content/types/Deck";
 
 /**
  * Every recording a deck can play, each once, as paths under `audio/`: every version of each word and of what it is mistaken for (a

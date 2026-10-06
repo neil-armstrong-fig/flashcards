@@ -1,5 +1,5 @@
-import {koreanWordFrom} from "@language-learning/shared/language/KoreanText";
-import {romanisationFrom} from "@language-learning/shared/language/RomanisationText";
+import {koreanWordFrom} from "@flashcards/shared/language/KoreanText";
+import {romanisationFrom} from "@flashcards/shared/language/RomanisationText";
 import {romanize} from "koroman";
 
 /**

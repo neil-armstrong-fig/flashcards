@@ -1,8 +1,8 @@
-import {cardsOfDeck} from "@language-learning/content/cards/CardsOfDeck";
-import {cardsOfNote} from "@language-learning/content/cards/CardsOfNote";
+import {cardsOfDeck} from "@flashcards/content/cards/CardsOfDeck";
+import {cardsOfNote} from "@flashcards/content/cards/CardsOfNote";
 import {createSelector} from "@reduxjs/toolkit";
-import {SHIPPED_DECKS} from "@language-learning/content/decks/ShippedDecks";
-import type {DeckCard} from "@language-learning/content/types/DeckCard";
+import {SHIPPED_DECKS} from "@flashcards/content/decks/ShippedDecks";
+import type {DeckCard} from "@flashcards/content/types/DeckCard";
 import type {RootState} from "@src/redux/Store";
 
 const DECK_CARDS = SHIPPED_DECKS.flatMap(cardsOfDeck);

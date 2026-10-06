@@ -1,8 +1,8 @@
-import {recordingVariantOf} from "@language-learning/shared/audio/RecordingVariantOf";
-import type {RecordingVariant} from "@language-learning/shared/audio/RecordingVariant";
-import type {Speed} from "@language-learning/shared/audio/Speed";
-import type {SpokenLanguage} from "@language-learning/shared/language/SpokenLanguage";
-import type {Voice} from "@language-learning/shared/audio/Voice";
+import {recordingVariantOf} from "@flashcards/shared/audio/RecordingVariantOf";
+import type {RecordingVariant} from "@flashcards/shared/audio/RecordingVariant";
+import type {Speed} from "@flashcards/shared/audio/Speed";
+import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
+import type {Voice} from "@flashcards/shared/audio/Voice";
 
 /** The one recording of an English word. The learner is not practising English listening, so it is not theirs to choose. */
 export const ENGLISH_VARIANT: RecordingVariant = "female-normal";

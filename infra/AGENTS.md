@@ -22,8 +22,8 @@ bundles and uploads it.
 
 ```bash
 export CLOUDFLARE_API_TOKEN=... CLOUDFLARE_ACCOUNT_ID=... AZURE_SPEECH_KEY=... GOOGLE_OAUTH_CLIENT_ID=... GOOGLE_OAUTH_SECRET=... ALLOWED_EMAILS=... ALCHEMY_PASSWORD=...   # never in a chat, a doc or a commit
-pnpm --filter @language-learning/infra provision     # creates or adopts by name, deploys, prints the address
-pnpm --filter @language-learning/infra destroy       # removes what it made
+pnpm --filter @flashcards/infra provision     # creates or adopts by name, deploys, prints the address
+pnpm --filter @flashcards/infra destroy       # removes what it made
 ```
 
 Secrets are read once by `src/secrets/Secrets.ts`, which names every missing one together before anything is made, and are

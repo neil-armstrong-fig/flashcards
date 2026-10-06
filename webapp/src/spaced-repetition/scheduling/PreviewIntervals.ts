@@ -1,4 +1,4 @@
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 import type {IntervalPreview} from "@src/spaced-repetition/scheduling/types/IntervalPreview";
 import type {PreviewRequest} from "@src/spaced-repetition/scheduling/types/PreviewRequest";
 import {freeSpacedRepetitionSchedulerFor} from "@src/spaced-repetition/scheduling/free-spaced-repetition-scheduler/FreeSpacedRepetitionSchedulerFor";

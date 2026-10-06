@@ -1,5 +1,5 @@
 import type {Page} from "@playwright/test";
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 import {DslError} from "@src/dsl/errors/DslError";
 import {SimilarDsl} from "@src/dsl/web-app/components/review/components/similar/SimilarDsl";
 import {ReviewPlaywright} from "@src/dsl/web-app/components/review/playwright/ReviewPlaywright";

@@ -1,4 +1,4 @@
-import {englishMeaningFrom} from "@language-learning/shared/language/EnglishText";
+import {englishMeaningFrom} from "@flashcards/shared/language/EnglishText";
 
 it("accepts a meaning, trimmed", () => {
   expect(englishMeaningFrom(" elephant ")).toBe("elephant");

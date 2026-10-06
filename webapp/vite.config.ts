@@ -39,8 +39,8 @@ export default defineConfig({
       includeAssets: ["icon.svg", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "apple-touch-icon.png"],
       manifest: {
         id: "/",
-        name: "Language Learning",
-        short_name: "Languages",
+        name: "Flash Cards",
+        short_name: "Flash Cards",
         description: "Spaced-repetition language study with audio, streaks and memory aids. Works offline.",
         lang: "en",
         dir: "ltr",

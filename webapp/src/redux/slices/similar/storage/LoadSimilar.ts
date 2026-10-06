@@ -1,6 +1,6 @@
 import {SIMILAR_STORAGE_KEY} from "@src/redux/slices/similar/storage/SimilarStorageKey";
 import {INITIAL_SIMILAR_STATE} from "@src/redux/slices/similar/initial-state/InitialSimilarState";
-import {koreanWordFrom} from "@language-learning/shared/language/KoreanText";
+import {koreanWordFrom} from "@flashcards/shared/language/KoreanText";
 import {readJson} from "@src/redux/shared/device-storage/ReadJson";
 import type {SimilarState} from "@src/redux/slices/similar/types/SimilarState";
 

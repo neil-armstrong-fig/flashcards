@@ -1,7 +1,7 @@
 import {useAppSelector} from "@src/redux/shared/Hooks";
 import {useSwitchSpeed} from "@src/react/audio/hooks/use-switch-speed/UseSwitchSpeed";
 import type {AudioChoices} from "@src/audio/types/AudioChoices";
-import type {Speed} from "@language-learning/shared/audio/Speed";
+import type {Speed} from "@flashcards/shared/audio/Speed";
 
 const SPEED_LABELS = {normal: "Normal speed", slower: "Slower"} as const satisfies Record<Speed, string>;
 

@@ -1,5 +1,5 @@
 import type {AsideKind} from "@src/redux/slices/study/types/AsideKind";
-import type {Rating} from "@language-learning/shared/study/Rating";
+import type {Rating} from "@flashcards/shared/study/Rating";
 
 /** The keys of the review screen. Each key names what it does, so a key and its meaning cannot drift apart. */
 export const REVIEW_KEYS = {

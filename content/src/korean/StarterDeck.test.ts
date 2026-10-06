@@ -1,6 +1,6 @@
-import {cardsOfDeck} from "@language-learning/content/cards/CardsOfDeck";
-import {romanisationOf} from "@language-learning/shared/language/RomanisationOf";
-import {STARTER_DECK} from "@language-learning/content/korean/StarterDeck";
+import {cardsOfDeck} from "@flashcards/content/cards/CardsOfDeck";
+import {romanisationOf} from "@flashcards/shared/language/RomanisationOf";
+import {STARTER_DECK} from "@flashcards/content/korean/StarterDeck";
 
 it("gives every note an id of its own, because progress is kept by id", () => {
   const ids = STARTER_DECK.notes.map(note => note.id);
