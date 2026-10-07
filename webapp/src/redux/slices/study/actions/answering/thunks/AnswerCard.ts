@@ -2,6 +2,8 @@ import {answered, savingStarted} from "@src/redux/slices/study/StudySlice";
 import {queueSettingsOf} from "@src/redux/slices/study/queue/QueueSettingsOf";
 import {reportUnsaved} from "@src/redux/slices/study/actions/shared/utils/ReportUnsaved";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
+import type {AnswerEventsRequest} from "@src/redux/slices/study/actions/answering/types/AnswerEventsRequest";
+import type {CardEvent} from "@flashcards/shared/sync/card-events/CardEvent";
 import type {Rating} from "@flashcards/shared/study/Rating";
 import type {StudyCard} from "@src/spaced-repetition/card/types/StudyCard";
 import {reviewCard} from "@src/spaced-repetition/scheduling/ReviewCard";
@@ -26,7 +28,11 @@ export function answerCard(rating: Rating): AppThunk<Promise<void>> {
     const outcome = setAsideIfStruggling(reviewed, previous, getState().settings);
 
     dispatch(savingStarted());
-    await recordAnswer({id, state: outcome.state}, outcome.log).catch(reportUnsaved);
+    await recordAnswer(
+      {id, state: outcome.state},
+      outcome.log,
+      answerEvents({cardId: id, rating, now, retention: desiredRetention, outcome, previous}),
+    ).catch(reportUnsaved);
     dispatch(
       answered({
         previous,
@@ -36,4 +42,16 @@ export function answerCard(rating: Rating): AppThunk<Promise<void>> {
       }),
     );
   };
+}
+
+/** The answer, and a suspend at the same moment when answering it set the card aside, so a replay never has to read the settings. */
+function answerEvents({cardId, rating, now, retention, outcome, previous}: AnswerEventsRequest): CardEvent[] {
+  const at = now.toISOString();
+  const answer: CardEvent = {cardId, kind: "answer", at, rating, retention};
+
+  if (outcome.state.suspended && !previous.state.suspended) {
+    return [answer, {cardId, kind: "suspend", at}];
+  }
+
+  return [answer];
 }

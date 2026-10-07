@@ -15,7 +15,9 @@ export function bringCardBack(id: string): AppThunk<Promise<void>> {
 
     const restored = unsuspendCard(state);
 
-    await saveCard({id, state: restored}).catch(reportUnsaved);
+    await saveCard({id, state: restored}, {cardId: id, kind: "unsuspend", at: new Date().toISOString()}).catch(
+      reportUnsaved,
+    );
     dispatch(suspendedCardsRestored({[id]: restored}));
   };
 }

@@ -20,26 +20,23 @@ vi.mock("@src/database/sessions/DeleteSession", async () => ({
 vi.mock("@src/database/sessions/AccountOfSession", async () => ({
   accountOfSession: (await import("@src/database/testing/TestDatabase")).testDatabase.accountOfSession,
 }));
-vi.mock("@src/database/similar/ListSimilarWords", async () => ({
-  listSimilarWords: (await import("@src/database/testing/TestDatabase")).testDatabase.listSimilarWords,
+vi.mock("@src/database/sync/SaveCardEvents", async () => ({
+  saveCardEvents: (await import("@src/database/testing/TestDatabase")).testDatabase.saveCardEvents,
 }));
-vi.mock("@src/database/similar/DeleteSimilarWord", async () => ({
-  deleteSimilarWord: (await import("@src/database/testing/TestDatabase")).testDatabase.deleteSimilarWord,
+vi.mock("@src/database/sync/ListCardEventsAfter", async () => ({
+  listCardEventsAfter: (await import("@src/database/testing/TestDatabase")).testDatabase.listCardEventsAfter,
 }));
-vi.mock("@src/database/similar/SaveSimilarWord", async () => ({
-  saveSimilarWord: (await import("@src/database/testing/TestDatabase")).testDatabase.saveSimilarWord,
+vi.mock("@src/database/sync/SaveSettingChanges", async () => ({
+  saveSettingChanges: (await import("@src/database/testing/TestDatabase")).testDatabase.saveSettingChanges,
 }));
-vi.mock("@src/database/notes/ListNotes", async () => ({
-  listNotes: (await import("@src/database/testing/TestDatabase")).testDatabase.listNotes,
+vi.mock("@src/database/sync/ListSettingChanges", async () => ({
+  listSettingChanges: (await import("@src/database/testing/TestDatabase")).testDatabase.listSettingChanges,
 }));
-vi.mock("@src/database/notes/SaveNote", async () => ({
-  saveNote: (await import("@src/database/testing/TestDatabase")).testDatabase.saveNote,
+vi.mock("@src/database/sync/SaveRecordChanges", async () => ({
+  saveRecordChanges: (await import("@src/database/testing/TestDatabase")).testDatabase.saveRecordChanges,
 }));
-vi.mock("@src/database/notes/UpdateNote", async () => ({
-  updateNote: (await import("@src/database/testing/TestDatabase")).testDatabase.updateNote,
-}));
-vi.mock("@src/database/notes/DeleteNote", async () => ({
-  deleteNote: (await import("@src/database/testing/TestDatabase")).testDatabase.deleteNote,
+vi.mock("@src/database/sync/ListRecordChangesAfter", async () => ({
+  listRecordChangesAfter: (await import("@src/database/testing/TestDatabase")).testDatabase.listRecordChangesAfter,
 }));
 vi.mock("@src/router/sign-in/shared/google/GoogleIdentityOf", async () => ({
   googleIdentityOf: (await import("@src/testing/google/TestGoogle")).testGoogle.identityOf,

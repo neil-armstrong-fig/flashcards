@@ -46,6 +46,24 @@ export class MemoryAidDsl {
     }
   }
 
+  /** Chooses a picture with far more pixels than a card needs, as a phone's camera makes, for the card on screen. */
+  async addVeryLargePicture(): Promise<void> {
+    try {
+      await this.playwright.addVeryLargePicture();
+    } catch (error) {
+      throw new DslError("Failed to add a very large picture to the card", error);
+    }
+  }
+
+  /** How many pixels wide the picture on the card is, as kept. */
+  async getPictureWidth(): Promise<number> {
+    try {
+      return await this.playwright.pictureWidth();
+    } catch (error) {
+      throw new DslError("Failed to read how wide the picture is", error);
+    }
+  }
+
   /** Pastes a picture from the clipboard onto the card on screen. */
   async pastePicture(): Promise<void> {
     try {

@@ -1,3 +1,4 @@
+import {TEST_NOW} from "@src/testing/time/TestNow";
 import {addCardWithRecordings} from "@src/react/audio/own-words/AddCardWithRecordings";
 import {editCardWithRecordings} from "@src/react/audio/own-words/EditCardWithRecordings";
 import {openedStudyStore} from "@src/testing/OpenedStudyStore";
@@ -19,12 +20,18 @@ async function storeWithAnElephant(): Promise<OpenedStudyStore> {
   return opened;
 }
 
-it("changes the words online and here, keeping the id and so both cards", async () => {
-  const {store, accountApi} = await storeWithAnElephant();
+it("changes the words, keeping the id and so both cards, and records the change to be sent online", async () => {
+  const {store, records} = await storeWithAnElephant();
 
   expect(await editCardWithRecordings(store.dispatch, ID, WHALE)).toBe(true);
 
-  expect(accountApi.notes).toEqual([{id: ID, ...WHALE}]);
+  expect(records.kept.at(-1)).toEqual({
+    kind: "note",
+    id: ID,
+    at: TEST_NOW.toISOString(),
+    deleted: false,
+    payload: WHALE,
+  });
   expect(store.getState().deck.notes).toEqual([{id: ID, language: "ko", ...WHALE}]);
   expect(selectCards(store.getState()).map(card => card.id)).toContain(`${ID}/to-english`);
   expect(store.getState().study.cardOrder.filter(id => id.startsWith(ID))).toEqual([
@@ -71,12 +78,13 @@ it("allows a card to keep its own word", async () => {
   expect(store.getState().deck.notes[0]?.meaning).toBe("tusker");
 });
 
-it("needs someone signed in, and a card of the learner's own", async () => {
-  const {store, accountApi} = await storeWithAnElephant();
+it("needs a card of the learner's own", async () => {
+  const {store, records} = await storeWithAnElephant();
+  const before = records.kept.length;
 
   expect(await editCardWithRecordings(store.dispatch, "ko-vocab-water", WHALE)).toBe(false);
   expect(await editCardWithRecordings(store.dispatch, "ko-custom-nothing", WHALE)).toBe(false);
-  expect(accountApi.notes).toEqual([{id: ID, ...ELEPHANT}]);
+  expect(records.kept).toHaveLength(before);
 });
 
 it.each([
@@ -84,31 +92,30 @@ it.each([
   ["no meaning", {...WHALE, meaning: ""}],
   ["a romanisation that is not Latin letters", {...WHALE, romanisation: "고래"}],
 ])("refuses %s with a reason, and changes nothing", async (_name, words) => {
-  const {store, keptAudio, accountApi} = await storeWithAnElephant();
+  const {store, keptAudio, records} = await storeWithAnElephant();
+  const before = records.kept.length;
 
   expect(await editCardWithRecordings(store.dispatch, ID, words)).toBe(false);
   expect(store.getState().deck.editError).toBeDefined();
   expect(store.getState().deck.error).toBeUndefined();
   expect(keptAudio.kept).toEqual(["코끼리", "elephant"]);
-  expect(accountApi.notes).toEqual([{id: ID, ...ELEPHANT}]);
+  expect(records.kept).toHaveLength(before);
 });
 
 it("refuses the word of another card, the deck's or the learner's", async () => {
-  const {store, accountApi} = await storeWithAnElephant();
+  const {store, records} = await storeWithAnElephant();
+  const before = records.kept.length;
 
   expect(await editCardWithRecordings(store.dispatch, ID, {...WHALE, word: "물"})).toBe(false);
   expect(store.getState().deck.editError).toBe("That word is already here.");
-  expect(accountApi.notes).toEqual([{id: ID, ...ELEPHANT}]);
+  expect(records.kept).toHaveLength(before);
 });
 
-it("changes nothing when a recording could not be had, or it could not be kept online", async () => {
-  const {store, keptAudio, accountApi} = await storeWithAnElephant();
+it("changes nothing when a recording could not be had", async () => {
+  const {store, keptAudio} = await storeWithAnElephant();
   vi.spyOn(console, "error").mockImplementation(() => undefined);
 
   keptAudio.failing = true;
-  expect(await editCardWithRecordings(store.dispatch, ID, WHALE)).toBe(false);
-  keptAudio.failing = false;
-  accountApi.unreachable = true;
   expect(await editCardWithRecordings(store.dispatch, ID, WHALE)).toBe(false);
 
   expect(store.getState().deck.notes).toEqual([{id: ID, language: "ko", ...ELEPHANT}]);

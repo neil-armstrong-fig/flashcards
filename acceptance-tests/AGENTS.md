@@ -36,6 +36,8 @@ Change a word in `content/src/korean/` and the specs that name it change in the 
   `setSystemTime` and reloads, as a learner opening the app on a later day would. Never `fastForward` for days: it takes a
   32-bit number of milliseconds, so anything past about 24 days overflows to "cannot fast-forward to the past". Never wait for
   real time.
+- **A second device is `secondDevice`**: a browser context of its own (nothing stored is shared) over the same fake account, so what one device
+  syncs the other finds. It is not opened until a spec calls `secondDevice.begin()`; `sync.waitUntilUpToDate()` waits for a device to catch up.
 - **Every spec starts as a first-time learner** with the starter deck untouched. A "returning learner" fixture seed arrives
   with the first thing worth seeding (`TODO.md`).
 

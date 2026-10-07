@@ -5,7 +5,7 @@ import type {CardState} from "@src/spaced-repetition/card/types/CardState";
 const now = new Date("2026-10-05T10:00:00Z");
 
 function cardWith(overrides: Partial<CardState>): {id: string; state: CardState} {
-  return {id: "c", state: {...newCardState(now), ...overrides}};
+  return {id: "c", state: {...newCardState({due: now.toISOString()}), ...overrides}};
 }
 
 it("shows an ordinary card", () => {

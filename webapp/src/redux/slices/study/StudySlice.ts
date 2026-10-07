@@ -2,9 +2,11 @@ import {createSlice} from "@reduxjs/toolkit";
 import type {PayloadAction} from "@reduxjs/toolkit";
 import {INITIAL_STUDY_STATE} from "@src/redux/slices/study/initial-state/InitialStudyState";
 import {newCardState} from "@src/spaced-repetition/card/NewCardState";
+import {mergedLog} from "@src/redux/slices/study/log/MergedLog";
 import {nextStudyCard} from "@src/redux/slices/study/queue/NextStudyCard";
 import type {CardState} from "@src/spaced-repetition/card/types/CardState";
 import type {IntervalPreview} from "@src/spaced-repetition/scheduling/types/IntervalPreview";
+import type {PulledProgress} from "@src/redux/slices/study/types/PulledProgress";
 import type {QueueSettings} from "@src/spaced-repetition/queue/types/QueueSettings";
 import type {ReviewOutcome} from "@src/spaced-repetition/scheduling/types/ReviewOutcome";
 import type {SessionFocus} from "@src/redux/slices/study/types/SessionFocus";
@@ -48,7 +50,7 @@ const studySlice = createSlice({
   reducers: {
     loaded: (state, action: PayloadAction<Loaded>) => {
       const {stored, deckOrder, now} = action.payload;
-      const fresh = newCardState(new Date(now));
+      const fresh = newCardState({due: now});
 
       state.cardOrder = [...deckOrder];
       state.cards = Object.fromEntries(deckOrder.map(id => [id, stored.cards[id] ?? fresh]));
@@ -58,7 +60,7 @@ const studySlice = createSlice({
     },
 
     cardsAdded: (state, action: PayloadAction<CardsAdded>) => {
-      const fresh = newCardState(new Date(action.payload.now));
+      const fresh = newCardState({due: action.payload.now});
 
       for (const id of action.payload.ids) {
         if (!state.cardOrder.includes(id)) {
@@ -123,6 +125,16 @@ const studySlice = createSlice({
       state.session.currentCardId = nextStudyCard(state, state.session.deckId, queueSettings, state.session.focus)?.id;
     },
 
+    progressSynced: (state, action: PayloadAction<PulledProgress>) => {
+      for (const [id, cardState] of Object.entries(action.payload.cards)) {
+        if (id in state.cards) {
+          state.cards[id] = cardState;
+        }
+      }
+
+      state.log = mergedLog(state.log, action.payload.log);
+    },
+
     previewAdvanced: (state, action: PayloadAction<QueueSettings>) => {
       if (!state.session?.currentCardId) {
         return;
@@ -171,6 +183,7 @@ export const {
   loaded,
   cardsAdded,
   cardsRemoved,
+  progressSynced,
   sessionStarted,
   savingStarted,
   answerShown,

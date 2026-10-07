@@ -34,6 +34,8 @@ using real account data.
 - Audio end to end (`docs/audio.md`): 978 recordings, played on show with replay, listen-only, voice and speed settings.
 - Online-served model (`docs/online.md`): recordings in a private R2 bucket behind `GET /api/audio/*`, kept on the device as they are
   played, with an opt-in Keep offline per deck. Google sign-in gates the whole app.
+- Deployed and live: the app on GitHub Pages, the API on its Worker's custom domain, the recordings uploaded to R2, and CI deploying
+  `main` and running the acceptance suite against the live URL.
 
 ## Decisions
 
@@ -47,34 +49,34 @@ using real account data.
 - Avoid RTK Query for now: the device is the offline source of truth, and mutations are ordered all-or-nothing thunks.
 - No `*Dependencies` bags: pure functions, plain effect functions, one `export const` runtime object per process.
 - `content/` is transitional. Decks become user data (D1; `docs/decks.md`, `docs/online.md`), and the package dissolves into
-  `shared/` (schema, note-to-cards rules) and language reference data. Deploy and use the app for real first.
+  `shared/` (schema, note-to-cards rules) and language reference data. Use the app for real first.
 
 ## Next
 
-1. **Deploy** (`MANUAL-SETUP-STEPS.md`): first commit and the GitHub repository, Pages and DNS, then `provision`, the Worker's custom
-   domain, `upload-audio -- --remote` and the Actions secrets. Never run for real, so expect to fix the first deploy.
-2. **Learner-made decks and adding to any deck** (`docs/decks.md`), full stack on D1; then Japanese and Dutch cards, then the dictionary.
-3. **Sync** (`docs/sync.md`): four decisions are open at the end of that document.
-4. **Daily-goal reminder** (Web Push, a cron-triggered Worker; needs the deployed API) with a setting to turn it off or move it.
+1. **Learner-made decks and adding to any deck** (`docs/decks.md`), full stack on D1; then Japanese and Dutch cards, then the dictionary.
+2. **Sync** (`docs/sync.md`, decisions made): event log and replay first, then `/api/sync`, the two-device specs and the sync workflow.
+   [~] Done: card events, replay, settings, and records (the learner's own cards, similars, notes and pictures, with removals kept so
+   they stay removed), `POST /api/sync`, the pictures bucket, the sync workflow, `sync-status` and the two-device specs. Next: deploy (the CD applies the migration and
+   provisions the pictures bucket) and try it on two real devices; then delete my data and JSON export.
+3. **Daily-goal reminder** (Web Push, a cron-triggered Worker) with a setting to turn it off or move it.
 
 ## Backlog
 
 - [ ] Browse: notes and pictures shown and editable there; add a card with a deck choice (needs learner-made decks).
 - [ ] Sentence, grammar and cloze note types and their decks, from the learner's own writing; cloze rendering. Naver dictionary links
   need a licence and terms check first.
-- [ ] Very basic Japanese sentences with a furigana or romaji toggle.
+- [ ] Very basic Japanese sentences with a furigana or romaji toggle. Find out best modern romisation similar to Korean choice
 - [ ] Dutch content and voices (`AzureVoices` joins `Language` when Dutch does).
 - [ ] Romanisation: audit every `romanisation` in `content/` against the Revised Romanization as decks grow.
-- [ ] Image resizing (in the Worker, once it is deployed).
+- [ ] Image resizing in the Worker.
 - [ ] Sound similars for the extended katakana; the learner to listen to the dakuten, combined and extended kana recordings.
-- [ ] Hiragana and katakana pairs and groups chosen for similars to be checked by someone who reads Japanese.
+- [ ] Hiragana and katakana pairs and groups chosen for similars to be checked by deep web search.
 - [ ] A "returning learner" fixture seed for the acceptance specs.
 - [ ] Theme: the manifest's `theme_color` and `background_color` are static (dark); an explicit Light choice on a dark device flashes
   dark on load (needs a small inline script in `index.html`).
-- [ ] Pictures are not resized, only refused over 5 MB.
 - [ ] Rethink precaching the service worker's 15 files if the app build grows; recordings are already outside it.
 - [ ] A flake seen once and not reproduced: `tests/pwa/EditingACard` on mobile-pwa, after the Keep-offline change. If it returns, look at
   timing around the service worker taking control.
-- [ ] SEO and README polish for the open-source release.
+- [ ] README polish for the open-source release and case study on personal-website.
 - [ ] Dependency bumps: check `pnpm outdated -r` and propose them. Hold TypeScript 7 (ESLint cannot read it), `@types/node` 26 (the
   runtime is Node 24) and the Alchemy 2.0 beta.

@@ -18,3 +18,25 @@ it("dates the note and the picture afresh and keeps them, here and on the device
   expect(store.getState().cardPictures.addedAt).toEqual({[cardId]: TEST_NOW.toISOString()});
   expect(pictures.kept.get(cardId)).toBe(TEST_NOW.toISOString());
 });
+
+it("records the note and the picture, dated afresh, to be sent online", async () => {
+  const {store, records, pictures} = await openedStudyStore();
+  const cardId = store.getState().study.session?.currentCardId ?? "";
+  await store.dispatch(writeCardNote("like a mule"));
+  await store.dispatch(addCardPicture(new File(["x"], "mule.png", {type: "image/png"})));
+  pictures.kept.set(cardId, "2020-01-01T00:00:00.000Z");
+  const before = records.kept.length;
+
+  await store.dispatch(keepMemoryAids());
+
+  expect(records.kept.slice(before)).toEqual([
+    {kind: "memory-note", id: cardId, at: TEST_NOW.toISOString(), deleted: false, payload: {text: "like a mule"}},
+    {
+      kind: "picture",
+      id: cardId,
+      at: TEST_NOW.toISOString(),
+      deleted: false,
+      payload: {hash: "1".padStart(64, "0"), type: "image/png"},
+    },
+  ]);
+});

@@ -15,7 +15,7 @@ function answers(...ratings: Rating[]): ReviewLogEntry[] {
   }));
 }
 
-const forgotten = (lapses: number): CardState => ({...newCardState(new Date(2026, 9, 1)), lapses});
+const forgotten = (lapses: number): CardState => ({...newCardState({due: new Date(2026, 9, 1).toISOString()}), lapses});
 
 it("is not struggling below the threshold", () => {
   expect(isStruggling(forgotten(7), answers("again"), 8)).toBe(false);

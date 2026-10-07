@@ -5,7 +5,7 @@ import type {StudyCard} from "@src/spaced-repetition/card/types/StudyCard";
 const minutes = (count: number): number => count * 60 * 1000;
 const now = new Date("2026-10-05T10:00:00Z");
 const desiredRetention = 0.9;
-const aNewCard: StudyCard = {id: "card-1", state: newCardState(now)};
+const aNewCard: StudyCard = {id: "card-1", state: newCardState({due: now.toISOString()})};
 
 it("starts a new card learning when it is rated good, and brings it back in ten minutes", () => {
   const {state} = reviewCard({card: aNewCard, rating: "good", now, desiredRetention});

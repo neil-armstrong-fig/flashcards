@@ -1,9 +1,8 @@
 import {loadAccount} from "@src/redux/slices/account/actions/sign-in/thunks/LoadAccount";
-import {syncKeptNotes} from "@src/react/audio/sync/SyncKeptNotes";
-import {syncKeptSimilar} from "@src/react/audio/sync/SyncKeptSimilar";
+import {syncAndKeepRecordings} from "@src/react/audio/sync/SyncAndKeepRecordings";
 import type {AppStore} from "@src/redux/Store";
 
-/** Asks who is signed in and, if someone is, brings down what is kept for them online: their cards, their similar words, and the recordings of both. */
+/** Asks who is signed in and, if someone is, syncs with what is kept for them online: their progress, their cards, notes and pictures, and the recordings of their own words. */
 export async function loadAccountAndSync(store: AppStore): Promise<void> {
   await store.dispatch(loadAccount());
 
@@ -11,6 +10,5 @@ export async function loadAccountAndSync(store: AppStore): Promise<void> {
     return;
   }
 
-  await syncKeptNotes(store);
-  await syncKeptSimilar(store);
+  await syncAndKeepRecordings(store);
 }

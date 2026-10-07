@@ -4,6 +4,7 @@ import {testEnvironment} from "@src/testing/environment/TestEnvironment";
 import {STARTER_DECK} from "@flashcards/content/korean/StarterDeck";
 import {startSession} from "@src/redux/slices/study/actions/session/thunks/StartSession";
 import type {AppStore} from "@src/redux/Store";
+import type {MemoryRecordLog} from "@src/testing/environment/records/MemoryRecordLog";
 import type {FakeAccountApi} from "@src/testing/environment/account/FakeAccountApi";
 import type {FakeKeptAudio} from "@src/testing/environment/audio/FakeKeptAudio";
 import type {MemoryCardPictures} from "@src/testing/environment/pictures/MemoryCardPictures";
@@ -20,6 +21,8 @@ export interface OpenedStudyStore {
   readonly keptAudio: FakeKeptAudio;
   readonly pictures: MemoryCardPictures;
   readonly accountApi: FakeAccountApi;
+  /** What the app kept to send the API of what the learner made, in order. */
+  readonly records: MemoryRecordLog;
 }
 
 /** A store with the app loaded and a session started, over what `testEnvironment` holds: opened again in the same test, it finds the same progress. */
@@ -37,5 +40,6 @@ export async function openedStudyStore(): Promise<OpenedStudyStore> {
     keptAudio: testEnvironment.keptAudio,
     pictures: testEnvironment.pictures,
     accountApi: testEnvironment.accountApi,
+    records: testEnvironment.records,
   };
 }

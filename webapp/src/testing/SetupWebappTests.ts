@@ -1,5 +1,5 @@
 import {afterEach, beforeEach, vi} from "vitest";
-import type {KeptNote} from "@src/redux/slices/account/types/KeptNote";
+import type {RecordChange} from "@flashcards/shared/sync/records/RecordChange";
 import type {ReviewLogEntry} from "@src/spaced-repetition/scheduling/types/ReviewLogEntry";
 import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
 import type {StudyCard} from "@src/spaced-repetition/card/types/StudyCard";
@@ -51,7 +51,7 @@ vi.mock("@src/redux/slices/card-pictures/storage/RenewStoredPicture", async () =
 
   return {
     renewStoredPicture: async (cardId: string, addedAt: string) => {
-      await testEnvironment.pictures.renew(cardId, addedAt);
+      return await testEnvironment.pictures.renew(cardId, addedAt);
     },
   };
 });
@@ -129,61 +129,53 @@ vi.mock("@src/redux/api/EndApiSession", async () => {
     },
   };
 });
-vi.mock("@src/redux/api/ReadKeptSimilar", async () => {
-  const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
-
-  return {readKeptSimilar: async () => await testEnvironment.accountApi.readSimilar()};
-});
-vi.mock("@src/redux/api/AddKeptSimilar", async () => {
+vi.mock("@src/redux/shared/sync-records/KeepLocalRecord", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {
-    addKeptSimilar: async (noteId: string, text: string) => {
-      await testEnvironment.accountApi.addSimilar(noteId, text);
+    keepLocalRecord: async (change: RecordChange) => {
+      await testEnvironment.records.keep(change);
     },
   };
 });
-vi.mock("@src/redux/api/RemoveKeptSimilar", async () => {
+vi.mock("@src/redux/workflows/sync/storage/records/ReadLocalRecord", async () => {
+  const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
+
+  return {readLocalRecord: async (kind: string, id: string) => await testEnvironment.records.read(kind, id)};
+});
+vi.mock("@src/redux/workflows/sync/storage/records/KeepHeardRecord", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {
-    removeKeptSimilar: async (noteId: string, text: string) => {
-      await testEnvironment.accountApi.removeSimilar(noteId, text);
+    keepHeardRecord: async (change: RecordChange) => {
+      await testEnvironment.records.hear(change);
     },
   };
 });
-vi.mock("@src/redux/api/ReadKeptNotes", async () => {
+vi.mock("@src/redux/api/DownloadPicture", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
-  return {readKeptNotes: async () => await testEnvironment.accountApi.readNotes()};
+  return {downloadPicture: async (hash: string) => await testEnvironment.records.download(hash)};
 });
-vi.mock("@src/redux/api/AddKeptNote", async () => {
+vi.mock("@src/redux/slices/card-pictures/storage/ReadKeptPicture", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
-  return {
-    addKeptNote: async (note: KeptNote) => {
-      await testEnvironment.accountApi.addNote(note);
-    },
-  };
+  return {readKeptPicture: async (cardId: string) => await testEnvironment.pictures.read(cardId)};
 });
-vi.mock("@src/redux/api/EditKeptNote", async () => {
-  const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
+vi.mock("@src/redux/slices/card-pictures/storage/HashOfPicture", () => ({
+  // Not a real hash: the size, in the 64 hexadecimal digits a hash is, so two pictures of different sizes differ.
+  hashOfPicture: async (picture: Blob) => String(picture.size).padStart(64, "0"),
+}));
+vi.mock("@src/redux/slices/card-pictures/picture-processing/ProcessPicture", () => ({
+  // A browser makes the picture small; here a picture of a kind that is kept is kept as it is, and anything else is refused.
+  processPicture: async (file: Blob) => {
+    if (["image/webp", "image/jpeg", "image/png"].includes(file.type)) {
+      return {picture: file};
+    }
 
-  return {
-    editKeptNote: async (note: KeptNote) => {
-      await testEnvironment.accountApi.editNote(note);
-    },
-  };
-});
-vi.mock("@src/redux/api/RemoveKeptNote", async () => {
-  const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
-
-  return {
-    removeKeptNote: async (id: string) => {
-      await testEnvironment.accountApi.removeNote(id);
-    },
-  };
-});
+    return {refusal: "That file is not a picture."};
+  },
+}));
 
 /**
  * Runs before every test file (`vitest.config.ts`). The app reaches for the time, a fresh id and what it is told it can say, so

@@ -1,37 +1,43 @@
 import {loadAccountAndSync} from "@src/react/audio/sync/LoadAccountAndSync";
 import {openedStudyStore} from "@src/testing/OpenedStudyStore";
-import {selectSimilar} from "@src/redux/slices/similar/selectors/SelectSimilar";
 
-it("brings down the words kept online when someone is signed in, with their recordings", async () => {
-  const {store, accountApi, keptAudio} = await openedStudyStore();
+const syncProgress = vi.hoisted(() => vi.fn());
+
+vi.mock("@src/redux/workflows/sync/thunks/SyncProgress", () => ({
+  syncProgress: () => async () => {
+    syncProgress();
+  },
+}));
+
+beforeEach(() => {
+  syncProgress.mockClear();
+});
+
+it("syncs when someone is signed in", async () => {
+  const {store, accountApi} = await openedStudyStore();
   accountApi.email = "me@example.com";
-  accountApi.kept = {"ko-vocab-water": ["볼"]};
 
   await loadAccountAndSync(store);
 
-  expect(selectSimilar(store.getState())?.words).toEqual(["불", "볼"]);
-  expect(keptAudio.kept).toEqual(["볼"]);
+  expect(store.getState().account.status).toBe("signedIn");
+  expect(syncProgress).toHaveBeenCalledTimes(1);
 });
 
-it("brings down nothing when nobody is signed in", async () => {
-  const {store, accountApi, keptAudio} = await openedStudyStore();
-  accountApi.kept = {"ko-vocab-water": ["볼"]};
+it("syncs nothing when nobody is signed in", async () => {
+  const {store} = await openedStudyStore();
 
   await loadAccountAndSync(store);
 
-  expect(selectSimilar(store.getState())?.words).toEqual(["불"]);
-  expect(keptAudio.kept).toEqual([]);
+  expect(syncProgress).not.toHaveBeenCalled();
 });
 
-it("skips a word whose recordings cannot be fetched, and carries on with the rest", async () => {
-  const {store, accountApi, keptAudio} = await openedStudyStore();
-  accountApi.email = "me@example.com";
-  accountApi.kept = {"ko-vocab-water": ["볼"]};
-  keptAudio.failing = true;
+it("syncs nothing when the API cannot be reached, and the learner carries on", async () => {
+  const {store, accountApi} = await openedStudyStore();
+  accountApi.unreachable = true;
   vi.spyOn(console, "error").mockImplementation(() => undefined);
 
   await loadAccountAndSync(store);
 
-  expect(selectSimilar(store.getState())?.words).toEqual(["불"]);
-  expect(store.getState().account.status).toBe("signedIn");
+  expect(syncProgress).not.toHaveBeenCalled();
+  expect(store.getState().account.status).toBe("unreachable");
 });

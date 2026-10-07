@@ -5,6 +5,7 @@ import {RouterProvider} from "react-router";
 import {ThemeApplier} from "@src/react/components/theme-applier/ThemeApplier";
 import {ReleaseUpdate} from "@src/react/components/release-update/ReleaseUpdate";
 import {loadAccountAndSync} from "@src/react/audio/sync/LoadAccountAndSync";
+import {keepProgressSynced} from "@src/react/audio/sync/KeepProgressSynced";
 import {loadCardPictures} from "@src/redux/slices/card-pictures/actions/card-picture/thunks/LoadCardPictures";
 import {loadOfflineStatus} from "@src/react/audio/offline/LoadOfflineStatus";
 import {loadStudy} from "@src/redux/slices/study/actions/session/thunks/LoadStudy";
@@ -21,6 +22,8 @@ export function App({store}: Props): React.JSX.Element {
     void loadAccountAndSync(store);
     void store.dispatch(loadCardPictures());
     void loadOfflineStatus(store.dispatch);
+
+    return keepProgressSynced(store);
   }, [store]);
 
   const router = useMemo(() => createAppRouter(store), [store]);

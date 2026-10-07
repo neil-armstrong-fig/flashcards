@@ -74,21 +74,20 @@ it("says whether the word was added", async () => {
   expect(await addSimilarWithRecordings(store.dispatch, "ko-vocab-water", "water")).toBe(false);
 });
 
-it("keeps the word online too, with the note it was asked on", async () => {
-  const {store, accountApi} = await signedInStore();
+it("records the word, with the note it was asked on, to be sent online", async () => {
+  const {store, records} = await signedInStore();
 
   await addSimilarWithRecordings(store.dispatch, "ko-vocab-water", "볼");
 
-  expect(accountApi.kept).toEqual({"ko-vocab-water": ["볼"]});
+  expect(records.summary()).toEqual(["similar ko-vocab-water|볼 kept"]);
 });
 
-it("keeps nothing if it could not be kept online, and says so", async () => {
+it("adds the word even when the API cannot be reached, as it is sent when it can be", async () => {
   const {store, accountApi} = await signedInStore();
   accountApi.unreachable = true;
-  vi.spyOn(console, "error").mockImplementation(() => undefined);
 
-  expect(await addSimilarWithRecordings(store.dispatch, "ko-vocab-water", "볼")).toBe(false);
-  expect(selectSimilar(store.getState())?.words).toEqual(["불"]);
+  expect(await addSimilarWithRecordings(store.dispatch, "ko-vocab-water", "볼")).toBe(true);
+  expect(selectSimilar(store.getState())?.words).toEqual(["불", "볼"]);
 });
 
 it("does nothing when nobody is signed in, since only a signed-in learner can spend the allowance", async () => {

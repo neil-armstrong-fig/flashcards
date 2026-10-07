@@ -107,6 +107,7 @@ or removing one means changing both sides in the same commit.
 | `sign-out`                        | settings screen            | Button: sign out                                                                                                           |
 | `similar-switch-voice`            | similar panel              | Button: switch female/male and play the card's own word                                                                    |
 | `similar-switch-speed`            | similar panel              | Button: switch normal/slower and play the card's own word                                                                  |
+| `sync-status`                     | home                       | Whether this device matches what is kept online; `data-state` is `synced`, `syncing` or `not-synced`                       |
 | `login-screen`                    | sign-in screen             | The sign-in screen: all there is until signed in                                                                           |
 | `app-home`                        | home screen                | Present while the home screen is on screen                                                                                 |
 | `app-title`                       | home and sign-in screens   | The app's name, as the heading at the top of either screen                                                                 |

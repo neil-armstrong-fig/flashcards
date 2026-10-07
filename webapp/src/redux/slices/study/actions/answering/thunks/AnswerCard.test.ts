@@ -43,7 +43,7 @@ describe("a card forgotten for the eighth time", () => {
     const {store: first} = await openedStudyStore();
     const id = first.getState().study.session?.currentCardId ?? "";
     const state = {
-      ...newCardState(TEST_NOW),
+      ...newCardState({due: TEST_NOW.toISOString()}),
       phase: "review" as const,
       due: new Date(TEST_NOW.getTime() - 60 * 1000).toISOString(),
       stability: 20,

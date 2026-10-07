@@ -1,4 +1,5 @@
 import {env} from "cloudflare:workers";
+import type {PicturesBucket} from "@src/buckets/pictures/types/PicturesBucket";
 import type {RecordingsBucket} from "@src/buckets/recordings/types/RecordingsBucket";
 
 // The Worker's bindings, variables and secrets; see wrangler.jsonc for where each one comes from.
@@ -14,6 +15,8 @@ interface ApiWorkerEnv {
   SPEECH_AUDIO: KVNamespace;
   // The private bucket of recordings, served to a signed-in account only (`recordings/`, `GET /api/audio/*`). Never public.
   RECORDINGS: RecordingsBucket;
+  // The private bucket of the learner's pictures, each kept under the account and the hash of its bytes (`router/routes/pictures/`). Never public.
+  PICTURES: PicturesBucket;
   // Comma-separated origins allowed to call the API with credentials: the site, plus the dev server locally.
   ALLOWED_ORIGINS: string;
   // Comma-separated Google accounts allowed to sign in. This is a private test app: anyone else is turned away after Google.

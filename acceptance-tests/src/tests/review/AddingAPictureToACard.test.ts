@@ -9,6 +9,19 @@ given("the learner is reviewing the first card of the starter deck", () => {
     expect(await webApp.review.memoryAid.isPictureShown()).toBe(false);
   });
 
+  when("they add a picture far larger than a card needs", () => {
+    beforeEach(async ({webApp}) => {
+      await webApp.review.memoryAid.addVeryLargePicture();
+    });
+
+    then("it is kept at a size that fits, at most 1280 pixels wide, rather than as it was", async ({webApp}) => {
+      const width = await webApp.review.memoryAid.getPictureWidth();
+
+      expect(width).toBeGreaterThan(0);
+      expect(width).toBeLessThanOrEqual(1280);
+    });
+  });
+
   when("they add a picture from their files", () => {
     beforeEach(async ({webApp}) => {
       await webApp.review.memoryAid.addPicture();

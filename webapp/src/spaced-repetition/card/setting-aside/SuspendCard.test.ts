@@ -6,13 +6,13 @@ import {unsuspendCard} from "@src/spaced-repetition/card/setting-aside/Unsuspend
 const now = new Date("2026-10-05T10:00:00Z");
 
 it("suspends a card without changing anything else about it", () => {
-  const state = newCardState(now);
+  const state = newCardState({due: now.toISOString()});
 
   expect(suspendCard(state)).toEqual({...state, suspended: true});
 });
 
 it("brings a suspended card back with its schedule untouched", () => {
-  const state = newCardState(now);
+  const state = newCardState({due: now.toISOString()});
 
   expect(unsuspendCard(suspendCard(state))).toEqual(state);
 });
@@ -20,5 +20,5 @@ it("brings a suspended card back with its schedule untouched", () => {
 it("buries a card until the moment given", () => {
   const until = new Date("2026-10-06T03:00:00Z");
 
-  expect(buryCard(newCardState(now), until).buriedUntil).toBe(until.toISOString());
+  expect(buryCard(newCardState({due: now.toISOString()}), until).buriedUntil).toBe(until.toISOString());
 });

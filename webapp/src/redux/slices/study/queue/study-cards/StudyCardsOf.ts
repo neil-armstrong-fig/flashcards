@@ -4,5 +4,5 @@ import type {StudyState} from "@src/redux/slices/study/types/StudyState";
 
 /** The deck's cards in deck order, each with what is known of it. A card nobody has answered is new. */
 export function studyCardsOf(state: StudyState): StudyCard[] {
-  return state.cardOrder.map(id => ({id, state: state.cards[id] ?? newCardState(new Date(state.now))}));
+  return state.cardOrder.map(id => ({id, state: state.cards[id] ?? newCardState({due: state.now})}));
 }

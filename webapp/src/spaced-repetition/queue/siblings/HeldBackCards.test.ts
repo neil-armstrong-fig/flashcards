@@ -6,7 +6,7 @@ import type {StudyCard} from "@src/spaced-repetition/card/types/StudyCard";
 const now = new Date(2026, 9, 5, 10, 0);
 
 function card(id: string): StudyCard {
-  return {id, state: newCardState(now)};
+  return {id, state: newCardState({due: now.toISOString()})};
 }
 
 function answered(cardId: string, at: Date = now): ReviewLogEntry {

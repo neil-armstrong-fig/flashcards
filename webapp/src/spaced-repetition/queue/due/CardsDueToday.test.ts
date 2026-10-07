@@ -9,7 +9,7 @@ const now = new Date(2026, 9, 5, 10, 0);
 const settings: QueueSettings = {newCardsPerDay: 20, maxReviewsPerDay: 200, learnAheadMinutes: 20};
 
 function card(id: string, state: Partial<CardState> = {}): StudyCard {
-  return {id, state: {...newCardState(now), ...state}};
+  return {id, state: {...newCardState({due: now.toISOString()}), ...state}};
 }
 
 function at(days: number, hour = 10): string {

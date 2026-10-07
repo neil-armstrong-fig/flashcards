@@ -16,7 +16,11 @@ export function unsuspendAll(): AppThunk<Promise<void>> {
       }
     }
 
-    await Promise.all(Object.entries(restored).map(([id, state]) => saveCard({id, state}))).catch(reportUnsaved);
+    const at = new Date().toISOString();
+
+    await Promise.all(
+      Object.entries(restored).map(([id, state]) => saveCard({id, state}, {cardId: id, kind: "unsuspend", at})),
+    ).catch(reportUnsaved);
     dispatch(suspendedCardsRestored(restored));
   };
 }

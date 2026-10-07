@@ -11,7 +11,7 @@ function card(id: string): DeckCard {
 }
 
 function state(lapses: number, suspended = false): CardState {
-  return {...newCardState(NOW), lapses, suspended};
+  return {...newCardState({due: NOW.toISOString()}), lapses, suspended};
 }
 
 function answer(cardId: string, rating: ReviewLogEntry["rating"]): ReviewLogEntry {

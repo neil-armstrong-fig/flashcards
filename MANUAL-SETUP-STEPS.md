@@ -105,7 +105,7 @@ pnpm --filter @flashcards/infra provision
 
 From a machine with all of those in the root `.env.dev`, `pnpm provision:local` loads that file and runs the same deploy.
 
-It makes the D1 database (migrations applied), the two KV namespaces and the `flashcards-api` Worker. The script is called
+It makes the D1 database (migrations applied), the two KV namespaces, the private R2 bucket `flashcards-pictures` (the learner's own pictures; the token's R2 permission already covers it, and `destroy` leaves it) and the `flashcards-api` Worker. The script is called
 `provision` because `pnpm deploy` is a built-in pnpm command.
 
 ### 4d. The Worker's custom domain, and the app's address

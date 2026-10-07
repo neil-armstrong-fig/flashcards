@@ -1,7 +1,7 @@
 import {newCardState} from "@src/spaced-repetition/card/NewCardState";
 import {readCardState} from "@src/spaced-repetition/card/ReadCardState";
 
-const valid = newCardState(new Date("2026-10-05T10:00:00Z"));
+const valid = newCardState({due: new Date("2026-10-05T10:00:00Z").toISOString()});
 
 it("reads back a state that was stored", () => {
   expect(readCardState(JSON.parse(JSON.stringify(valid)))).toEqual(valid);

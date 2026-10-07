@@ -18,6 +18,7 @@ import {loadRememberedAccount} from "@src/redux/slices/account/storage/LoadRemem
 import {loadSimilar} from "@src/redux/slices/similar/storage/LoadSimilar";
 import {offlineReducer} from "@src/redux/slices/offline/OfflineSlice";
 import {settingsReducer} from "@src/redux/slices/settings/SettingsSlice";
+import {syncReducer} from "@src/redux/slices/sync/SyncSlice";
 import {studyReducer} from "@src/redux/slices/study/StudySlice";
 
 const rootReducer = combineReducers({
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   offline: offlineReducer,
   settings: settingsReducer,
   study: studyReducer,
+  sync: syncReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

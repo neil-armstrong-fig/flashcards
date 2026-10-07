@@ -1,3 +1,4 @@
+import {TEST_NOW} from "@src/testing/time/TestNow";
 import {addedCustomNote} from "@src/testing/AddedCustomNote";
 import {editCustomNote} from "@src/redux/slices/deck/actions/custom-note/thunks/EditCustomNote";
 import {openedStudyStore} from "@src/testing/OpenedStudyStore";
@@ -16,25 +17,20 @@ async function storeWithAnElephant(): ReturnType<typeof openedStudyStore> {
   return opened;
 }
 
-it("changes the words online and here, keeping the id, so both cards keep their progress", async () => {
-  const {store, accountApi} = await storeWithAnElephant();
+it("changes the words, keeping the id, so both cards keep their progress, and records the change to be sent online", async () => {
+  const {store, records} = await storeWithAnElephant();
   const before = store.getState().study.cards[`${ID}/to-english`];
 
   expect(await store.dispatch(editCustomNote(ID, WHALE))).toBe(true);
 
-  expect(accountApi.notes).toEqual([{id: ID, ...WHALE}]);
+  expect(records.kept.at(-1)).toEqual({
+    kind: "note",
+    id: ID,
+    at: TEST_NOW.toISOString(),
+    deleted: false,
+    payload: WHALE,
+  });
   expect(store.getState().deck.notes).toEqual([{id: ID, language: "ko", ...WHALE}]);
   expect(store.getState().study.cards[`${ID}/to-english`]).toBe(before);
   expect(store.getState().study.cardOrder.filter(id => id.startsWith(ID))).toHaveLength(2);
-});
-
-it("changes nothing, and says so, when the change could not be kept online", async () => {
-  const {store, accountApi} = await storeWithAnElephant();
-  accountApi.unreachable = true;
-  vi.spyOn(console, "error").mockImplementation(() => undefined);
-
-  expect(await store.dispatch(editCustomNote(ID, WHALE))).toBe(false);
-
-  expect(store.getState().deck.notes).toEqual([{id: ID, language: "ko", ...ELEPHANT}]);
-  expect(store.getState().deck.editError).toBeDefined();
 });

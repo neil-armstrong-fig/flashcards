@@ -43,10 +43,13 @@ flowchart LR
       notes["GET /api/notes<br/>POST /api/notes<br/>PUT /api/notes<br/>DELETE /api/notes"]
       speech["POST /api/speech"]
       audio["GET /api/audio/*"]
+      pictures["GET and PUT /api/pictures/*"]
+      sync["POST /api/sync"]
     end
 
-    database[("D1: flashcards<br/>users, sessions, notes, similar words")]
+    database[("D1: flashcards<br/>users, sessions, card events, settings, records")]
     recordings[("Private R2<br/>flashcards-recordings")]
+    pictureBucket[("Private R2<br/>flashcards-pictures")]
     speechAudio[("KV: SPEECH_AUDIO<br/>generated MP3 cache")]
     speechBudget[("KV: SPEECH_BUDGET<br/>monthly character count")]
     loginLimiter["Rate limiter 2002<br/>10 sign-in requests/minute/address"]
@@ -84,9 +87,11 @@ flowchart LR
   speechBudget --> azure
   azure -->|cache generated MP3| speechAudio
   audio -->|private range read| recordings
+  pictures -->|by account and hash| pictureBucket
+  sync --> database
 ```
 
-Alchemy creates or adopts the Worker, D1 database, R2 bucket, KV namespaces and
+Alchemy creates or adopts the Worker, D1 database, R2 buckets, KV namespaces and
 rate limiters, then binds them to the Worker. The custom domain is deliberately a
 manual Cloudflare dashboard step. The R2 bucket has no public address and is kept
 when the rest of the Alchemy application is destroyed.

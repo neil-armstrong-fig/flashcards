@@ -2,6 +2,7 @@ import {HTTP_ROUTES} from "@src/router/dispatch/HttpRoutes";
 import type {HttpRoute} from "@src/router/dispatch/types/HttpRoute";
 
 const AUDIO_PREFIX = "/api/audio/";
+const PICTURES_PREFIX = "/api/pictures/";
 
 /**
  * Which of the API's routes a method and path are for, or undefined where they are for none. The one place a route is recognised:
@@ -11,6 +12,14 @@ const AUDIO_PREFIX = "/api/audio/";
 export function httpRouteOf(method: string, pathname: string): HttpRoute | undefined {
   if (method === "GET" && pathname.startsWith(AUDIO_PREFIX)) {
     return "GET /api/audio/*";
+  }
+
+  if (method === "GET" && pathname.startsWith(PICTURES_PREFIX)) {
+    return "GET /api/pictures/*";
+  }
+
+  if (method === "PUT" && pathname.startsWith(PICTURES_PREFIX)) {
+    return "PUT /api/pictures/*";
   }
 
   return HTTP_ROUTES.find(route => route === `${method} ${pathname}`);

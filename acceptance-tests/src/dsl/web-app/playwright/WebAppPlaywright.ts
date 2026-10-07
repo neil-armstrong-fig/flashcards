@@ -5,6 +5,7 @@ import type {ManifestNames} from "@src/dsl/web-app/playwright/manifest-names/Man
 import type {InstallIcon} from "@src/dsl/web-app/types/InstallIcon";
 import type {DeviceColours} from "@src/dsl/web-app/types/DeviceColours";
 import {BasePage} from "@src/dsl/playwright/BasePage";
+import type {FakeAccount} from "@src/dsl/web-app/playwright/fake-api/FakeAccount";
 import {createFakeApi} from "@src/dsl/web-app/playwright/fake-api/CreateFakeApi";
 import {fullHex} from "@src/dsl/web-app/playwright/full-hex/FullHex";
 import {installFakeAudio} from "@src/dsl/web-app/playwright/fake-audio/InstallFakeAudio";
@@ -15,7 +16,10 @@ const START_OF_TIME = new Date("2026-10-05T10:00:00");
 const DAY_IN_MS = 24 * 60 * 60 * 1000;
 
 export class WebAppPlaywright extends BasePage {
-  constructor(page: Page) {
+  constructor(
+    page: Page,
+    private readonly account: FakeAccount,
+  ) {
     super(page);
   }
 
@@ -25,7 +29,7 @@ export class WebAppPlaywright extends BasePage {
     // Nobody listens to a test run: audio elements write down what they were asked to play instead.
     await this.page.addInitScript(installFakeAudio);
     // Nor does a run reach the API, which would spend real quota and need a real Google account: a stand-in answers.
-    await this.page.route("**/api/**", createFakeApi());
+    await this.page.route("**/api/**", createFakeApi(this.account));
     // Relative, so the suite does not care where the app is served from.
     await this.page.goto("./");
     await this.page.getByTestId("app-ready").waitFor();

@@ -10,15 +10,20 @@ const HOUR = 60 * 60 * 1000;
 const DAY = 24 * HOUR;
 
 function reviewDueIn(milliseconds: number): CardState {
-  return {...newCardState(now), phase: "review", reps: 3, due: new Date(now.getTime() + milliseconds).toISOString()};
+  return {
+    ...newCardState({due: now.toISOString()}),
+    phase: "review",
+    reps: 3,
+    due: new Date(now.getTime() + milliseconds).toISOString(),
+  };
 }
 
 it("is new for a card nobody has answered", () => {
-  expect(cardStatusOf(newCardState(now), now)).toEqual({kind: "new"});
+  expect(cardStatusOf(newCardState({due: now.toISOString()}), now)).toEqual({kind: "new"});
 });
 
 it.each(["learning", "relearning"] as const)("is learning for a card in %s", phase => {
-  expect(cardStatusOf({...newCardState(now), phase}, now).kind).toBe("learning");
+  expect(cardStatusOf({...newCardState({due: now.toISOString()}), phase}, now).kind).toBe("learning");
 });
 
 it("is due for a review that falls before the study day ends, even hours from now", () => {
@@ -50,7 +55,7 @@ it("is no longer buried once that moment has passed", () => {
 });
 
 it("says suspended before buried when a card is both", () => {
-  const both = suspendCard(buryCard(newCardState(now), new Date(now.getTime() + 5 * HOUR)));
+  const both = suspendCard(buryCard(newCardState({due: now.toISOString()}), new Date(now.getTime() + 5 * HOUR)));
 
   expect(cardStatusOf(both, now).kind).toBe("suspended");
 });

@@ -106,6 +106,12 @@ Prettier owns formatting (120 columns, `pnpm format`) and the shared ESLint conf
   `Props` is the exception (named `Props`, not exported).
 - **Three parameters at most**; past that take one object. What a function acts through (a clock, a store) may stay
   positional ahead of it.
+- **A function that builds a data value is a builder: one destructured parameter, a default for every field, `Partial<Props>` and `= {}`.**
+  `function noteRecord({id = "ko-custom-default", word = "코끼리", at = BEFORE_ANY_CHANGE}: Partial<Props> = {}): RecordChange`. Callers
+  name only the fields they care about, so a test builds the thing it is about and nothing else, and a field added later breaks no
+  caller. `Props` is a named interface beside the function and not exported, and the defaults are plain values, never read from a clock
+  or a random id: those are read in the thunk and passed in. A builder lives in its own file, with a test of its defaults and of an
+  override (`NewCardState.ts`, `redux/shared/sync-records/builders/`). A function that only derives a value (`similarRecordId(noteId, text)`) is not a builder.
 - **Declare functions below their callers**, as `function` declarations (an arrow `const` is in the temporal dead zone above
   its line). Components are the one exception (`webapp/src/react/AGENTS.md`).
 - **Guards and early returns over nesting.** Return early, cheap guard first. A guard sits directly under the line it checks.

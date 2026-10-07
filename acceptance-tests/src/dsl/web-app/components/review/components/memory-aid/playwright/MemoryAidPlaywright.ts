@@ -22,6 +22,53 @@ export class MemoryAidPlaywright extends BaseComponent {
     });
   }
 
+  async addVeryLargePicture(): Promise<void> {
+    // Made in the browser, as a picture from a phone's camera would be: far more pixels than a card can show.
+    const base64 = await this.page.evaluate(async () => {
+      const canvas = document.createElement("canvas");
+
+      canvas.width = 4000;
+      canvas.height = 3000;
+
+      const context = canvas.getContext("2d");
+
+      // Flat blocks, so that it has the pixels of a camera's picture but not the weight: the app refuses a file over 5 MB before it looks at it.
+      for (const [index, colour] of ["#2a7", "#a27", "#27a", "#7a2"].entries()) {
+        if (context) {
+          context.fillStyle = colour;
+          context.fillRect((index % 2) * 2000, Math.floor(index / 2) * 1500, 2000, 1500);
+        }
+      }
+
+      const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, "image/png"));
+      const bytes = new Uint8Array((await blob?.arrayBuffer()) ?? new ArrayBuffer(0));
+      let binary = "";
+
+      for (const byte of bytes) {
+        binary += String.fromCharCode(byte);
+      }
+
+      return btoa(binary);
+    });
+
+    await withMoreOptions(this.page, async () => {
+      await this.page
+        .getByTestId("picture-input")
+        .setInputFiles({name: "camera.png", mimeType: "image/png", buffer: Buffer.from(base64, "base64")});
+      await this.page.getByTestId("picture").waitFor({state: "attached"});
+    });
+  }
+
+  async pictureWidth(): Promise<number> {
+    const picture = this.page.getByTestId("picture");
+
+    await picture.evaluate(async image => {
+      await (image as HTMLImageElement).decode().catch(() => undefined);
+    });
+
+    return await picture.evaluate(image => (image as HTMLImageElement).naturalWidth);
+  }
+
   async pastePicture(): Promise<void> {
     await this.page.getByTestId("card-front").waitFor();
     await this.page.evaluate(async base64 => {

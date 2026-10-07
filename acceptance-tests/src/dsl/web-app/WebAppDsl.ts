@@ -1,6 +1,8 @@
 import type {Page} from "@playwright/test";
 import type {InstallIcon} from "@src/dsl/web-app/types/InstallIcon";
 import type {DeviceColours} from "@src/dsl/web-app/types/DeviceColours";
+import {newFakeAccount} from "@src/dsl/web-app/playwright/fake-api/NewFakeAccount";
+import type {FakeAccount} from "@src/dsl/web-app/playwright/fake-api/FakeAccount";
 import {WebAppPlaywright} from "@src/dsl/web-app/playwright/WebAppPlaywright";
 import {DslError} from "@src/dsl/errors/DslError";
 import {BrowseDsl} from "@src/dsl/web-app/components/browse/BrowseDsl";
@@ -9,6 +11,7 @@ import {StrugglingDsl} from "@src/dsl/web-app/components/struggling/StrugglingDs
 import {SettingsDsl} from "@src/dsl/web-app/components/settings/SettingsDsl";
 import {LoginDsl} from "@src/dsl/web-app/components/login/LoginDsl";
 import {ReleaseUpdateDsl} from "@src/dsl/web-app/components/release-update/ReleaseUpdateDsl";
+import {SyncDsl} from "@src/dsl/web-app/components/sync/SyncDsl";
 import {ReviewDsl} from "@src/dsl/web-app/components/review/ReviewDsl";
 
 /** The whole application. Every area of it is a member of this, never a fixture of its own. */
@@ -20,11 +23,13 @@ export class WebAppDsl {
   readonly struggling: StrugglingDsl;
   readonly releaseUpdate: ReleaseUpdateDsl;
   readonly login: LoginDsl;
+  readonly sync: SyncDsl;
 
   private readonly playwright: WebAppPlaywright;
 
-  constructor(page: Page) {
-    this.playwright = new WebAppPlaywright(page);
+  /** `account` is who the API knows: two devices given the same one are one learner's two devices. */
+  constructor(page: Page, account: FakeAccount = newFakeAccount()) {
+    this.playwright = new WebAppPlaywright(page, account);
     this.home = new HomeDsl(page);
     this.browse = new BrowseDsl(page);
     this.review = new ReviewDsl(page);
@@ -32,6 +37,7 @@ export class WebAppDsl {
     this.struggling = new StrugglingDsl(page);
     this.releaseUpdate = new ReleaseUpdateDsl(page);
     this.login = new LoginDsl(page);
+    this.sync = new SyncDsl(page);
   }
 
   async begin(): Promise<void> {

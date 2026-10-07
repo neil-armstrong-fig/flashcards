@@ -9,13 +9,15 @@ interface Send {
   /** Sends no `Origin` header at all, as something that is not a browser would. */
   readonly withoutOrigin?: boolean;
   readonly body?: unknown;
+  /** Sends these bytes as they are, with this type, instead of JSON: a picture. */
+  readonly bytes?: {readonly data: Uint8Array; readonly type: string};
 }
 
 /** Talks to the API as a browser on the site would: requests in, answers out, the cookies carried from one to the next by the test. */
 export const api = {
   async send(
     path: string,
-    {method = "GET", cookie, origin = SITE_ORIGIN, withoutOrigin = false, body}: Send = {},
+    {method = "GET", cookie, origin = SITE_ORIGIN, withoutOrigin = false, body, bytes}: Send = {},
   ): Promise<Response> {
     const headers = new Headers();
 
@@ -25,6 +27,12 @@ export const api = {
 
     if (!withoutOrigin) {
       headers.set("Origin", origin);
+    }
+
+    if (bytes !== undefined) {
+      headers.set("Content-Type", bytes.type);
+
+      return await routeRequest(new Request(`https://api.example${path}`, {method, headers, body: bytes.data}));
     }
 
     if (body !== undefined) {

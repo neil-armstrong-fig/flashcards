@@ -1,6 +1,7 @@
 import {FakeAccountApi} from "@src/testing/environment/account/FakeAccountApi";
 import {FakeKeptAudio} from "@src/testing/environment/audio/FakeKeptAudio";
 import {MemoryCardPictures} from "@src/testing/environment/pictures/MemoryCardPictures";
+import {MemoryRecordLog} from "@src/testing/environment/records/MemoryRecordLog";
 import {MemoryRecordingKeeper} from "@src/testing/environment/audio/MemoryRecordingKeeper";
 import {MemoryStudyStorage} from "@src/testing/environment/study/MemoryStudyStorage";
 import {RecordingAudioPlayer} from "@src/testing/environment/audio/RecordingAudioPlayer";
@@ -12,6 +13,7 @@ interface TestEnvironment {
   recordings: MemoryRecordingKeeper;
   keptAudio: FakeKeptAudio;
   accountApi: FakeAccountApi;
+  records: MemoryRecordLog;
 }
 
 /**
@@ -25,6 +27,7 @@ export const testEnvironment: TestEnvironment = {
   recordings: new MemoryRecordingKeeper(),
   keptAudio: new FakeKeptAudio(),
   accountApi: new FakeAccountApi(),
+  records: new MemoryRecordLog(),
 };
 
 /** An environment with nothing in it: every test starts here. */
@@ -35,4 +38,5 @@ export function resetTestEnvironment(): void {
   testEnvironment.recordings = new MemoryRecordingKeeper();
   testEnvironment.keptAudio = new FakeKeptAudio();
   testEnvironment.accountApi = new FakeAccountApi();
+  testEnvironment.records = new MemoryRecordLog();
 }

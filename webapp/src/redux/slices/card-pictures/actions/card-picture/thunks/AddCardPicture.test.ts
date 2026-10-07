@@ -66,3 +66,28 @@ it("dates the picture with the clock, so fading counts the answers that follow",
   expect(store.getState().cardPictures.addedAt).toEqual({[cardId]: TEST_NOW.toISOString()});
   expect(pictures.kept.get(cardId)).toBe(TEST_NOW.toISOString());
 });
+
+it("records the picture by its hash and type, dated with the clock, to be sent online", async () => {
+  const {store, records} = await openedStudyStore();
+  const cardId = store.getState().study.session?.currentCardId ?? "";
+
+  await store.dispatch(addCardPicture(aPicture()));
+
+  expect(records.kept).toEqual([
+    {
+      kind: "picture",
+      id: cardId,
+      at: TEST_NOW.toISOString(),
+      deleted: false,
+      payload: {hash: "1".padStart(64, "0"), type: "image/png"},
+    },
+  ]);
+});
+
+it("records nothing when the picture is refused", async () => {
+  const {store, records} = await openedStudyStore();
+
+  await store.dispatch(addCardPicture(new File(["x"], "notes.txt", {type: "text/plain"})));
+
+  expect(records.kept).toEqual([]);
+});

@@ -2,7 +2,7 @@
 
 The Cloudflare resources for the API, as code, with [Alchemy](https://alchemy.run) (the 0.x line: `latest` on npm is the 2.0 beta
 rewrite). Modelled on janggi's `infra/` (https://github.com/neil-armstrong-fig/janggi). `src/ApiInfrastructure.ts` puts together `src/api-database/` (the D1 database, with the migrations Drizzle
-generated into `api/migrations/`), `src/api-buckets/` (the private R2 bucket of recordings, kept when the rest is destroyed) and
+generated into `api/migrations/`), `src/api-buckets/` (the private R2 buckets of recordings and pictures, kept when the rest is destroyed) and
 `src/api-worker/` (the Worker bound to them, with its two rate limiters and its two KV namespaces: the month's character counter and the recordings cache). It is what someone
 standing the app up on their own Cloudflare account runs, and what CI runs for this one.
 
@@ -40,7 +40,7 @@ out). The CI job is inert until `CLOUDFLARE_API_TOKEN` exists.
 ```
 src/ApiInfrastructure.ts   the file a deploy runs, and the whole of what is infrastructure
 src/api-database/          BuildApiDatabase: the D1 database and its migrations
-src/api-buckets/           BuildRecordings: the private R2 bucket (`delete: false`, so `destroy` leaves the recordings)
+src/api-buckets/           BuildRecordings and BuildPictures: the private R2 buckets (`delete: false`, so `destroy` leaves the recordings and the learner's pictures)
 src/api-worker/            BuildApiWorker, rate-limiters/ (BuildSpeechLimiter and BuildLoginLimiter: the namespace ids and numbers match api/wrangler.jsonc); kv-namespaces/ (BuildSpeechBudget and BuildSpeechAudio); settings/
 src/secrets/               `export const secrets`, checked on import; required-environment/
 src/paths/ApiPath.ts       absolute paths into the API package, checked to exist

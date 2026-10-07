@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import type {TakenSettings} from "@src/redux/slices/settings/sync/types/TakenSettings";
 import type {PayloadAction} from "@reduxjs/toolkit";
 import {clampToLimits} from "@src/redux/slices/settings/limits/ClampToLimits";
 import {
@@ -121,6 +122,10 @@ const settingsSlice = createSlice({
       state.speed = action.payload;
     },
 
+    settingsTaken: (state, action: PayloadAction<TakenSettings["chosen"]>) => {
+      Object.assign(state, action.payload);
+    },
+
     themeChosen: (state, action: PayloadAction<Theme>) => {
       state.theme = action.payload;
     },
@@ -162,5 +167,6 @@ export const {
   deckSpeedChosen,
   deckTargetHiddenChosen,
   themeChosen,
+  settingsTaken,
 } = settingsSlice.actions;
 export const settingsReducer = settingsSlice.reducer;

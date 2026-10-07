@@ -14,6 +14,7 @@ redux/
     similar/                             the similar words a learner added (slice, kept on the device), and thunks to start asking for one, add and remove it
     deck/                                the cards the learner made (slice of `VocabNote`s, kept on the device), the selectors for every note and card being studied (the deck's own, then theirs), `selectSpokenOnScreen`, and thunks to start making or changing one, add, change and remove it
     settings/                            the learner's settings: slice, limits/ (clamping, reading), storage/ (load and keep)
+    sync/                                whether this device matches what is kept online (`not-synced`, `syncing`, `synced`), and how many changes the learner has made since the app opened (a reason to sync soon); shown on the home screen
     study/                               the review loop
       StudySlice.ts                      wiring: which action runs which rule
       selectors/                         the derived questions the page asks: SelectCardsDueToday, SelectDeckDueCounts (one deck's cards waiting today split into new, learning and review, via `spaced-repetition/queue/DueCountsOf`)
@@ -22,13 +23,14 @@ redux/
       queue/                             plain functions the slice calls: NextStudyCard, with study-cards/, focus/ (FocusedCards: narrows a deck's cards to a session's focus: all, new or struggling)
       storage/                           the StudyStorage interface (types/), IndexedDb and in-memory implementations
       types/                             StudyState, SessionState, SessionFocus, StudyStatus, AsideKind
-  api/                                 one effect function per API call (`ReadKeptNotes`, `AddKeptSimilar`, ...): not a slice's, since the account, deck and similar thunks all make them
-  workflows/<domain>/thunks/           thunks that change several slices at once: `custom-note/` (add, remove), `kept-notes/` (bringing the cards kept online down)
+  api/                                 one effect function per API call (`ReadSignedInEmail`, `UploadPicture`, ...): not a slice's, since several thunks make them. One with helpers has a folder (`sync-with-api/`: the request, and `utils/ReadSyncAnswer`, the pure check of what comes back)
+  workflows/<domain>/thunks/           thunks that change several slices at once: `custom-note/` (add, remove), `sync/` (`syncProgress`: send the events and records this device made, take in the others': replay the cards the events touch, apply each record by kind under `records/`, the later change winning; `adoptLocalRecords`; its `storage/` is the effects over the study database, the cursors and the owner, grouped as `events/`, `records/`, `cursors/` and `owner/`, `docs/sync.md`)
   shared/                              what more than one slice uses, and is not a slice itself (no state of its own); like `react/pages/shared/`
     Hooks.ts  AppThunk.ts              typed hooks, the thunk type
     kept-texts/                    `selectKeptTexts`: the texts whose recordings the learner asked for (their own cards, their similar words), as plain `SpokenText`s that `react/audio/` hands to `audio/`
     memory-aids/                   a card's note and picture together: `selectIsFadeOffered` (derived from their dates and the log, via `spaced-repetition/card/fading/`), thunks to remove them or keep them afresh
     device-storage/                readJson / saveJson over localStorage: checked on the way in, quiet on failure
+    sync-records/                  `recordLocalChange` (keeps a change to what the learner made, to be sent, and nudges the sync) and `builders/` (the `RecordChange` of a card, a similar, a note, a picture, a removal, each a builder: one destructured parameter with a default for every field, root `AGENTS.md`; a field not given is a default, and the date a change was made is `at`, an ISO text, which the thunk reads): every thunk that makes or removes one of those calls it, and none waits for the API
 ```
 
 ## Conventions
@@ -69,17 +71,17 @@ redux/
   (`useCardAudio` speaks whenever the card or its side changes, and guards StrictMode's second effect). The player never throws, and a
   card with no recording is silent.
 - **A write that needs recordings first is two thunks with the recordings between.** `startCustomNote` (guards, checks, marks the card as
-  being made) then `addCustomNote` (the API, then state); likewise `startEditCustomNote`/`editCustomNote` and
-  `startSimilarWord`/`addSimilarWord`; and sync is `startNotesSync` then `syncKeptNote` for each card whose recordings arrived.
-  `react/audio/own-words/` and `react/audio/sync/` fetch between them and keep the all-or-nothing rule: a failure there dispatches the
+  being made) then `addCustomNote` (state, then a record to send online: no API call); likewise `startEditCustomNote`/`editCustomNote` and
+  `startSimilarWord`/`addSimilarWord`; and what other devices made is fetched after a sync by `react/audio/sync/`.
+  `react/audio/own-words/` fetches between them and keep the all-or-nothing rule: a failure there dispatches the
   slice's own failure action, so `adding` never sticks.
 - **The settings keep the audio choices** (`voice`, `speed`, `listenOnly`), added without raising the key (`LoadSettings.test.ts` proves
   settings kept before them load unharmed).
 
 - **The API is optional.** `loadAccount` asks who is signed in once on start; if the API cannot be reached the status stays `unknown`, which
-  hides what needs it (the account section, the _Add_ box) and nothing else. **A card of the learner's own works the same way** (`startCustomNote` then `addCustomNote`, `startEditCustomNote` then `editCustomNote`, `removeCustomNote`: all need sign-in, each is all-or-nothing, the API is the truth). Its id is `ko-custom-<crypto.randomUUID()>`. **Decks are studied separately**: `deckIdOfCard` says which deck a card is in (a made card joins `ko-starter`), a session has a `deckId`, `deckStudyOf` gives the queue only that deck's cards and answers, and each deck's limits live in `settings.deckLimits`. The shipped decks are `SHIPPED_DECKS` (`content/`). The deck's cards are never in `deck` state: `selectCards` is the deck's own, then both cards of each note made, and the study order is kept in step by `cardsAdded` and `cardsRemoved`. A made card's two cards are kept apart by the queue like any word's (`docs/scheduling.md`). Adding a word needs a signed-in learner; `react/audio/` fetches
-  its recordings between the thunks, so a learner is never left with a word they cannot play. Signing in brings the words and cards kept
-  online down and fetches recordings this device lacks (`react/audio/sync/`). All of it goes through effect functions
+  hides what needs it (the account section, the _Add_ box) and nothing else. **A card of the learner's own works the same way** (`startCustomNote` then `addCustomNote`, `startEditCustomNote` then `editCustomNote`, `removeCustomNote`: adding and changing need sign-in, for the recordings, and each is all-or-nothing, the API is the truth). Its id is `ko-custom-<crypto.randomUUID()>`. **Decks are studied separately**: `deckIdOfCard` says which deck a card is in (a made card joins `ko-starter`), a session has a `deckId`, `deckStudyOf` gives the queue only that deck's cards and answers, and each deck's limits live in `settings.deckLimits`. The shipped decks are `SHIPPED_DECKS` (`content/`). The deck's cards are never in `deck` state: `selectCards` is the deck's own, then both cards of each note made, and the study order is kept in step by `cardsAdded` and `cardsRemoved`. A made card's two cards are kept apart by the queue like any word's (`docs/scheduling.md`). Adding a word needs a signed-in learner; `react/audio/` fetches
+  its recordings between the thunks, so a learner is never left with a word they cannot play. Signing in syncs, which brings the cards, similars, notes and pictures kept online down, and
+  fetches recordings this device lacks (`react/audio/sync/`). All of it goes through effect functions
   (`api/`, and `audio/` for recordings), which a test replaces with `testing/environment/`.
 
 ## Testing

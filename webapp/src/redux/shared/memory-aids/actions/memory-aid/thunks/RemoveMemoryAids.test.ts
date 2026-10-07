@@ -15,3 +15,13 @@ it("takes both the note and the picture off the card on screen, and leaves other
   expect(store.getState().cardPictures.byCard).toEqual({});
   expect([...pictures.kept.keys()]).toEqual(["another-card"]);
 });
+
+it("records the removal of the note and of the picture, to be sent online, and nothing for what the card did not have", async () => {
+  const {store, records} = await openedStudyStore();
+  const cardId = store.getState().study.session?.currentCardId ?? "";
+
+  await store.dispatch(writeCardNote("like a mule"));
+  await store.dispatch(removeMemoryAids());
+
+  expect(records.summary()).toEqual([`memory-note ${cardId} kept`, `memory-note ${cardId} removed`]);
+});

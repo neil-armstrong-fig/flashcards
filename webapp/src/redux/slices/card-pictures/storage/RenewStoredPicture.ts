@@ -5,8 +5,8 @@ import {requestResult} from "@src/redux/shared/indexed-db/RequestResult";
 import {transactionDone} from "@src/redux/shared/indexed-db/TransactionDone";
 import type {StoredPicture} from "@src/redux/slices/card-pictures/types/StoredPicture";
 
-/** Dates a picture kept already afresh, because the learner chose to keep it a while longer. */
-export async function renewStoredPicture(cardId: string, addedAt: string): Promise<void> {
+/** Dates a picture kept already afresh, because the learner chose to keep it a while longer. Gives the picture, or `undefined` where there was none. */
+export async function renewStoredPicture(cardId: string, addedAt: string): Promise<Blob | undefined> {
   const database = await openPictureDatabase();
   const transaction = database.transaction(PICTURE_STORE, "readwrite");
   const store = transaction.objectStore(PICTURE_STORE);
@@ -17,4 +17,6 @@ export async function renewStoredPicture(cardId: string, addedAt: string): Promi
   }
 
   await transactionDone(transaction);
+
+  return record?.picture;
 }

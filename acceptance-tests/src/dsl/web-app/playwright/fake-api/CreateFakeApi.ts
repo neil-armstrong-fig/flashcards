@@ -1,14 +1,12 @@
 import type {Route} from "@playwright/test";
+import {newFakeAccount} from "@src/dsl/web-app/playwright/fake-api/NewFakeAccount";
+import {syncAnswer} from "@src/dsl/web-app/playwright/fake-api/SyncAnswer";
+import type {FakeAccount} from "@src/dsl/web-app/playwright/fake-api/FakeAccount";
 
 /** A few bytes the app keeps and the fake audio element "plays". Nothing decodes them, so they need not be a real recording. */
 const AUDIO = Buffer.from([0x49, 0x44, 0x33]);
 
 const SIGNED_IN_EMAIL = "learner@example.com";
-
-interface Body {
-  readonly noteId?: string;
-  readonly text?: string;
-}
 
 /**
  * Stands in for the API (`api/`), so a spec needs neither the Worker running nor a real Google account, and never spends Azure's
@@ -16,11 +14,9 @@ interface Body {
  * for, live here and survive the app being reloaded, as they would on the real one. Signing in is just visiting the sign-in
  * address, which sends the browser back where it came from.
  */
-export function createFakeApi(): (route: Route) => Promise<void> {
+export function createFakeApi(account: FakeAccount = newFakeAccount()): (route: Route) => Promise<void> {
   // The learner has signed in already, as the specs need the app open; one about signing in signs out first.
   let signedIn = true;
-  const words: Record<string, string[]> = {};
-  const notes: NoteBody[] = [];
 
   return async route => {
     const request = route.request();
@@ -70,85 +66,43 @@ export function createFakeApi(): (route: Route) => Promise<void> {
       return;
     }
 
-    if (url.pathname === "/api/similar" && request.method() === "GET") {
-      await route.fulfill({
-        status: 200,
-        headers: {...headers, "content-type": "application/json"},
-        body: JSON.stringify({words}),
-      });
-
-      return;
-    }
-
-    if (url.pathname === "/api/similar" && request.method() === "POST") {
-      const {noteId, text} = bodyOf(request.postDataJSON());
-
-      if (noteId && text && !words[noteId]?.includes(text)) {
-        words[noteId] = [...(words[noteId] ?? []), text];
-      }
-      await route.fulfill({status: 204, headers});
-
-      return;
-    }
-
-    if (url.pathname === "/api/similar" && request.method() === "DELETE") {
-      const {noteId, text} = bodyOf(request.postDataJSON());
-
-      if (noteId && text) {
-        words[noteId] = (words[noteId] ?? []).filter(word => word !== text);
-      }
-      await route.fulfill({status: 204, headers});
-
-      return;
-    }
-
     if (url.pathname.startsWith("/api/audio/") && request.method() === "GET") {
       await route.fulfill({status: 200, headers: {...headers, "content-type": "audio/mpeg"}, body: AUDIO});
 
       return;
     }
 
-    if (url.pathname === "/api/notes" && request.method() === "GET") {
+    if (url.pathname === "/api/sync" && request.method() === "POST") {
       await route.fulfill({
         status: 200,
         headers: {...headers, "content-type": "application/json"},
-        body: JSON.stringify({notes}),
+        body: JSON.stringify(syncAnswer(account, request.postDataJSON())),
       });
 
       return;
     }
 
-    if (url.pathname === "/api/notes" && request.method() === "POST") {
-      const note = noteOf(request.postDataJSON());
+    if (url.pathname.startsWith("/api/pictures/") && request.method() === "PUT") {
+      const hash = url.pathname.slice("/api/pictures/".length);
+      const bytes = request.postDataBuffer();
 
-      if (note && !notes.some(each => each.id === note.id)) {
-        notes.push(note);
+      if (bytes) {
+        account.pictures[hash] = {bytes, type: request.headers()["content-type"] ?? "application/octet-stream"};
       }
       await route.fulfill({status: 204, headers});
 
       return;
     }
 
-    if (url.pathname === "/api/notes" && request.method() === "PUT") {
-      const note = noteOf(request.postDataJSON());
-      const index = notes.findIndex(each => each.id === note?.id);
+    if (url.pathname.startsWith("/api/pictures/") && request.method() === "GET") {
+      const picture = account.pictures[url.pathname.slice("/api/pictures/".length)];
 
-      if (!note || index < 0) {
+      if (!picture) {
         await route.fulfill({status: 404, headers});
 
         return;
       }
-      notes[index] = note;
-      await route.fulfill({status: 204, headers});
-
-      return;
-    }
-
-    if (url.pathname === "/api/notes" && request.method() === "DELETE") {
-      const {id} = idOf(request.postDataJSON());
-
-      notes.splice(0, notes.length, ...notes.filter(each => each.id !== id));
-      await route.fulfill({status: 204, headers});
+      await route.fulfill({status: 200, headers: {...headers, "content-type": picture.type}, body: picture.bytes});
 
       return;
     }
@@ -161,58 +115,4 @@ export function createFakeApi(): (route: Route) => Promise<void> {
 
     await route.fulfill({status: 404, headers});
   };
-}
-
-/** What a request body said, where it said it, since a test double that trusts its input hides the mistakes it exists to find. */
-function bodyOf(body: unknown): Body {
-  if (typeof body !== "object" || body === null) {
-    return {};
-  }
-
-  const {noteId, text} = body as Record<string, unknown>;
-
-  return {
-    noteId: typeof noteId === "string" ? noteId : undefined,
-    text: typeof text === "string" ? text : undefined,
-  };
-}
-
-interface NoteBody {
-  readonly id: string;
-  readonly word: string;
-  readonly meaning: string;
-  readonly romanisation: string;
-}
-
-function noteOf(body: unknown): NoteBody | undefined {
-  if (typeof body !== "object" || body === null) {
-    return undefined;
-  }
-
-  const {id, word, meaning, romanisation} = body as Record<string, unknown>;
-
-  if (
-    typeof id !== "string" ||
-    typeof word !== "string" ||
-    typeof meaning !== "string" ||
-    typeof romanisation !== "string"
-  ) {
-    return undefined;
-  }
-
-  return {id, word, meaning, romanisation};
-}
-
-function idOf(body: unknown): {id?: string} {
-  if (typeof body !== "object" || body === null) {
-    return {};
-  }
-
-  const {id} = body as Record<string, unknown>;
-
-  if (typeof id !== "string") {
-    return {};
-  }
-
-  return {id};
 }

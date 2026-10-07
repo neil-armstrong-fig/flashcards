@@ -2,6 +2,7 @@ import {BrowseButton} from "@src/react/pages/home/components/browse-button/Brows
 import {StrugglingButton} from "@src/react/pages/home/components/struggling-button/StrugglingButton";
 import {SettingsButton} from "@src/react/pages/home/components/settings-button/SettingsButton";
 import {DeckList} from "@src/react/pages/home/components/deck-list/DeckList";
+import {SyncStatus} from "@src/react/pages/home/components/sync-status/SyncStatus";
 import {StudySummary} from "@src/react/pages/home/components/study-summary/StudySummary";
 
 export function HomePage(): React.JSX.Element {
@@ -20,6 +21,8 @@ export function HomePage(): React.JSX.Element {
       <StrugglingButton />
 
       <SettingsButton />
+
+      <SyncStatus />
     </main>
   );
 }

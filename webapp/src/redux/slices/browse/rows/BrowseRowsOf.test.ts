@@ -20,7 +20,7 @@ const DECK: Deck = {
 const CARDS = cardsOfDeck(DECK);
 
 function everyCardNew(): Record<string, CardState> {
-  return Object.fromEntries(CARDS.map(card => [card.id, newCardState(NOW)]));
+  return Object.fromEntries(CARDS.map(card => [card.id, newCardState({due: NOW.toISOString()})]));
 }
 
 it("lists every card in deck order, both directions of each word", () => {
@@ -55,7 +55,7 @@ it("finds nothing for a search that matches nothing", () => {
 
 it("carries where each card is in its life", () => {
   const states = everyCardNew();
-  states["ko-vocab-water/to-english"] = suspendCard(newCardState(NOW));
+  states["ko-vocab-water/to-english"] = suspendCard(newCardState({due: NOW.toISOString()}));
 
   const rows = browseRowsOf(CARDS, states, NOW, "");
 

@@ -19,9 +19,10 @@ import {secrets} from "@src/secrets/Secrets";
 interface WorkerResources {
   readonly database: D1Database;
   readonly recordings: R2Bucket;
+  readonly pictures: R2Bucket;
 }
 
-export async function buildApiWorker({database, recordings}: WorkerResources): ReturnType<typeof Worker> {
+export async function buildApiWorker({database, recordings, pictures}: WorkerResources): ReturnType<typeof Worker> {
   const speechBudget = await buildSpeechBudget();
   const speechAudio = await buildSpeechAudio();
 
@@ -36,6 +37,7 @@ export async function buildApiWorker({database, recordings}: WorkerResources): R
       SPEECH_BUDGET: speechBudget,
       SPEECH_AUDIO: speechAudio,
       RECORDINGS: recordings,
+      PICTURES: pictures,
       SPEECH_LIMITER: buildSpeechLimiter(),
       LOGIN_LIMITER: buildLoginLimiter(),
       ALLOWED_ORIGINS: environment.allowedOrigins,

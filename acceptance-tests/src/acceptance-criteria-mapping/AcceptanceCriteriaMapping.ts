@@ -110,7 +110,7 @@ function arrangement(): (arrange: RunCriterion) => void {
  * named here as well.
  */
 function withDslOnly(run: RunCriterion): PlaywrightTestBody {
-  return async ({webApp}: AcceptanceTestFixtures): Promise<void> => {
-    await run({webApp});
+  return async ({webApp, secondDevice}: AcceptanceTestFixtures): Promise<void> => {
+    await run({webApp, secondDevice});
   };
 }

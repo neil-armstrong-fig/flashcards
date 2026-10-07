@@ -1,16 +1,12 @@
-import {addNote} from "@src/router/routes/notes/add-note/AddNote";
-import {addToSimilar} from "@src/router/routes/similar/add-to-similar/AddToSimilar";
-import {removeFromSimilar} from "@src/router/routes/similar/remove-from-similar/RemoveFromSimilar";
-import {changeNote} from "@src/router/routes/notes/change-note/ChangeNote";
-import {removeNote} from "@src/router/routes/notes/remove-note/RemoveNote";
 import {finishSignIn} from "@src/router/sign-in/finish-sign-in/FinishSignIn";
 import {forSignedInAccount} from "@src/router/dispatch/sign-in-guard/ForSignedInAccount";
 import {logOut} from "@src/router/routes/log-out/LogOut";
-import {readSimilar} from "@src/router/routes/similar/read-similar/ReadSimilar";
 import {readMe} from "@src/router/routes/me/ReadMe";
-import {readNotes} from "@src/router/routes/notes/read-notes/ReadNotes";
 import {serveRecordingForAccount} from "@src/router/routes/audio/ServeRecordingForAccount";
 import {speakForAccount} from "@src/router/routes/speech/speak-for-account/SpeakForAccount";
+import {syncCardEvents} from "@src/router/routes/sync/sync-card-events/SyncCardEvents";
+import {keepPicture} from "@src/router/routes/pictures/keep-picture/KeepPicture";
+import {servePicture} from "@src/router/routes/pictures/serve-picture/ServePicture";
 import {startSignIn} from "@src/router/sign-in/start-sign-in/StartSignIn";
 import type {HttpRoute} from "@src/router/dispatch/types/HttpRoute";
 
@@ -29,20 +25,12 @@ export function answerHttpRoute(route: HttpRoute, request: Request): Promise<Res
       return logOut(request);
     case "GET /api/me":
       return forSignedInAccount(request, account => Promise.resolve(readMe(account)));
-    case "GET /api/similar":
-      return forSignedInAccount(request, account => readSimilar(account));
-    case "POST /api/similar":
-      return forSignedInAccount(request, account => addToSimilar(request, account));
-    case "DELETE /api/similar":
-      return forSignedInAccount(request, account => removeFromSimilar(request, account));
-    case "GET /api/notes":
-      return forSignedInAccount(request, account => readNotes(account));
-    case "POST /api/notes":
-      return forSignedInAccount(request, account => addNote(request, account));
-    case "PUT /api/notes":
-      return forSignedInAccount(request, account => changeNote(request, account));
-    case "DELETE /api/notes":
-      return forSignedInAccount(request, account => removeNote(request, account));
+    case "POST /api/sync":
+      return forSignedInAccount(request, account => syncCardEvents(request, account));
+    case "GET /api/pictures/*":
+      return forSignedInAccount(request, account => servePicture(request, account));
+    case "PUT /api/pictures/*":
+      return forSignedInAccount(request, account => keepPicture(request, account));
     case "POST /api/speech":
       return forSignedInAccount(request, () => speakForAccount(request));
     case "GET /api/audio/*":

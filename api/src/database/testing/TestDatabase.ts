@@ -1,9 +1,12 @@
+import {cardEventId} from "@flashcards/shared/sync/card-events/CardEventId";
+import type {CardEvent} from "@flashcards/shared/sync/card-events/CardEvent";
+import type {StoredCardEvent} from "@src/database/types/StoredCardEvent";
+import {isLaterChoice} from "@flashcards/shared/sync/IsLaterChoice";
+import type {RecordChange} from "@flashcards/shared/sync/records/RecordChange";
+import type {StoredRecordChange} from "@src/database/types/StoredRecordChange";
+import type {SettingChange} from "@flashcards/shared/sync/settings/SettingChange";
 import type {Account} from "@src/database/types/Account";
-import type {SimilarWord} from "@src/database/types/SimilarWord";
 import type {NewAccount} from "@src/database/types/NewAccount";
-import type {NewNote} from "@src/database/types/NewNote";
-import type {Note} from "@src/database/types/Note";
-import type {NewSimilarWord} from "@src/database/types/NewSimilarWord";
 import type {NewSession} from "@src/database/types/NewSession";
 
 interface StoredAccount extends Account {
@@ -17,14 +20,16 @@ interface StoredAccount extends Account {
 class TestDatabase {
   private accounts: StoredAccount[] = [];
   private sessions: NewSession[] = [];
-  private words: (NewSimilarWord & {readonly order: number})[] = [];
-  private notes: NewNote[] = [];
+  private settings: (SettingChange & {readonly userId: string})[] = [];
+  private records: (StoredRecordChange & {readonly userId: string})[] = [];
+  private events: (StoredCardEvent & {readonly userId: string})[] = [];
 
   reset(): void {
     this.accounts = [];
     this.sessions = [];
-    this.words = [];
-    this.notes = [];
+    this.events = [];
+    this.settings = [];
+    this.records = [];
   }
 
   readonly findOrCreateAccount = async (googleSub: string, newAccount: NewAccount): Promise<Account> => {
@@ -58,56 +63,71 @@ class TestDatabase {
     return {id: account.id, email: account.email};
   };
 
-  readonly listSimilarWords = async (userId: string): Promise<SimilarWord[]> => {
-    return this.words
-      .filter(word => word.userId === userId)
-      .sort((a, b) => a.order - b.order)
-      .map(({noteId, text}) => ({noteId, text}));
-  };
+  readonly saveCardEvents = async (userId: string, events: readonly CardEvent[]): Promise<void> => {
+    for (const event of events) {
+      const there = this.events.some(each => each.userId === userId && cardEventId(each.event) === cardEventId(event));
 
-  readonly saveSimilarWord = async (word: NewSimilarWord): Promise<void> => {
-    const there = this.words.some(
-      each => each.userId === word.userId && each.noteId === word.noteId && each.text === word.text,
-    );
-
-    if (!there) {
-      this.words.push({...word, order: this.words.length});
+      if (!there) {
+        this.events.push({userId, seq: this.events.length + 1, event});
+      }
     }
   };
 
-  readonly deleteSimilarWord = async (userId: string, {noteId, text}: SimilarWord): Promise<void> => {
-    this.words = this.words.filter(word => !(word.userId === userId && word.noteId === noteId && word.text === text));
+  readonly listCardEventsAfter = async (userId: string, cursor: number, limit: number): Promise<StoredCardEvent[]> => {
+    return this.events
+      .filter(each => each.userId === userId && each.seq > cursor)
+      .slice(0, limit)
+      .map(({seq, event}) => ({seq, event}));
   };
 
-  readonly listNotes = async (userId: string): Promise<Note[]> => {
-    return this.notes
-      .filter(note => note.userId === userId)
-      .map(({id, word, meaning, romanisation}) => ({id, word, meaning, romanisation}));
-  };
+  readonly saveSettingChanges = async (userId: string, changes: readonly SettingChange[]): Promise<void> => {
+    for (const change of changes) {
+      const index = this.settings.findIndex(each => each.userId === userId && each.name === change.name);
+      const kept = this.settings[index];
 
-  readonly saveNote = async (note: NewNote): Promise<void> => {
-    const there = this.notes.some(each => each.userId === note.userId && each.id === note.id);
-
-    if (!there) {
-      this.notes.push(note);
+      if (!kept) {
+        this.settings.push({userId, ...change});
+      } else if (isLaterChoice(change.at, kept.at)) {
+        this.settings[index] = {userId, ...change};
+      }
     }
   };
 
-  readonly updateNote = async (userId: string, {id, word, meaning, romanisation}: Note): Promise<boolean> => {
-    const index = this.notes.findIndex(note => note.userId === userId && note.id === id);
-    const kept = this.notes[index];
-
-    if (!kept) {
-      return false;
-    }
-    this.notes[index] = {...kept, word, meaning, romanisation};
-
-    return true;
+  readonly listSettingChanges = async (userId: string): Promise<SettingChange[]> => {
+    return this.settings.filter(each => each.userId === userId).map(({name, value, at}) => ({name, value, at}));
   };
 
-  readonly deleteNote = async (userId: string, id: string): Promise<void> => {
-    this.notes = this.notes.filter(note => !(note.userId === userId && note.id === id));
-    this.words = this.words.filter(word => !(word.userId === userId && word.noteId === id));
+  readonly saveRecordChanges = async (userId: string, changes: readonly RecordChange[]): Promise<void> => {
+    for (const record of changes) {
+      const index = this.records.findIndex(
+        each => each.userId === userId && each.record.kind === record.kind && each.record.id === record.id,
+      );
+      const kept = this.records[index];
+
+      if (kept && !isLaterChoice(record.at, kept.record.at)) {
+        continue;
+      }
+
+      const seq = Math.max(0, ...this.records.map(each => each.seq)) + 1;
+
+      if (kept) {
+        this.records[index] = {userId, seq, record};
+      } else {
+        this.records.push({userId, seq, record});
+      }
+    }
+  };
+
+  readonly listRecordChangesAfter = async (
+    userId: string,
+    cursor: number,
+    limit: number,
+  ): Promise<StoredRecordChange[]> => {
+    return this.records
+      .filter(each => each.userId === userId && each.seq > cursor)
+      .sort((a, b) => a.seq - b.seq)
+      .slice(0, limit)
+      .map(({seq, record}) => ({seq, record}));
   };
 
   get sessionCount(): number {

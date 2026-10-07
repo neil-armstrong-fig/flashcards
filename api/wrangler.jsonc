@@ -18,8 +18,11 @@
     {"binding": "SPEECH_BUDGET", "id": "REPLACE_WITH_ID_FROM_wrangler_kv_namespace_create"},
     {"binding": "SPEECH_AUDIO", "id": "REPLACE_WITH_ID_FROM_wrangler_kv_namespace_create"},
   ],
-  // The private bucket of recordings. Locally `wrangler dev` emulates it under .wrangler/; upload with `pnpm upload-audio` (tools).
-  "r2_buckets": [{"binding": "RECORDINGS", "bucket_name": "flashcards-recordings"}],
+  // The private buckets of recordings and of the learner's pictures. Locally `wrangler dev` emulates them under .wrangler/; upload recordings with `pnpm upload-audio` (tools).
+  "r2_buckets": [
+    {"binding": "RECORDINGS", "bucket_name": "flashcards-recordings"},
+    {"binding": "PICTURES", "bucket_name": "flashcards-pictures"},
+  ],
   // Speech requests and sign-in attempts, by address. The numbers and namespace ids must match `infra/`.
   "ratelimits": [
     {"name": "SPEECH_LIMITER", "namespace_id": "2001", "simple": {"limit": 20, "period": 60}},

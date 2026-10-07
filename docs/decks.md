@@ -79,8 +79,8 @@ card is recorded before the card exists, as now, so it is never silent offline.
 
 ## What changes in the API and the app
 
-- D1: a `decks` table; `deck_id` and `language` on `notes` (a migration that gives existing rows `ko-starter` and `ko`).
-- `notes` routes check the text by the deck's language, not Korean only (`KoreanText` becomes a per-language check in `shared/`).
+- D1: a `decks` table; `deckId` and `language` in the payload of a `note` record (`docs/sync.md`).
+- The check of a `note` record (`readRecordChange`) is by the deck's language, not Korean only (`KoreanText` becomes a per-language check in `shared/`).
 - `webapp/src/redux/slices/deck/`: made decks beside shipped ones (`SelectDecks`), `deckIdOfCard` reads a note's own `deckId`, the home deck
   list and the settings limits list made decks, and a `locked` setting per deck.
 - Specs: creating a deck, adding to a chosen deck, a locked deck missing from the choice, the lookup filling either field (against

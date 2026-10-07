@@ -15,9 +15,10 @@ export function markCardHard(): AppThunk<Promise<void>> {
       return;
     }
 
-    const card = {id, state: markHard(state, new Date())};
+    const now = new Date();
+    const card = {id, state: markHard(state, now)};
 
-    await saveCard(card).catch(reportUnsaved);
+    await saveCard(card, {cardId: id, kind: "hard", at: now.toISOString()}).catch(reportUnsaved);
     dispatch(cardMarkedHard(card));
   };
 }

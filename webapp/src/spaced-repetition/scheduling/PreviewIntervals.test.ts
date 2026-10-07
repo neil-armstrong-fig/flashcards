@@ -6,7 +6,7 @@ import type {StudyCard} from "@src/spaced-repetition/card/types/StudyCard";
 const minutes = (count: number): number => count * 60 * 1000;
 const now = new Date("2026-10-05T10:00:00Z");
 const desiredRetention = 0.9;
-const aNewCard: StudyCard = {id: "card-1", state: newCardState(now)};
+const aNewCard: StudyCard = {id: "card-1", state: newCardState({due: now.toISOString()})};
 
 it("previews when a new card would come back for each rating, without changing the card", () => {
   const before = JSON.stringify(aNewCard);

@@ -10,6 +10,10 @@ words**: a spec that asserted `"gud"` instead of `"good"` would compile, run, an
 ```
 src/study/      Rating (again, hard, good, easy, read off one list), StudyFocus (all, new or struggling: which part of a deck's day a session studies)
 src/http/       ByteRangeFrom: what a `Range` header asks for, used by the API to answer it and by the app's service worker to answer from a cached copy
+src/sync/       what the app and the API both keep of the learner (`docs/sync.md`), a folder for each subject, and `IsLaterChoice` (which of two changes is the later), which the settings and the records share
+  card-events/    CardEvent (one thing that happened to a card: an answer, or a suspend, unsuspend, bury or hard; read off storage or the wire by `readCardEvent`), `cardEventId` (what makes two events the same) and CARD_EVENT_KINDS
+  settings/       SettingChange (a synced setting, chosen at a moment: the later wins) and SYNCED_SETTING_NAMES (the settings that follow the learner; theme, voice and speed stay on the device)
+  records/        RecordChange (what the learner made, one thing each, as the API keeps it: their own card, a similar word, a note or a picture on a card, or its removal; `readRecordChange` checks each kind's payload, `notePayloadOf` and the others narrow it), RECORD_KINDS, the payloads, and PICTURE_TYPES (the images kept)
 src/theme/      Theme (system, light or dark: the learner's choice of colours, read off one list)
 src/audio/      Voice and Speed (the learner's two choices, each read off one list), RecordingVariant (`female-slower`)
 src/language/   Language (the languages taught, by ISO code; Japanese and Dutch join as their phases land), the checks on what a learner

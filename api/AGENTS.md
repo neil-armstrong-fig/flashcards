@@ -6,9 +6,8 @@ A Cloudflare Worker (modelled on janggi's `api/` (https://github.com/neil-armstr
   authorization-code flow with PKCE through `oauth4webapi`, asking for `openid email`. The person is let in only if Google says the
   email is verified **and** it is on `ALLOWED_EMAILS`; anyone else is sent back signed out. The session is a random token in a
   `HttpOnly; Secure; SameSite=Lax` cookie, and only its SHA-256 is stored.
-- **The learner's similar words**, kept per account in D1: `GET` and `POST /api/similar` (`{noteId, text}`, idempotent).
-- **The learner's own cards**, kept per account in D1: `GET`, `POST`, `PUT` and `DELETE /api/notes` (`{id, word, meaning, romanisation}`; the
-  id is `ko-custom-…`; `POST` is idempotent; `PUT` changes the words of an existing note (404 if it is not the account's), keeping its id and similars; `DELETE {id}` also deletes the similar words kept with that note, in one batch).
+- **Sync**: `POST /api/sync` with `{cursor, events}` keeps a device's card events (`@flashcards/shared/sync/card-events/CardEvent`, at most 100 a request, none kept if any is malformed) in `card_events`, idempotent by account, card, time and kind, and also keeps the synced settings it sends (at most 20, each only if chosen later than the one kept, in `synced_settings`), and keeps **records** (what the learner made: their own cards, their similar words, the notes and pictures on their cards; `@flashcards/shared/sync/records/RecordChange`, at most 100 a request, checked by kind) in `synced_records`, each only if it is a later change than the one kept, a removal staying as a record so a device that has not heard of it is told. It answers `{cursor, more, events, settings, recordCursor, moreRecords, records}`: the account's events and records after the two cursors, a hundred at a time, and every synced setting. The server never replays or changes an event (`docs/sync.md`).
+- **The learner's pictures**: `PUT` and `GET /api/pictures/<sha-256>` keep and give back a picture in the **private R2 bucket** `PICTURES`, under the account and the hash (so one account cannot reach another's). A `PUT` is refused unless its bytes are the hash, its type is `image/webp`, `image/jpeg` or `image/png`, and it is at most 1 MB; the app shrinks every picture well below that on the device.
 - **Recordings**: `GET /api/audio/<language>/<voice>-<speed>/<hash>.mp3` streams a recording made ahead of time from the **private R2 bucket**
   (`RECORDINGS`) to a signed-in account, with byte ranges (iOS needs them) and `Cache-Control: private, max-age=31536000, immutable`. 401
   without a session, and 404 for any name the app does not make (`router/routes/audio/recording-key/`). The bucket is never public (`docs/online.md`). `tools/` uploads them (`upload-audio`).
@@ -39,7 +38,7 @@ day), and nothing expires: a recording of a word does not go stale.
 
 ```
 src/ApiWorker.ts        the default export: checks the secrets, then routes
-src/router/             RouteRequest; cors/ (origins, credentials, CSRF); dispatch/ (the one list of routes, who answers each, the sign-in guard); routes/ (one folder per resource, then one per handler (`notes/remove-note/RemoveNote.ts`), its own helpers in a `utils/` beside it, those shared by several handlers in the resource's `shared/utils/`; audio/serve/ is ServeRecording: ranges, headers, and audio/recording-key/ is which names are recordings);
+src/router/             RouteRequest; cors/ (origins, credentials, CSRF); dispatch/ (the one list of routes, who answers each, the sign-in guard); routes/ (one folder per resource, then one per handler (`pictures/keep-picture/KeepPicture.ts`), its own helpers in a `utils/` beside it, those shared by several handlers in the resource's `shared/utils/`; audio/serve/ is ServeRecording: ranges, headers, and audio/recording-key/ is which names are recordings);
                         session/ (token, cookie, hash, who is signed in); sign-in/ (start-sign-in/, finish-sign-in/, and shared/ with google/, oauth/ attempt cookie,
                         utils/ (ClientOf, LoginAllowed); the allow-list is in finish-sign-in/utils/); respond/
 src/database/           Database.ts (Drizzle over D1), schema/, and one file per query; types/. A test replaces the queries
@@ -60,8 +59,8 @@ pnpm --filter @flashcards/api db:generate         # after changing src/database/
 pnpm --filter @flashcards/api db:migrate:local    # makes or updates the local database under .wrangler/
 ```
 
-Tables: `users` (Google subject, email), `sessions` (hash of the token, expiry), `similar_words` (account, note id, text), `notes`
-(account, id, word, meaning, romanisation, added at). A change
+Tables: `users` (Google subject, email), `sessions` (hash of the token, expiry), `card_events`, `synced_settings` and `synced_records` (what
+sync keeps). The migrations are `0000_init` and `0001_add_sync_and_drop_notes_and_similar_words`, named for what they do (`drizzle-kit generate --name <what it does>`; it asks in a terminal whether a new table is a rename of a dropped one, so answer "create"). A change
 to a stored shape is a new migration, never an edit to an old one.
 
 ## Running and testing
