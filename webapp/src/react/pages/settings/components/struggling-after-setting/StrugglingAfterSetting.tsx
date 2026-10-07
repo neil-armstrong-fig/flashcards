@@ -1,6 +1,6 @@
 import {strugglingAfterChosen} from "@src/redux/slices/settings/SettingsSlice";
 import {STRUGGLING_AFTER_LIMITS} from "@src/redux/slices/settings/limits/SettingLimits";
-import {NumberSetting} from "@src/react/pages/settings/components/number-setting/NumberSetting";
+import {NumberSetting} from "@src/react/components/number-setting/NumberSetting";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
 
 /** How many times a card is forgotten before it counts as struggling. */

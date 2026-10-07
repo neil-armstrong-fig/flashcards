@@ -1,3 +1,4 @@
+import {buzz} from "@src/haptics/Buzz";
 import {selectSignedIn} from "@src/redux/slices/account/selectors/SelectSignedIn";
 import {SpeedSwitch} from "@src/react/components/speed-switch/SpeedSwitch";
 import {VoiceSwitch} from "@src/react/components/voice-switch/VoiceSwitch";
@@ -40,6 +41,11 @@ export function SimilarPanel({noteId}: Props): React.JSX.Element | undefined {
   const {language} = note;
   const canAsk = signedIn && language === "ko";
 
+  function hear(texts: readonly string[]): void {
+    buzz();
+    speakSimilar(texts, language, choices);
+  }
+
   async function add(): Promise<void> {
     if (await addSimilarWithRecordings(dispatch, noteId, text)) {
       setText("");
@@ -53,7 +59,7 @@ export function SimilarPanel({noteId}: Props): React.JSX.Element | undefined {
       <button
         type="button"
         data-testid="similar-play-own"
-        onClick={() => speakSimilar([similar.own], language, choices)}
+        onClick={() => hear([similar.own])}
         aria-label={`Play ${similar.own}`}
         className="flex items-center gap-3 rounded-lg bg-ground px-4 py-3 text-left text-lg"
       >
@@ -82,7 +88,7 @@ export function SimilarPanel({noteId}: Props): React.JSX.Element | undefined {
             type="button"
             data-testid="similar-play"
             aria-label={`Play ${word}`}
-            onClick={() => speakSimilar([word], language, choices)}
+            onClick={() => hear([word])}
             className="flex flex-1 items-center gap-3 rounded-lg bg-ground px-4 py-3 text-left text-lg"
           >
             <SpeakerIcon className="size-6 shrink-0 text-accent" />
@@ -94,7 +100,7 @@ export function SimilarPanel({noteId}: Props): React.JSX.Element | undefined {
             type="button"
             data-testid="similar-play-both"
             aria-label={`Play ${similar.own}, then ${word}`}
-            onClick={() => speakSimilar([similar.own, word], language, choices)}
+            onClick={() => hear([similar.own, word])}
             className="flex items-center gap-2 rounded-lg bg-ground px-4 py-3 text-sm"
           >
             <SpeakerIcon className="size-5 shrink-0 text-accent" />

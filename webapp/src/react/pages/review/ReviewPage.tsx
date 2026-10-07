@@ -1,3 +1,4 @@
+import {AudioFill} from "@src/react/components/audio-fill/AudioFill";
 import {CardReview} from "@src/react/pages/review/components/card-review/CardReview";
 import {ReviewHeader} from "@src/react/pages/review/components/review-header/ReviewHeader";
 import {SessionComplete} from "@src/react/pages/review/components/session-complete/SessionComplete";
@@ -21,6 +22,8 @@ export function ReviewPage(): React.JSX.Element {
       onClick={tapToPlay}
       className="mx-auto flex min-h-dvh max-w-xl flex-col gap-4 p-4"
     >
+      <AudioFill within="screen" />
+
       <ReviewHeader />
 
       {hasCard && <CardReview />}

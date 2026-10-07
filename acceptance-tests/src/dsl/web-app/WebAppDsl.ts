@@ -84,6 +84,15 @@ export class WebAppDsl {
     }
   }
 
+  /** How many times the app has buzzed the phone since it opened: a tap on a rating or a recording is felt as well as seen. */
+  async getBuzzCount(): Promise<number> {
+    try {
+      return (await this.playwright.vibrations()).length;
+    } catch (error) {
+      throw new DslError("Failed to count the buzzes", error);
+    }
+  }
+
   /** The colour the app asks the browser to paint its own bar (the phone's status bar), as a hex value. */
   async getBrowserBarColour(): Promise<string> {
     try {

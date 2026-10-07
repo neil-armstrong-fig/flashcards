@@ -2,6 +2,7 @@
 export const ROUTES = {
   home: "/",
   settings: "/settings",
+  deckSettings: "/settings/deck/:deckId",
   browse: "/browse",
   struggling: "/struggling",
   review: "/review",

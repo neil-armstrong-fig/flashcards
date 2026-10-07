@@ -1,14 +1,14 @@
-import {DeckSpeedSetting} from "@src/react/pages/settings/components/deck-settings/components/deck-settings-of-deck/components/deck-speed-setting/DeckSpeedSetting";
-import {DeckVoiceSetting} from "@src/react/pages/settings/components/deck-settings/components/deck-settings-of-deck/components/deck-voice-setting/DeckVoiceSetting";
+import {DeckSpeedSetting} from "@src/react/pages/deck-settings/components/deck-settings-of-deck/components/deck-speed-setting/DeckSpeedSetting";
+import {DeckVoiceSetting} from "@src/react/pages/deck-settings/components/deck-settings-of-deck/components/deck-voice-setting/DeckVoiceSetting";
 import {
   limitsUnlockedChosen,
   maxReviewsPerDayChosen,
   newCardsPerDayChosen,
 } from "@src/redux/slices/settings/SettingsSlice";
 import {MAX_REVIEWS_PER_DAY_LIMITS, NEW_CARDS_PER_DAY_LIMITS} from "@src/redux/slices/settings/limits/SettingLimits";
-import {NumberSetting} from "@src/react/pages/settings/components/number-setting/NumberSetting";
+import {NumberSetting} from "@src/react/components/number-setting/NumberSetting";
 import {selectDeckLimits} from "@src/redux/slices/settings/selectors/SelectDeckLimits";
-import {ToggleSetting} from "@src/react/pages/settings/components/toggle-setting/ToggleSetting";
+import {ToggleSetting} from "@src/react/components/toggle-setting/ToggleSetting";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
 
 interface Props {
@@ -23,7 +23,7 @@ export function DeckSettingsOfDeck({deckId, name}: Props): React.JSX.Element {
   const locked = !limits.limitsUnlocked;
 
   return (
-    <section aria-label={name} className="flex flex-col gap-3">
+    <section aria-label={name} data-testid={`deck-settings-screen-${deckId}`} className="flex flex-col gap-3">
       <h2 className="font-semibold">{name}</h2>
 
       <NumberSetting

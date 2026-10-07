@@ -1,5 +1,6 @@
 import type {Page} from "@playwright/test";
 import type {Theme} from "@flashcards/shared/theme/Theme";
+import type {DeckId} from "@src/dsl/web-app/types/DeckId";
 import {DslError} from "@src/dsl/errors/DslError";
 import {SettingsPlaywright} from "@src/dsl/web-app/components/settings/playwright/SettingsPlaywright";
 import {SettingsLimitsDsl} from "@src/dsl/web-app/components/settings/components/limits/SettingsLimitsDsl";
@@ -37,6 +38,40 @@ export class SettingsDsl {
       return await this.playwright.theme();
     } catch (error) {
       throw new DslError("Failed to read the chosen colours", error);
+    }
+  }
+
+  /** Opens one deck's settings from the settings screen. */
+  async openDeck(deck: DeckId): Promise<void> {
+    try {
+      await this.playwright.openDeck(deck);
+    } catch (error) {
+      throw new DslError(`Failed to open the ${deck} settings`, error);
+    }
+  }
+
+  /** Taps the back button at the top: from a deck's settings to the settings, from the settings to home. */
+  async back(): Promise<void> {
+    try {
+      await this.playwright.back();
+    } catch (error) {
+      throw new DslError("Failed to go back from the settings", error);
+    }
+  }
+
+  async isShown(): Promise<boolean> {
+    try {
+      return await this.playwright.isShown();
+    } catch (error) {
+      throw new DslError("Failed to tell whether the settings are showing", error);
+    }
+  }
+
+  async isDeckShown(deck: DeckId): Promise<boolean> {
+    try {
+      return await this.playwright.isDeckShown(deck);
+    } catch (error) {
+      throw new DslError(`Failed to tell whether the ${deck} settings are showing`, error);
     }
   }
 

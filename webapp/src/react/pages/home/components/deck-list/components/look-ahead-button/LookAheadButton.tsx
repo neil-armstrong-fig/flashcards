@@ -20,7 +20,7 @@ export function LookAheadButton({deckId}: Props): React.JSX.Element | undefined 
       type="button"
       data-testid={`look-ahead-${deckId}`}
       onClick={() => dispatch(startSession(deckId, "ahead"))}
-      className="rounded-full bg-ground px-3 py-2 text-sm"
+      className="min-h-11 rounded-full bg-ground px-4 py-2 text-sm"
     >
       Look ahead (<span data-testid={`look-ahead-count-${deckId}`}>{count}</span>)
     </button>

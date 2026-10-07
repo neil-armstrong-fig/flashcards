@@ -15,7 +15,7 @@ export function LoginPage({reason}: Props): React.JSX.Element {
   return (
     <main
       data-testid="login-screen"
-      className="mx-auto flex min-h-screen max-w-xl flex-col items-center justify-center gap-6 p-6 text-center"
+      className="mx-auto flex min-h-dvh max-w-xl flex-col items-center justify-center gap-6 p-6 text-center"
     >
       <h1 data-testid="app-title" className="text-3xl font-semibold">
         Flash Cards

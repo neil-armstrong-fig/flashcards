@@ -12,13 +12,13 @@ export function PictureControls(): React.JSX.Element {
   const chooserRef = useRef<HTMLInputElement>(null);
 
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex w-full flex-col gap-2">
       {picture !== undefined && (
         <button
           type="button"
           data-testid="picture-remove"
           onClick={() => void dispatch(removeCardPicture())}
-          className="text-sm text-ink-muted underline"
+          className="flex min-h-12 w-full items-center justify-center rounded-xl bg-ground px-4 py-3"
         >
           Remove picture
         </button>
@@ -29,7 +29,7 @@ export function PictureControls(): React.JSX.Element {
           type="button"
           data-testid="picture-add"
           onClick={() => chooserRef.current?.click()}
-          className="text-sm text-ink-muted underline"
+          className="flex min-h-12 w-full items-center justify-center rounded-xl bg-ground px-4 py-3"
         >
           Add a picture
         </button>

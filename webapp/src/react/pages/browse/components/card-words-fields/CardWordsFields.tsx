@@ -39,7 +39,7 @@ export function CardWordsFields({testIdPrefix, words, onChange}: Props): React.J
         placeholder="The Korean word"
         aria-label="The Korean word"
         onChange={event => typeWord(event.currentTarget.value)}
-        className="rounded-lg bg-ground px-3 py-2"
+        className="min-h-11 rounded-lg bg-ground px-3 py-2"
       />
 
       <input
@@ -48,7 +48,7 @@ export function CardWordsFields({testIdPrefix, words, onChange}: Props): React.J
         placeholder="What it means in English"
         aria-label="What it means in English"
         onChange={event => onChange({...words, meaning: event.currentTarget.value})}
-        className="rounded-lg bg-ground px-3 py-2"
+        className="min-h-11 rounded-lg bg-ground px-3 py-2"
       />
 
       <input
@@ -57,7 +57,7 @@ export function CardWordsFields({testIdPrefix, words, onChange}: Props): React.J
         placeholder="How it is said, in Latin letters (filled in for you)"
         aria-label="How it is said, in Latin letters"
         onChange={event => typeRomanisation(event.currentTarget.value)}
-        className="rounded-lg bg-ground px-3 py-2"
+        className="min-h-11 rounded-lg bg-ground px-3 py-2"
       />
     </>
   );

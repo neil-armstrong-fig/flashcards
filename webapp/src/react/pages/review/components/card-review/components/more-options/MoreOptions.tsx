@@ -26,13 +26,13 @@ export function MoreOptions(): React.JSX.Element {
         type="button"
         data-testid="more-options"
         onClick={() => setOpenFor(currentCardId)}
-        className="self-center text-sm text-ink-muted underline"
+        className="min-h-12 self-center px-6 py-3 text-ink-muted underline"
       >
         More
       </button>
 
       <Dialog open={open} label="More options for this card" testId="more-options-dialog" onClose={close}>
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col gap-3">
           <HideTargetToggle />
 
           <PictureControls />
@@ -47,7 +47,7 @@ export function MoreOptions(): React.JSX.Element {
             type="button"
             data-testid="more-options-close"
             onClick={close}
-            className="rounded-xl bg-accent px-6 py-2 font-semibold text-ground"
+            className="min-h-12 rounded-xl bg-accent px-6 py-3 text-lg font-semibold text-ground"
           >
             Done
           </button>

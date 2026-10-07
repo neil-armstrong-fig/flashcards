@@ -1,3 +1,4 @@
+import {buzz} from "@src/haptics/Buzz";
 import {SpeakerIcon} from "@src/react/components/speaker-icon/SpeakerIcon";
 import {useAudioChoices} from "@src/react/audio/hooks/use-audio-choices/UseAudioChoices";
 import {useSpeakCard} from "@src/react/audio/hooks/use-speak-card/UseSpeakCard";
@@ -12,8 +13,11 @@ export function ReplayButton(): React.JSX.Element {
       type="button"
       data-testid="replay-audio"
       aria-label="Play the word again"
-      onClick={() => speakCard(choices)}
-      className="flex size-16 items-center justify-center self-center rounded-full bg-ground-raised text-accent"
+      onClick={() => {
+        buzz();
+        speakCard(choices);
+      }}
+      className="flex size-16 items-center justify-center self-center rounded-full bg-ground-raised text-accent transition-transform active:scale-90 motion-reduce:transition-none"
     >
       <SpeakerIcon className="size-8" />
     </button>

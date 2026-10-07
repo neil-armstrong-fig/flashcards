@@ -72,6 +72,15 @@ export class BrowseDsl {
     }
   }
 
+  /** Whether the card whose front is `front` is washed with colour, which is how the list shows that its recording is starting. */
+  async isCardFilled(front: string): Promise<boolean> {
+    try {
+      return await this.playwright.cardFilled(front);
+    } catch (error) {
+      throw new DslError(`Failed to tell whether the card ${front} is filled`, error);
+    }
+  }
+
   /** Plays the Korean word of the card whose front is `front`. */
   async play(front: string): Promise<void> {
     try {

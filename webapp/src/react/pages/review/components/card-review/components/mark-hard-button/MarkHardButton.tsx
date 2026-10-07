@@ -14,7 +14,7 @@ export function MarkHardButton(): React.JSX.Element {
 
   if (struggling) {
     return (
-      <p data-testid="marked-hard" className="text-center text-sm text-ink-muted">
+      <p data-testid="marked-hard" className="py-3 text-center text-sm text-ink-muted">
         On your Struggling list
       </p>
     );
@@ -26,7 +26,7 @@ export function MarkHardButton(): React.JSX.Element {
       data-testid="mark-hard"
       disabled={saving}
       onClick={() => void dispatch(markCardHard())}
-      className="self-center text-sm text-ink-muted underline"
+      className="flex min-h-12 w-full items-center justify-center rounded-xl bg-ground px-4 py-3 disabled:opacity-50"
     >
       This is hard
     </button>

@@ -1,5 +1,5 @@
 import {deckSpeedChosen} from "@src/redux/slices/settings/SettingsSlice";
-import {ChoiceSetting} from "@src/react/pages/settings/components/choice-setting/ChoiceSetting";
+import {ChoiceSetting} from "@src/react/components/choice-setting/ChoiceSetting";
 import {selectDeckPreferences} from "@src/redux/slices/settings/selectors/SelectDeckPreferences";
 import {SPEEDS} from "@flashcards/shared/audio/Speed";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";

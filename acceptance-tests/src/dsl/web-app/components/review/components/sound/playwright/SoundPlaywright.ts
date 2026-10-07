@@ -22,6 +22,17 @@ export class SoundPlaywright extends BaseComponent {
     return entries.map(readPlayedRecording);
   }
 
+  /** How many times the screen has filled with colour to say a recording was starting: 0 until the first. */
+  async fillsShown(): Promise<number> {
+    const fill = this.page.getByTestId("audio-fill");
+
+    if ((await fill.count()) === 0) {
+      return 0;
+    }
+
+    return Number(await fill.getAttribute("data-plays"));
+  }
+
   /** Presses replay and waits until the fake audio element has been asked to play again. */
   async replay(): Promise<void> {
     const before = await this.page.evaluate(() => window.fakeAudio.played.length);

@@ -57,6 +57,15 @@ export class BrowsePlaywright extends BaseComponent {
     return await this.page.getByTestId("browse-nothing-found").isVisible();
   }
 
+  /** Whether the row whose front is `front` is washed with colour, to show its recording starting. */
+  async cardFilled(front: string): Promise<boolean> {
+    return await this.page
+      .getByTestId("browse-card")
+      .filter({has: this.page.getByTestId("browse-card-front").getByText(front, {exact: true})})
+      .getByTestId("audio-fill")
+      .isVisible();
+  }
+
   /** Presses play on the row whose front is `front`, and waits until the fake audio element has been asked to play. */
   async play(front: string): Promise<void> {
     const before = await this.page.evaluate(() => window.fakeAudio.played.length);

@@ -1,5 +1,7 @@
 import {ensureRecording} from "@src/audio/recordings/EnsureRecording";
 import {playerState} from "@src/audio/player/utils/PlayerState";
+import {notifyListeners} from "@src/audio/player/utils/NotifyListeners";
+import {setPlaying} from "@src/audio/player/utils/SetPlaying";
 
 const RECORDED_AHEAD = "audio/";
 
@@ -27,11 +29,26 @@ export function playRecording(url: string, onEnded?: () => void): void {
 }
 
 function begin(url: string, onEnded: (() => void) | undefined): void {
-  playerState.element ??= new Audio();
+  playerState.element ??= createElement();
 
   const element = playerState.element;
+
+  playerState.started += 1;
+  notifyListeners();
 
   element.onended = onEnded ?? null;
   element.src = url;
   element.play().catch((error: unknown) => console.error("A recording could not be played.", error));
+}
+
+function createElement(): HTMLAudioElement {
+  const element = new Audio();
+
+  element.addEventListener("playing", () => setPlaying(true));
+
+  for (const stopped of ["ended", "pause", "error", "emptied"]) {
+    element.addEventListener(stopped, () => setPlaying(false));
+  }
+
+  return element;
 }

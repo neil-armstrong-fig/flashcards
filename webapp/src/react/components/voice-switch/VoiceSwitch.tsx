@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import {selectSpeechVoice} from "@src/redux/shared/speech/SelectSpeechVoice";
 import {useAppSelector} from "@src/redux/shared/Hooks";
 import {useSwitchVoice} from "@src/react/audio/hooks/use-switch-voice/UseSwitchVoice";
@@ -29,14 +30,24 @@ export function VoiceSwitch({testId, className, replay}: Props): React.JSX.Eleme
       data-testid={testId}
       aria-label={VOICE_LABELS[voice]}
       onClick={switchVoice}
-      className={`${className} flex items-center justify-center gap-1`}
+      className={clsx(className, "flex min-h-11 items-center justify-center gap-1")}
     >
-      <span className={`flex-1 rounded-full px-3 py-1 ${voice === "male" ? CHOSEN_STYLES.male : "text-voice-male"}`}>
+      <span
+        className={clsx(
+          "flex-1 rounded-full px-3 py-1",
+          voice === "male" && CHOSEN_STYLES.male,
+          voice !== "male" && "text-voice-male",
+        )}
+      >
         Male
       </span>
 
       <span
-        className={`flex-1 rounded-full px-3 py-1 ${voice === "female" ? CHOSEN_STYLES.female : "text-voice-female"}`}
+        className={clsx(
+          "flex-1 rounded-full px-3 py-1",
+          voice === "female" && CHOSEN_STYLES.female,
+          voice !== "female" && "text-voice-female",
+        )}
       >
         Female
       </span>

@@ -24,7 +24,7 @@ export function ReviewHeader(): React.JSX.Element {
           data-testid="leave-session"
           aria-label="Leave the session"
           onClick={leaveSession}
-          className="-ml-2 px-2 py-1 text-lg"
+          className="relative flex min-h-11 items-center text-lg after:absolute after:-inset-x-2 after:inset-y-0 after:content-['']"
         >
           ← Back
         </button>

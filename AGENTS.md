@@ -193,6 +193,19 @@ Pages gated on both, then runs the same suite against the live URL. The app is a
 (sub)domain, so there is no base path and the DSL navigates with `goto("./")`. The custom domain is set in the repo's Pages
 settings with no `CNAME` file, because the deploy is an Actions artifact (`MANUAL-SETUP-STEPS.md`).
 
+## Worktrees (on demand only)
+
+Work in the main checkout by default. Use a worktree only when the developer asks for one (the practice follows janggi's
+`AGENTS.md`). `EnterWorktree` makes `.claude/worktrees/<name>` on branch `worktree-<name>`, from `origin/main`: it does not carry
+the main checkout's uncommitted changes, nor the git-ignored `.env.dev` and `private-source/`. Then:
+
+- `pnpm install --frozen-lockfile --offline`.
+- Never `git stash` (the stack is shared with every checkout). Leave the work uncommitted, as everywhere here.
+- Serve your own build on its own port (`pnpm exec vite preview --port 3100 --strictPort`, run from `webapp/` in the
+  background) and run the specs with `WEBAPP_URL=http://localhost:3100`. The server dies with its shell if started in the
+  foreground. Stop it by PID.
+- The developer merges and removes the worktree and branch (`git worktree remove`, `git branch -d`). Never push.
+
 ## Keeping context small
 
 Every tool result is re-read on each later call, so a large one is paid for repeatedly. Read the part of a file you need

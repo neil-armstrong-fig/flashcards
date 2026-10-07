@@ -9,6 +9,7 @@ import type {FakeAccount} from "@src/dsl/web-app/playwright/fake-api/FakeAccount
 import {createFakeApi} from "@src/dsl/web-app/playwright/fake-api/CreateFakeApi";
 import {fullHex} from "@src/dsl/web-app/playwright/full-hex/FullHex";
 import {installFakeAudio} from "@src/dsl/web-app/playwright/fake-audio/InstallFakeAudio";
+import {installFakeVibration} from "@src/dsl/web-app/playwright/fake-vibration/InstallFakeVibration";
 
 /** Where the clock starts. A morning, well clear of the study day's rollover hour. */
 const START_OF_TIME = new Date("2026-10-05T10:00:00");
@@ -28,6 +29,8 @@ export class WebAppPlaywright extends BasePage {
     await this.page.clock.install({time: START_OF_TIME});
     // Nobody listens to a test run: audio elements write down what they were asked to play instead.
     await this.page.addInitScript(installFakeAudio);
+    // Nor does anyone feel one: the phone's vibration motor writes down each buzz instead.
+    await this.page.addInitScript(installFakeVibration);
     // Nor does a run reach the API, which would spend real quota and need a real Google account: a stand-in answers.
     await this.page.route("**/api/**", createFakeApi(this.account));
     // Relative, so the suite does not care where the app is served from.
@@ -76,6 +79,11 @@ export class WebAppPlaywright extends BasePage {
 
       return (red + green + blue) / 3 > 128;
     });
+  }
+
+  /** How long each buzz the app asked the phone for was, in milliseconds, oldest first. */
+  async vibrations(): Promise<readonly number[]> {
+    return await this.page.evaluate(() => [...window.fakeVibration.buzzes]);
   }
 
   /** What the browser's tab is titled, as a learner sees it in the tab strip or a bookmark. */

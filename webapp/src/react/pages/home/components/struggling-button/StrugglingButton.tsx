@@ -8,7 +8,11 @@ export function StrugglingButton(): React.JSX.Element {
   const count = useAppSelector(selectStrugglingCount);
 
   return (
-    <Link to={ROUTES.struggling} data-testid="open-struggling" className="self-start text-ink-muted underline">
+    <Link
+      to={ROUTES.struggling}
+      data-testid="open-struggling"
+      className="flex min-h-11 items-center self-start text-ink-muted underline"
+    >
       Struggling (<span data-testid="struggling-count">{count}</span>)
     </Link>
   );

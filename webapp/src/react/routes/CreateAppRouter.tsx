@@ -1,6 +1,7 @@
 import {createHashRouter, redirect} from "react-router";
 import {AppShell} from "@src/react/components/app-shell/AppShell";
 import {BrowsePage} from "@src/react/pages/browse/BrowsePage";
+import {DeckSettingsPage} from "@src/react/pages/deck-settings/DeckSettingsPage";
 import {HomePage} from "@src/react/pages/home/HomePage";
 import {ReviewPage} from "@src/react/pages/review/ReviewPage";
 import {ROUTES} from "@src/react/routes/Routes";
@@ -20,6 +21,7 @@ export function createAppRouter(store: AppStore): ReturnType<typeof createHashRo
       children: [
         {path: ROUTES.home, element: <HomePage />},
         {path: ROUTES.settings, element: <SettingsPage />},
+        {path: ROUTES.deckSettings, element: <DeckSettingsPage />},
         {path: ROUTES.browse, element: <BrowsePage />},
         {path: ROUTES.struggling, element: <StrugglingPage />},
         {

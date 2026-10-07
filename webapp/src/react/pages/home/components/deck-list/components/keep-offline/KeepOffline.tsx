@@ -33,7 +33,7 @@ export function KeepOffline({deckId}: Props): React.JSX.Element | undefined {
           type="button"
           data-testid={`keep-offline-${deckId}`}
           onClick={() => void keepDeckOffline(store, deckId)}
-          className="rounded-full bg-ground px-3 py-2"
+          className="min-h-11 rounded-full bg-ground px-4 py-2"
         >
           Keep offline
         </button>

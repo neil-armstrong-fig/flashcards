@@ -1,11 +1,19 @@
+import clsx from "clsx";
+import {useIsPlaying} from "@src/react/audio/hooks/use-is-playing/UseIsPlaying";
+
 interface Props {
   readonly className: string;
 }
 
-/** A loudspeaker giving off sound, drawn in the text colour. Decorative: whatever holds it carries the label. */
+/**
+ * A loudspeaker giving off sound, drawn in the text colour, which pulses while a recording is sounding. Decorative: whatever
+ * holds it carries the label.
+ */
 export function SpeakerIcon({className}: Props): React.JSX.Element {
+  const playing = useIsPlaying();
+
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
+    <svg viewBox="0 0 24 24" aria-hidden="true" className={clsx(className, playing && "motion-safe:animate-pulse")}>
       <path d="M11 5 6 9H3v6h3l5 4V5Z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
 
       <path

@@ -1,3 +1,5 @@
+import clsx from "clsx";
+import {AudioFill} from "@src/react/components/audio-fill/AudioFill";
 import {selectSignedIn} from "@src/redux/slices/account/selectors/SelectSignedIn";
 import {EditCardForm} from "@src/react/pages/browse/components/browse-card/components/edit-card-form/EditCardForm";
 import {DeleteCardButton} from "@src/react/pages/browse/components/browse-card/components/delete-card-button/DeleteCardButton";
@@ -14,6 +16,7 @@ import {selectNoteById} from "@src/redux/slices/deck/selectors/SelectNoteById";
 import {isCustomNoteId} from "@src/redux/slices/deck/ids/CustomNoteId";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
 import {useAudioChoices} from "@src/react/audio/hooks/use-audio-choices/UseAudioChoices";
+import {useRecordingsStarted} from "@src/react/audio/hooks/use-recordings-started/UseRecordingsStarted";
 import {useSpeakWord} from "@src/react/audio/hooks/use-speak-word/UseSpeakWord";
 import type {BrowseRow} from "@src/redux/slices/browse/types/BrowseRow";
 
@@ -32,10 +35,14 @@ export function BrowseCard({row}: Props): React.JSX.Element {
   const similarsOpen = useAppSelector(state => state.browse.similarsOpenFor === row.id);
   const learnedSimilars = useAppSelector(state => state.similar.words[row.noteId]);
   const [editing, setEditing] = useState(false);
+  const started = useRecordingsStarted();
+  const [expectedStart, setExpectedStart] = useState<number | undefined>(undefined);
   const hasSimilars = (similarOf(note, learnedSimilars)?.words.length ?? 0) > 0;
 
   function play(): void {
     if (row.spoken) {
+      // The next recording to start is this one's: it is the one this card washes with colour.
+      setExpectedStart(started + 1);
       speakWord(row.spoken, choices);
     }
   }
@@ -50,8 +57,10 @@ export function BrowseCard({row}: Props): React.JSX.Element {
     <li
       data-testid="browse-card"
       onClick={tapToPlay}
-      className="flex cursor-pointer flex-col gap-3 rounded-xl bg-ground-raised p-4"
+      className="relative flex cursor-pointer flex-col gap-3 overflow-hidden rounded-xl bg-ground-raised p-4"
     >
+      <AudioFill within="card" show={started === expectedStart} />
+
       <div className="flex items-center gap-3">
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <p className="flex items-baseline gap-3">
@@ -99,7 +108,11 @@ export function BrowseCard({row}: Props): React.JSX.Element {
           aria-expanded={similarsOpen}
           data-has-similars={hasSimilars}
           onClick={() => dispatch(similarsToggled(row.id))}
-          className={`self-start text-sm underline ${hasSimilars ? "font-semibold text-accent" : "text-ink-muted"}`}
+          className={clsx(
+            "flex min-h-11 items-center self-start text-sm underline",
+            hasSimilars && "font-semibold text-accent",
+            !hasSimilars && "text-ink-muted",
+          )}
         >
           Similars
         </button>
@@ -109,7 +122,7 @@ export function BrowseCard({row}: Props): React.JSX.Element {
             type="button"
             data-testid="browse-card-edit"
             onClick={() => setEditing(true)}
-            className="self-start text-sm text-ink-muted underline"
+            className="flex min-h-11 items-center self-start text-sm text-ink-muted underline"
           >
             Edit
           </button>

@@ -67,18 +67,24 @@ or removing one means changing both sides in the same commit.
 | `rate-<rating>-interval`          | review screen              | Inside each rating button: when the card returns, e.g. `10m`                                                               |
 | `open-settings`                   | home screen                | Button that opens the settings screen                                                                                      |
 | `settings-screen`                 | settings screen            | Present while the settings are on screen                                                                                   |
-| `new-cards-per-day-<deck id>`     | settings screen            | Number field: new cards of that deck introduced each study day                                                             |
-| `max-reviews-per-day-<deck id>`   | settings screen            | Number field: review cards of that deck done each study day. Disabled while the limits are locked                          |
-| `limits-unlocked-<deck id>`       | settings screen            | Checkbox: let that deck's reviews per day be set apart from its new cards (locked, they are ten for each new card)         |
-| `deck-voice-<deck id>-male`       | settings screen            | Radio: the voice that speaks that deck. `deck-voice-<deck id>-female` likewise                                             |
-| `deck-speed-<deck id>-normal`     | settings screen            | Radio: the speed that deck is spoken at. `deck-speed-<deck id>-slower` likewise                                            |
+| `new-cards-per-day-<deck id>`     | deck settings screen       | Number field: new cards of that deck introduced each study day                                                             |
+| `max-reviews-per-day-<deck id>`   | deck settings screen       | Number field: review cards of that deck done each study day. Disabled while the limits are locked                          |
+| `limits-unlocked-<deck id>`       | deck settings screen       | Checkbox: let that deck's reviews per day be set apart from its new cards (locked, they are ten for each new card)         |
+| `deck-voice-<deck id>-male`       | deck settings screen       | Radio: the voice that speaks that deck. `deck-voice-<deck id>-female` likewise                                             |
+| `deck-speed-<deck id>-normal`     | deck settings screen       | Radio: the speed that deck is spoken at. `deck-speed-<deck id>-slower` likewise                                            |
 | `daily-goal-input`                | settings screen            | Number field: the daily goal, in cards                                                                                     |
 | `close-settings`                  | settings screen            | Button back to the home screen                                                                                             |
+| `back-from-settings`              | settings screen            | Link at the top, back to the home screen                                                                                   |
+| `open-deck-settings-<deck id>`    | settings screen            | Card: opens that deck's settings screen                                                                                    |
+| `deck-settings-screen`            | deck settings screen       | Present while any deck's settings are on screen                                                                            |
+| `deck-settings-screen-<deck id>`  | deck settings screen       | Present while that deck's settings are on screen                                                                           |
+| `back-from-deck-settings`         | deck settings screen       | Link at the top, back to the settings screen                                                                               |
 | `bury-card`                       | review screen              | In the more options. Button: hide this card until tomorrow                                                                 |
 | `suspend-card`                    | review screen              | In the more options. Button: hide this card until it is brought back                                                       |
 | `suspended-count`                 | settings screen            | How many cards are suspended, digits only                                                                                  |
 | `unsuspend-all`                   | settings screen            | Button: bring every suspended card back                                                                                    |
 | `replay-audio`                    | review screen              | Button: play the card's recording again                                                                                    |
+| `audio-fill`                      | review screen, browse card | Colour wash over the screen (review) or over the card just played (browse); `data-plays` counts the starts. No tap         |
 | `card-front-hidden`               | review screen              | Inside `card-front` instead of the word, when listening only                                                               |
 | `desired-retention`               | settings screen            | Number box: the percentage of reviewed cards the learner wants to remember (70 to 97)                                      |
 | `theme-system`                    | settings screen            | Radio: the colours follow the device. `theme-light` and `theme-dark` likewise                                              |

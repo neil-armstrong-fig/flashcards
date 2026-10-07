@@ -9,7 +9,7 @@ export function AddNoteButton({onAdd}: Props): React.JSX.Element {
       type="button"
       data-testid="note-add"
       onClick={onAdd}
-      className="self-center text-sm text-ink-muted underline"
+      className="flex min-h-12 w-full items-center justify-center rounded-xl bg-ground px-4 py-3"
     >
       Add a note
     </button>

@@ -1,5 +1,5 @@
 import {themeChosen} from "@src/redux/slices/settings/SettingsSlice";
-import {ChoiceSetting} from "@src/react/pages/settings/components/choice-setting/ChoiceSetting";
+import {ChoiceSetting} from "@src/react/components/choice-setting/ChoiceSetting";
 import {THEMES} from "@flashcards/shared/theme/Theme";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
 import type {Theme} from "@flashcards/shared/theme/Theme";

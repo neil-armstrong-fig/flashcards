@@ -7,13 +7,13 @@ export function SetAsideButtons(): React.JSX.Element {
   const saving = useAppSelector(state => state.study.session?.saving === true);
 
   return (
-    <div className="flex justify-center gap-6 text-sm text-ink-muted">
+    <div className="grid grid-cols-2 gap-3">
       <button
         type="button"
         data-testid="bury-card"
         disabled={saving}
         onClick={() => void dispatch(setCardAside("bury"))}
-        className="underline"
+        className="flex min-h-12 items-center justify-center rounded-xl bg-ground px-4 py-3 disabled:opacity-50"
       >
         Bury until tomorrow
       </button>
@@ -23,7 +23,7 @@ export function SetAsideButtons(): React.JSX.Element {
         data-testid="suspend-card"
         disabled={saving}
         onClick={() => void dispatch(setCardAside("suspend"))}
-        className="underline"
+        className="flex min-h-12 items-center justify-center rounded-xl bg-ground px-4 py-3 disabled:opacity-50"
       >
         Suspend
       </button>

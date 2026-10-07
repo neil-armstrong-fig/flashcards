@@ -26,7 +26,7 @@ export function StudyOnlyButton({deckId, focus, dueToday}: Props): React.JSX.Ele
       type="button"
       data-testid={`study-only-${focus}-${deckId}`}
       onClick={() => dispatch(startSession(deckId, focus))}
-      className="rounded-full bg-ground px-3 py-2 text-sm"
+      className="min-h-11 rounded-full bg-ground px-4 py-2 text-sm"
     >
       {LABELS[focus]} (<span data-testid={`study-only-count-${focus}-${deckId}`}>{count}</span>)
     </button>

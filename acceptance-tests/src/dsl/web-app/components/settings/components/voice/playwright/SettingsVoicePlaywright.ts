@@ -1,5 +1,6 @@
 import type {Locator, Page} from "@playwright/test";
 import {BaseComponent} from "@src/dsl/playwright/BaseComponent";
+import {openDeckSettings} from "@src/dsl/web-app/components/settings/playwright/utils/OpenDeckSettings";
 import type {DeckId} from "@src/dsl/web-app/types/DeckId";
 import type {Speed} from "@flashcards/shared/audio/Speed";
 import type {Voice} from "@flashcards/shared/audio/Voice";
@@ -45,10 +46,12 @@ export class SettingsVoicePlaywright extends BaseComponent {
   }
 
   async chooseDeckVoice(deck: DeckId, voice: Voice): Promise<void> {
+    await openDeckSettings(this.page, deck);
     await this.page.getByTestId(`deck-voice-${deck}-${voice}`).check();
   }
 
   async deckVoice(deck: DeckId): Promise<Voice> {
+    await openDeckSettings(this.page, deck);
     if (await this.page.getByTestId(`deck-voice-${deck}-male`).isChecked()) {
       return "male";
     }
@@ -57,10 +60,12 @@ export class SettingsVoicePlaywright extends BaseComponent {
   }
 
   async chooseDeckSpeed(deck: DeckId, speed: Speed): Promise<void> {
+    await openDeckSettings(this.page, deck);
     await this.page.getByTestId(`deck-speed-${deck}-${speed}`).check();
   }
 
   async deckSpeed(deck: DeckId): Promise<Speed> {
+    await openDeckSettings(this.page, deck);
     if (await this.page.getByTestId(`deck-speed-${deck}-slower`).isChecked()) {
       return "slower";
     }

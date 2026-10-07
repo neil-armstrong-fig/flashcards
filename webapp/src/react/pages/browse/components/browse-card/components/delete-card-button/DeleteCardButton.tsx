@@ -17,7 +17,7 @@ export function DeleteCardButton({noteId}: Props): React.JSX.Element {
         type="button"
         data-testid="browse-card-delete-confirm"
         onClick={() => void dispatch(removeCustomNote(noteId))}
-        className="self-start text-sm text-ink-muted underline"
+        className="flex min-h-11 items-center self-start text-sm text-ink-muted underline"
       >
         Really delete both cards?
       </button>
@@ -29,7 +29,7 @@ export function DeleteCardButton({noteId}: Props): React.JSX.Element {
       type="button"
       data-testid="browse-card-delete"
       onClick={() => setAsking(true)}
-      className="self-start text-sm text-ink-muted underline"
+      className="flex min-h-11 items-center self-start text-sm text-ink-muted underline"
     >
       Delete
     </button>

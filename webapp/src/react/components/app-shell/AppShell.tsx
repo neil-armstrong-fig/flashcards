@@ -5,6 +5,10 @@ import {selectAccess} from "@src/redux/slices/account/selectors/SelectAccess";
 import {useAppSelector} from "@src/redux/shared/Hooks";
 import {useTimeRefresh} from "@src/react/components/app-shell/hooks/use-time-refresh/UseTimeRefresh";
 
+/** The page is drawn to the screen's edges (`viewport-fit=cover`), so it keeps out of the notch, the home bar and a rounded corner. */
+const SAFE_AREA =
+  "pt-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)] pb-[env(safe-area-inset-bottom)] pl-[env(safe-area-inset-left)]";
+
 /**
  * The layout every screen sits in. The whole app is behind Google sign-in (`SelectAccess`): until the learner is let in, the only
  * screen is the sign-in one. A review session takes over the page, and it is the store that says whether there is one, so starting a
@@ -24,7 +28,7 @@ export function AppShell(): React.JSX.Element | undefined {
 
   if (access === "signIn" || access === "unreachable") {
     return (
-      <div data-testid="app-ready">
+      <div data-testid="app-ready" className={SAFE_AREA}>
         <LoginPage reason={access} />
       </div>
     );
@@ -39,7 +43,7 @@ export function AppShell(): React.JSX.Element | undefined {
   }
 
   return (
-    <div data-testid="app-ready">
+    <div data-testid="app-ready" className={SAFE_AREA}>
       <Outlet />
     </div>
   );

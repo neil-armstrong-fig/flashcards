@@ -1,5 +1,5 @@
 import {speedChosen} from "@src/redux/slices/settings/SettingsSlice";
-import {ChoiceSetting} from "@src/react/pages/settings/components/choice-setting/ChoiceSetting";
+import {ChoiceSetting} from "@src/react/components/choice-setting/ChoiceSetting";
 import {SPEEDS} from "@flashcards/shared/audio/Speed";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
 import type {Speed} from "@flashcards/shared/audio/Speed";

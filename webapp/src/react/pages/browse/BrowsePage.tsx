@@ -37,7 +37,11 @@ export function BrowsePage(): React.JSX.Element {
       <header className="flex items-center justify-between gap-4">
         <h1 className="text-2xl font-semibold">All cards</h1>
 
-        <Link to={ROUTES.home} data-testid="close-browse" className="text-ink-muted underline">
+        <Link
+          to={ROUTES.home}
+          data-testid="close-browse"
+          className="flex min-h-11 items-center px-2 text-ink-muted underline"
+        >
           Done
         </Link>
       </header>

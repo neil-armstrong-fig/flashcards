@@ -18,7 +18,7 @@ export function SuspendedCards(): React.JSX.Element {
         data-testid="unsuspend-all"
         disabled={count === 0}
         onClick={() => void dispatch(unsuspendAll())}
-        className="underline disabled:text-ink-muted disabled:no-underline"
+        className="min-h-11 underline disabled:text-ink-muted disabled:no-underline"
       >
         Bring them back
       </button>

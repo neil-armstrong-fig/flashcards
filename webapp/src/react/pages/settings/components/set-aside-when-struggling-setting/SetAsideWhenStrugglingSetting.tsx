@@ -1,5 +1,5 @@
 import {setAsideWhenStrugglingChosen} from "@src/redux/slices/settings/SettingsSlice";
-import {ToggleSetting} from "@src/react/pages/settings/components/toggle-setting/ToggleSetting";
+import {ToggleSetting} from "@src/react/components/toggle-setting/ToggleSetting";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
 
 /** Whether a card that counts as struggling is hidden from the reviews. */

@@ -34,6 +34,13 @@ using real account data.
 - Audio end to end (`docs/audio.md`): 978 recordings, played on show with replay, listen-only, voice and speed settings.
 - Online-served model (`docs/online.md`): recordings in a private R2 bucket behind `GET /api/audio/*`, kept on the device as they are
   played, with an opt-in Keep offline per deck. Google sign-in gates the whole app.
+- Phone feel: a back button at the top of the settings, each deck's settings on a card of its own, settings in framed groups, a short
+  buzz and a pressed or pulsing look when a rating or a recording is tapped, a colour wash over the screen (review) or the card
+  (browse) as a recording starts, tap targets of 44px or more on every screen, the page kept out of the notch and home bar, and the
+  second recording of a "this then that" fetched and loaded while the first plays. **Not yet tried on a real phone**: the buzz
+  (Android only; iPhone browsers have no vibration), the wash, and the safe-area padding. **The gap between the two recordings is
+  still long**: every recording is 1.87s with about 1.2s of silence at its end and 0.2 to 0.4s at its start (checked for 물 and 불), so
+  it needs trimming at generation (`mstts:silence` in the SSML, `tools/`), after the files are trimmed or regenerated.
 - Deployed and live: the app on GitHub Pages, the API on its Worker's custom domain, the recordings uploaded to R2, and CI deploying
   `main` and running the acceptance suite against the live URL.
 

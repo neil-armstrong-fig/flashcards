@@ -26,7 +26,7 @@ export function NoteControls(): React.JSX.Element {
         type="button"
         data-testid="note-remove"
         onClick={() => dispatch(noteRemoved(cardId))}
-        className="text-sm text-ink-muted underline"
+        className="flex min-h-12 w-full items-center justify-center rounded-xl bg-ground px-4 py-3"
       >
         Remove note
       </button>

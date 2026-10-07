@@ -20,7 +20,11 @@ export function StrugglingPage(): React.JSX.Element {
       <header className="flex items-center justify-between gap-4">
         <h1 className="text-2xl font-semibold">Struggling</h1>
 
-        <Link to={ROUTES.home} data-testid="close-struggling" className="text-ink-muted underline">
+        <Link
+          to={ROUTES.home}
+          data-testid="close-struggling"
+          className="flex min-h-11 items-center px-2 text-ink-muted underline"
+        >
           Done
         </Link>
       </header>

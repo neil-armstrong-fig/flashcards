@@ -3,6 +3,18 @@ interface PlayerState {
   element: HTMLAudioElement | undefined;
   /** Which request to play is the newest, so one still waiting for its recording is cut off by the next. */
   latest: number;
+  /** Whether a recording is sounding now, for the screen to show. */
+  playing: boolean;
+  /** How many recordings have been started, so the screen can show each start, even one that follows straight after another. */
+  started: number;
+  /** Who is waiting to hear that `playing` changed. */
+  listeners: Set<() => void>;
 }
 
-export const playerState: PlayerState = {element: undefined, latest: 0};
+export const playerState: PlayerState = {
+  element: undefined,
+  latest: 0,
+  playing: false,
+  started: 0,
+  listeners: new Set(),
+};

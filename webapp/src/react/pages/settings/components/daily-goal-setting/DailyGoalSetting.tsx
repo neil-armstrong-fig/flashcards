@@ -1,6 +1,6 @@
 import {dailyGoalChosen} from "@src/redux/slices/settings/SettingsSlice";
 import {DAILY_GOAL_CARDS_LIMITS} from "@src/redux/slices/settings/limits/SettingLimits";
-import {NumberSetting} from "@src/react/pages/settings/components/number-setting/NumberSetting";
+import {NumberSetting} from "@src/react/components/number-setting/NumberSetting";
 import {useAppDispatch, useAppSelector} from "@src/redux/shared/Hooks";
 
 /** How many cards the learner aims to review each day. */

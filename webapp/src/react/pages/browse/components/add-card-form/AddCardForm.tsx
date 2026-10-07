@@ -40,7 +40,7 @@ export function AddCardForm(): React.JSX.Element | undefined {
         type="submit"
         data-testid="browse-add-card"
         disabled={adding}
-        className="rounded-lg bg-accent px-4 py-2 font-semibold text-ground"
+        className="min-h-11 rounded-lg bg-accent px-4 py-2 font-semibold text-ground"
       >
         Add card
       </button>

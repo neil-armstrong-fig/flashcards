@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import {useState} from "react";
 import {SimilarPanel} from "@src/react/components/similar-panel/SimilarPanel";
 import {selectCurrentSimilars} from "@src/redux/slices/similar/selectors/SelectCurrentSimilars";
@@ -22,7 +23,11 @@ export function SoundSimilars(): React.JSX.Element | undefined {
         aria-expanded={open}
         data-has-similars={hasSimilars}
         onClick={() => setOpen(!open)}
-        className={`rounded-full px-4 py-2 text-sm ${hasSimilars ? "bg-accent font-semibold text-ground" : "bg-ground-raised"}`}
+        className={clsx(
+          "min-h-11 rounded-full px-4 py-2 text-sm",
+          hasSimilars && "bg-accent font-semibold text-ground",
+          !hasSimilars && "bg-ground-raised",
+        )}
       >
         Compare sounds
       </button>

@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import {RabbitIcon} from "@src/react/components/rabbit-icon/RabbitIcon";
 import {TurtleIcon} from "@src/react/components/turtle-icon/TurtleIcon";
 import {selectSpeechSpeed} from "@src/redux/shared/speech/SelectSpeechSpeed";
@@ -28,13 +29,13 @@ export function SpeedSwitch({testId, className, replay}: Props): React.JSX.Eleme
       data-testid={testId}
       aria-label={SPEED_LABELS[speed]}
       onClick={switchSpeed}
-      className={`${className} flex items-center justify-center gap-1`}
+      className={clsx(className, "flex min-h-11 items-center justify-center gap-1")}
     >
-      <span className={`flex flex-1 justify-center rounded-full px-3 py-1 ${speed === "normal" ? CHOSEN : ""}`}>
+      <span className={clsx("flex flex-1 justify-center rounded-full px-3 py-1", speed === "normal" && CHOSEN)}>
         <RabbitIcon className="size-6" />
       </span>
 
-      <span className={`flex flex-1 justify-center rounded-full px-3 py-1 ${speed === "slower" ? CHOSEN : ""}`}>
+      <span className={clsx("flex flex-1 justify-center rounded-full px-3 py-1", speed === "slower" && CHOSEN)}>
         <TurtleIcon className="size-6" />
       </span>
     </button>

@@ -15,6 +15,33 @@
   --color-voice-male: #7fb2e5;
   --color-voice-female: #e59cc0;
   --color-on-voice: #000000;
+
+  /* A recording is starting: colour rises over the whole screen and clears (`AudioFill`). The flash is for those who turn motion down. */
+  --animate-audio-fill: audio-fill 900ms ease-out;
+  --animate-audio-flash: audio-flash 500ms ease-out;
+
+  @keyframes audio-fill {
+    0% {
+      opacity: 0.7;
+      clip-path: circle(0% at 50% 100%);
+    }
+    45% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0;
+      clip-path: circle(150% at 50% 100%);
+    }
+  }
+
+  @keyframes audio-flash {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 }
 
 :root {

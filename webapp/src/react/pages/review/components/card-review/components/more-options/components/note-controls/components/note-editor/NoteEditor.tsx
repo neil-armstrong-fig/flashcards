@@ -22,7 +22,7 @@ export function NoteEditor({onDone}: Props): React.JSX.Element {
         maxLength={MAXIMUM_NOTE_LENGTH}
         rows={3}
         onChange={event => setDraft(event.target.value)}
-        className="rounded border border-ink-muted bg-ground p-2 text-sm"
+        className="rounded-xl border border-ink-muted bg-ground p-3 text-base"
       />
 
       <button
@@ -32,7 +32,7 @@ export function NoteEditor({onDone}: Props): React.JSX.Element {
           dispatch(writeCardNote(draft));
           onDone();
         }}
-        className="self-start text-sm underline"
+        className="flex min-h-12 w-full items-center justify-center rounded-xl bg-ground px-4 py-3"
       >
         Keep note
       </button>

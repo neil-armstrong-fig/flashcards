@@ -20,6 +20,15 @@ export class SoundDsl {
     }
   }
 
+  /** How many times the whole screen has filled with colour to make clear that a recording was starting. */
+  async getFillsShown(): Promise<number> {
+    try {
+      return await this.playwright.fillsShown();
+    } catch (error) {
+      throw new DslError("Failed to count the times the screen filled", error);
+    }
+  }
+
   /** Whether the voice can be switched: only while the Korean is the thing being spoken, since English has the one voice. */
   async canSwitchVoice(): Promise<boolean> {
     try {

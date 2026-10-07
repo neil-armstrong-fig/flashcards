@@ -34,7 +34,7 @@ export function NumberSetting({label, testId, value, min, max, disabled = false,
         onBlur={event => {
           event.currentTarget.value = String(value);
         }}
-        className="w-24 rounded-lg bg-ground px-3 py-2 text-right text-accent"
+        className="min-h-11 w-24 rounded-lg bg-ground px-3 py-2 text-right text-accent"
       />
     </label>
   );
