@@ -2,7 +2,7 @@ import {pictureRemoved} from "@src/redux/slices/card-pictures/CardPicturesSlice"
 import {recordLocalChange} from "@src/redux/shared/sync-records/RecordLocalChange";
 import {removalRecord} from "@src/redux/shared/sync-records/builders/RemovalRecord";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
-import {forgetStoredPicture} from "@src/redux/slices/card-pictures/storage/ForgetStoredPicture";
+import {forgetStoredPicture} from "@src/storage/index-db/pictures/ForgetStoredPicture";
 
 /** Takes the picture off the card now on screen, and records that it was taken off, so the learner's other devices take it off too. */
 export function removeCardPicture(): AppThunk<Promise<void>> {

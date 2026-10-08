@@ -1,5 +1,5 @@
 import {isLaterChoice} from "@flashcards/shared/sync/IsLaterChoice";
-import {readSettings} from "@src/redux/slices/settings/storage/read/ReadSettings";
+import {readSettings} from "@src/redux/slices/settings/persistence/read/ReadSettings";
 import type {SettingChange} from "@flashcards/shared/sync/settings/SettingChange";
 import type {SettingTimes} from "@src/redux/slices/settings/sync/types/SettingTimes";
 import type {TakenSettings} from "@src/redux/slices/settings/sync/types/TakenSettings";

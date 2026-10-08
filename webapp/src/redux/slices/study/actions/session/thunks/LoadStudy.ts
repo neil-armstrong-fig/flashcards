@@ -1,8 +1,8 @@
 import {loaded} from "@src/redux/slices/study/StudySlice";
 import {selectCards} from "@src/redux/slices/deck/selectors/SelectCards";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
-import type {StoredStudy} from "@src/redux/slices/study/storage/types/StoredStudy";
-import {loadStoredStudy} from "@src/redux/slices/study/storage/LoadStoredStudy";
+import type {StoredStudy} from "@src/storage/index-db/study/types/StoredStudy";
+import {loadStoredStudy} from "@src/storage/index-db/study/LoadStoredStudy";
 
 /** Reads saved progress and makes the app ready. A database that cannot be read leaves the learner studying without saving. */
 export function loadStudy(): AppThunk<Promise<void>> {

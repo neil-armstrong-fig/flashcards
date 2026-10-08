@@ -8,7 +8,7 @@ import type {AppThunk} from "@src/redux/shared/AppThunk";
 import type {AsideKind} from "@src/redux/slices/study/types/AsideKind";
 import type {CardEvent} from "@flashcards/shared/sync/card-events/CardEvent";
 import type {CardState} from "@src/spaced-repetition/card/types/CardState";
-import {saveCard} from "@src/redux/slices/study/storage/SaveCard";
+import {saveCard} from "@src/storage/index-db/study/SaveCard";
 
 /**
  * Hides the card on screen without answering it: a buried card comes back with tomorrow's study day, a suspended one when the

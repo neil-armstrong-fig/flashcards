@@ -1,15 +1,14 @@
-import {hashOfPicture} from "@src/redux/slices/card-pictures/storage/HashOfPicture";
+import {hashOfPicture} from "@src/redux/slices/card-pictures/picture-processing/HashOfPicture";
 import {BEFORE_ANY_CHANGE} from "@src/redux/shared/sync-records/builders/BeforeAnyChange";
+import {hasAdoptedRecords} from "@src/storage/local-storage/sync/records-adopted/HasAdoptedRecords";
 import {isPictureType} from "@flashcards/shared/sync/records/PictureType";
-import {keepLocalRecord} from "@src/redux/shared/sync-records/KeepLocalRecord";
+import {keepLocalRecord} from "@src/storage/index-db/sync/records/KeepLocalRecord";
+import {keepRecordsAdopted} from "@src/storage/local-storage/sync/records-adopted/KeepRecordsAdopted";
 import {memoryNoteRecord} from "@src/redux/shared/sync-records/builders/MemoryNoteRecord";
 import {noteRecord} from "@src/redux/shared/sync-records/builders/NoteRecord";
 import {pictureRecord} from "@src/redux/shared/sync-records/builders/PictureRecord";
-import {readJson} from "@src/redux/shared/device-storage/ReadJson";
-import {readKeptPicture} from "@src/redux/slices/card-pictures/storage/ReadKeptPicture";
-import {readLocalRecord} from "@src/redux/workflows/sync/storage/records/ReadLocalRecord";
-import {RECORDS_ADOPTED_KEY} from "@src/redux/workflows/sync/storage/records/RecordsAdoptedKey";
-import {saveJson} from "@src/redux/shared/device-storage/SaveJson";
+import {readKeptPicture} from "@src/storage/index-db/pictures/ReadKeptPicture";
+import {readLocalRecord} from "@src/storage/index-db/sync/records/ReadLocalRecord";
 import {similarRecord} from "@src/redux/shared/sync-records/builders/SimilarRecord";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
 import type {RecordChange} from "@flashcards/shared/sync/records/RecordChange";
@@ -22,7 +21,7 @@ import type {RecordChange} from "@flashcards/shared/sync/records/RecordChange";
  */
 export function adoptLocalRecords(): AppThunk<Promise<void>> {
   return async (_dispatch, getState) => {
-    if (readJson(RECORDS_ADOPTED_KEY) === true) {
+    if (hasAdoptedRecords()) {
       return;
     }
 
@@ -58,7 +57,7 @@ export function adoptLocalRecords(): AppThunk<Promise<void>> {
       }
     }
 
-    saveJson(RECORDS_ADOPTED_KEY, true);
+    keepRecordsAdopted();
   };
 }
 

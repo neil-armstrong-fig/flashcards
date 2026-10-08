@@ -6,11 +6,11 @@ import {mergedLog} from "@src/redux/slices/study/log/MergedLog";
 import {nextStudyCard} from "@src/redux/slices/study/queue/NextStudyCard";
 import type {CardState} from "@src/spaced-repetition/card/types/CardState";
 import type {IntervalPreview} from "@src/spaced-repetition/scheduling/types/IntervalPreview";
-import type {PulledProgress} from "@src/redux/slices/study/types/PulledProgress";
+import type {PulledProgress} from "@src/storage/index-db/study/types/PulledProgress";
 import type {QueueSettings} from "@src/spaced-repetition/queue/types/QueueSettings";
 import type {ReviewOutcome} from "@src/spaced-repetition/scheduling/types/ReviewOutcome";
 import type {SessionFocus} from "@src/redux/slices/study/types/SessionFocus";
-import type {StoredStudy} from "@src/redux/slices/study/storage/types/StoredStudy";
+import type {StoredStudy} from "@src/storage/index-db/study/types/StoredStudy";
 import type {StudyCard} from "@src/spaced-repetition/card/types/StudyCard";
 
 interface Loaded {

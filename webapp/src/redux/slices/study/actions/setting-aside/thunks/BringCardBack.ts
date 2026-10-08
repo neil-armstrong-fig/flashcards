@@ -2,7 +2,7 @@ import {reportUnsaved} from "@src/redux/slices/study/actions/shared/utils/Report
 import {suspendedCardsRestored} from "@src/redux/slices/study/StudySlice";
 import {unsuspendCard} from "@src/spaced-repetition/card/setting-aside/UnsuspendCard";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
-import {saveCard} from "@src/redux/slices/study/storage/SaveCard";
+import {saveCard} from "@src/storage/index-db/study/SaveCard";
 
 /** Brings one suspended card back, picking up its schedule where it left off. Saved before the screen changes. */
 export function bringCardBack(id: string): AppThunk<Promise<void>> {

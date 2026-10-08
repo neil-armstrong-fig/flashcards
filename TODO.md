@@ -69,8 +69,8 @@ using real account data.
 
 ## Backlog
 
-- [~] Storage (`docs/storage.md`): `idb` adopted. Open: `fake-indexeddb` to prove the database upgrades (needs a yes), then move
-  IndexedDB and localStorage out of `redux/` into a `storage/` layer beside `audio/`.
+- [~] Storage (`docs/storage.md`): `idb` adopted, and IndexedDB and localStorage moved out of `redux/` into `webapp/src/storage/`.
+  Open: `fake-indexeddb` to prove the database upgrades (needs a yes).
 - [ ] Open content (`docs/open-content.md`, needs a decision on CC BY-SA): Tatoeba import tool, Dutch reading deck by spelling pattern
   (needs Dutch voices first), textbook-friendly learner cards for Korean and Dutch sentences.
 - [x] Anki pronunciation packages (`docs/audio.md`): Azure chosen over the package audio (no licence); Korean pronunciation deck built from our own words.

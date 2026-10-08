@@ -1,6 +1,6 @@
 import type {CardState} from "@src/spaced-repetition/card/types/CardState";
 import type {ReviewLogEntry} from "@src/spaced-repetition/scheduling/types/ReviewLogEntry";
-import type {StoredStudy} from "@src/redux/slices/study/storage/types/StoredStudy";
+import type {StoredStudy} from "@src/storage/index-db/study/types/StoredStudy";
 import type {StudyCard} from "@src/spaced-repetition/card/types/StudyCard";
 
 /** What the browser's IndexedDB keeps of study progress, held in memory for a test. */

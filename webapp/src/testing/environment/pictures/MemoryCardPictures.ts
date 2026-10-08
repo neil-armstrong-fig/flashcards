@@ -1,4 +1,4 @@
-import type {KeptPicture} from "@src/redux/slices/card-pictures/types/KeptPicture";
+import type {KeptPicture} from "@src/storage/index-db/pictures/types/KeptPicture";
 
 /** What IndexedDB keeps of the learner's pictures, in memory for a test: keeps the cards that have one and gives each an address made from its id. */
 export class MemoryCardPictures {

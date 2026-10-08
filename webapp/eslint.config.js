@@ -81,6 +81,7 @@ export default [
               "@src/redux/**",
               "@src/audio",
               "@src/audio/**",
+              "@src/storage/**",
               "@flashcards/content/**",
             ],
             message:
@@ -133,9 +134,34 @@ export default [
         paths: noUiOrStore,
         patterns: [
           {
-            group: ["@src/react", "@src/react/**", "@src/redux", "@src/redux/**", "@src/spaced-repetition/**"],
+            group: [
+              "@src/react",
+              "@src/react/**",
+              "@src/redux",
+              "@src/redux/**",
+              "@src/spaced-repetition/**",
+              "@src/storage/**",
+            ],
             message:
               "audio/ knows nothing of the page, the store or the schedule. Hand it values as arguments; React calls it.",
+          },
+        ],
+      }),
+    },
+  },
+  {
+    // The device's storage: localStorage and IndexedDB behind plain functions. It owns every key, store name, version and stored
+    // shape, so redux calls "read the settings" and "keep this answer" and knows nothing of how or where. It checks what it reads.
+    files: ["src/storage/**"],
+    rules: {
+      // Flat config replaces this rule rather than merging it, so the parent-import ban and boundary are repeated.
+      "no-restricted-imports": restrictedImports({
+        allowedPackages,
+        paths: noUiOrStore,
+        patterns: [
+          {
+            group: ["@src/react", "@src/react/**", "@src/redux", "@src/redux/**", "@src/audio", "@src/audio/**"],
+            message: "storage/ knows nothing of the page, the store or the audio. They call it; it calls none of them.",
           },
         ],
       }),

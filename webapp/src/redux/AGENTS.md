@@ -10,10 +10,10 @@ redux/
     browse/                              the view of the list of every card (search, deck filter, which row has its similars open), gone when the learner leaves it
     account/                             who is signed in (slice), and thunks to load the account and sign in
     card-notes/                          the learner's own note on a card (slice by card id, kept on the device, up to `MAXIMUM_NOTE_LENGTH`), `selectCurrentCardNote`
-    card-pictures/                       the learner's own picture on a card: `storage/` (the effects over its own IndexedDB database), the slice (addresses and dates by card id), thunks to load, add (images only, `MAXIMUM_PICTURE_BYTES`) and remove
+    card-pictures/                       the learner's own picture on a card: the slice (addresses and dates by card id), thunks to load, add (images only, `MAXIMUM_PICTURE_BYTES`) and remove
     similar/                             the similar words a learner added (slice, kept on the device), and thunks to start asking for one, add and remove it
     deck/                                the cards the learner made (slice of `VocabNote`s, kept on the device), the selectors for every note and card being studied (the deck's own, then theirs), `selectSpokenOnScreen`, and thunks to start making or changing one, add, change and remove it
-    settings/                            the learner's settings: slice, limits/ (clamping, reading), storage/ (load and keep)
+    settings/                            the learner's settings: slice, limits/ (clamping, reading), persistence/ (load and keep)
     sync/                                whether this device matches what is kept online (`not-synced`, `syncing`, `synced`), and how many changes the learner has made since the app opened (a reason to sync soon); shown on the home screen
     study/                               the review loop
       StudySlice.ts                      wiring: which action runs which rule
@@ -21,15 +21,13 @@ redux/
       initial-state/InitialStudyState.ts  StudyQueueSettings.ts
       actions/<domain>/thunks/           one file per thunk: session/ (LoadStudy, StartSession, RefreshTime, EndSession), answering/ (ShowAnswer, AnswerCard) and setting-aside/ (SetCardAside, UnsuspendAll); `actions/shared/utils/` holds what several domains use
       queue/                             plain functions the slice calls: NextStudyCard, with study-cards/, focus/ (FocusedCards: narrows a deck's cards to a session's focus: all, new or struggling)
-      storage/                           the StudyStorage interface (types/), IndexedDb and in-memory implementations
       types/                             StudyState, SessionState, SessionFocus, StudyStatus, AsideKind
   api/                                 one effect function per API call (`ReadSignedInEmail`, `UploadPicture`, ...): not a slice's, since several thunks make them. One with helpers has a folder (`sync-with-api/`: the request, and `utils/ReadSyncAnswer`, the pure check of what comes back)
-  workflows/<domain>/thunks/           thunks that change several slices at once: `custom-note/` (add, remove), `sync/` (`syncProgress`: send the events and records this device made, take in the others': replay the cards the events touch, apply each record by kind under `records/`, the later change winning; `adoptLocalRecords`; its `storage/` is the effects over the study database, the cursors and the owner, grouped as `events/`, `records/`, `cursors/` and `owner/`, `docs/sync.md`)
+  workflows/<domain>/thunks/           thunks that change several slices at once: `custom-note/` (add, remove), `sync/` (`syncProgress`: send the events and records this device made, take in the others': replay the cards the events touch, apply each record by kind under `records/`, the later change winning; `adoptLocalRecords`; what it keeps is in `storage/local-storage/sync/` and `storage/index-db/sync/`, `docs/sync.md`)
   shared/                              what more than one slice uses, and is not a slice itself (no state of its own); like `react/pages/shared/`
     Hooks.ts  AppThunk.ts              typed hooks, the thunk type
     kept-texts/                    `selectKeptTexts`: the texts whose recordings the learner asked for (their own cards, their similar words), as plain `SpokenText`s that `react/audio/` hands to `audio/`
     memory-aids/                   a card's note and picture together: `selectIsFadeOffered` (derived from their dates and the log, via `spaced-repetition/card/fading/`), thunks to remove them or keep them afresh
-    device-storage/                readJson / saveJson over localStorage: checked on the way in, quiet on failure
     sync-records/                  `recordLocalChange` (keeps a change to what the learner made, to be sent, and nudges the sync) and `builders/` (the `RecordChange` of a card, a similar, a note, a picture, a removal, each a builder: one destructured parameter with a default for every field, root `AGENTS.md`; a field not given is a default, and the date a change was made is `at`, an ISO text, which the thunk reads): every thunk that makes or removes one of those calls it, and none waits for the API
 ```
 
@@ -38,14 +36,14 @@ redux/
 - **A slice's state and reducers import no other slice** (`*Slice.ts`, `initial-state/`, `types/`: lint enforces it). Thunks and selectors
   may read another slice through its selectors; a thunk that changes more than one slice goes in `workflows/`.
 - **A slice's folder root holds the slice (and its own test) and nothing else.** Everything else sits in a subfolder named for its
-  subject: `selectors/`, `initial-state/`, `limits/`, `ids/`, `storage/`, `types/`, `actions/<domain>/thunks/`.
+  subject: `selectors/`, `initial-state/`, `limits/`, `ids/`, `persistence/`, `types/`, `actions/<domain>/thunks/`.
 - **A slice is wiring; what its actions mean lives beneath it.** A reducer says which rule an action runs and on what. The
   rule is a plain function in a folder under the slice (`study/queue/`), with its own test beside it. A helper private to the
   slice file can only be reached by dispatching, which makes its edges hard to test.
 - **A thunk goes in `<slice>/actions/<domain>/thunks/`**, one file each, so what is a thunk is plain from the path. A standalone action
   creator (`createAction`, not one from `createSlice`) would go in a sibling `<domain>/actions/`; there are none yet, so the folder
   does not exist. A slice's own actions come from `createSlice` and stay in the slice file. A thunk reads state with `getState` and
-  reaches the outside only through effect functions, never `indexedDB`. A helper private to a domain's thunks sits beside `thunks/`
+  reaches the outside only through effect functions, never `indexedDB` or `localStorage` (those belong to `storage/`). A helper private to a domain's thunks sits beside `thunks/`
   (`answering/utils/`).
 - **A fact that can be worked out is derived where it is shown, never stored.** "Due today" is `selectCardsDueToday`, which
   asks `spaced-repetition/`. "New cards introduced today" is counted from the review log; there is no undo, so the log only ever grows by answers
@@ -55,13 +53,13 @@ redux/
 - **Save before the card moves on.** `answerCard` and `setCardAside` set `session.saving`, wait for storage, then dispatch the
   result. Otherwise a tab closed straight after an answer lost it (reloading with no pause lost the last of ten answers every
   time; `docs/scheduling.md`). A failed save is reported and ignored: the learner carries on.
-- **What is read back is untrusted.** `IndexedDbStudyStorage.load` passes every record through `readCardState` and
+- **What is read back is untrusted.** `storage/index-db/study/LoadStoredStudy` passes every record through `readCardState` and
   `readReviewLogEntry` and drops what fails, rather than trusting it. A new field on a stored shape needs its reader taught
   about it, and a change to a stored shape needs the database version raised with an upgrade step.
 - **Shipped decks are content; progress is keyed by card id.** A deck update adds cards without touching progress, so an id
   never changes (`content/AGENTS.md`). Cards never answered are not stored: they are new by default.
-- **Small settings are kept on the device**, in `localStorage` through `device-storage/`, under a versioned key
-  (`settings/storage/SettingsStorageKey.ts`). `createStore` loads them (each field checked alone, falling back to its own
+- **Small settings are kept on the device** by `storage/local-storage/settings/`, under a versioned key it owns. `storage/` gives back `unknown`;
+  `createStore` loads them through `settings/persistence/` (each field checked alone, falling back to its own
   default) and `keepSettings` writes them back when they change. Change what a stored field means, or remove one, and the key's
   version rises and the loader learns the old shape; a new field with its own fallback does not. What a number may be lives in `settings/limits/`, and the reducer clamps whatever it is handed.
 - **A slice stays ignorant of the others.** `study` does not read `settings`: a thunk reads the settings and passes what the

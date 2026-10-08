@@ -9,12 +9,12 @@ import {TEST_AUDIO_RECORDINGS} from "@src/testing/audio-recordings/TestAudioReco
 import {resetTestEnvironment} from "@src/testing/environment/TestEnvironment";
 import {TEST_NOW} from "@src/testing/time/TestNow";
 
-vi.mock("@src/redux/slices/study/storage/LoadStoredStudy", async () => {
+vi.mock("@src/storage/index-db/study/LoadStoredStudy", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {loadStoredStudy: async () => await testEnvironment.studyStorage.load()};
 });
-vi.mock("@src/redux/slices/study/storage/RecordAnswer", async () => {
+vi.mock("@src/storage/index-db/study/RecordAnswer", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {
@@ -23,7 +23,7 @@ vi.mock("@src/redux/slices/study/storage/RecordAnswer", async () => {
     },
   };
 });
-vi.mock("@src/redux/slices/study/storage/SaveCard", async () => {
+vi.mock("@src/storage/index-db/study/SaveCard", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {
@@ -32,12 +32,12 @@ vi.mock("@src/redux/slices/study/storage/SaveCard", async () => {
     },
   };
 });
-vi.mock("@src/redux/slices/card-pictures/storage/LoadStoredPictures", async () => {
+vi.mock("@src/storage/index-db/pictures/LoadStoredPictures", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {loadStoredPictures: async () => await testEnvironment.pictures.load()};
 });
-vi.mock("@src/redux/slices/card-pictures/storage/StorePicture", async () => {
+vi.mock("@src/storage/index-db/pictures/StorePicture", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {
@@ -46,7 +46,7 @@ vi.mock("@src/redux/slices/card-pictures/storage/StorePicture", async () => {
     },
   };
 });
-vi.mock("@src/redux/slices/card-pictures/storage/RenewStoredPicture", async () => {
+vi.mock("@src/storage/index-db/pictures/RenewStoredPicture", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {
@@ -55,7 +55,7 @@ vi.mock("@src/redux/slices/card-pictures/storage/RenewStoredPicture", async () =
     },
   };
 });
-vi.mock("@src/redux/slices/card-pictures/storage/ForgetStoredPicture", async () => {
+vi.mock("@src/storage/index-db/pictures/ForgetStoredPicture", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {
@@ -129,7 +129,7 @@ vi.mock("@src/redux/api/EndApiSession", async () => {
     },
   };
 });
-vi.mock("@src/redux/shared/sync-records/KeepLocalRecord", async () => {
+vi.mock("@src/storage/index-db/sync/records/KeepLocalRecord", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {
@@ -138,12 +138,12 @@ vi.mock("@src/redux/shared/sync-records/KeepLocalRecord", async () => {
     },
   };
 });
-vi.mock("@src/redux/workflows/sync/storage/records/ReadLocalRecord", async () => {
+vi.mock("@src/storage/index-db/sync/records/ReadLocalRecord", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {readLocalRecord: async (kind: string, id: string) => await testEnvironment.records.read(kind, id)};
 });
-vi.mock("@src/redux/workflows/sync/storage/records/KeepHeardRecord", async () => {
+vi.mock("@src/storage/index-db/sync/records/KeepHeardRecord", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {
@@ -157,12 +157,12 @@ vi.mock("@src/redux/api/DownloadPicture", async () => {
 
   return {downloadPicture: async (hash: string) => await testEnvironment.records.download(hash)};
 });
-vi.mock("@src/redux/slices/card-pictures/storage/ReadKeptPicture", async () => {
+vi.mock("@src/storage/index-db/pictures/ReadKeptPicture", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 
   return {readKeptPicture: async (cardId: string) => await testEnvironment.pictures.read(cardId)};
 });
-vi.mock("@src/redux/slices/card-pictures/storage/HashOfPicture", () => ({
+vi.mock("@src/redux/slices/card-pictures/picture-processing/HashOfPicture", () => ({
   // Not a real hash: the size, in the 64 hexadecimal digits a hash is, so two pictures of different sizes differ.
   hashOfPicture: async (picture: Blob) => String(picture.size).padStart(64, "0"),
 }));

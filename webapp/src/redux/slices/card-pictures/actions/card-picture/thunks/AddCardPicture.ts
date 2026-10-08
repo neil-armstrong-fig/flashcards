@@ -1,11 +1,11 @@
-import {hashOfPicture} from "@src/redux/slices/card-pictures/storage/HashOfPicture";
+import {hashOfPicture} from "@src/redux/slices/card-pictures/picture-processing/HashOfPicture";
 import {isPictureType} from "@flashcards/shared/sync/records/PictureType";
 import {MAXIMUM_PICTURE_BYTES} from "@src/redux/slices/card-pictures/limits/MaximumPictureBytes";
 import {pictureKept, pictureRefused} from "@src/redux/slices/card-pictures/CardPicturesSlice";
 import {pictureRecord} from "@src/redux/shared/sync-records/builders/PictureRecord";
 import {processPicture} from "@src/redux/slices/card-pictures/picture-processing/ProcessPicture";
 import {recordLocalChange} from "@src/redux/shared/sync-records/RecordLocalChange";
-import {storePicture} from "@src/redux/slices/card-pictures/storage/StorePicture";
+import {storePicture} from "@src/storage/index-db/pictures/StorePicture";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
 
 /**

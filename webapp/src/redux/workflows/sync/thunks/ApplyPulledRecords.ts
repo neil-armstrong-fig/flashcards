@@ -3,8 +3,8 @@ import {applyNoteRecord} from "@src/redux/workflows/sync/records/ApplyNoteRecord
 import {applyPictureRecord} from "@src/redux/workflows/sync/records/ApplyPictureRecord";
 import {applySimilarRecord} from "@src/redux/workflows/sync/records/ApplySimilarRecord";
 import {isLaterChoice} from "@flashcards/shared/sync/IsLaterChoice";
-import {keepHeardRecord} from "@src/redux/workflows/sync/storage/records/KeepHeardRecord";
-import {readLocalRecord} from "@src/redux/workflows/sync/storage/records/ReadLocalRecord";
+import {keepHeardRecord} from "@src/storage/index-db/sync/records/KeepHeardRecord";
+import {readLocalRecord} from "@src/storage/index-db/sync/records/ReadLocalRecord";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
 import type {RecordChange} from "@flashcards/shared/sync/records/RecordChange";
 

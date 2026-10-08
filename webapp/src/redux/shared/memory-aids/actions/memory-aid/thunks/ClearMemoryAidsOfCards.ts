@@ -3,7 +3,7 @@ import {pictureRemoved} from "@src/redux/slices/card-pictures/CardPicturesSlice"
 import {recordLocalChange} from "@src/redux/shared/sync-records/RecordLocalChange";
 import {removalRecord} from "@src/redux/shared/sync-records/builders/RemovalRecord";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
-import {forgetStoredPicture} from "@src/redux/slices/card-pictures/storage/ForgetStoredPicture";
+import {forgetStoredPicture} from "@src/storage/index-db/pictures/ForgetStoredPicture";
 
 /**
  * Forgets the notes and pictures on cards that no longer exist, here and on the device, so nothing is left behind by a deleted card.

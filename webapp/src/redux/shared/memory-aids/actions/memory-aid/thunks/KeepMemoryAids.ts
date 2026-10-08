@@ -1,4 +1,4 @@
-import {hashOfPicture} from "@src/redux/slices/card-pictures/storage/HashOfPicture";
+import {hashOfPicture} from "@src/redux/slices/card-pictures/picture-processing/HashOfPicture";
 import {isPictureType} from "@flashcards/shared/sync/records/PictureType";
 import {memoryNoteRecord} from "@src/redux/shared/sync-records/builders/MemoryNoteRecord";
 import {noteRenewed} from "@src/redux/slices/card-notes/CardNotesSlice";
@@ -6,7 +6,7 @@ import {pictureRecord} from "@src/redux/shared/sync-records/builders/PictureReco
 import {pictureRenewed} from "@src/redux/slices/card-pictures/CardPicturesSlice";
 import {recordLocalChange} from "@src/redux/shared/sync-records/RecordLocalChange";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
-import {renewStoredPicture} from "@src/redux/slices/card-pictures/storage/RenewStoredPicture";
+import {renewStoredPicture} from "@src/storage/index-db/pictures/RenewStoredPicture";
 
 /** Keeps the note and picture on the card now on screen, and dates them afresh so the offer comes again after three more good answers. The new dates are recorded for the learner's other devices. */
 export function keepMemoryAids(): AppThunk<Promise<void>> {

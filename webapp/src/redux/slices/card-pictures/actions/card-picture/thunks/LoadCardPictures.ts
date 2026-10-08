@@ -1,6 +1,6 @@
 import {picturesLoaded} from "@src/redux/slices/card-pictures/CardPicturesSlice";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
-import {loadStoredPictures} from "@src/redux/slices/card-pictures/storage/LoadStoredPictures";
+import {loadStoredPictures} from "@src/storage/index-db/pictures/LoadStoredPictures";
 
 /** Brings the pictures kept on this device into the store, once on start. A device that cannot be read is reported and carried on without. */
 export function loadCardPictures(): AppThunk<Promise<void>> {

@@ -2,7 +2,7 @@ import {cardMarkedHard} from "@src/redux/slices/study/StudySlice";
 import {markHard} from "@src/spaced-repetition/card/setting-aside/MarkHard";
 import {reportUnsaved} from "@src/redux/slices/study/actions/shared/utils/ReportUnsaved";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
-import {saveCard} from "@src/redux/slices/study/storage/SaveCard";
+import {saveCard} from "@src/storage/index-db/study/SaveCard";
 
 /** Marks the card on screen as hard, so it is on the Struggling list now. The card stays on screen to be answered. Saved before the screen shows it. */
 export function markCardHard(): AppThunk<Promise<void>> {

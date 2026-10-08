@@ -8,7 +8,7 @@ import type {Rating} from "@flashcards/shared/study/Rating";
 import type {StudyCard} from "@src/spaced-repetition/card/types/StudyCard";
 import {reviewCard} from "@src/spaced-repetition/scheduling/ReviewCard";
 import {setAsideIfStruggling} from "@src/redux/slices/study/actions/answering/utils/SetAsideIfStruggling";
-import {recordAnswer} from "@src/redux/slices/study/storage/RecordAnswer";
+import {recordAnswer} from "@src/storage/index-db/study/RecordAnswer";
 
 /** Rates the card on screen. The answer is saved before the card moves on, so what is shown is never ahead of what survives. */
 export function answerCard(rating: Rating): AppThunk<Promise<void>> {

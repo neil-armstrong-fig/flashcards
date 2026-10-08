@@ -1,13 +1,13 @@
 import {downloadPicture} from "@src/redux/api/DownloadPicture";
-import {hashOfPicture} from "@src/redux/slices/card-pictures/storage/HashOfPicture";
+import {hashOfPicture} from "@src/redux/slices/card-pictures/picture-processing/HashOfPicture";
 import {picturePayloadOf} from "@flashcards/shared/sync/records/RecordChange";
 import {pictureKept, pictureRemoved, pictureRenewed} from "@src/redux/slices/card-pictures/CardPicturesSlice";
-import {readKeptPicture} from "@src/redux/slices/card-pictures/storage/ReadKeptPicture";
-import {renewStoredPicture} from "@src/redux/slices/card-pictures/storage/RenewStoredPicture";
-import {storePicture} from "@src/redux/slices/card-pictures/storage/StorePicture";
+import {readKeptPicture} from "@src/storage/index-db/pictures/ReadKeptPicture";
+import {renewStoredPicture} from "@src/storage/index-db/pictures/RenewStoredPicture";
+import {storePicture} from "@src/storage/index-db/pictures/StorePicture";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
 import type {RecordChange} from "@flashcards/shared/sync/records/RecordChange";
-import {forgetStoredPicture} from "@src/redux/slices/card-pictures/storage/ForgetStoredPicture";
+import {forgetStoredPicture} from "@src/storage/index-db/pictures/ForgetStoredPicture";
 
 /**
  * Takes in a picture the learner put on a card, or took off one, on another device. A picture this device has already (the same hash)

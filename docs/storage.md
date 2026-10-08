@@ -1,9 +1,9 @@
 # On-device storage: a library, and out of Redux
 
-**Decided 2026-10-08: use `idb`. Done** (pinned 8.0.3; see "Done" at the end). Moving storage out of `redux/` into a `storage/` layer is
-still open.
+**Decided 2026-10-08: use `idb`. Done** (pinned 8.0.3; see "Done" at the end). **Moving storage out of `redux/` into
+`webapp/src/storage/`: done** (see "Out of Redux" below for what was built).
 
-## What there is today
+## What there was before the move
 
 - **IndexedDB, by hand.** `redux/slices/study/storage/indexed-db/` (`OpenStudyDatabase`, `BackfillEvents`, `PutEvents`,
   `MarkEventsUnsent`, `StudyStores`), `redux/slices/card-pictures/indexed-db/`, and `redux/shared/indexed-db/` (`requestResult`
@@ -37,28 +37,27 @@ the newest 8.0.4, which was published on 2026-10-06 and so falls inside the seve
 
 ## Out of Redux
 
-Proposal: a top-level `webapp/src/storage/` beside `audio/`, plain TypeScript with no React and no Redux:
+Built: a top-level `webapp/src/storage/` beside `audio/`, plain TypeScript with no React and no Redux, in folders by subject:
 
 ```
 storage/
-  database/        openDatabase (idb), the typed schema, the upgrade steps
-  cards/ log/ events/ records/ pictures/    one folder per store: the read and write functions that exist today
-  keys/            the localStorage keys, with readJson / saveJson under them
+  local-storage/   device/ (readJson / saveJson, the only code that calls localStorage), then a folder per subject:
+                   settings/ setting-times/ card-notes/ similar/ deck/ account/ (the key and ReadStoredX / KeepStoredX:
+                   read gives back `unknown`, keep takes `unknown`), sync/cursors/ sync/owner/ sync/records-adopted/
+  index-db/        study/ (LoadStoredStudy, RecordAnswer, SaveCard, database/, types/), pictures/ (the picture effects,
+                   database/, stored-picture/, types/), sync/events/ and sync/records/ (over the study database)
 ```
 
-- `redux/` and `react/` may import `storage/`; `storage/` may import `spaced-repetition/`, `shared` and `content` (it needs the
-  readers `readCardState`, `readReviewLogEntry`) but not `redux/`. That is an ESLint `restrictedImports` change in
-  `webapp/eslint.config.js` and the layering list in `webapp/AGENTS.md`.
-- The thunks stay as they are: read state, call pure functions, call an effect function, dispatch. Only the import path of the
-  effect moves. The slice-by-slice `storage/` folders (`LoadSettings`, `KeepSettings`, and so on) move, with the *decisions* in
-  them (clamping settings, merging) staying in the slice's `limits/` as pure functions.
-- The `Load*` functions that mix reading a key and deciding the fallback (`LoadSettings`) split in two: `storage/` returns the
-  `unknown`, the slice's pure reader checks it. That is the clean line you described.
-- `SetupWebappTests.ts` then mocks one folder rather than a dozen scattered paths.
-
-**Cost:** a large mechanical move (about 40 files, plus tests and docs), and `redux/AGENTS.md` loses its "storage" lines. Do the
-library swap first inside the current folders (small, testable, no import changes), then the move as a second change. Each one
-alone is green under `pnpm checks`.
+- `redux/` and `react/` may import `storage/`; `storage/` may import `spaced-repetition/`, `shared` and `content` but not `redux/`,
+  `react/` or `audio/` (`webapp/eslint.config.js`). `spaced-repetition/` and `audio/` may not import it.
+- Storage owns every key, store name, database version and upgrade step, so no thunk or slice sees one.
+- For IndexedDB it also owns the stored shapes and the checking on the way in (`StoredCard`, `PulledProgress`, `KeptPicture`).
+- For localStorage it returns `unknown` and the slice's pure reader checks it (`readSettings`, `loadCardNotes`): clamping, defaults and
+  the Korean-word check are the slice's rules, and `readSettings` is also used for settings that arrive from sync.
+- The slice folders' `persistence/` hold the redux side only: `Load*` (read the stored value, check it, give the state) and `Keep*`
+  (the store subscriber that writes when the slice changes).
+- The one rule storage had to copy is the retention default in the version-2 upgrade (`BackfillEvents`), which can no longer ask the settings slice.
+- `SetupWebappTests.ts` still mocks the effect modules by path, now all under `@src/storage/`.
 
 ## Sources
 

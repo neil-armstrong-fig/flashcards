@@ -1,6 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
 import type {PayloadAction} from "@reduxjs/toolkit";
-import type {KeptPicture} from "@src/redux/slices/card-pictures/types/KeptPicture";
+import type {KeptPicture} from "@src/storage/index-db/pictures/types/KeptPicture";
 import {INITIAL_CARD_PICTURES_STATE} from "@src/redux/slices/card-pictures/initial-state/InitialCardPicturesState";
 
 interface PictureKept {

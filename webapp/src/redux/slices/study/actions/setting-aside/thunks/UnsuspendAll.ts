@@ -3,7 +3,7 @@ import {suspendedCardsRestored} from "@src/redux/slices/study/StudySlice";
 import {unsuspendCard} from "@src/spaced-repetition/card/setting-aside/UnsuspendCard";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
 import type {CardState} from "@src/spaced-repetition/card/types/CardState";
-import {saveCard} from "@src/redux/slices/study/storage/SaveCard";
+import {saveCard} from "@src/storage/index-db/study/SaveCard";
 
 /** Brings every suspended card back, each picking up its schedule where it left off. */
 export function unsuspendAll(): AppThunk<Promise<void>> {

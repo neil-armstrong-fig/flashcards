@@ -1,4 +1,4 @@
-import {keepLocalRecord} from "@src/redux/shared/sync-records/KeepLocalRecord";
+import {keepLocalRecord} from "@src/storage/index-db/sync/records/KeepLocalRecord";
 import {localChangeMade} from "@src/redux/slices/sync/SyncSlice";
 import {reportUnsaved} from "@src/redux/slices/study/actions/shared/utils/ReportUnsaved";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
