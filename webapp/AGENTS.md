@@ -2,7 +2,7 @@
 
 Vite, React 19, Redux Toolkit and Tailwind v4, client-side rendered, installable as a PWA that works offline. Read the
 `AGENTS.md` in `src/react/`, `src/redux/`, `src/storage/` or `src/spaced-repetition/` before touching it, as well as this one.
-`src/sw/` (the service worker) has none yet: nothing folder-specific has accumulated there.
+`src/sw/` (the service worker: an entry that precaches, and a folder a subject, `release/`, `recordings/`, `reminders/`, each exporting one `register…(scope)`) has none yet: nothing folder-specific has accumulated there.
 
 ```
 src/
@@ -11,6 +11,7 @@ src/
   react/                components, nested by who uses them
   redux/                the store: slices, actions, selectors; `persistence/` folders load and keep a slice through `storage/`
   storage/              the device's localStorage (`local-storage/`) and IndexedDB (`index-db/`) behind plain functions: keys, databases, versions and stored shapes live here and nowhere else (`storage/AGENTS.md`)
+  push/                 this browser's push subscription (`SubscribeToPush`, `UnsubscribeFromPush`, `CanPush`): plain functions over the notification and push APIs, for the daily-goal reminder (`docs/reminders.md`)
   audio/                recordings: the player, fetching and keeping them in a browser cache, which one a text, voice and speed names. Plain functions
   environment/          what never varies while the page lives (`Runtime`: the API's address, the manifest of recordings). Not `testing/environment/`, which is the in-memory fakes
   spaced-repetition/    when a card comes back, what is due today, which card is next: plain functions over plain data

@@ -38,6 +38,21 @@ vi.mock("@src/database/sync/SaveRecordChanges", async () => ({
 vi.mock("@src/database/sync/ListRecordChangesAfter", async () => ({
   listRecordChangesAfter: (await import("@src/database/testing/TestDatabase")).testDatabase.listRecordChangesAfter,
 }));
+vi.mock("@src/database/reminders/SaveReminder", async () => ({
+  saveReminder: (await import("@src/database/testing/TestDatabase")).testDatabase.saveReminder,
+}));
+vi.mock("@src/database/reminders/RemoveReminder", async () => ({
+  removeReminder: (await import("@src/database/testing/TestDatabase")).testDatabase.removeReminder,
+}));
+vi.mock("@src/database/reminders/RecordGoalMet", async () => ({
+  recordGoalMet: (await import("@src/database/testing/TestDatabase")).testDatabase.recordGoalMet,
+}));
+vi.mock("@src/database/reminders/ListReminders", async () => ({
+  listReminders: (await import("@src/database/testing/TestDatabase")).testDatabase.listReminders,
+}));
+vi.mock("@src/database/reminders/MarkReminderSent", async () => ({
+  markReminderSent: (await import("@src/database/testing/TestDatabase")).testDatabase.markReminderSent,
+}));
 vi.mock("@src/router/sign-in/shared/google/GoogleIdentityOf", async () => ({
   googleIdentityOf: (await import("@src/testing/google/TestGoogle")).testGoogle.identityOf,
 }));

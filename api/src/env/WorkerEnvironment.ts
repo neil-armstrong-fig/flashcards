@@ -27,6 +27,12 @@ interface ApiWorkerEnv {
   AZURE_SPEECH_KEY: string;
   GOOGLE_OAUTH_CLIENT_ID: string;
   GOOGLE_OAUTH_SECRET: string;
+  // The reminders' push signing key (VAPID, RFC 8292): the 32-byte private scalar, base64url. The public half, 65 bytes base64url, is a
+  // plain variable the app is told, and the subject is how a push service may reach the sender, such as `mailto:` an address.
+  // Optional: without them the reminders are off and nothing else is affected.
+  VAPID_PRIVATE_KEY?: string;
+  VAPID_PUBLIC_KEY?: string;
+  VAPID_SUBJECT?: string;
   // Only for local dev, in `.dev.vars`: `wrangler dev` may report another host than the one registered with Google, so the callback
   // address is given outright, as `http://localhost:8787/api/auth/google/callback`.
   GOOGLE_REDIRECT_URI?: string;

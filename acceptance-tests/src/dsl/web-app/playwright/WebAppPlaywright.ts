@@ -9,6 +9,7 @@ import type {FakeAccount} from "@src/dsl/web-app/playwright/fake-api/FakeAccount
 import {createFakeApi} from "@src/dsl/web-app/playwright/fake-api/CreateFakeApi";
 import {fullHex} from "@src/dsl/web-app/playwright/full-hex/FullHex";
 import {installFakeAudio} from "@src/dsl/web-app/playwright/fake-audio/InstallFakeAudio";
+import {installFakePush} from "@src/dsl/web-app/playwright/fake-push/InstallFakePush";
 import {installFakeVibration} from "@src/dsl/web-app/playwright/fake-vibration/InstallFakeVibration";
 
 /** Where the clock starts. A morning, well clear of the study day's rollover hour. */
@@ -31,6 +32,8 @@ export class WebAppPlaywright extends BasePage {
     await this.page.addInitScript(installFakeAudio);
     // Nor does anyone feel one: the phone's vibration motor writes down each buzz instead.
     await this.page.addInitScript(installFakeVibration);
+    // Nor does a run reach a push vendor: a stand-in subscribes, and notifications are allowed.
+    await this.page.addInitScript(installFakePush);
     // Nor does a run reach the API, which would spend real quota and need a real Google account: a stand-in answers.
     await this.page.route("**/api/**", createFakeApi(this.account));
     // Relative, so the suite does not care where the app is served from.

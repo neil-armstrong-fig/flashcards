@@ -7,6 +7,10 @@ import {speakForAccount} from "@src/router/routes/speech/speak-for-account/Speak
 import {syncCardEvents} from "@src/router/routes/sync/sync-card-events/SyncCardEvents";
 import {keepPicture} from "@src/router/routes/pictures/keep-picture/KeepPicture";
 import {servePicture} from "@src/router/routes/pictures/serve-picture/ServePicture";
+import {readPushKey} from "@src/router/routes/reminders/read-push-key/ReadPushKey";
+import {keepReminder} from "@src/router/routes/reminders/keep-reminder/KeepReminder";
+import {removeAccountReminder} from "@src/router/routes/reminders/remove-reminder/RemoveReminder";
+import {recordAccountGoalMet} from "@src/router/routes/reminders/record-goal-met/RecordGoalMet";
 import {startSignIn} from "@src/router/sign-in/start-sign-in/StartSignIn";
 import type {HttpRoute} from "@src/router/dispatch/types/HttpRoute";
 
@@ -31,6 +35,14 @@ export function answerHttpRoute(route: HttpRoute, request: Request): Promise<Res
       return forSignedInAccount(request, account => servePicture(request, account));
     case "PUT /api/pictures/*":
       return forSignedInAccount(request, account => keepPicture(request, account));
+    case "GET /api/reminders/key":
+      return forSignedInAccount(request, () => Promise.resolve(readPushKey()));
+    case "PUT /api/reminders/subscription":
+      return forSignedInAccount(request, account => keepReminder(request, account));
+    case "DELETE /api/reminders/subscription":
+      return forSignedInAccount(request, account => removeAccountReminder(request, account));
+    case "POST /api/reminders/goal-met":
+      return forSignedInAccount(request, account => recordAccountGoalMet(request, account));
     case "POST /api/speech":
       return forSignedInAccount(request, () => speakForAccount(request));
     case "GET /api/audio/*":

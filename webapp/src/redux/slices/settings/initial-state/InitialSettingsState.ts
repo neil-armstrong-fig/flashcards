@@ -1,6 +1,7 @@
 import {DEFAULT_DAILY_GOAL_CARDS} from "@src/redux/slices/settings/daily-goal/DailyGoal";
 import {DEFAULT_DECK_PREFERENCES} from "@src/redux/slices/settings/limits/DefaultDeckPreferences";
 import {DEFAULT_DECK_LIMITS} from "@src/redux/slices/settings/limits/DefaultDeckLimits";
+import {DEFAULT_REMINDER_HOUR} from "@src/redux/slices/settings/reminder/ReminderHour";
 import {SHIPPED_DECKS} from "@flashcards/content/decks/ShippedDecks";
 import type {SettingsState} from "@src/redux/slices/settings/types/SettingsState";
 
@@ -14,5 +15,7 @@ export const INITIAL_SETTINGS_STATE: SettingsState = {
   deckPreferences: Object.fromEntries(SHIPPED_DECKS.map(deck => [deck.id, DEFAULT_DECK_PREFERENCES])),
   voice: "male",
   speed: "normal",
+  reminderEnabled: false,
+  reminderHour: DEFAULT_REMINDER_HOUR,
   theme: "system",
 };

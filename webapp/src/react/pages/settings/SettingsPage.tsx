@@ -5,6 +5,7 @@ import {ClearThisDevice} from "@src/react/pages/settings/components/clear-this-d
 import {DailyGoalSetting} from "@src/react/pages/settings/components/daily-goal-setting/DailyGoalSetting";
 import {DeckSettings} from "@src/react/pages/settings/components/deck-settings/DeckSettings";
 import {DesiredRetentionSetting} from "@src/react/pages/settings/components/desired-retention-setting/DesiredRetentionSetting";
+import {ReminderSetting} from "@src/react/pages/settings/components/reminder-setting/ReminderSetting";
 import {ROUTES} from "@src/react/routes/Routes";
 import {SetAsideWhenStrugglingSetting} from "@src/react/pages/settings/components/set-aside-when-struggling-setting/SetAsideWhenStrugglingSetting";
 import {SettingsGroup} from "@src/react/pages/settings/components/settings-group/SettingsGroup";
@@ -24,6 +25,8 @@ export function SettingsPage(): React.JSX.Element {
 
       <SettingsGroup title="Daily goal">
         <DailyGoalSetting />
+
+        <ReminderSetting />
       </SettingsGroup>
 
       <DeckSettings />

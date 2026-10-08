@@ -5,6 +5,8 @@ import {isLaterChoice} from "@flashcards/shared/sync/IsLaterChoice";
 import type {RecordChange} from "@flashcards/shared/sync/records/RecordChange";
 import type {StoredRecordChange} from "@src/database/types/StoredRecordChange";
 import type {SettingChange} from "@flashcards/shared/sync/settings/SettingChange";
+import type {NewReminder} from "@src/database/types/NewReminder";
+import type {StoredReminder} from "@src/database/types/StoredReminder";
 import type {Account} from "@src/database/types/Account";
 import type {NewAccount} from "@src/database/types/NewAccount";
 import type {NewSession} from "@src/database/types/NewSession";
@@ -22,6 +24,7 @@ class TestDatabase {
   private sessions: NewSession[] = [];
   private settings: (SettingChange & {readonly userId: string})[] = [];
   private records: (StoredRecordChange & {readonly userId: string})[] = [];
+  private reminders: StoredReminder[] = [];
   private events: (StoredCardEvent & {readonly userId: string})[] = [];
 
   reset(): void {
@@ -30,6 +33,7 @@ class TestDatabase {
     this.events = [];
     this.settings = [];
     this.records = [];
+    this.reminders = [];
   }
 
   readonly findOrCreateAccount = async (googleSub: string, newAccount: NewAccount): Promise<Account> => {
@@ -129,6 +133,51 @@ class TestDatabase {
       .slice(0, limit)
       .map(({seq, record}) => ({seq, record}));
   };
+
+  readonly saveReminder = async (userId: string, {endpoint, hour, timeZone}: NewReminder): Promise<void> => {
+    const index = this.reminders.findIndex(each => each.userId === userId && each.endpoint === endpoint);
+    const kept = this.reminders[index];
+
+    if (kept) {
+      this.reminders[index] = {...kept, hour, timeZone};
+
+      return;
+    }
+
+    this.reminders.push({userId, endpoint, hour, timeZone});
+  };
+
+  readonly removeReminder = async (userId: string, endpoint: string): Promise<void> => {
+    this.reminders = this.reminders.filter(each => !(each.userId === userId && each.endpoint === endpoint));
+  };
+
+  readonly recordGoalMet = async (userId: string, studyDay: string): Promise<void> => {
+    this.reminders = this.reminders.map(each => {
+      if (each.userId !== userId) {
+        return each;
+      }
+
+      return {...each, goalMetOn: studyDay};
+    });
+  };
+
+  readonly listReminders = async (): Promise<StoredReminder[]> => {
+    return [...this.reminders];
+  };
+
+  readonly markReminderSent = async (userId: string, endpoint: string, studyDay: string): Promise<void> => {
+    this.reminders = this.reminders.map(each => {
+      if (each.userId !== userId || each.endpoint !== endpoint) {
+        return each;
+      }
+
+      return {...each, lastSentOn: studyDay};
+    });
+  };
+
+  get remindersKept(): readonly StoredReminder[] {
+    return this.reminders;
+  }
 
   get sessionCount(): number {
     return this.sessions.length;

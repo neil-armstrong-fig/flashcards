@@ -34,6 +34,8 @@ it("loads the settings that were kept", () => {
     setAsideWhenStruggling: true,
     voice: "male",
     speed: "slower",
+    reminderEnabled: true,
+    reminderHour: 7,
     theme: "light",
   };
 
@@ -50,6 +52,8 @@ it("gives the audio settings their defaults when what was kept predates them", (
     setAsideWhenStruggling: false,
     voice: "male",
     speed: "normal",
+    reminderEnabled: false,
+    reminderHour: 20,
     theme: "system",
   });
 });
@@ -60,6 +64,8 @@ it.each([
   ["a struggling threshold out of range", {strugglingAfter: 0}, {strugglingAfter: 8}],
   ["a set-aside flag that is not a boolean", {setAsideWhenStruggling: 1}, {setAsideWhenStruggling: false}],
   ["a retention out of range", {desiredRetentionPercent: 50}, {desiredRetentionPercent: 90}],
+  ["a reminder flag that is not a boolean", {reminderEnabled: "yes"}, {reminderEnabled: false}],
+  ["a reminder hour off the clock", {reminderHour: 24}, {reminderHour: 20}],
   ["colours that do not exist", {theme: "sepia"}, {theme: "system"}],
 ])("does not trust %s", (_name, stored, expected) => {
   holding(stored);

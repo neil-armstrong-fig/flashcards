@@ -9,7 +9,7 @@ const fetching = new Map<string, Promise<boolean>>();
 /**
  * Makes sure the recording at `path` (`audio/<language>/<variant>/<name>.mp3`, as `audioUrlOf` gives it) is kept on this device,
  * fetching it if it is not. A recording is fetched from the API with the learner's session (it answers 401 to anyone else) and put in
- * the browser's cache under the address the page plays it from, where the service worker serves it (`sw/ServiceWorker.ts`). Once kept
+ * the browser's cache under the address the page plays it from, where the service worker serves it (`sw/recordings/RegisterRecordingsFromCache.ts`). Once kept
  * it is never fetched again: a recording is named by a hash of what it says. Resolves to whether it is there to play: false where it
  * could not be fetched (not signed in, or no connection and not yet kept). Never rejects.
  */

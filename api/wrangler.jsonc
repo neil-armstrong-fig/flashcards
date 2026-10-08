@@ -28,6 +28,8 @@
     {"name": "SPEECH_LIMITER", "namespace_id": "2001", "simple": {"limit": 20, "period": 60}},
     {"name": "LOGIN_LIMITER", "namespace_id": "2002", "simple": {"limit": 10, "period": 60}},
   ],
+  // Each hour on the hour, as in `infra/`: reminds whoever has not reached their daily goal. Try it with `wrangler dev --test-scheduled`.
+  "triggers": {"crons": ["0 * * * *"]},
   "vars": {
     "ALLOWED_ORIGINS": "http://localhost:3000",
     // The Google accounts that may sign in: this is a private test app. Put your own address here (or in .dev.vars).
@@ -35,5 +37,5 @@
     "AZURE_SPEECH_REGION": "uksouth",
   },
   // Secrets, set with `wrangler secret put` (or in .dev.vars locally, see .dev.vars.example): AZURE_SPEECH_KEY, GOOGLE_OAUTH_CLIENT_ID,
-  // GOOGLE_OAUTH_SECRET.
+  // GOOGLE_OAUTH_SECRET, VAPID_PRIVATE_KEY, VAPID_PUBLIC_KEY, VAPID_SUBJECT (`pnpm --filter @flashcards/api vapid-keys` makes the first two).
 }

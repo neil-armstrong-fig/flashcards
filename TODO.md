@@ -32,6 +32,7 @@ using real account data.
 - The learner's own Korean cards (browse screen, signed in only), with the romanisation suggested (`docs/romanisation.md`), kept
   online per account and on the device.
 - Similars: words a learner mixes up, shipped for Korean sounds and Japanese shapes and sounds, and added by the learner.
+- Daily-goal reminder (`docs/reminders.md`): a setting to turn it on and move the hour, kept per device; an hourly cron in the API pushes to devices whose hour it is and whose goal is not met (payload-free Web Push, VAPID by hand); the service worker shows it.
 - Audio end to end (`docs/audio.md`): 978 recordings, played on show with replay, listen-only, voice and speed settings.
 - Online-served model (`docs/online.md`): recordings in a private R2 bucket behind `GET /api/audio/*`, kept on the device as they are
   played, with an opt-in Keep offline per deck. Google sign-in gates the whole app.
@@ -61,7 +62,9 @@ using real account data.
 
 ## Next
 
-1. **Daily-goal reminder** (Web Push, a cron-triggered Worker) with a setting to turn it off or move it.
+1. **Try the daily-goal reminder on a real phone** (`docs/reminders.md`): run `pnpm --filter @flashcards/api vapid-keys`, set the
+   three names in `.env.dev` and GitHub (`MANUAL-SETUP-STEPS.md` 4f), apply the migration (`db:migrate:local`, and the deploy), provision,
+   then turn it on in settings. Built and green; never run against a real push service.
 
 ## Backlog
 

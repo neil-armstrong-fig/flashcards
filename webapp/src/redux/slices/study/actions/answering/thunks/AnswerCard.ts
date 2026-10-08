@@ -1,5 +1,8 @@
 import {answered, savingStarted} from "@src/redux/slices/study/StudySlice";
 import {queueSettingsOf} from "@src/redux/slices/study/queue/QueueSettingsOf";
+import {reportGoalMet} from "@src/redux/api/reminders/ReportGoalMet";
+import {selectGoalJustReached} from "@src/redux/shared/reminders/SelectGoalJustReached";
+import {studyDayKey} from "@src/spaced-repetition/day/StudyDayKey";
 import {reportUnsaved} from "@src/redux/slices/study/actions/shared/utils/ReportUnsaved";
 import type {AppThunk} from "@src/redux/shared/AppThunk";
 import type {AnswerEventsRequest} from "@src/redux/slices/study/actions/answering/types/AnswerEventsRequest";
@@ -41,6 +44,13 @@ export function answerCard(rating: Rating): AppThunk<Promise<void>> {
         queueSettings: queueSettingsOf(getState().settings, session?.deckId ?? ""),
       }),
     );
+
+    if (selectGoalJustReached(getState())) {
+      // Not waited for, and not the learner's concern if it fails: it only spares them a reminder (`docs/reminders.md`).
+      reportGoalMet(studyDayKey(now)).catch((error: unknown) =>
+        console.error("The goal could not be reported.", error),
+      );
+    }
   };
 }
 

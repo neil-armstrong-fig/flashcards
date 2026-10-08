@@ -11,6 +11,7 @@ A Cloudflare Worker (modelled on janggi's `api/` (https://github.com/neil-armstr
 - **Recordings**: `GET /api/audio/<language>/<voice>-<speed>/<hash>.mp3` streams a recording made ahead of time from the **private R2 bucket**
   (`RECORDINGS`) to a signed-in account, with byte ranges (iOS needs them) and `Cache-Control: private, max-age=31536000, immutable`. 401
   without a session, and 404 for any name the app does not make (`router/routes/audio/recording-key/`). The bucket is never public (`docs/online.md`). `tools/` uploads them (`upload-audio`).
+- **Reminders** (`docs/reminders.md`): `GET /api/reminders/key` gives the public VAPID key, `PUT` and `DELETE /api/reminders/subscription` keep and forget a device to push to (`{endpoint, hour, timeZone}`; https addresses only), `POST /api/reminders/goal-met` notes a study day's goal as reached, all in `push_subscriptions`. `scheduled` in `ApiWorker.ts` runs `reminders/SendDueReminders.ts` each hour: `reminders/due/` decides, `reminders/push/SendPush.ts` posts an empty push signed by `reminders/vapid/`.
 - **Speech**: `POST /api/speech` with `{language, text, voice, speed}` returns an MP3 from Azure AI Speech: `ko` is a Korean word
   in the chosen voice and speed, `en` an English meaning (up to 40 characters) in the one English voice at normal speed. The **Azure key stays
   here**, never in the browser.
@@ -60,7 +61,7 @@ pnpm --filter @flashcards/api db:migrate:local    # makes or updates the local d
 ```
 
 Tables: `users` (Google subject, email), `sessions` (hash of the token, expiry), `card_events`, `synced_settings` and `synced_records` (what
-sync keeps). The migrations are `0000_init` and `0001_add_sync_and_drop_notes_and_similar_words`, named for what they do (`drizzle-kit generate --name <what it does>`; it asks in a terminal whether a new table is a rename of a dropped one, so answer "create"). A change
+sync keeps), `push_subscriptions` (the devices to remind). The migrations are `0000_init`, `0001_add_sync_and_drop_notes_and_similar_words` and `0002_add_push_subscriptions`, named for what they do (`drizzle-kit generate --name <what it does>`; it asks in a terminal whether a new table is a rename of a dropped one, so answer "create"). A change
 to a stored shape is a new migration, never an edit to an old one.
 
 ## Running and testing
@@ -81,7 +82,7 @@ Needs these in the root `.env.dev` (git-ignored; names in `.dev.vars.example`): 
 local binding. Do not keep an `api/.dev.vars`: Wrangler prefers it. The Google client is made by hand (`MANUAL-SETUP-STEPS.md`
 section 4a). Without those the Worker answers 500 and logs which are missing.
 
-**What has and has not been run.** Unit tests cover the whole of it (144). Under `wrangler dev` with a local D1, the migration applied,
+**What has and has not been run.** Unit tests cover the whole of it. Under `wrangler dev` with a local D1, the migration applied,
 `/api/me` and the speech were 401 without a session, the preflight was 204, and the sign-in redirect went to Google with a PKCE
 challenge and an attempt cookie. The app itself is behind this sign-in (`webapp/src/redux/slices/account/selectors/SelectAccess.ts`). A real recording through the earlier version of the speech route worked against Azure. **The Google
 round trip has not been run**: it needs your OAuth client.

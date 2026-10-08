@@ -6,6 +6,7 @@ import {startSession} from "@src/redux/slices/study/actions/session/thunks/Start
 import type {AppStore} from "@src/redux/Store";
 import type {MemoryRecordLog} from "@src/testing/environment/records/MemoryRecordLog";
 import type {FakeAccountApi} from "@src/testing/environment/account/FakeAccountApi";
+import type {FakeReminders} from "@src/testing/environment/reminders/FakeReminders";
 import type {FakeKeptAudio} from "@src/testing/environment/audio/FakeKeptAudio";
 import type {MemoryCardPictures} from "@src/testing/environment/pictures/MemoryCardPictures";
 import type {MemoryRecordingKeeper} from "@src/testing/environment/audio/MemoryRecordingKeeper";
@@ -23,6 +24,8 @@ export interface OpenedStudyStore {
   readonly accountApi: FakeAccountApi;
   /** What the app kept to send the API of what the learner made, in order. */
   readonly records: MemoryRecordLog;
+  /** The push service and what the API holds for reminding this device. */
+  readonly reminders: FakeReminders;
 }
 
 /** A store with the app loaded and a session started, over what `testEnvironment` holds: opened again in the same test, it finds the same progress. */
@@ -41,5 +44,6 @@ export async function openedStudyStore(): Promise<OpenedStudyStore> {
     pictures: testEnvironment.pictures,
     accountApi: testEnvironment.accountApi,
     records: testEnvironment.records,
+    reminders: testEnvironment.reminders,
   };
 }

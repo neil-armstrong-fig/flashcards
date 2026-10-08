@@ -32,6 +32,9 @@ export async function buildApiWorker({database, recordings, pictures}: WorkerRes
     compatibilityDate: "2026-09-01",
     adopt: true,
     url: true,
+    // Each hour on the hour: reminds whoever has not reached their daily goal (`api/src/reminders/`). Keep `api/wrangler.jsonc` the same.
+    // The app will ignore this unless the hour matches the user's configured choice for a reminder
+    crons: ["0 * * * *"],
     bindings: {
       DB: database,
       SPEECH_BUDGET: speechBudget,
@@ -46,6 +49,9 @@ export async function buildApiWorker({database, recordings, pictures}: WorkerRes
       AZURE_SPEECH_KEY: alchemy.secret(secrets.AZURE_SPEECH_KEY),
       GOOGLE_OAUTH_CLIENT_ID: alchemy.secret(secrets.GOOGLE_OAUTH_CLIENT_ID),
       GOOGLE_OAUTH_SECRET: alchemy.secret(secrets.GOOGLE_OAUTH_SECRET),
+      VAPID_PRIVATE_KEY: alchemy.secret(secrets.VAPID_PRIVATE_KEY),
+      VAPID_PUBLIC_KEY: environment.vapidPublicKey,
+      VAPID_SUBJECT: environment.vapidSubject,
     },
   });
 }

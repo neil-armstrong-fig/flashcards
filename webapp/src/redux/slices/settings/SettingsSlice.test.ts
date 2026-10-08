@@ -11,6 +11,8 @@ import {
   speedChosen,
   strugglingAfterChosen,
   desiredRetentionChosen,
+  reminderEnabledChosen,
+  reminderHourChosen,
   themeChosen,
   voiceChosen,
 } from "@src/redux/slices/settings/SettingsSlice";
@@ -47,6 +49,8 @@ it("starts with a daily goal of twenty cards, each deck on the default limits an
     setAsideWhenStruggling: false,
     voice: "male",
     speed: "normal",
+    reminderEnabled: false,
+    reminderHour: 20,
     theme: "system",
   });
 });
@@ -153,4 +157,22 @@ it("replaces how many lapses make a card struggle, between one and ninety-nine",
 
 it("replaces whether struggling cards are set aside", () => {
   expect(settingsReducer(undefined, setAsideWhenStrugglingChosen(true)).setAsideWhenStruggling).toBe(true);
+});
+
+it("turns the reminder on and off", () => {
+  const on = settingsReducer(undefined, reminderEnabledChosen(true));
+
+  expect(on.reminderEnabled).toBe(true);
+  expect(settingsReducer(on, reminderEnabledChosen(false)).reminderEnabled).toBe(false);
+});
+
+it("replaces the reminder hour with the one chosen", () => {
+  expect(settingsReducer(undefined, reminderHourChosen(18)).reminderHour).toBe(18);
+});
+
+it.each([
+  [-1, 0],
+  [24, 23],
+])("keeps the reminder hour on the clock: %i becomes %i", (chosen, expected) => {
+  expect(settingsReducer(undefined, reminderHourChosen(chosen)).reminderHour).toBe(expected);
 });

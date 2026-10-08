@@ -6,6 +6,9 @@ import type {FakeAccount} from "@src/dsl/web-app/playwright/fake-api/FakeAccount
 /** A few bytes the app keeps and the fake audio element "plays". Nothing decodes them, so they need not be a real recording. */
 const AUDIO = Buffer.from([0x49, 0x44, 0x33]);
 
+/** A key of the shape a push service takes (65 bytes, base64url). The fake push service never looks at it. */
+const PUSH_KEY = `B${"A".repeat(86)}`;
+
 const SIGNED_IN_EMAIL = "learner@example.com";
 
 /**
@@ -17,6 +20,8 @@ const SIGNED_IN_EMAIL = "learner@example.com";
 export function createFakeApi(account: FakeAccount = newFakeAccount()): (route: Route) => Promise<void> {
   // The learner has signed in already, as the specs need the app open; one about signing in signs out first.
   let signedIn = true;
+  // The hour this device asked to be reminded at, if it did: kept per page, as a device's own subscription is.
+  let reminderHour: number | undefined;
 
   return async route => {
     const request = route.request();
@@ -107,6 +112,48 @@ export function createFakeApi(account: FakeAccount = newFakeAccount()): (route: 
       return;
     }
 
+    if (url.pathname === "/api/reminders/key") {
+      await route.fulfill({
+        status: 200,
+        headers: {...headers, "content-type": "application/json"},
+        body: JSON.stringify({key: PUSH_KEY}),
+      });
+
+      return;
+    }
+
+    if (url.pathname === "/api/reminders/subscription" && request.method() === "PUT") {
+      const body: unknown = request.postDataJSON();
+
+      reminderHour = hourOf(body);
+      await route.fulfill({status: 204, headers});
+
+      return;
+    }
+
+    if (url.pathname === "/api/reminders/subscription" && request.method() === "DELETE") {
+      reminderHour = undefined;
+      await route.fulfill({status: 204, headers});
+
+      return;
+    }
+
+    if (url.pathname === "/api/reminders/goal-met" && request.method() === "POST") {
+      await route.fulfill({status: 204, headers});
+
+      return;
+    }
+
+    if (url.pathname === "/api/fake/reminder") {
+      await route.fulfill({
+        status: 200,
+        headers: {...headers, "content-type": "application/json"},
+        body: JSON.stringify({hour: reminderHour}),
+      });
+
+      return;
+    }
+
     if (url.pathname === "/api/speech") {
       await route.fulfill({status: 200, headers: {...headers, "content-type": "audio/mpeg"}, body: AUDIO});
 
@@ -115,4 +162,12 @@ export function createFakeApi(account: FakeAccount = newFakeAccount()): (route: 
 
     await route.fulfill({status: 404, headers});
   };
+}
+
+function hourOf(body: unknown): number | undefined {
+  if (typeof body === "object" && body !== null && "hour" in body && typeof body.hour === "number") {
+    return body.hour;
+  }
+
+  return undefined;
 }

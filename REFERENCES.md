@@ -9,6 +9,7 @@ This project is built on the ideas and open-source work of others. This file is 
 | Spaced repetition review loop, decks, notes and cards | Anki (Damien Elmes and contributors, AGPL-3.0) | https://apps.ankiweb.net/ |
 | FSRS scheduling and desired retention | Free Spaced Repetition Scheduler (open-spaced-repetition) | https://github.com/open-spaced-repetition |
 | The 46 basic hiragana and katakana, in gojūon order, with Hepburn romaji (を as `wo`) | Standard Japanese kana tables (facts, not a copied dataset) | https://en.wikipedia.org/wiki/Gojūon |
+| The daily-goal reminder: a payload-free Web Push signed with VAPID, written by hand on WebCrypto (`docs/reminders.md`) | RFC 8030 (Generic Event Delivery Using HTTP Push) and RFC 8292 (VAPID), IETF | https://www.rfc-editor.org/rfc/rfc8292 |
 | Leech detection (cards that repeatedly lapse) | Anki manual, "Leeches" | https://docs.ankiweb.net/leeches.html |
 | Note types with fields, cloze deletion, tags | Anki manual | https://docs.ankiweb.net/ |
 | Suspend, bury, custom study | Anki manual | https://docs.ankiweb.net/ |

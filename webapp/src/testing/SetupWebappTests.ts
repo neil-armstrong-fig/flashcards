@@ -1,6 +1,7 @@
 import "fake-indexeddb/auto";
 import {afterEach, beforeEach, vi} from "vitest";
 import type {RecordChange} from "@flashcards/shared/sync/records/RecordChange";
+import type {ReminderRequest} from "@src/redux/api/reminders/types/ReminderRequest";
 import type {ReviewLogEntry} from "@src/spaced-repetition/scheduling/types/ReviewLogEntry";
 import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
 import type {StudyCard} from "@src/spaced-repetition/card/types/StudyCard";
@@ -130,6 +131,32 @@ vi.mock("@src/redux/api/EndApiSession", async () => {
       await testEnvironment.accountApi.signOut();
     },
   };
+});
+vi.mock("@src/push/SubscribeToPush", async () => {
+  const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
+
+  return {subscribeToPush: async () => await testEnvironment.reminders.subscribe()};
+});
+vi.mock("@src/push/UnsubscribeFromPush", async () => {
+  const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
+
+  return {unsubscribeFromPush: async () => await testEnvironment.reminders.unsubscribe()};
+});
+vi.mock("@src/redux/api/reminders/ReadPushKey", () => ({readPushKey: async () => "test-key"}));
+vi.mock("@src/redux/api/reminders/SaveReminder", async () => {
+  const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
+
+  return {saveReminder: async (reminder: ReminderRequest) => await testEnvironment.reminders.save(reminder)};
+});
+vi.mock("@src/redux/api/reminders/ReportGoalMet", async () => {
+  const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
+
+  return {reportGoalMet: async (studyDay: string) => await testEnvironment.reminders.reportGoalMet(studyDay)};
+});
+vi.mock("@src/redux/api/reminders/RemoveReminder", async () => {
+  const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
+
+  return {removeReminder: async (endpoint: string) => await testEnvironment.reminders.remove(endpoint)};
 });
 vi.mock("@src/storage/index-db/sync/records/KeepLocalRecord", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");

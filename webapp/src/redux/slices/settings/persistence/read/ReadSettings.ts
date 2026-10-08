@@ -1,6 +1,7 @@
 import {
   DAILY_GOAL_CARDS_LIMITS,
   DESIRED_RETENTION_PERCENT_LIMITS,
+  REMINDER_HOUR_LIMITS,
   STRUGGLING_AFTER_LIMITS,
 } from "@src/redux/slices/settings/limits/SettingLimits";
 import {INITIAL_SETTINGS_STATE} from "@src/redux/slices/settings/initial-state/InitialSettingsState";
@@ -30,6 +31,8 @@ export function readSettings(stored: unknown): SettingsState {
     voice,
     speed,
     listenOnly,
+    reminderEnabled,
+    reminderHour,
     theme,
   } = stored as Record<string, unknown>;
 
@@ -50,6 +53,8 @@ export function readSettings(stored: unknown): SettingsState {
     setAsideWhenStruggling: readBoolean(setAsideWhenStruggling) ?? INITIAL_SETTINGS_STATE.setAsideWhenStruggling,
     voice: readOneOf(voice, VOICES) ?? INITIAL_SETTINGS_STATE.voice,
     speed: readOneOf(speed, SPEEDS) ?? INITIAL_SETTINGS_STATE.speed,
+    reminderEnabled: readBoolean(reminderEnabled) ?? INITIAL_SETTINGS_STATE.reminderEnabled,
+    reminderHour: readLimitedInteger(reminderHour, REMINDER_HOUR_LIMITS) ?? INITIAL_SETTINGS_STATE.reminderHour,
     theme: readOneOf(theme, THEMES) ?? INITIAL_SETTINGS_STATE.theme,
   };
 }

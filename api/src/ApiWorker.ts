@@ -1,4 +1,5 @@
 import {missingSecrets} from "@src/env/MissingSecrets";
+import {sendDueReminders} from "@src/reminders/SendDueReminders";
 import {routeRequest} from "@src/router/RouteRequest";
 import {workerEnvironment} from "@src/env/WorkerEnvironment";
 
@@ -14,5 +15,10 @@ export default {
     }
 
     return await routeRequest(request);
+  },
+
+  // The hourly cron trigger (`infra/`, `wrangler.jsonc`): reminds whoever has not reached their daily goal (`docs/reminders.md`).
+  async scheduled(): Promise<void> {
+    await sendDueReminders(new Date());
   },
 } satisfies ExportedHandler;

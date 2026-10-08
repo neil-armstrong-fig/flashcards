@@ -4,6 +4,7 @@ import type {DeckId} from "@src/dsl/web-app/types/DeckId";
 import {DslError} from "@src/dsl/errors/DslError";
 import {SettingsPlaywright} from "@src/dsl/web-app/components/settings/playwright/SettingsPlaywright";
 import {SettingsLimitsDsl} from "@src/dsl/web-app/components/settings/components/limits/SettingsLimitsDsl";
+import {SettingsReminderDsl} from "@src/dsl/web-app/components/settings/components/reminder/SettingsReminderDsl";
 import {SettingsVoiceDsl} from "@src/dsl/web-app/components/settings/components/voice/SettingsVoiceDsl";
 import {SettingsStrugglingDsl} from "@src/dsl/web-app/components/settings/components/struggling/SettingsStrugglingDsl";
 import {SettingsDeviceDsl} from "@src/dsl/web-app/components/settings/components/device/SettingsDeviceDsl";
@@ -14,6 +15,7 @@ export class SettingsDsl {
   private readonly playwright: SettingsPlaywright;
 
   readonly limits: SettingsLimitsDsl;
+  readonly reminder: SettingsReminderDsl;
   readonly voice: SettingsVoiceDsl;
   readonly struggling: SettingsStrugglingDsl;
   readonly account: SettingsAccountDsl;
@@ -22,6 +24,7 @@ export class SettingsDsl {
   constructor(page: Page) {
     this.playwright = new SettingsPlaywright(page);
     this.limits = new SettingsLimitsDsl(page);
+    this.reminder = new SettingsReminderDsl(page);
     this.voice = new SettingsVoiceDsl(page);
     this.struggling = new SettingsStrugglingDsl(page);
     this.account = new SettingsAccountDsl(page);

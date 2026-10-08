@@ -11,6 +11,10 @@ export const HTTP_ROUTES = [
   "POST /api/sync",
   "GET /api/pictures/*",
   "PUT /api/pictures/*",
+  "GET /api/reminders/key",
+  "PUT /api/reminders/subscription",
+  "DELETE /api/reminders/subscription",
+  "POST /api/reminders/goal-met",
   "POST /api/speech",
   "GET /api/audio/*",
 ] as const;

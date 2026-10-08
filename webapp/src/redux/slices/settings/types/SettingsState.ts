@@ -21,6 +21,10 @@ export interface SettingsState {
   readonly setAsideWhenStruggling: boolean;
   /** The percentage of reviewed cards the learner wants to still remember when they come back: higher means more reviews. */
   readonly desiredRetentionPercent: number;
+  /** Whether this device is sent a reminder when the daily goal is not yet reached. Kept per device: a push subscription belongs to one. */
+  readonly reminderEnabled: boolean;
+  /** The hour of the day, 0 to 23, the reminder comes at. */
+  readonly reminderHour: number;
   /** The colours: one of the two palettes, or whichever the device asks for. */
   readonly theme: Theme;
 }

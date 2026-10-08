@@ -97,7 +97,7 @@ Key design choices:
   No XP, levels, badges, streaks or heatmap: decided against.
 - A reminder notification at about 8pm local time if the goal has not been met that day. A PWA cannot fire a timed notification while
   closed without push, so this needs a Web Push subscription held by the API Worker with a scheduled (cron) trigger that skips
-  learners who have met the goal. It waits for the deployed API.
+  learners who have met the goal. Built: `docs/reminders.md`.
 
 ### Audio
 

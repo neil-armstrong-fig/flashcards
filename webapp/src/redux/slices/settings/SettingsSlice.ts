@@ -7,6 +7,7 @@ import {
   DESIRED_RETENTION_PERCENT_LIMITS,
   MAX_REVIEWS_PER_DAY_LIMITS,
   NEW_CARDS_PER_DAY_LIMITS,
+  REMINDER_HOUR_LIMITS,
   STRUGGLING_AFTER_LIMITS,
 } from "@src/redux/slices/settings/limits/SettingLimits";
 import type {Speed} from "@flashcards/shared/audio/Speed";
@@ -114,6 +115,14 @@ const settingsSlice = createSlice({
       state.setAsideWhenStruggling = action.payload;
     },
 
+    reminderEnabledChosen: (state, action: PayloadAction<boolean>) => {
+      state.reminderEnabled = action.payload;
+    },
+
+    reminderHourChosen: (state, action: PayloadAction<number>) => {
+      state.reminderHour = clampToLimits(action.payload, REMINDER_HOUR_LIMITS);
+    },
+
     voiceChosen: (state, action: PayloadAction<Voice>) => {
       state.voice = action.payload;
     },
@@ -161,6 +170,8 @@ export const {
   desiredRetentionChosen,
   strugglingAfterChosen,
   setAsideWhenStrugglingChosen,
+  reminderEnabledChosen,
+  reminderHourChosen,
   voiceChosen,
   speedChosen,
   deckVoiceChosen,

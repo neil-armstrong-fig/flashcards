@@ -21,7 +21,7 @@ bundles and uploads it.
 ## Running it
 
 ```bash
-export CLOUDFLARE_API_TOKEN=... CLOUDFLARE_ACCOUNT_ID=... AZURE_SPEECH_KEY=... GOOGLE_OAUTH_CLIENT_ID=... GOOGLE_OAUTH_SECRET=... ALLOWED_EMAILS=... ALCHEMY_PASSWORD=...   # never in a chat, a doc or a commit
+export CLOUDFLARE_API_TOKEN=... CLOUDFLARE_ACCOUNT_ID=... AZURE_SPEECH_KEY=... GOOGLE_OAUTH_CLIENT_ID=... GOOGLE_OAUTH_SECRET=... ALLOWED_EMAILS=... VAPID_PRIVATE_KEY=... VAPID_PUBLIC_KEY=... VAPID_SUBJECT=... ALCHEMY_PASSWORD=...   # never in a chat, a doc or a commit
 pnpm --filter @flashcards/infra provision     # creates or adopts by name, deploys, prints the address
 pnpm --filter @flashcards/infra destroy       # removes what it made
 ```

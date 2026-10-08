@@ -95,7 +95,7 @@ Worker must have a custom domain one label below the app's (for example `languag
 ### 4c. The first deploy
 
 From a machine, with these set in the environment (`infra/AGENTS.md` says what each is): `CLOUDFLARE_API_TOKEN`,
-`CLOUDFLARE_ACCOUNT_ID`, `AZURE_SPEECH_KEY`, `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_SECRET`, `ALLOWED_EMAILS`, `ALCHEMY_PASSWORD` (any
+`CLOUDFLARE_ACCOUNT_ID`, `AZURE_SPEECH_KEY`, `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_SECRET`, `ALLOWED_EMAILS`, `VAPID_PRIVATE_KEY`, `VAPID_PUBLIC_KEY`, `VAPID_SUBJECT` (4f), `ALCHEMY_PASSWORD` (any
 long random string, e.g. `openssl rand -base64 32`; keep it, CI needs the same one), and `SITE_ORIGINS` (the deployed app's address;
 the infrastructure always adds `http://localhost:3000` for `pnpm start:deployed`):
 
@@ -118,10 +118,18 @@ It makes the D1 database (migrations applied), the two KV namespaces, the privat
 ### 4e. GitHub Actions secrets
 
 `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `ALCHEMY_PASSWORD`, `AZURE_SPEECH_KEY`, `GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_SECRET`,
-`ALLOWED_EMAILS`; and the variables above. From then on every green `main` runs `deploy-api` in `.github/workflows/ci-cd.yml`. Until
+`ALLOWED_EMAILS`, `VAPID_PRIVATE_KEY`, `VAPID_PUBLIC_KEY`, `VAPID_SUBJECT`; and the variables above. From then on every green `main` runs `deploy-api` in `.github/workflows/ci-cd.yml`. Until
 `CLOUDFLARE_API_TOKEN` exists that job does nothing.
 
-### 4f. Limits (the spend guard)
+### 4f. The reminders' push keys (`docs/reminders.md`)
+
+Once: run `pnpm --filter @flashcards/api vapid-keys` in your own terminal (`! pnpm ...` in a session would put the private key in the
+chat, so do not). Put `VAPID_PUBLIC_KEY` and `VAPID_PRIVATE_KEY` in the root `.env.dev`, and `VAPID_SUBJECT=mailto:<an address you read>` beside
+them; they become the same-named Worker bindings locally and, through 4c and 4e, deployed. Keep the private key somewhere safe: a new pair
+makes every device's subscription useless until the reminder is turned off and on again. Nothing else outside the repo is needed: the
+hourly cron trigger is declared in `infra/`.
+
+### 4g. Limits (the spend guard)
 
 The Worker refuses past 100,000 characters a month (a fifth of Azure's free 500,000), 20 new recordings a minute per address, 12
 characters a request, Korean only, signed-in allow-listed accounts only, allowed origins only. A recording already made is served from

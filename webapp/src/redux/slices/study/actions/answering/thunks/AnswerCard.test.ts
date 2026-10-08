@@ -4,7 +4,12 @@ import {openedStudyStore} from "@src/testing/OpenedStudyStore";
 import {TEST_NOW} from "@src/testing/time/TestNow";
 import {testEnvironment} from "@src/testing/environment/TestEnvironment";
 import {newCardState} from "@src/spaced-repetition/card/NewCardState";
-import {setAsideWhenStrugglingChosen, strugglingAfterChosen} from "@src/redux/slices/settings/SettingsSlice";
+import {
+  dailyGoalChosen,
+  reminderEnabledChosen,
+  setAsideWhenStrugglingChosen,
+  strugglingAfterChosen,
+} from "@src/redux/slices/settings/SettingsSlice";
 import type {OpenedStudyStore} from "@src/testing/OpenedStudyStore";
 import {showAnswer} from "@src/redux/slices/study/actions/answering/thunks/ShowAnswer";
 
@@ -102,4 +107,41 @@ describe("a card forgotten for the eighth time", () => {
 
     expect(store.getState().study.cards[id]?.suspended).toBe(false);
   });
+});
+
+it("tells the API the goal was reached, on the study day, when an answer reaches it with the reminder on", async () => {
+  const {store, reminders} = await openedStudyStore();
+  store.dispatch(dailyGoalChosen(2));
+  store.dispatch(reminderEnabledChosen(true));
+
+  store.dispatch(showAnswer());
+  await store.dispatch(answerCard("good"));
+  expect(reminders.goalMetDays).toEqual([]);
+
+  store.dispatch(showAnswer());
+  await store.dispatch(answerCard("good"));
+  expect(reminders.goalMetDays).toEqual(["2026-10-05"]);
+});
+
+it("does not tell the API about the goal when the reminder is off", async () => {
+  const {store, reminders} = await openedStudyStore();
+  store.dispatch(dailyGoalChosen(1));
+
+  store.dispatch(showAnswer());
+  await store.dispatch(answerCard("good"));
+
+  expect(reminders.goalMetDays).toEqual([]);
+});
+
+it("carries on when the API cannot be told the goal was reached", async () => {
+  const {store, reminders} = await openedStudyStore();
+  vi.spyOn(console, "error").mockImplementation(() => undefined);
+  reminders.unreachable = true;
+  store.dispatch(dailyGoalChosen(1));
+  store.dispatch(reminderEnabledChosen(true));
+
+  store.dispatch(showAnswer());
+  await store.dispatch(answerCard("good"));
+
+  expect(store.getState().study.log).toHaveLength(1);
 });
