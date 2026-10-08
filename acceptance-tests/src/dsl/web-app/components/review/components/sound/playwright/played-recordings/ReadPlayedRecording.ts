@@ -7,9 +7,9 @@ import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
 import type {Speed} from "@flashcards/shared/audio/Speed";
 import type {Voice} from "@flashcards/shared/audio/Voice";
 
-const SPOKEN_LANGUAGES: readonly SpokenLanguage[] = [...LANGUAGES, "en"];
+const SPOKEN_LANGUAGES: readonly SpokenLanguage[] = [...LANGUAGES, "en", "music"];
 
-const RECORDING_PATH = /audio\/(?<file>(?<language>[a-z]{2})\/(?<voice>[a-z]+)-(?<speed>[a-z]+)\/[^/]+\.mp3)$/;
+const RECORDING_PATH = /audio\/(?<file>(?<language>[a-z]+)\/(?<voice>[a-z]+)-(?<speed>[a-z]+)\/[^/]+\.mp3)$/;
 
 /** Reads a recording's voice and speed from the path the app played, which is how the files are laid out. */
 export function readPlayedRecording(entry: PlayedEntry): PlayedRecording {

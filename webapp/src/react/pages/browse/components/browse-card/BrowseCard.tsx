@@ -9,6 +9,7 @@ import {similarOf} from "@src/redux/slices/similar/similars/SimilarOf";
 import type {MouseEvent} from "react";
 import {isTapOnBackground} from "@src/react/audio/hooks/use-tap-to-play/is-tap-on-background/IsTapOnBackground";
 import {SimilarPanel} from "@src/react/components/similar-panel/SimilarPanel";
+import {Staff} from "@src/react/components/staff/Staff";
 import {SpeakerIcon} from "@src/react/components/speaker-icon/SpeakerIcon";
 import {statusLabelOf} from "@src/react/pages/browse/components/browse-card/status-label/StatusLabel";
 import {selectIsStruggling} from "@src/redux/shared/struggling/SelectIsStruggling";
@@ -64,6 +65,8 @@ export function BrowseCard({row}: Props): React.JSX.Element {
       <div className="flex items-center gap-3">
         <div className="flex min-w-0 flex-1 flex-col gap-1">
           <p className="flex items-baseline gap-3">
+            {row.notation && <Staff notation={row.notation} testId="browse-card-notation" className="h-20 shrink-0" />}
+
             <span data-testid="browse-card-front" className="text-2xl">
               {row.front}
             </span>

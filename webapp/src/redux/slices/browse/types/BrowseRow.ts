@@ -1,3 +1,4 @@
+import type {Notation} from "@flashcards/content/types/Notation";
 import type {SpokenText} from "@flashcards/content/types/SpokenText";
 import type {CardStatus} from "@src/spaced-repetition/card/types/CardStatus";
 
@@ -7,6 +8,8 @@ export interface BrowseRow {
   /** The word the card is made from: its two cards share similars. */
   readonly noteId: string;
   readonly front: string;
+  /** A note drawn on a staff, shown in place of `front` on a sheet music card. */
+  readonly notation?: Notation;
   readonly back: string;
   /** How the word is said in Latin letters. */
   readonly hint: string;

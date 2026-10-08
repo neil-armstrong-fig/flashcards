@@ -1,4 +1,5 @@
-import type {Language} from "@flashcards/shared/language/Language";
+import type {Subject} from "@flashcards/shared/language/Subject";
+import type {VoicedLanguage} from "@flashcards/shared/language/VoicedLanguage";
 
-/** A language the app speaks aloud: every language taught, and English, the language the cards ask their meanings in. */
-export type SpokenLanguage = Language | "en";
+/** What the app plays aloud: whatever Azure speaks, and the notes of music. */
+export type SpokenLanguage = VoicedLanguage | Extract<Subject, "music">;

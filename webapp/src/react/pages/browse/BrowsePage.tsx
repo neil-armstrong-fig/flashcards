@@ -6,6 +6,7 @@ import {BrowseSearch} from "@src/react/pages/browse/components/browse-search/Bro
 import {browseLeft} from "@src/redux/slices/browse/BrowseSlice";
 import {browseRowsOf} from "@src/redux/slices/browse/rows/BrowseRowsOf";
 import {cardsInDeck} from "@src/redux/slices/browse/rows/CardsInDeck";
+import {deckOffersVoiceAndSpeed} from "@src/redux/slices/deck/selectors/DeckOffersVoiceAndSpeed";
 import {DeckFilterField} from "@src/react/pages/browse/components/deck-filter/DeckFilterField";
 import {ROUTES} from "@src/react/routes/Routes";
 import {selectCards} from "@src/redux/slices/deck/selectors/SelectCards";
@@ -20,6 +21,7 @@ export function BrowsePage(): React.JSX.Element {
   const now = useAppSelector(state => state.study.now);
   const query = useAppSelector(state => state.browse.query);
   const deck = useAppSelector(state => state.browse.deck);
+  const offersVoiceAndSpeed = deck.kind === "all" || deckOffersVoiceAndSpeed(deck.deckId);
   const cards = useAppSelector(selectCards);
   const rows = useMemo(
     () => browseRowsOf(cardsInDeck(cards, deck), states, new Date(now), query),
@@ -57,11 +59,13 @@ export function BrowsePage(): React.JSX.Element {
         system.
       </p>
 
-      <div className="flex gap-2 text-sm">
-        <VoiceSwitch testId="browse-switch-voice" className="flex-1 rounded-full bg-ground-raised px-3 py-2" />
+      {offersVoiceAndSpeed && (
+        <div className="flex gap-2 text-sm">
+          <VoiceSwitch testId="browse-switch-voice" className="flex-1 rounded-full bg-ground-raised px-3 py-2" />
 
-        <SpeedSwitch testId="browse-switch-speed" className="flex-1 rounded-full bg-ground-raised px-3 py-2" />
-      </div>
+          <SpeedSwitch testId="browse-switch-speed" className="flex-1 rounded-full bg-ground-raised px-3 py-2" />
+        </div>
+      )}
 
       <p className="text-sm text-ink-muted">
         <span data-testid="browse-count">{rows.length}</span> cards

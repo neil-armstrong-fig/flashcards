@@ -18,6 +18,7 @@ it("loads the settings that were kept", () => {
       "ja-katakana": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
       "ja-katakana-combined": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
       "ja-katakana-foreign": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
+      "music-notes": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
     },
     deckPreferences: {
       "ko-starter": {voice: "female", speed: "slower", hideTarget: true},
@@ -28,6 +29,7 @@ it("loads the settings that were kept", () => {
       "ja-katakana": {voice: "male", speed: "normal", hideTarget: false},
       "ja-katakana-combined": {voice: "male", speed: "normal", hideTarget: false},
       "ja-katakana-foreign": {voice: "male", speed: "normal", hideTarget: false},
+      "music-notes": {voice: "male", speed: "normal", hideTarget: false},
     },
     desiredRetentionPercent: 80,
     strugglingAfter: 3,

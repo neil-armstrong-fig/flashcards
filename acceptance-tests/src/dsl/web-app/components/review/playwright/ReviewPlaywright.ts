@@ -1,6 +1,7 @@
 import type {Locator, Page} from "@playwright/test";
 import type {Rating} from "@flashcards/shared/study/Rating";
 import {BaseComponent} from "@src/dsl/playwright/BaseComponent";
+import type {ShownNotation} from "@src/dsl/web-app/components/review/types/ShownNotation";
 import {withMoreOptions} from "@src/dsl/web-app/components/review/playwright/with-more-options/WithMoreOptions";
 
 const RATING_KEYS: Record<Rating, string> = {again: "1", hard: "2", good: "3", easy: "4"};
@@ -22,6 +23,18 @@ export class ReviewPlaywright extends BaseComponent {
 
   async frontText(): Promise<string> {
     return await this.page.getByTestId("card-front").innerText();
+  }
+
+  async notation(): Promise<ShownNotation> {
+    const notation = this.page.getByTestId("card-notation");
+    const clef = await notation.getAttribute("data-clef");
+    const steps = await notation.getAttribute("data-steps-above-bottom-line");
+
+    if (clef === null || steps === null) {
+      throw new Error("The card's notation does not say its clef and position");
+    }
+
+    return {clef, stepsAboveBottomLine: Number(steps)};
   }
 
   async backText(): Promise<string> {

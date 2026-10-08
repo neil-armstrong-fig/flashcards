@@ -23,6 +23,7 @@ it("gives each deck its own daily limits, and counts them separately and togethe
   store.dispatch(newCardsPerDayChosen({deckId: "ja-hiragana-combined", count: 0}));
   store.dispatch(newCardsPerDayChosen({deckId: "ja-katakana-combined", count: 0}));
   store.dispatch(newCardsPerDayChosen({deckId: "ja-katakana-foreign", count: 0}));
+  store.dispatch(newCardsPerDayChosen({deckId: "music-notes", count: 0}));
 
   expect(selectDeckCardsDueToday(store.getState(), "ko-starter")).toBe(20);
   expect(selectDeckCardsDueToday(store.getState(), "ja-hiragana")).toBe(5);

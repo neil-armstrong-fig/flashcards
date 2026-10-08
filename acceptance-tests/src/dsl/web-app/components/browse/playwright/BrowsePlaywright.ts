@@ -2,6 +2,7 @@ import type {Page} from "@playwright/test";
 import {BaseComponent} from "@src/dsl/playwright/BaseComponent";
 import type {DeckFilter} from "@src/dsl/web-app/components/browse/types/DeckFilter";
 import {isDeckId} from "@src/dsl/web-app/types/DeckId";
+import type {ShownNotation} from "@src/dsl/web-app/components/review/types/ShownNotation";
 import type {BrowsedCard} from "@src/dsl/web-app/components/browse/types/BrowsedCard";
 
 /** The screen listing every card in the deck. */
@@ -107,6 +108,19 @@ export class BrowsePlaywright extends BaseComponent {
 
   async romanisationNote(): Promise<string> {
     return await this.page.getByTestId("romanisation-system").innerText();
+  }
+
+  async notations(): Promise<ShownNotation[]> {
+    return await this.page.getByTestId("browse-card-notation").evaluateAll(staffs => {
+      return staffs.map(staff => ({
+        clef: staff.getAttribute("data-clef") ?? "",
+        stepsAboveBottomLine: Number(staff.getAttribute("data-steps-above-bottom-line")),
+      }));
+    });
+  }
+
+  async voiceAndSpeedSwitchesShown(): Promise<boolean> {
+    return (await this.page.getByTestId("browse-switch-voice").count()) > 0;
   }
 
   async switchVoice(): Promise<void> {

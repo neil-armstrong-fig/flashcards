@@ -6,7 +6,7 @@ export interface RecordingJob {
   readonly language: SpokenLanguage;
   readonly text: string;
   readonly variant: RecordingVariant;
-  /** The Azure voice that says it. */
+  /** The Azure voice that says it, or `tone` for a note of music, which is generated and not sent to Azure. */
   readonly voiceName: string;
   /** The Azure locale the voice speaks, such as `ko-KR`. */
   readonly locale: string;

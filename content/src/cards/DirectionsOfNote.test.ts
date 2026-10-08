@@ -14,3 +14,7 @@ it("studies a pronunciation one way only, from its spelling", () => {
 it("studies a sounds-alike pair one way only, by ear", () => {
   expect(directionsOfNote({...NOTE, kind: "sounds-alike"})).toEqual(["to-english"]);
 });
+
+it("studies a note of music one way only, read off its staff", () => {
+  expect(directionsOfNote({...NOTE, kind: "sheet-music", language: "music"})).toEqual(["to-english"]);
+});

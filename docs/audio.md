@@ -55,6 +55,8 @@ slower sounds distorted. Single words barely change at -15%, which is accepted. 
 
 ## Design
 
+The notes of music are the exception to Azure: `tools/src/tone/` synthesises each pitch (equal temperament, A4 = 440 Hz, a decaying note with a few overtones, mono, 1.5 seconds) and encodes it to MP3 with `@breezystack/lamejs`. A tone is a recording like any other, under `music/female-normal/<hash>.mp3` (one variant, as English has), listed in the manifest under `music`, uploaded and kept offline the same way. Nothing is sent to Azure for it.
+
 A recording is identified by its text, voice (`female` or `male`) and speed (`normal` or `slower`), never by its text alone.
 
 - **The generator** (`tools/`): `pnpm --filter @flashcards/tools generate-audio`, with the key loaded from `.env.dev` in a

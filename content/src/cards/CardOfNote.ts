@@ -21,6 +21,20 @@ export function cardOfNote(note: VocabNote, direction: CardDirection): DeckCard 
     };
   }
 
+  if (note.kind === "sheet-music") {
+    return {
+      id: `${note.id}/${direction}`,
+      noteId: note.id,
+      direction,
+      front: "",
+      notation: note.notation,
+      back: note.word,
+      frontAudio: undefined,
+      backAudio: target,
+      hint: note.romanisation,
+    };
+  }
+
   if (note.kind === "sounds-alike") {
     return {
       id: `${note.id}/${direction}`,

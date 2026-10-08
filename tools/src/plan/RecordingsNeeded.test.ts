@@ -107,3 +107,27 @@ it("needs four recordings of a pronunciation's spelling, and none for the way it
   expect(jobs).toHaveLength(4);
   expect(jobs.every(job => job.language === "ko" && job.text === "좋다")).toBe(true);
 });
+
+it("needs one tone of each note of music, named by its pitch and not sent to a voice", () => {
+  const music: Deck = {
+    id: "music-test",
+    name: "Music",
+    language: "music",
+    notes: [
+      {
+        id: "music-treble-c4",
+        kind: "sheet-music",
+        language: "music",
+        word: "C4",
+        meaning: "",
+        romanisation: "",
+        notation: {clef: "treble", pitch: "C4"},
+      },
+    ],
+  };
+  const jobs = recordingsNeeded([music]);
+
+  expect(jobs).toHaveLength(1);
+  expect(jobs[0]).toMatchObject({language: "music", text: "C4", variant: "female-normal", voiceName: "tone"});
+  expect(jobs[0]?.file).toMatch(/^music\/female-normal\/[0-9a-f]{16}\.mp3$/);
+});

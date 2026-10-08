@@ -33,6 +33,7 @@ it("starts with a daily goal of twenty cards, each deck on the default limits an
       "ja-katakana": limits,
       "ja-katakana-combined": limits,
       "ja-katakana-foreign": limits,
+      "music-notes": limits,
     },
     deckPreferences: {
       "ko-starter": preferences,
@@ -43,6 +44,7 @@ it("starts with a daily goal of twenty cards, each deck on the default limits an
       "ja-katakana": preferences,
       "ja-katakana-combined": preferences,
       "ja-katakana-foreign": preferences,
+      "music-notes": preferences,
     },
     desiredRetentionPercent: 90,
     strugglingAfter: 8,

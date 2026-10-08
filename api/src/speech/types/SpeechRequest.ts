@@ -1,5 +1,5 @@
 import type {Speed} from "@flashcards/shared/audio/Speed";
-import type {SpokenLanguage} from "@flashcards/shared/language/SpokenLanguage";
+import type {VoicedLanguage} from "@flashcards/shared/language/VoicedLanguage";
 import type {Voice} from "@flashcards/shared/audio/Voice";
 
 /**
@@ -7,7 +7,7 @@ import type {Voice} from "@flashcards/shared/audio/Voice";
  * voice at normal speed (so for English `voice` and `speed` are always those).
  */
 export interface SpeechRequest {
-  readonly language: SpokenLanguage;
+  readonly language: VoicedLanguage;
   readonly text: string;
   readonly voice: Voice;
   readonly speed: Speed;

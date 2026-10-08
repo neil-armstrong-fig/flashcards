@@ -25,6 +25,7 @@ export function browseRowsOf(
       id: card.id,
       noteId: card.noteId,
       front: card.front,
+      notation: card.notation,
       back: card.back,
       hint: card.hint,
       spoken: spokenOf(card),

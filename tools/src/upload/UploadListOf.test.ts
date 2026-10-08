@@ -17,6 +17,12 @@ it("leaves out anything that is not a recording, so a stray file never reaches t
   ]);
 });
 
+it("takes the tone of a note of music like any other recording", () => {
+  expect(uploadListOf(["music/female-normal/710a8b5afdc11696.mp3"])).toEqual([
+    {key: "music/female-normal/710a8b5afdc11696.mp3", file: "/rec/music/female-normal/710a8b5afdc11696.mp3"},
+  ]);
+});
+
 it("is empty when there is nothing to upload", () => {
   expect(uploadListOf([])).toEqual([]);
 });

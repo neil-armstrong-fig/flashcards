@@ -66,7 +66,7 @@ Key design choices:
   (`docs/scheduling.md`).
 - **Persistence:** Redux slices backed by `localStorage` for small state (settings). Review history, card state and learner pictures go
   in IndexedDB, because images will not fit in `localStorage`. Keys are versioned and loads are validated.
-- **Card model:** a *note* has fields (today `vocab` and `kana`; `sentence`, `grammar` and `cloze` are planned). Each note generates
+- **Card model:** a *note* has fields (today `vocab`, `kana`, `pronunciation`, `sounds-alike` and `sheet-music`; `sentence`, `grammar` and `cloze` are planned). Each note generates
   two cards, target language to English and English to target. The learner's memory aids are kept apart from the card, by card id: a
   note (`redux/slices/card-notes/`, `localStorage`) and a picture (`redux/slices/card-pictures/`, a blob in its own IndexedDB
   database), each dated so fading can count the answers given since. Both are on the device only for now.

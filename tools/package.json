@@ -16,6 +16,7 @@
     "upload-audio": "node --env-file=../.env.dev --import ./loader/register.js src/upload-main.ts"
   },
   "dependencies": {
+    "@breezystack/lamejs": "catalog:",
     "@flashcards/content": "workspace:*",
     "@flashcards/shared": "workspace:*"
   },

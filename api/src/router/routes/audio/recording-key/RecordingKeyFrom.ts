@@ -1,4 +1,4 @@
-const RECORDING_NAME = /^(ko|ja|nl|en)\/[a-z]+-[a-z]+\/[0-9a-f]{16}\.mp3$/;
+const RECORDING_NAME = /^(ko|ja|nl|en|music)\/[a-z]+-[a-z]+\/[0-9a-f]{16}\.mp3$/;
 
 /**
  * The key of a recording in the bucket, or `undefined` where the name is not one the app makes: a language, a voice and speed, and

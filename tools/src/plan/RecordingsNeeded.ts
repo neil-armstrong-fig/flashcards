@@ -1,6 +1,6 @@
 import {AZURE_VOICES} from "@flashcards/shared/audio/azure/AzureVoices";
 import {meaningIsSpoken} from "@flashcards/content/cards/MeaningIsSpoken";
-import {ENGLISH_VARIANT} from "@flashcards/content/audio/RecordingVariantFor";
+import {ENGLISH_VARIANT, SINGLE_VARIANT} from "@flashcards/content/audio/RecordingVariantFor";
 import {ENGLISH_VOICE} from "@flashcards/shared/audio/azure/EnglishVoice";
 import {recordingFileOf} from "@src/naming/RecordingFileOf";
 import {recordingVariantOf} from "@flashcards/shared/audio/RecordingVariantOf";
@@ -11,12 +11,21 @@ import type {Language} from "@flashcards/shared/language/Language";
 import type {Deck} from "@flashcards/content/types/Deck";
 import type {RecordingJob} from "@src/plan/types/RecordingJob";
 
-/** Every recording the decks need: each word (or kana) and similar, once, in every voice at every speed, and each English meaning in the one English voice. The sound of a kana and the way a pronunciation is said are not spoken, so they need none. */
+const TONE = "tone";
+
+/** Every recording the decks need: each word (or kana) and similar, once, in every voice at every speed, each English meaning in the one English voice, and each note of music as one tone (named `tone` where a spoken recording names its voice). The sound of a kana and the way a pronunciation is said are not spoken, so they need none. */
 export function recordingsNeeded(decks: readonly Deck[]): RecordingJob[] {
   const jobs = new Map<string, RecordingJob>();
 
   for (const deck of decks) {
     for (const note of deck.notes) {
+      if (note.language === "music") {
+        const tone = toneJobOf(note.word);
+
+        jobs.set(tone.file, tone);
+        continue;
+      }
+
       for (const text of [note.word, ...(note.soundSimilars ?? [])]) {
         for (const job of targetJobsOf(note.language, text)) {
           jobs.set(job.file, job);
@@ -51,6 +60,18 @@ function targetJobsOf(language: Language, text: string): RecordingJob[] {
   }
 
   return jobs;
+}
+
+function toneJobOf(pitch: string): RecordingJob {
+  const file = recordingFileOf({
+    language: "music",
+    variant: SINGLE_VARIANT,
+    text: pitch,
+    voiceName: TONE,
+    rate: "default",
+  });
+
+  return {language: "music", text: pitch, variant: SINGLE_VARIANT, voiceName: TONE, locale: "", rate: "default", file};
 }
 
 function englishJobOf(text: string): RecordingJob {

@@ -4,8 +4,10 @@ import {presentRecordings} from "@src/generate/files/PresentRecordings";
 import {recordingsNeeded} from "@src/plan/RecordingsNeeded";
 import {saveRecording} from "@src/generate/files/SaveRecording";
 import {synthesiseRecording} from "@src/azure/SynthesiseRecording";
+import {toneRecording} from "@src/tone/ToneRecording";
 import {writeManifest} from "@src/generate/files/WriteManifest";
 import type {Deck} from "@flashcards/content/types/Deck";
+import type {RecordingJob} from "@src/plan/types/RecordingJob";
 
 interface GenerationSummary {
   /** Recordings the decks need. */
@@ -31,9 +33,9 @@ export async function generateAudio(decks: readonly Deck[]): Promise<GenerationS
 
   try {
     for (const job of missing) {
-      await saveRecording(job.file, await synthesiseRecording(job));
+      await saveRecording(job.file, await recordingOf(job));
       made += 1;
-      characters += job.text.length;
+      characters += characterCountOf(job);
       console.warn(`${made}/${missing.length} ${job.variant} ${job.text}`);
     }
   } finally {
@@ -43,4 +45,21 @@ export async function generateAudio(decks: readonly Deck[]): Promise<GenerationS
   }
 
   return {needed: jobs.length, made, characters};
+}
+
+async function recordingOf(job: RecordingJob): Promise<Uint8Array> {
+  if (job.language === "music") {
+    return toneRecording(job.text);
+  }
+
+  return await synthesiseRecording(job);
+}
+
+/** What Azure counts for a job: nothing for a tone, which it never sees. */
+function characterCountOf(job: RecordingJob): number {
+  if (job.language === "music") {
+    return 0;
+  }
+
+  return job.text.length;
 }

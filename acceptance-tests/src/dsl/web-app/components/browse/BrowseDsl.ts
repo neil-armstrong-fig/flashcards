@@ -2,6 +2,7 @@ import type {Page} from "@playwright/test";
 import {SimilarDsl} from "@src/dsl/web-app/components/review/components/similar/SimilarDsl";
 import {BrowsePlaywright} from "@src/dsl/web-app/components/browse/playwright/BrowsePlaywright";
 import type {DeckFilter} from "@src/dsl/web-app/components/browse/types/DeckFilter";
+import type {ShownNotation} from "@src/dsl/web-app/components/review/types/ShownNotation";
 import {DslError} from "@src/dsl/errors/DslError";
 import type {BrowsedCard} from "@src/dsl/web-app/components/browse/types/BrowsedCard";
 import {CardFormDsl} from "@src/dsl/web-app/components/browse/components/card-form/CardFormDsl";
@@ -26,6 +27,24 @@ export class BrowseDsl {
       return await this.playwright.cardCount();
     } catch (error) {
       throw new DslError("Failed to read how many cards are listed", error);
+    }
+  }
+
+  /** The notes drawn on the cards listed, in order: the sheet music deck's cards show a staff where other cards show a word. */
+  async getNotations(): Promise<ShownNotation[]> {
+    try {
+      return await this.playwright.notations();
+    } catch (error) {
+      throw new DslError("Failed to read the notes drawn in the list", error);
+    }
+  }
+
+  /** Whether the voice and speed switches are on the screen. */
+  async isVoiceAndSpeedChoiceShown(): Promise<boolean> {
+    try {
+      return await this.playwright.voiceAndSpeedSwitchesShown();
+    } catch (error) {
+      throw new DslError("Failed to tell whether the voice and speed switches are shown", error);
     }
   }
 

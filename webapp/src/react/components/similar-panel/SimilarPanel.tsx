@@ -34,7 +34,7 @@ export function SimilarPanel({noteId}: Props): React.JSX.Element | undefined {
   const choices = useAudioChoices();
   const speakSimilar = useSpeakSimilar();
 
-  if (!similar || !note) {
+  if (!similar || !note || note.language === "music") {
     return undefined;
   }
 

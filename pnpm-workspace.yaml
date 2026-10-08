@@ -73,6 +73,8 @@ catalog:
   # Revised Romanization of Korean as it is pronounced (liaison, assimilation, tensing), for the card form; dependency-free, MIT. Chosen over
   # @romanize/korean and romaja by trying all three on 42 words (`docs/romanisation.md`).
   koroman: 1.0.16
+  # Encodes the generated note tones to MP3, so a tone is a recording like a spoken word. For `tools/` only: the maintained, typed fork of lamejs (LGPL-3.0; a tool run on the developer's machine, whose output is not a derivative).
+  "@breezystack/lamejs": 1.2.7
   # The linter, in every package.
   eslint: 10.10.0
   # Switches off the ESLint rules Prettier owns.

@@ -33,6 +33,8 @@ word as its sound similar (`soundSimilars`) to compare in the usual panel. One d
 spoken (`meaningIsSpoken`). A note's id is its pair's written-out id and `-a` or `-b` (`ko-sounds-alike-bareuda-ppareuda-a`). The pairs and their
 explanations are ours, not the unlicensed Anki list's.
 
+**A `sheet-music` note** is one natural pitch drawn on a staff (`VocabNote.notation`: a clef and a pitch such as `C4`). `word` is the pitch's name and is what is played, so `language` is `music` (a `Subject`, beside the languages taught) and the audio manifest holds its tones under `music`. One card (`directionsOfNote`): the front has no text and shows the staff (`DeckCard.notation`), the answer shows the name and plays the note; there is no English (`meaningIsSpoken`). Ids are `music-<clef>-<pitch>` (`music-treble-c4`), so middle C has a card on each staff. The tones are generated, not spoken (`docs/audio.md`). The deck sets `Deck.offersVoiceAndSpeed: false`, which removes the voice and speed choices from its settings, its review screen and its browse list; any deck can do the same.
+
 **A note is not a card.** A word is stored once, as a `VocabNote`, and studied as **two cards: target language to English
 (reading it) and English to target language (saying it).** Every note type that follows (sentences, grammar, kana) generates
 both directions unless there is a stated reason not to. All of a deck's cards one way come before any the other way, so a

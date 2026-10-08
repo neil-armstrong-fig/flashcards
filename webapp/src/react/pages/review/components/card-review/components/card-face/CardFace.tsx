@@ -1,6 +1,7 @@
 import {selectDeckPreferences} from "@src/redux/slices/settings/selectors/SelectDeckPreferences";
 import {selectCardById} from "@src/redux/slices/deck/selectors/SelectCardById";
 import {splitAtEmphasis} from "@src/react/pages/review/components/card-review/components/card-face/utils/SplitAtEmphasis";
+import {Staff} from "@src/react/components/staff/Staff";
 import {SpeakerIcon} from "@src/react/components/speaker-icon/SpeakerIcon";
 import {useAppSelector} from "@src/redux/shared/Hooks";
 
@@ -21,12 +22,14 @@ export function CardFace(): React.JSX.Element | undefined {
 
   const back = splitAtEmphasis(card.back, card.emphasis);
   // Only a card that shows the target-language word on its front can hide it: the other direction asks for the word, and shows English.
-  const frontHidden = hideTarget && card.direction === "to-english" && !answerShown;
+  const frontHidden = hideTarget && card.direction === "to-english" && !answerShown && card.notation === undefined;
 
   return (
     <div className="flex flex-1 cursor-pointer flex-col items-center justify-center gap-4 text-center">
       <p data-testid="card-front" className="text-6xl">
         {!frontHidden && card.front}
+
+        {card.notation && <Staff notation={card.notation} testId="card-notation" className="w-64 max-w-full" />}
 
         {frontHidden && (
           <span data-testid="card-front-hidden" role="img" aria-label="Listen to the word" className="text-ink-muted">

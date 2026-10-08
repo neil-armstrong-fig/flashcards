@@ -1,3 +1,4 @@
+import {deckOffersVoiceAndSpeed} from "@src/redux/slices/deck/selectors/DeckOffersVoiceAndSpeed";
 import {DeckSpeedSetting} from "@src/react/pages/deck-settings/components/deck-settings-of-deck/components/deck-speed-setting/DeckSpeedSetting";
 import {DeckVoiceSetting} from "@src/react/pages/deck-settings/components/deck-settings-of-deck/components/deck-voice-setting/DeckVoiceSetting";
 import {
@@ -54,9 +55,13 @@ export function DeckSettingsOfDeck({deckId, name}: Props): React.JSX.Element {
         onChange={unlocked => dispatch(limitsUnlockedChosen({deckId, unlocked}))}
       />
 
-      <DeckVoiceSetting deckId={deckId} />
+      {deckOffersVoiceAndSpeed(deckId) && (
+        <>
+          <DeckVoiceSetting deckId={deckId} />
 
-      <DeckSpeedSetting deckId={deckId} />
+          <DeckSpeedSetting deckId={deckId} />
+        </>
+      )}
     </section>
   );
 }

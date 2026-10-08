@@ -4,6 +4,7 @@ it.each([
   ["ko/female-normal/c2f16032c0b9c1ea.mp3"],
   ["ja/male-slower/a1a05b6c2399ecbf.mp3"],
   ["en/female-normal/0123456789abcdef.mp3"],
+  ["music/female-normal/0123456789abcdef.mp3"],
 ])("takes %s, a recording the app names", name => {
   expect(recordingKeyFrom(name)).toBe(name);
 });

@@ -2116,5 +2116,94 @@
       "female-normal": "ja/female-normal/760b6959c0179d8d.mp3",
       "female-slower": "ja/female-slower/30f5f249f95181e4.mp3"
     }
+  },
+  "music": {
+    "C4": {
+      "female-normal": "music/female-normal/710a8b5afdc11696.mp3"
+    },
+    "D4": {
+      "female-normal": "music/female-normal/7875c917a391924f.mp3"
+    },
+    "E4": {
+      "female-normal": "music/female-normal/8e2733fdd53ee987.mp3"
+    },
+    "F4": {
+      "female-normal": "music/female-normal/dc55df648deeb3e2.mp3"
+    },
+    "G4": {
+      "female-normal": "music/female-normal/7a7450e44ec7a5a0.mp3"
+    },
+    "A4": {
+      "female-normal": "music/female-normal/5ba1a1a1fa565863.mp3"
+    },
+    "B4": {
+      "female-normal": "music/female-normal/190776eb6cdae487.mp3"
+    },
+    "C5": {
+      "female-normal": "music/female-normal/97995c2a789d67f5.mp3"
+    },
+    "D5": {
+      "female-normal": "music/female-normal/4b01aa24fccae5a1.mp3"
+    },
+    "E5": {
+      "female-normal": "music/female-normal/2b8f822198718102.mp3"
+    },
+    "F5": {
+      "female-normal": "music/female-normal/f1f0ec978c1fadf2.mp3"
+    },
+    "G5": {
+      "female-normal": "music/female-normal/7c4df2dfb1494df0.mp3"
+    },
+    "A5": {
+      "female-normal": "music/female-normal/6a010ded127bde83.mp3"
+    },
+    "B5": {
+      "female-normal": "music/female-normal/562aaf096ad7dc2e.mp3"
+    },
+    "C6": {
+      "female-normal": "music/female-normal/7f417af12f63a660.mp3"
+    },
+    "C2": {
+      "female-normal": "music/female-normal/51591fedc6a28f73.mp3"
+    },
+    "D2": {
+      "female-normal": "music/female-normal/bbbd211565a3854b.mp3"
+    },
+    "E2": {
+      "female-normal": "music/female-normal/ff4a73681ab509d8.mp3"
+    },
+    "F2": {
+      "female-normal": "music/female-normal/ab21b96dedbdb769.mp3"
+    },
+    "G2": {
+      "female-normal": "music/female-normal/6129fdb0a4b7aa10.mp3"
+    },
+    "A2": {
+      "female-normal": "music/female-normal/2c7c405b2001771d.mp3"
+    },
+    "B2": {
+      "female-normal": "music/female-normal/3ea53438c21d8410.mp3"
+    },
+    "C3": {
+      "female-normal": "music/female-normal/85add828fb28bf9d.mp3"
+    },
+    "D3": {
+      "female-normal": "music/female-normal/687d40e4127e656e.mp3"
+    },
+    "E3": {
+      "female-normal": "music/female-normal/d27d6b14ba0627d6.mp3"
+    },
+    "F3": {
+      "female-normal": "music/female-normal/a6c425312e25a627.mp3"
+    },
+    "G3": {
+      "female-normal": "music/female-normal/a00e9349afed60a0.mp3"
+    },
+    "A3": {
+      "female-normal": "music/female-normal/e89f9245b4a87d5c.mp3"
+    },
+    "B3": {
+      "female-normal": "music/female-normal/380ac95c105f1f40.mp3"
+    }
   }
 }

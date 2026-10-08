@@ -28,6 +28,7 @@ or removing one means changing both sides in the same commit.
 | `start-reviewing-<deck id>`       | home screen, deck list     | Button that begins a session on that deck only                                                                             |
 | `review-screen`                   | review screen              | Present while a session is on screen (cards or completion)                                                                 |
 | `card-front`                      | review screen              | Text on the front of the current card                                                                                      |
+| `card-notation`                   | review screen              | A note on a staff, in `card-front`, on a sheet music card; `data-clef` and `data-steps-above-bottom-line` say where        |
 | `card-back`                       | review screen              | Text on the back; present only once the answer is shown                                                                    |
 | `show-answer`                     | review screen              | Button that reveals the back; absent once shown                                                                            |
 | `preview-notice`                  | review screen              | Shown in a look ahead: says the answers are not kept                                                                       |
@@ -131,6 +132,7 @@ or removing one means changing both sides in the same commit.
 | `browse-deck-filter`              | browse screen              | Select: narrow the list to one deck, or `all` (the default) for every deck                                                 |
 | `browse-count`                    | browse screen              | How many cards are listed, digits only                                                                                     |
 | `browse-card`                     | browse screen              | One row; holds the next five                                                                                               |
+| `browse-card-notation`            | browse card                | A note on a staff beside the front, on a sheet music card; `data-clef` and `data-steps-above-bottom-line` say where        |
 | `browse-card-front`               | browse card                | The front text                                                                                                             |
 | `browse-card-back`                | browse card                | The back text                                                                                                              |
 | `browse-card-hint`                | browse card                | How the Korean is said in Latin letters                                                                                    |

@@ -20,7 +20,7 @@ service, the Worker keeps where to push and at what hour, and an hourly cron tri
 - **The cron** (`api/src/reminders/`, hourly on the hour): for each subscription, `isReminderDue` says whether the learner's own
   local hour is the chosen one and neither the goal nor an earlier reminder has covered today's **study day** (`studyDayOf`, which
   rolls over at four in the morning, as `docs/scheduling.md` does). A 404 or 410 from the push service drops the subscription.
-- **The push** carries no message. The service worker (`webapp/src/sw/reminders/`) shows "Your daily goal is waiting." for every
+- **The push** carries no message. The service worker (`webapp/src/sw/reminders/`) shows "You have flash cards to finish!" for every
   push, one notification replacing the last, and a tap brings the app forward. That avoids encrypting a payload (RFC 8291) and any
   need for the Worker to know a card count.
 - **Signing**: VAPID (RFC 8292), an ES256 token on WebCrypto (`reminders/vapid/VapidAuthorization.ts`), so no library is needed.
@@ -30,5 +30,5 @@ service, the Worker keeps where to push and at what hour, and an hourly cron tri
 
 - The push address must be https, since the Worker posts to it.
 - A new key pair makes every subscription useless until the reminder is turned off and on again.
-- Not tried on a real phone yet: the acceptance specs fake the push service (`fake-push/`), and the cron is covered by unit tests with
+- Tried on a real phone and working (2026-10-08). The acceptance specs fake the push service (`fake-push/`), and the cron is covered by unit tests with
   `fetch` stubbed.

@@ -2,6 +2,7 @@ import type {Page} from "@playwright/test";
 import type {Rating} from "@flashcards/shared/study/Rating";
 import {DslError} from "@src/dsl/errors/DslError";
 import {SimilarDsl} from "@src/dsl/web-app/components/review/components/similar/SimilarDsl";
+import type {ShownNotation} from "@src/dsl/web-app/components/review/types/ShownNotation";
 import {ReviewPlaywright} from "@src/dsl/web-app/components/review/playwright/ReviewPlaywright";
 import {MemoryAidDsl} from "@src/dsl/web-app/components/review/components/memory-aid/MemoryAidDsl";
 import {MoreOptionsDsl} from "@src/dsl/web-app/components/review/components/more-options/MoreOptionsDsl";
@@ -32,6 +33,15 @@ export class ReviewDsl {
       return await this.playwright.frontText();
     } catch (error) {
       throw new DslError("Failed to read the front of the card", error);
+    }
+  }
+
+  /** The note drawn on a sheet music card: its clef, and its place on the staff counted in lines and spaces above the bottom line. */
+  async getNotation(): Promise<ShownNotation> {
+    try {
+      return await this.playwright.notation();
+    } catch (error) {
+      throw new DslError("Failed to read the note drawn on the card", error);
     }
   }
 

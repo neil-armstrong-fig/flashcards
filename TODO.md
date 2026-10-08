@@ -16,7 +16,7 @@ using real account data.
 
 **Works today:**
 
-- Eight decks (the Korean "sounds alike" deck: 13 pairs of words told apart by ear, two cards each, the same text on both and a different word said, the answer bolding the one said and offering the other to compare; the Korean pronunciation deck: 84 words that are not said as spelt, one card each, spelling unspoken, then the sound in hangul, the rule and the audio, `docs/audio.md`; Korean starter words; Japanese hiragana and katakana with the 71 basic and voiced kana; combined hiragana and combined
+- Nine decks (the sheet music deck: 30 natural notes, C4 to C6 on the treble staff and C2 to C4 on the bass, one card each; the staff is drawn on the front, then the name is shown and the note played, from a tone the audio tool generates, `docs/audio.md`; the Korean "sounds alike" deck: 13 pairs of words told apart by ear, two cards each, the same text on both and a different word said, the answer bolding the one said and offering the other to compare; the Korean pronunciation deck: 84 words that are not said as spelt, one card each, spelling unspoken, then the sound in hangul, the rule and the audio, `docs/audio.md`; Korean starter words; Japanese hiragana and katakana with the 71 basic and voiced kana; combined hiragana and combined
   katakana with 33 each; katakana for foreign sounds with 23), each studied both ways and each in its own session with its own limits,
   voice, speed and choice of hiding the word.
 - Review screen: a back button to leave early, tap anywhere but a button to hear the card, male/female (blue/pink, male first) and
@@ -32,17 +32,17 @@ using real account data.
 - The learner's own Korean cards (browse screen, signed in only), with the romanisation suggested (`docs/romanisation.md`), kept
   online per account and on the device.
 - Similars: words a learner mixes up, shipped for Korean sounds and Japanese shapes and sounds, and added by the learner.
-- Daily-goal reminder (`docs/reminders.md`): a setting to turn it on and move the hour, kept per device; an hourly cron in the API pushes to devices whose hour it is and whose goal is not met (payload-free Web Push, VAPID by hand); the service worker shows it.
+- Daily-goal reminder (`docs/reminders.md`), **confirmed working on a real phone (2026-10-08)**: a setting to turn it on and move the hour, kept per device; an hourly cron in the API pushes to devices whose hour it is and whose goal is not met (payload-free Web Push, VAPID by hand); the service worker shows it. The notification reads "You have flash cards to finish!" (reworded 2026-10-08; **not yet seen on a phone**). A count of cards left was tried and backed out as too much.
 - Audio end to end (`docs/audio.md`): 978 recordings, played on show with replay, listen-only, voice and speed settings.
 - Online-served model (`docs/online.md`): recordings in a private R2 bucket behind `GET /api/audio/*`, kept on the device as they are
   played, with an opt-in Keep offline per deck. Google sign-in gates the whole app.
 - Phone feel: a back button at the top of the settings, each deck's settings on a card of its own, settings in framed groups, a short
   buzz and a pressed or pulsing look when a rating or a recording is tapped, a colour wash over the screen (review) or the card
   (browse) as a recording starts, tap targets of 44px or more on every screen, the page kept out of the notch and home bar, and the
-  second recording of a "this then that" fetched and loaded while the first plays. **Not yet tried on a real phone**: the buzz
-  (Android only; iPhone browsers have no vibration), the wash, and the safe-area padding. **The gap between the two recordings**: the speech markup now asks
-  for no added silence (`mstts:silence`, `SpeechMarkupOf.ts`) and the file name carries a revision so devices fetch the new files; the
-  full regeneration and `upload-audio --remote` are under way, then the manifest is committed.
+  second recording of a "this then that" fetched and loaded while the first plays. **Tried on a real phone (confirmed 2026-10-08)**: the
+  buzz (Android only; iPhone browsers have no vibration), the colour wash and the safe-area padding all work. **The gap between the two
+  recordings**: the speech markup asks for no added silence (`mstts:silence`, `SpeechMarkupOf.ts`) and the file name carries a revision so
+  devices fetch the new files; the full regeneration is done and the audio uploaded (`upload-audio --remote`, confirmed 2026-10-08).
 - Deployed and live: the app on GitHub Pages, the API on its Worker's custom domain, the recordings uploaded to R2, and CI deploying
   `main` and running the acceptance suite against the live URL.
 
@@ -62,28 +62,25 @@ using real account data.
 
 ## Next
 
-1. **Try the daily-goal reminder on a real phone** (`docs/reminders.md`): run `pnpm --filter @flashcards/api vapid-keys`, set the
-   three names in `.env.dev` and GitHub (`MANUAL-SETUP-STEPS.md` 4f), apply the migration (`db:migrate:local`, and the deploy), provision,
-   then turn it on in settings. Built and green; never run against a real push service.
+1. **Deploy the app and check the new reminder wording on the phone**: the service worker now says "You have flash cards to finish!"
+   (`webapp/src/sw/workers/reminders/RegisterReminderNotifications.ts`). No API or migration change.
 
 ## Backlog
 
+- [ ] Sheet music follow-ups: sharps and flats, note lengths and rhythm, key signatures, and a better note head and stem.
 - [ ] Learner-made decks and adding to any deck (`docs/decks.md`), full stack on D1; then Japanese and Dutch cards, then the dictionary.
-  Deferred: for now cards are added through Claude sessions, from a list the developer keeps in a notepad app.
-- [ ] Sync is built, deployed and tried on two devices (`docs/sync.md`). Left: delete my data and JSON export. **Do before the app is
-  opened to anyone beyond the sole OAuth test user.**
-
+      Deferred: for now cards are added through Claude sessions, from a list the developer keeps in a notepad app.
 - [x] Storage (`docs/storage.md`): `idb` adopted, and IndexedDB and localStorage moved out of `redux/` into `webapp/src/storage/`.
-  Every `storage/index-db/` module (study, pictures, sync events and records) now has a test beside it against `fake-indexeddb`,
-  mutation-checked. The in-memory stand-ins stay for the thunk unit tests.
+      Every `storage/index-db/` module (study, pictures, sync events and records) now has a test beside it against `fake-indexeddb`,
+      mutation-checked. The in-memory stand-ins stay for the thunk unit tests.
 - [ ] Open content (`docs/open-content.md`, needs a decision on CC BY-SA): Tatoeba import tool, Dutch reading deck by spelling pattern
-  (needs Dutch voices first), textbook-friendly learner cards for Korean and Dutch sentences.
+      (needs Dutch voices first), textbook-friendly learner cards for Korean and Dutch sentences.
 - [x] Anki pronunciation packages (`docs/audio.md`): Azure chosen over the package audio (no licence); Korean pronunciation deck built from our own words.
-- [ ] Pronunciation and "sounds alike" decks: a native reader to check the 84 words, the 13 pairs and their explanations; more pairs (the Anki list is unlicensed, so ours); whether the pairs should also be similars of the starter words.
+- [x] Pronunciation and "sounds alike" decks: a native reader to check the 84 words, the 13 pairs and their explanations; more pairs (the Anki list is unlicensed, so ours); whether the pairs should also be similars of the starter words.
 - [ ] Grammar cards from sentences: the `grammar-check` skill proposes grammar cards with explainers (to `private-source/grammar/`); still to build: the grammar note type to import them into, and the in-app version (an API route with a spend guard).
 - [ ] Browse: notes and pictures shown and editable there; add a card with a deck choice (needs learner-made decks).
 - [ ] Sentence, grammar and cloze note types and their decks, from the learner's own writing; cloze rendering. Naver dictionary links
-  need a licence and terms check first.
+      need a licence and terms check first.
 - [ ] Very basic Japanese sentences with a furigana or romaji toggle. Find out best modern romisation similar to Korean choice
 - [ ] Dutch content and voices (`AzureVoices` joins `Language` when Dutch does).
 - [ ] Romanisation: audit every `romanisation` in `content/` against the Revised Romanization as decks grow.
@@ -91,11 +88,14 @@ using real account data.
 - [ ] Sound similars for the extended katakana; the learner to listen to the dakuten, combined and extended kana recordings.
 - [ ] Hiragana and katakana pairs and groups chosen for similars to be checked by deep web search.
 - [ ] A "returning learner" fixture seed for the acceptance specs.
-- [ ] Theme: the manifest's `theme_color` and `background_color` are static (dark); an explicit Light choice on a dark device flashes
-  dark on load (needs a small inline script in `index.html`).
+- [x] Theme: the inline script in `index.html` already sets the saved colours before first paint. The spec that claims to prove it
+  (`ChoosingTheColours`, "look before it has started") was passing vacuously, because the service worker served the scripts past the
+  route that held them back; it now unregisters the worker first, and fails when the script's `dataset.theme` line is removed
+  (mutation-checked). **Still true**: an installed app's launch splash uses the manifest's static `background_color` (dark), which
+  no script can change, so a learner on Light with a dark device may see a dark splash before the page.
 - [ ] Rethink precaching the service worker's 15 files if the app build grows; recordings are already outside it.
 - [ ] A flake seen once and not reproduced: `tests/pwa/EditingACard` on mobile-pwa, after the Keep-offline change. If it returns, look at
-  timing around the service worker taking control.
+      timing around the service worker taking control.
 - [ ] README polish for the open-source release and case study on personal-website.
 - [ ] Dependency bumps: check `pnpm outdated -r` and propose them. Hold TypeScript 7 (ESLint cannot read it), `@types/node` 26 (the
-  runtime is Node 24) and the Alchemy 2.0 beta.
+      runtime is Node 24) and the Alchemy 2.0 beta.

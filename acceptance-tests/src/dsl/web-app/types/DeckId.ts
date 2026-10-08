@@ -8,6 +8,7 @@ export const DECK_IDS = [
   "ja-katakana",
   "ja-katakana-combined",
   "ja-katakana-foreign",
+  "music-notes",
 ] as const;
 
 export type DeckId = (typeof DECK_IDS)[number];

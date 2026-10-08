@@ -91,3 +91,26 @@ it("makes a sounds-alike pair card that shows both words, says one, and picks th
     backAudio: {language: "ko", text: "바르다"},
   });
 });
+
+it("makes a sheet music card of the staff alone, then the note's name with the note played", () => {
+  const card = cardOfNote(
+    {
+      id: "music-treble-c4",
+      kind: "sheet-music",
+      language: "music",
+      word: "C4",
+      meaning: "",
+      romanisation: "",
+      notation: {clef: "treble", pitch: "C4"},
+    },
+    "to-english",
+  );
+
+  expect(card).toMatchObject({
+    front: "",
+    notation: {clef: "treble", pitch: "C4"},
+    back: "C4",
+    backAudio: {language: "music", text: "C4"},
+  });
+  expect(card.frontAudio).toBeUndefined();
+});

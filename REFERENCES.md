@@ -29,6 +29,8 @@ Added as they are introduced (the dependency catalog in `pnpm-workspace.yaml` is
 | Library | Used for | Licence | Link |
 | --- | --- | --- | --- |
 | koroman | Revised Romanization of Korean, as pronounced, for suggesting how a card's word is said (`shared/`); see `docs/romanisation.md` | MIT | https://www.npmjs.com/package/koroman |
+| Bravura | The outlines of the treble and bass clefs (glyphs U+E050 and U+E062), copied as SVG paths into `webapp/src/react/components/staff/components/` (`TrebleClef`, `BassClef`); no font is shipped. By Steinberg Media Technologies, with the Reserved Font Name "Bravura" (not used for anything here) | SIL OFL 1.1 | https://github.com/steinbergmedia/bravura |
+| @breezystack/lamejs | Encodes the generated note tones of the sheet music deck to MP3 (`tools/`, a maintained fork of lamejs); see `docs/audio.md` | LGPL-3.0 | https://www.npmjs.com/package/@breezystack/lamejs |
 | idb | A small promise wrapper over IndexedDB for the study and picture databases (`webapp/`); see `docs/storage.md` | ISC | https://github.com/jakearchibald/idb |
 | fake-indexeddb | An in-memory IndexedDB for unit tests of the real database code (`webapp/`, dev only); see `docs/storage.md` | Apache-2.0 | https://github.com/dumbmatter/fakeIndexedDB |
 | ts-fsrs | The FSRS scheduling algorithm, behind `spaced-repetition/scheduling/` | MIT | https://github.com/open-spaced-repetition/ts-fsrs |

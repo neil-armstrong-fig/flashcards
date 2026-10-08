@@ -47,6 +47,12 @@ export class WebAppPlaywright extends BasePage {
   }
 
   async reloadBeforeTheAppStarts(): Promise<void> {
+    // The app's service worker would answer the scripts from its cache, past anything a route can hold back, so it goes first.
+    await this.page.evaluate(async () => {
+      for (const registration of await navigator.serviceWorker.getRegistrations()) {
+        await registration.unregister();
+      }
+    });
     // The app is a module script, so holding every script back leaves only what the page itself does before it paints.
     await this.page.route("**/*.js", route => route.abort());
     await this.page.reload({waitUntil: "domcontentloaded"});

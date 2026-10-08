@@ -15,3 +15,16 @@ it("does not speak the sound of a kana, or the way a pronunciation is said", () 
 it("does not speak both words of a sounds-alike pair, which are written for the eye", () => {
   expect(meaningIsSpoken({...NOTE, kind: "sounds-alike"})).toBe(false);
 });
+
+it("does not speak the meaning of a note of music, which is empty", () => {
+  expect(
+    meaningIsSpoken({
+      id: "music-treble-c4",
+      kind: "sheet-music",
+      language: "music",
+      word: "C4",
+      meaning: "",
+      romanisation: "",
+    }),
+  ).toBe(false);
+});

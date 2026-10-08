@@ -1,6 +1,8 @@
 import type {VocabNote} from "@flashcards/content/types/VocabNote";
 
-/** Whether the note's `meaning` is an English meaning to be spoken. A kana's sound, a pronunciation and a sounds-alike pair are written for the eye: an English voice would say them wrongly. */
+/** Whether the note's `meaning` is an English meaning to be spoken. A kana's sound, a pronunciation, a sounds-alike pair and a note of music are written for the eye: an English voice would say them wrongly. */
 export function meaningIsSpoken(note: VocabNote): boolean {
-  return note.kind !== "kana" && note.kind !== "pronunciation" && note.kind !== "sounds-alike";
+  return (
+    note.kind !== "kana" && note.kind !== "pronunciation" && note.kind !== "sounds-alike" && note.kind !== "sheet-music"
+  );
 }

@@ -7,7 +7,7 @@ import type {WorkerScope} from "@src/sw/workers/shared/types/WorkerScope";
 export function registerReminderNotifications(scope: WorkerScope): void {
   scope.addEventListener("push", event => {
     event.waitUntil(
-      scope.registration.showNotification("Flash Cards", {body: "Your daily goal is waiting.", tag: "daily-goal"}),
+      scope.registration.showNotification("Flash Cards", {body: "You have flash cards to finish!", tag: "daily-goal"}),
     );
   });
 
