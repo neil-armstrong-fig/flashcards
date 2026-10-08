@@ -2,7 +2,7 @@ import {AZURE_VOICES} from "@flashcards/shared/audio/azure/AzureVoices";
 import type {AzureVoice} from "@flashcards/shared/audio/azure/AzureVoice";
 import {ENGLISH_VOICE} from "@flashcards/shared/audio/azure/EnglishVoice";
 import {SPEED_RATES} from "@flashcards/shared/audio/azure/SpeedRates";
-import {ssmlOf} from "@flashcards/shared/audio/azure/SsmlOf";
+import {speechMarkupOf} from "@flashcards/shared/audio/azure/SpeechMarkupOf";
 import type {SpeechRequest} from "@src/speech/types/SpeechRequest";
 
 interface Azure {
@@ -27,7 +27,7 @@ export async function synthesiseSpeech(
       "X-Microsoft-OutputFormat": OUTPUT_FORMAT,
       "User-Agent": "flashcards-api",
     },
-    body: ssmlOf({text, voiceName, locale, rate: SPEED_RATES[speed]}),
+    body: speechMarkupOf({text, voiceName, locale, rate: SPEED_RATES[speed]}),
   });
 }
 

@@ -51,7 +51,7 @@ src/runtime/       `export const runtime` (folders, interval, the Azure account,
                    start, work, exit, so its state is one object that commands fill and effects read
 src/generate/      GenerateAudio: the loop. MissingJobs is pure; files/ are the disk effects (PresentRecordings, SaveRecording, WriteManifest)
 src/plan/          RecordingsNeeded: the decks to the list of recordings
-src/azure/         SynthesiseRecording (the effect: fetch and retry), request/RequestOf and answer/NextStepAfter (pure), ssml/
+src/azure/         SynthesiseRecording (the effect: fetch and retry), request/RequestOf and answer/NextStepAfter (pure)
 src/naming/        RecordingFileOf: the hashed path
 src/throttle/      WaitForTurn (the effect) over WaitBefore (pure: how long to wait)
 src/manifest/      ManifestOf

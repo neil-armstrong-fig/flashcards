@@ -68,6 +68,8 @@ catalog:
   clsx: 2.1.1
   # Promise wrapper over IndexedDB (about 1.2 kB, ISC) for the study and picture databases; held at 8.0.3 because 8.0.4 is under 7 days old (`docs/storage.md`).
   idb: 8.0.3
+  # An in-memory IndexedDB (Apache-2.0) for Vitest, so the real database code, its upgrade steps and clearing run in unit tests (`docs/storage.md`). 6.2.5 is the latest and well over 7 days old.
+  fake-indexeddb: 6.2.5
   # Revised Romanization of Korean as it is pronounced (liaison, assimilation, tensing), for the card form; dependency-free, MIT. Chosen over
   # @romanize/korean and romaja by trying all three on 42 words (`docs/romanisation.md`).
   koroman: 1.0.16

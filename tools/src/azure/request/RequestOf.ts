@@ -1,4 +1,4 @@
-import {ssmlOf} from "@flashcards/shared/audio/azure/SsmlOf";
+import {speechMarkupOf} from "@flashcards/shared/audio/azure/SpeechMarkupOf";
 import type {RecordingJob} from "@src/plan/types/RecordingJob";
 
 const OUTPUT_FORMAT = "audio-24khz-48kbitrate-mono-mp3";
@@ -18,6 +18,6 @@ export function requestOf(job: RecordingJob, {region, key}: AzureAccount): Reque
       "X-Microsoft-OutputFormat": OUTPUT_FORMAT,
       "User-Agent": "flashcards-audio-tool",
     },
-    body: ssmlOf(job),
+    body: speechMarkupOf(job),
   });
 }

@@ -29,6 +29,7 @@ Added as they are introduced (the dependency catalog in `pnpm-workspace.yaml` is
 | --- | --- | --- | --- |
 | koroman | Revised Romanization of Korean, as pronounced, for suggesting how a card's word is said (`shared/`); see `docs/romanisation.md` | MIT | https://www.npmjs.com/package/koroman |
 | idb | A small promise wrapper over IndexedDB for the study and picture databases (`webapp/`); see `docs/storage.md` | ISC | https://github.com/jakearchibald/idb |
+| fake-indexeddb | An in-memory IndexedDB for unit tests of the real database code (`webapp/`, dev only); see `docs/storage.md` | Apache-2.0 | https://github.com/dumbmatter/fakeIndexedDB |
 | ts-fsrs | The FSRS scheduling algorithm, behind `spaced-repetition/scheduling/` | MIT | https://github.com/open-spaced-repetition/ts-fsrs |
 | drizzle-orm, drizzle-kit, oauth4webapi | The API's database access and Google sign-in (setup as in janggi) | Apache-2.0 / MIT | see each package |
 | Alchemy, Wrangler, Cloudflare Workers types, tsx | The speech API's infrastructure as code, local dev and typing (setup as in janggi) | Apache-2.0 / MIT | see each package |

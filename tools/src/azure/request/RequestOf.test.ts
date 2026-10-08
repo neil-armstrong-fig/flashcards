@@ -11,7 +11,7 @@ const JOB: RecordingJob = {
   file: "ko/female-normal/abc.mp3",
 };
 
-it("posts the SSML to the region's endpoint with the key", async () => {
+it("posts the speech markup to the region's endpoint with the key", async () => {
   const request = requestOf(JOB, {region: "uksouth", key: "not-a-real-key"});
 
   expect(request.method).toBe("POST");

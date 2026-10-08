@@ -25,6 +25,7 @@ using real account data.
 - Reviews per day are locked to ten for each new card (a deck can unlock them); with no new cards the reviews are left alone.
 - Review loop: four ratings, learning steps and learn-ahead, interval labels on the buttons, keyboard shortcuts, suspend and bury,
   look ahead, and studying only new or only struggling cards.
+- Settings has "Clear this device" (storage, databases and recordings; stays signed in; for testing and a device out of step).
 - One daily goal in cards; desired retention (70 to 97 percent); colours (Match device, Light, Dark); PNG app icons.
 - Struggling cards (lapse threshold, clearing by three good answers, optional auto-suspend, "This is hard", a Struggling list) and
   memory aids (a note and a picture per card, fading, a prompt on a struggling card).
@@ -38,9 +39,9 @@ using real account data.
   buzz and a pressed or pulsing look when a rating or a recording is tapped, a colour wash over the screen (review) or the card
   (browse) as a recording starts, tap targets of 44px or more on every screen, the page kept out of the notch and home bar, and the
   second recording of a "this then that" fetched and loaded while the first plays. **Not yet tried on a real phone**: the buzz
-  (Android only; iPhone browsers have no vibration), the wash, and the safe-area padding. **The gap between the two recordings is
-  still long**: every recording is 1.87s with about 1.2s of silence at its end and 0.2 to 0.4s at its start (checked for 물 and 불), so
-  it needs trimming at generation (`mstts:silence` in the SSML, `tools/`), after the files are trimmed or regenerated.
+  (Android only; iPhone browsers have no vibration), the wash, and the safe-area padding. **The gap between the two recordings**: the speech markup now asks
+  for no added silence (`mstts:silence`, `SpeechMarkupOf.ts`) and the file name carries a revision so devices fetch the new files; the
+  full regeneration and `upload-audio --remote` are under way, then the manifest is committed.
 - Deployed and live: the app on GitHub Pages, the API on its Worker's custom domain, the recordings uploaded to R2, and CI deploying
   `main` and running the acceptance suite against the live URL.
 
@@ -60,17 +61,18 @@ using real account data.
 
 ## Next
 
-1. **Learner-made decks and adding to any deck** (`docs/decks.md`), full stack on D1; then Japanese and Dutch cards, then the dictionary.
-2. **Sync** (`docs/sync.md`, decisions made): event log and replay first, then `/api/sync`, the two-device specs and the sync workflow.
-   [~] Done: card events, replay, settings, and records (the learner's own cards, similars, notes and pictures, with removals kept so
-   they stay removed), `POST /api/sync`, the pictures bucket, the sync workflow, `sync-status` and the two-device specs. Next: deploy (the CD applies the migration and
-   provisions the pictures bucket) and try it on two real devices; then delete my data and JSON export.
-3. **Daily-goal reminder** (Web Push, a cron-triggered Worker) with a setting to turn it off or move it.
+1. **Daily-goal reminder** (Web Push, a cron-triggered Worker) with a setting to turn it off or move it.
 
 ## Backlog
 
+- [ ] Learner-made decks and adding to any deck (`docs/decks.md`), full stack on D1; then Japanese and Dutch cards, then the dictionary.
+  Deferred: for now cards are added through Claude sessions, from a list the developer keeps in a notepad app.
+- [ ] Sync is built, deployed and tried on two devices (`docs/sync.md`). Left: delete my data and JSON export. **Do before the app is
+  opened to anyone beyond the sole OAuth test user.**
+
 - [~] Storage (`docs/storage.md`): `idb` adopted, and IndexedDB and localStorage moved out of `redux/` into `webapp/src/storage/`.
-  Open: `fake-indexeddb` to prove the database upgrades (needs a yes).
+  `fake-indexeddb` is in: the database upgrades, clearing and a record-then-load round trip run against it. Open: more of the real
+  `storage/index-db/` modules (pictures, sync events and records) are still tested only through the in-memory stand-ins.
 - [ ] Open content (`docs/open-content.md`, needs a decision on CC BY-SA): Tatoeba import tool, Dutch reading deck by spelling pattern
   (needs Dutch voices first), textbook-friendly learner cards for Korean and Dutch sentences.
 - [x] Anki pronunciation packages (`docs/audio.md`): Azure chosen over the package audio (no licence); Korean pronunciation deck built from our own words.

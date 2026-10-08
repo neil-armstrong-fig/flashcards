@@ -6,6 +6,7 @@ import {SettingsPlaywright} from "@src/dsl/web-app/components/settings/playwrigh
 import {SettingsLimitsDsl} from "@src/dsl/web-app/components/settings/components/limits/SettingsLimitsDsl";
 import {SettingsVoiceDsl} from "@src/dsl/web-app/components/settings/components/voice/SettingsVoiceDsl";
 import {SettingsStrugglingDsl} from "@src/dsl/web-app/components/settings/components/struggling/SettingsStrugglingDsl";
+import {SettingsDeviceDsl} from "@src/dsl/web-app/components/settings/components/device/SettingsDeviceDsl";
 import {SettingsAccountDsl} from "@src/dsl/web-app/components/settings/components/account/SettingsAccountDsl";
 
 /** The settings screen, where the learner decides how much to take on each day. */
@@ -16,6 +17,7 @@ export class SettingsDsl {
   readonly voice: SettingsVoiceDsl;
   readonly struggling: SettingsStrugglingDsl;
   readonly account: SettingsAccountDsl;
+  readonly device: SettingsDeviceDsl;
 
   constructor(page: Page) {
     this.playwright = new SettingsPlaywright(page);
@@ -23,6 +25,7 @@ export class SettingsDsl {
     this.voice = new SettingsVoiceDsl(page);
     this.struggling = new SettingsStrugglingDsl(page);
     this.account = new SettingsAccountDsl(page);
+    this.device = new SettingsDeviceDsl(page);
   }
 
   async chooseTheme(theme: Theme): Promise<void> {

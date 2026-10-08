@@ -10,7 +10,7 @@ src/react/
   routes/                         `Routes.ts` (the typed `ROUTES`) and `CreateAppRouter.tsx` (react-router, hash routes)
   audio/                          where state and sound meet, since `redux/` and `audio/` may not import each other: `hooks/` (one folder each: `use-card-audio/` speaks the card on screen
                                   when it or its side changes, `use-speak-*/`, `use-switch-*/`), `own-words/` (add or change a card or similar word: recordings are
-                                  fetched between the redux checks and the redux write), `sync/`, `sign-out/`, `offline/`
+                                  fetched between the redux checks and the redux write), `sync/`, `sign-out/`, `clear-device/` (clear what the device keeps: storage through redux, recordings through `audio/`), `offline/`
   pages/<page>/<Page>.tsx         one folder per screen (home/, review/, browse/, settings/, login/)
   pages/shared/                   what two pages share that is not a component (`utils/FormatInterval.ts`); pages/ holds only pages and this
     components/<thing>/<Thing>.tsx

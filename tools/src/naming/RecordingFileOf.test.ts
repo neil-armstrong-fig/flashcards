@@ -23,3 +23,7 @@ it.each([
 ])("names a recording differently when %s changes", (_name, change) => {
   expect(recordingFileOf({...WATER, ...change})).not.toBe(recordingFileOf(WATER));
 });
+
+it("names the recording as the second speech markup revision does, so devices fetch the version without added silence", () => {
+  expect(recordingFileOf(WATER)).toBe("ko/female-normal/cd5d17b7c35fdd07.mp3");
+});

@@ -1,3 +1,4 @@
+import "fake-indexeddb/auto";
 import {afterEach, beforeEach, vi} from "vitest";
 import type {RecordChange} from "@flashcards/shared/sync/records/RecordChange";
 import type {ReviewLogEntry} from "@src/spaced-repetition/scheduling/types/ReviewLogEntry";
@@ -9,6 +10,7 @@ import {TEST_AUDIO_RECORDINGS} from "@src/testing/audio-recordings/TestAudioReco
 import {resetTestEnvironment} from "@src/testing/environment/TestEnvironment";
 import {TEST_NOW} from "@src/testing/time/TestNow";
 
+vi.mock("@src/storage/clear-all/ClearAllStoredData", () => ({clearAllStoredData: vi.fn(async () => undefined)}));
 vi.mock("@src/storage/index-db/study/LoadStoredStudy", async () => {
   const {testEnvironment} = await import("@src/testing/environment/TestEnvironment");
 

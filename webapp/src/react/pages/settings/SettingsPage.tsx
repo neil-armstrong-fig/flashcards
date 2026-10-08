@@ -1,6 +1,7 @@
 import {BackLink} from "@src/react/components/back-link/BackLink";
 import {Link} from "react-router";
 import {Account} from "@src/react/pages/settings/components/account/Account";
+import {ClearThisDevice} from "@src/react/pages/settings/components/clear-this-device/ClearThisDevice";
 import {DailyGoalSetting} from "@src/react/pages/settings/components/daily-goal-setting/DailyGoalSetting";
 import {DeckSettings} from "@src/react/pages/settings/components/deck-settings/DeckSettings";
 import {DesiredRetentionSetting} from "@src/react/pages/settings/components/desired-retention-setting/DesiredRetentionSetting";
@@ -48,6 +49,8 @@ export function SettingsPage(): React.JSX.Element {
       </SettingsGroup>
 
       <Account />
+
+      <ClearThisDevice />
 
       <SettingsGroup title="Suspended cards">
         <SuspendedCards />

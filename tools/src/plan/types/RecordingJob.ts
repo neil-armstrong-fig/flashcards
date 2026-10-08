@@ -10,7 +10,7 @@ export interface RecordingJob {
   readonly voiceName: string;
   /** The Azure locale the voice speaks, such as `ko-KR`. */
   readonly locale: string;
-  /** The SSML prosody rate, or `default` for none. */
+  /** The speech markup prosody rate, or `default` for none. */
   readonly rate: string;
   /** The path under `audio/`. */
   readonly file: string;

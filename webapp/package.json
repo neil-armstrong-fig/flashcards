@@ -42,6 +42,7 @@
     "eslint": "catalog:",
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",
+    "fake-indexeddb": "catalog:",
     "globals": "catalog:",
     "jsdom": "catalog:",
     "prettier": "catalog:",

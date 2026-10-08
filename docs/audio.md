@@ -42,7 +42,7 @@ speaker's region or accent, so accent is judged by ear.
   seconds) and retries a 429 with a wait. Four variants of a thousand faces is 4,000 requests, about 3.7 hours the first time, then
   only new or changed text.
 - **API:** `POST https://<region>.tts.speech.microsoft.com/cognitiveservices/v1`, headers `Ocp-Apim-Subscription-Key`,
-  `Content-Type: application/ssml+xml`, `X-Microsoft-OutputFormat: audio-24khz-48kbitrate-mono-mp3` and a `User-Agent`. SSML names
+  `Content-Type: application/ssml+xml`, `X-Microsoft-OutputFormat: audio-24khz-48kbitrate-mono-mp3` and a `User-Agent`. The speech markup (Speech Synthesis Markup Language) names
   the voice and sets speed with `<prosody rate="-15%">`. `GET .../cognitiveservices/voices/list` lists a region's voices.
 - **Output is MP3 directly** (about 11 KB for a word, 27 KB for a long sentence), so no encoder is needed. A thousand faces in four
   variants is about 40 MB.
@@ -58,9 +58,9 @@ slower sounds distorted. Single words barely change at -15%, which is accepted. 
 A recording is identified by its text, voice (`female` or `male`) and speed (`normal` or `slower`), never by its text alone.
 
 - **The generator** (`tools/`): `pnpm --filter @flashcards/tools generate-audio`, with the key loaded from `.env.dev` in a
-  subshell. It writes `private-source/recordings/<language>/<voice>-<speed>/<hash>.mp3`, the hash being of the text, the voice's name
-  and the rate, so a changed word regenerates and an unchanged one never costs again. The variant is in the folder so a spec can
-  tell which recording played without recomputing a hash. Stale files are not deleted. `upload-audio` sends what is missing to R2.
+  subshell. It writes `private-source/recordings/<language>/<voice>-<speed>/<hash>.mp3`, the hash being of the text, the voice's name,
+  the rate and the speech markup revision (`RecordingFileOf.ts`: bumped when every recording must be remade, as a device keeps one for good under its name), so a changed word regenerates and an unchanged one never costs again. The variant is in the folder so a spec can
+  tell which recording played without recomputing a hash. Stale files are not deleted. Recordings carry no added silence (`mstts:silence` 0ms, `SpeechMarkupOf.ts`), so two side by side run on. `upload-audio` sends what is missing to R2.
 - **The manifest** is `content/src/audio/recordings.json`, written by the tool: language, then the text, then each variant's file.
   The webapp plays only what it names (`audioFileOf`), and a text or variant with no entry is silent. It is keyed by text, not by
   card, so a word's two cards share its four files.
@@ -115,4 +115,4 @@ pairs and sound-alike words. Unpacked (not committed) with `private-source/scrip
   licence (`content/AGENTS.md`: nothing is pasted from a source whose licence is unknown). Its card: the spelling with no audio; then the
   spelling, the sound in hangul, the romanisation, the rule, and the word spoken. The trainer package's minimal pairs (바르다/빠르다,
   방/빵) are the job of `soundSimilars` and are not in this deck; say if they should be added to the starter words as similars.
-- If Azure fails on a pair, the fallback is the SSML `<phoneme>` or a different voice per pair, not the package audio.
+- If Azure fails on a pair, the fallback is the speech markup `<phoneme>` or a different voice per pair, not the package audio.

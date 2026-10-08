@@ -10,12 +10,17 @@ const DATABASE_NAME = "flashcards";
 const DATABASE_VERSION = 4;
 const RECORD_KEY = ["kind", "id"];
 
-/** Opened once, on first use, and kept for as long as the page lives. */
+/** Opened once, on first use, and kept until the page ends or the database is waited on (`blocking`). */
 let database: Promise<IDBPDatabase<StudyDatabase>> | undefined;
 
 /** The browser's IndexedDB holding study progress, because a review log outgrows localStorage and images will follow. */
 export function openStudyDatabase(): Promise<IDBPDatabase<StudyDatabase>> {
   database ??= openDB<StudyDatabase>(DATABASE_NAME, DATABASE_VERSION, {
+    blocking(): void {
+      // Another tab upgrading, or the learner clearing this device, is waiting on this connection.
+      void database?.then(open => open.close());
+      database = undefined;
+    },
     async upgrade(upgrading, oldVersion, _newVersion, transaction): Promise<void> {
       if (oldVersion < 1) {
         upgrading.createObjectStore(STUDY_STORES.cards, {keyPath: "id"});

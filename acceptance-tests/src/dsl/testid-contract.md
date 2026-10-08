@@ -111,6 +111,11 @@ or removing one means changing both sides in the same commit.
 | `signed-in`                       | settings screen            | Present while signed in                                                                                                    |
 | `signed-in-email`                 | settings screen            | Inside `signed-in`: who is signed in                                                                                       |
 | `sign-out`                        | settings screen            | Button: sign out                                                                                                           |
+| `clear-this-device`               | settings screen            | Button: ask to clear everything this device keeps                                                                          |
+| `clear-this-device-dialog`        | settings screen            | The confirmation, shown while the learner decides                                                                          |
+| `clear-this-device-warning`       | clear dialog               | What clearing costs: anything not yet synced is lost                                                                       |
+| `confirm-clear-this-device`       | clear dialog               | Button: clear the device and reopen the app                                                                                |
+| `cancel-clear-this-device`        | clear dialog               | Button: leave everything as it was                                                                                         |
 | `similar-switch-voice`            | similar panel              | Button: switch female/male and play the card's own word                                                                    |
 | `similar-switch-speed`            | similar panel              | Button: switch normal/slower and play the card's own word                                                                  |
 | `sync-status`                     | home                       | Whether this device matches what is kept online; `data-state` is `synced`, `syncing` or `not-synced`                       |

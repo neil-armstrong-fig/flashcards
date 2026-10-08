@@ -6,7 +6,7 @@ sees a key, a store name, a version or a database. Plain TypeScript: it may not 
 
 - **Two folders, one per mechanism**: `local-storage/` (`device/` is the only code that calls `localStorage`; then a folder per subject:
   `settings/`, `card-notes/`, `sync/cursors/`, ...) and `index-db/` (`study/`, `pictures/`, `sync/events/`, `sync/records/`; each
-  `database/` folder is the only code that calls `idb`). One exported function per file. `sync/` appears in both, by mechanism.
+  `database/` folder is the only code that calls `idb`). One exported function per file. `sync/` appears in both, by mechanism. `clear-all/` removes everything of both (`ClearAllStoredData`: every `flashcards.` key, every database), for "Clear this device"; each `Open…Database` lets go of its connection when asked (`blocking`) so that deletion is not held up.
 - **Keys, database names, versions and store names are private to this folder.** A new key is `flashcards.<name>.v1`; change what a
   stored field means and the version rises. A change to an IndexedDB shape raises `DATABASE_VERSION` with an upgrade step, and never
   edits an old step.
@@ -15,4 +15,4 @@ sees a key, a store name, a version or a database. Plain TypeScript: it may not 
   read back is untrusted, so anything that fails its reader is dropped.
 - **Never block the learner.** A write that fails is reported with `console.error` and the learner carries on in memory.
 - **Tests** mock these modules by path in `testing/SetupWebappTests.ts` (backed by `testing/environment/`); localStorage is a fake there.
-  A new effect module needs a `vi.mock` there, or a test reaches for the real database.
+  A new effect module needs a `vi.mock` there, or a test reaches for the real database. To test the real IndexedDB code, `vi.unmock` the stand-in, call `freshIndexedDb()` (`testing/environment/browser/`: `fake-indexeddb`, a new database and fresh modules) in a `beforeEach`, and `await import(...)` the module under test (`study/database/OpenStudyDatabase.test.ts`).

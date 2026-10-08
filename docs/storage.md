@@ -32,7 +32,7 @@ Tests: `fake-indexeddb` (Apache-2.0, 6.x) would let the real IndexedDB code run 
 stand-ins (`MemoryStudyStorage`, `MemoryCardPictures`) could go and the real module be tested instead. Check whether that is a
 win before removing them: the stand-ins also serve the acceptance-free unit tests of thunks.
 
-`fake-indexeddb` is still a new dependency and needs a yes (6.2.5 is old enough for the seven-day rule). `idb` is pinned at **8.0.3**, not
+`fake-indexeddb` 6.2.5 is added (a dev dependency of `webapp`, approved). `idb` is pinned at **8.0.3**, not
 the newest 8.0.4, which was published on 2026-10-06 and so falls inside the seven-day window.
 
 ## Out of Redux
@@ -74,6 +74,6 @@ upgrade steps are the same but create the stores first and then run the data ste
 async), and `redux/shared/indexed-db/` (`requestResult`, `transactionDone`) is gone. A multi-store write is
 `await Promise.all([...puts, transaction.done])`, which keeps it all-or-nothing and reports one failure.
 
-**Not proved:** every acceptance run starts with an empty database, so `backfillEvents` only ever sees empty stores and
-`markEventsUnsent` (a version 2 database going to 4) never runs. Both were rewritten. `fake-indexeddb` would let a unit test build a
-version 1, 2 or 3 database and open it; that is the case for adding it.
+**Proved by `OpenStudyDatabase.test.ts`** (with `fake-indexeddb`), which builds a version 1, 2 and 3 database and opens each. The
+acceptance runs cannot: each starts with an empty database, so `backfillEvents` only ever saw empty stores and `markEventsUnsent` (a
+version 2 database going to 4) never ran. Both were rewritten, and are now run over each old version.

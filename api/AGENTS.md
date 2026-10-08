@@ -15,7 +15,7 @@ A Cloudflare Worker (modelled on janggi's `api/` (https://github.com/neil-armstr
   in the chosen voice and speed, `en` an English meaning (up to 40 characters) in the one English voice at normal speed. The **Azure key stays
   here**, never in the browser.
 
-It may import `@flashcards/shared` (the voice tables, SSML, the text checks) and nothing else in the workspace. The webapp
+It may import `@flashcards/shared` (the voice tables, the speech markup, the text checks) and nothing else in the workspace. The webapp
 may not import it at all.
 
 ## What is refused, and in what order
