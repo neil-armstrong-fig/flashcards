@@ -28,6 +28,19 @@ export class ReviewPlaywright extends BaseComponent {
     return await this.page.getByTestId("card-back").innerText();
   }
 
+  /** The part of the answer picked out in bold, or an empty string while there is none. */
+  async emphasisedText(): Promise<string> {
+    await this.page.getByTestId("card-front").waitFor();
+
+    const emphasis = this.page.getByTestId("card-back").locator("strong");
+
+    if ((await emphasis.count()) === 0) {
+      return "";
+    }
+
+    return await emphasis.innerText();
+  }
+
   async frontHidden(): Promise<boolean> {
     return await this.page.getByTestId("card-front-hidden").isVisible();
   }

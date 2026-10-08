@@ -1,5 +1,6 @@
 import {selectDeckPreferences} from "@src/redux/slices/settings/selectors/SelectDeckPreferences";
 import {selectCardById} from "@src/redux/slices/deck/selectors/SelectCardById";
+import {splitAtEmphasis} from "@src/react/pages/review/components/card-review/components/card-face/utils/SplitAtEmphasis";
 import {SpeakerIcon} from "@src/react/components/speaker-icon/SpeakerIcon";
 import {useAppSelector} from "@src/redux/shared/Hooks";
 
@@ -18,6 +19,7 @@ export function CardFace(): React.JSX.Element | undefined {
     return undefined;
   }
 
+  const back = splitAtEmphasis(card.back, card.emphasis);
   // Only a card that shows the target-language word on its front can hide it: the other direction asks for the word, and shows English.
   const frontHidden = hideTarget && card.direction === "to-english" && !answerShown;
 
@@ -35,7 +37,9 @@ export function CardFace(): React.JSX.Element | undefined {
 
       {answerShown && (
         <p data-testid="card-back" className="text-2xl text-ink-muted">
-          {card.back}
+          {back.before}
+          {back.bold !== "" && <strong className="font-bold text-ink">{back.bold}</strong>}
+          {back.after}
           {card.hint !== "" && <span className="text-base"> ({card.hint})</span>}
         </p>
       )}

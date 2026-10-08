@@ -16,6 +16,8 @@ it("studies one deck's cards only, so a session never mixes languages", async ()
 it("gives each deck its own daily limits, and counts them separately and together", async () => {
   const {store} = await openedStudyStore();
 
+  store.dispatch(newCardsPerDayChosen({deckId: "ko-pronunciation", count: 0}));
+  store.dispatch(newCardsPerDayChosen({deckId: "ko-sounds-alike", count: 0}));
   store.dispatch(newCardsPerDayChosen({deckId: "ja-hiragana", count: 5}));
   store.dispatch(newCardsPerDayChosen({deckId: "ja-katakana", count: 0}));
   store.dispatch(newCardsPerDayChosen({deckId: "ja-hiragana-combined", count: 0}));

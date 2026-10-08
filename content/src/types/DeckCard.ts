@@ -11,6 +11,8 @@ export interface DeckCard {
   /** What is said aloud when the front comes up, and when the answer is shown; absent where that side is not spoken (the sound of a kana). */
   readonly frontAudio?: SpokenText;
   readonly backAudio?: SpokenText;
+  /** The part of `back` shown in bold with the answer (the word that was said, on a sounds-alike pair). */
+  readonly emphasis?: string;
   /** How the language being learned is said, shown with the answer (romanisation for Korean). */
   readonly hint: string;
 }

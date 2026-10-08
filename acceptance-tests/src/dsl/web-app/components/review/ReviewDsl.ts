@@ -61,6 +61,15 @@ export class ReviewDsl {
     }
   }
 
+  /** The part of the answer picked out in bold (the word that was said, on a sounds-alike pair). Empty until the answer is shown, and for a card with none. */
+  async getEmphasisedText(): Promise<string> {
+    try {
+      return await this.playwright.emphasisedText();
+    } catch (error) {
+      throw new DslError("Failed to read the part of the card in bold", error);
+    }
+  }
+
   /** Whether the front is hidden because the learner chose to listen without reading. */
   async isFrontHidden(): Promise<boolean> {
     try {

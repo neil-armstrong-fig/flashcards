@@ -23,3 +23,12 @@ it("lists every word one way and then every word the other, so a word's two card
     "b/from-english",
   ]);
 });
+
+it("makes one card, the reading one, from a pronunciation", () => {
+  const pronounced: Deck = {
+    ...deck,
+    notes: [{id: "p", kind: "pronunciation", language: "ko", word: "좋다", meaning: "조타", romanisation: "jota"}],
+  };
+
+  expect(cardsOfDeck(pronounced).map(card => card.id)).toEqual(["p/to-english"]);
+});

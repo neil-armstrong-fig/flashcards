@@ -1,9 +1,7 @@
 import {openStudyDatabase} from "@src/redux/slices/study/storage/indexed-db/OpenStudyDatabase";
 import {readCardEvent} from "@flashcards/shared/sync/card-events/CardEvent";
 import {replayEvents} from "@src/spaced-repetition/replay/ReplayEvents";
-import {requestResult} from "@src/redux/shared/indexed-db/RequestResult";
 import {STUDY_STORES} from "@src/redux/slices/study/storage/indexed-db/StudyStores";
-import {transactionDone} from "@src/redux/shared/indexed-db/TransactionDone";
 import type {CardEvent} from "@flashcards/shared/sync/card-events/CardEvent";
 import type {CardState} from "@src/spaced-repetition/card/types/CardState";
 import type {PulledProgress} from "@src/redux/slices/study/types/PulledProgress";
@@ -20,13 +18,14 @@ export async function keepPulledEvents(pulled: readonly CardEvent[]): Promise<Pu
   const transaction = database.transaction([STUDY_STORES.cards, STUDY_STORES.log, STUDY_STORES.events], "readwrite");
   const events = transaction.objectStore(STUDY_STORES.events);
   const fresh: CardEvent[] = [];
+  const writes: Promise<unknown>[] = [];
 
   for (const event of pulled) {
-    const known = await requestResult<unknown>(events.getKey([event.cardId, event.at, event.kind]));
+    const known = await events.getKey([event.cardId, event.at, event.kind]);
 
     if (known === undefined) {
       fresh.push(event);
-      events.put(event);
+      writes.push(events.put(event));
     }
   }
 
@@ -34,7 +33,7 @@ export async function keepPulledEvents(pulled: readonly CardEvent[]): Promise<Pu
   const log: ReviewLogEntry[] = [];
 
   for (const cardId of new Set(fresh.map(event => event.cardId))) {
-    const history = await requestResult<unknown[]>(events.getAll(IDBKeyRange.bound([cardId], [cardId, "￿"])));
+    const history = await events.getAll(IDBKeyRange.bound([cardId], [cardId, "￿"]));
     const replay = replayEvents(
       cardId,
       history.flatMap(each => readCardEvent(each) ?? []),
@@ -43,15 +42,17 @@ export async function keepPulledEvents(pulled: readonly CardEvent[]): Promise<Pu
     if (replay) {
       cards[cardId] = replay.state;
       log.push(...replay.log);
-      transaction.objectStore(STUDY_STORES.cards).put({id: cardId, state: replay.state} satisfies StoredCard);
+      writes.push(
+        transaction.objectStore(STUDY_STORES.cards).put({id: cardId, state: replay.state} satisfies StoredCard),
+      );
 
       for (const entry of replay.log) {
-        transaction.objectStore(STUDY_STORES.log).put(entry);
+        writes.push(transaction.objectStore(STUDY_STORES.log).put(entry));
       }
     }
   }
 
-  await transactionDone(transaction);
+  await Promise.all([...writes, transaction.done]);
 
   return {cards, log};
 }

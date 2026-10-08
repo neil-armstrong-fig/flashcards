@@ -8,7 +8,7 @@ import type {Language} from "@flashcards/shared/language/Language";
  */
 export interface VocabNote {
   readonly id: string;
-  /** Absent means `vocab`. A `kana` note is a character and its sound: its `meaning` is that sound in Latin letters, which is shown but never spoken, since an English voice would say it wrongly. */
+  /** Absent means `vocab`. A `pronunciation` note is a word read aloud from its spelling (`word`), whose `meaning` is how it is actually said, in hangul, and which has one card only: the spelling is shown unspoken, and the way it is said is shown and the word spoken with the answer. A `sounds-alike` note is one of two words that differ by one sound: `meaning` is both, written `바르다/빠르다` and shown on both its card and its partner's, `word` is the one this note says, and `soundSimilars` holds the other. Its one card plays `word` and, with the answer, picks it out in bold. A `kana` note is a character and its sound: its `meaning` is that sound in Latin letters, which is shown but never spoken, since an English voice would say it wrongly. */
   readonly kind?: NoteKind;
   readonly language: Language;
   readonly word: string;

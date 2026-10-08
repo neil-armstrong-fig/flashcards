@@ -66,6 +66,8 @@ catalog:
   wrangler: 4.136.3
   # Builds conditional class lists in JSX.
   clsx: 2.1.1
+  # Promise wrapper over IndexedDB (about 1.2 kB, ISC) for the study and picture databases; held at 8.0.3 because 8.0.4 is under 7 days old (`docs/storage.md`).
+  idb: 8.0.3
   # Revised Romanization of Korean as it is pronounced (liaison, assimilation, tensing), for the card form; dependency-free, MIT. Chosen over
   # @romanize/korean and romaja by trying all three on 42 words (`docs/romanisation.md`).
   koroman: 1.0.16

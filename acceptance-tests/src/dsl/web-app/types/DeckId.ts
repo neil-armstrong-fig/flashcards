@@ -1,6 +1,8 @@
 /** The decks the app ships, by the ids its test ids use. */
 export const DECK_IDS = [
   "ko-starter",
+  "ko-pronunciation",
+  "ko-sounds-alike",
   "ja-hiragana",
   "ja-hiragana-combined",
   "ja-katakana",

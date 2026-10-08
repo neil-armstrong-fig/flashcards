@@ -1,4 +1,5 @@
 import {AZURE_VOICES} from "@flashcards/shared/audio/azure/AzureVoices";
+import {meaningIsSpoken} from "@flashcards/content/cards/MeaningIsSpoken";
 import {ENGLISH_VARIANT} from "@flashcards/content/audio/RecordingVariantFor";
 import {ENGLISH_VOICE} from "@flashcards/shared/audio/azure/EnglishVoice";
 import {recordingFileOf} from "@src/naming/RecordingFileOf";
@@ -10,7 +11,7 @@ import type {Language} from "@flashcards/shared/language/Language";
 import type {Deck} from "@flashcards/content/types/Deck";
 import type {RecordingJob} from "@src/plan/types/RecordingJob";
 
-/** Every recording the decks need: each word (or kana) and similar, once, in every voice at every speed, and each English meaning in the one English voice. The sound of a kana is not spoken, so it needs none. */
+/** Every recording the decks need: each word (or kana) and similar, once, in every voice at every speed, and each English meaning in the one English voice. The sound of a kana and the way a pronunciation is said are not spoken, so they need none. */
 export function recordingsNeeded(decks: readonly Deck[]): RecordingJob[] {
   const jobs = new Map<string, RecordingJob>();
 
@@ -22,7 +23,7 @@ export function recordingsNeeded(decks: readonly Deck[]): RecordingJob[] {
         }
       }
 
-      if (note.kind === "kana") {
+      if (!meaningIsSpoken(note)) {
         continue;
       }
 

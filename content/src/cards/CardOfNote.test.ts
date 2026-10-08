@@ -50,3 +50,44 @@ it("speaks only the kana, in Japanese, and never the Latin letters of its sound"
     backAudio: {language: "ja", text: "か"},
   });
 });
+
+it("makes a pronunciation card of the spelling, unspoken, then the way it is said in hangul with the word spoken", () => {
+  const card = cardOfNote(
+    {
+      id: "ko-pronunciation-jota",
+      kind: "pronunciation",
+      language: "ko",
+      word: "좋다",
+      meaning: "조타",
+      romanisation: "jota",
+    },
+    "to-english",
+  );
+
+  expect(card).toMatchObject({front: "좋다", back: "[조타]", hint: "jota", backAudio: {language: "ko", text: "좋다"}});
+  expect(card.frontAudio).toBeUndefined();
+});
+
+it("makes a sounds-alike pair card that shows both words, says one, and picks that one out in bold with the answer", () => {
+  const card = cardOfNote(
+    {
+      id: "ko-sounds-alike-bareuda-ppareuda-a",
+      kind: "sounds-alike",
+      language: "ko",
+      word: "바르다",
+      meaning: "바르다/빠르다",
+      romanisation: "bareuda",
+      soundSimilars: ["빠르다"],
+    },
+    "to-english",
+  );
+
+  expect(card).toMatchObject({
+    front: "바르다/빠르다",
+    back: "바르다/빠르다",
+    emphasis: "바르다",
+    hint: "bareuda",
+    frontAudio: {language: "ko", text: "바르다"},
+    backAudio: {language: "ko", text: "바르다"},
+  });
+});

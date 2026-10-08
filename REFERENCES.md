@@ -28,6 +28,7 @@ Added as they are introduced (the dependency catalog in `pnpm-workspace.yaml` is
 | Library | Used for | Licence | Link |
 | --- | --- | --- | --- |
 | koroman | Revised Romanization of Korean, as pronounced, for suggesting how a card's word is said (`shared/`); see `docs/romanisation.md` | MIT | https://www.npmjs.com/package/koroman |
+| idb | A small promise wrapper over IndexedDB for the study and picture databases (`webapp/`); see `docs/storage.md` | ISC | https://github.com/jakearchibald/idb |
 | ts-fsrs | The FSRS scheduling algorithm, behind `spaced-repetition/scheduling/` | MIT | https://github.com/open-spaced-repetition/ts-fsrs |
 | drizzle-orm, drizzle-kit, oauth4webapi | The API's database access and Google sign-in (setup as in janggi) | Apache-2.0 / MIT | see each package |
 | Alchemy, Wrangler, Cloudflare Workers types, tsx | The speech API's infrastructure as code, local dev and typing (setup as in janggi) | Apache-2.0 / MIT | see each package |
@@ -37,6 +38,13 @@ Added as they are introduced (the dependency catalog in `pnpm-workspace.yaml` is
 ## Data and audio sources
 
 Audio is generated with Azure AI Speech (`docs/audio.md`). Any real recordings used later are listed here per source with licence and attribution.
+
+- **Korean pronunciation deck** (`content/src/korean/pronunciation/`): the sound rules (aspiration, liaison, nasalisation, liquid
+  assimilation, tensing, palatalisation, weak ㅎ, final sounds, double finals, added ㄴ) follow the standard pronunciation rules,
+  [표준 발음법](https://korean.go.kr/kornorms/) of the National Institute of Korean Language. The words are chosen by us and the
+  explanations written by us; each pronunciation is checked against `koroman`. The idea of a deck of such words, and the sound
+  changes the Korean Wiki Project lists on its [consonant assimilation](https://www.koreanwikiproject.com/wiki/Category:Consonant_assimilation)
+  pages, guided what to cover; no text or audio of an Anki package or of that site is copied.
 
 ## Test data
 

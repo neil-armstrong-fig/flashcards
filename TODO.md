@@ -16,7 +16,7 @@ using real account data.
 
 **Works today:**
 
-- Six decks (Korean starter words; Japanese hiragana and katakana with the 71 basic and voiced kana; combined hiragana and combined
+- Eight decks (the Korean "sounds alike" deck: 13 pairs of words told apart by ear, two cards each, the same text on both and a different word said, the answer bolding the one said and offering the other to compare; the Korean pronunciation deck: 84 words that are not said as spelt, one card each, spelling unspoken, then the sound in hangul, the rule and the audio, `docs/audio.md`; Korean starter words; Japanese hiragana and katakana with the 71 basic and voiced kana; combined hiragana and combined
   katakana with 33 each; katakana for foreign sounds with 23), each studied both ways and each in its own session with its own limits,
   voice, speed and choice of hiding the word.
 - Review screen: a back button to leave early, tap anywhere but a button to hear the card, male/female (blue/pink, male first) and
@@ -69,6 +69,13 @@ using real account data.
 
 ## Backlog
 
+- [~] Storage (`docs/storage.md`): `idb` adopted. Open: `fake-indexeddb` to prove the database upgrades (needs a yes), then move
+  IndexedDB and localStorage out of `redux/` into a `storage/` layer beside `audio/`.
+- [ ] Open content (`docs/open-content.md`, needs a decision on CC BY-SA): Tatoeba import tool, Dutch reading deck by spelling pattern
+  (needs Dutch voices first), textbook-friendly learner cards for Korean and Dutch sentences.
+- [x] Anki pronunciation packages (`docs/audio.md`): Azure chosen over the package audio (no licence); Korean pronunciation deck built from our own words.
+- [ ] Pronunciation and "sounds alike" decks: a native reader to check the 84 words, the 13 pairs and their explanations; more pairs (the Anki list is unlicensed, so ours); whether the pairs should also be similars of the starter words.
+- [ ] Grammar cards from sentences: the `grammar-check` skill proposes grammar cards with explainers (to `private-source/grammar/`); still to build: the grammar note type to import them into, and the in-app version (an API route with a spend guard).
 - [ ] Browse: notes and pictures shown and editable there; add a card with a deck choice (needs learner-made decks).
 - [ ] Sentence, grammar and cloze note types and their decks, from the learner's own writing; cloze rendering. Naver dictionary links
   need a licence and terms check first.

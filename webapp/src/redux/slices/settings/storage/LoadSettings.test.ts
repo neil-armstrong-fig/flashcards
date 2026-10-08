@@ -11,6 +11,8 @@ it("loads the settings that were kept", () => {
     dailyGoalCards: 45,
     deckLimits: {
       "ko-starter": {newCardsPerDay: 5, maxReviewsPerDay: 50, limitsUnlocked: false},
+      "ko-pronunciation": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
+      "ko-sounds-alike": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
       "ja-hiragana": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
       "ja-hiragana-combined": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
       "ja-katakana": {newCardsPerDay: 20, maxReviewsPerDay: 200, limitsUnlocked: false},
@@ -19,6 +21,8 @@ it("loads the settings that were kept", () => {
     },
     deckPreferences: {
       "ko-starter": {voice: "female", speed: "slower", hideTarget: true},
+      "ko-pronunciation": {voice: "male", speed: "normal", hideTarget: false},
+      "ko-sounds-alike": {voice: "male", speed: "normal", hideTarget: false},
       "ja-hiragana": {voice: "male", speed: "normal", hideTarget: false},
       "ja-hiragana-combined": {voice: "male", speed: "normal", hideTarget: false},
       "ja-katakana": {voice: "male", speed: "normal", hideTarget: false},

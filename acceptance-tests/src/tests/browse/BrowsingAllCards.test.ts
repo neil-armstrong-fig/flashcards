@@ -1,7 +1,5 @@
 import {beforeEach, expect, given, then, when} from "@src/acceptance-criteria-mapping/AcceptanceCriteriaMapping";
-
-/** The starter deck's 20 cards, the 208 of the hiragana deck and the 254 of the katakana deck. */
-const CARDS_IN_EVERY_DECK = 482;
+import {CARDS_IN_EVERY_DECK} from "@src/shared/CardsInEveryDeck";
 
 given("the learner opens the list of every card", () => {
   beforeEach(async ({webApp}) => {
@@ -31,8 +29,8 @@ given("the learner opens the list of every card", () => {
       await webApp.browse.search("hakgyo");
     });
 
-    then("the word's cards are found", async ({webApp}) => {
-      expect((await webApp.browse.getRows()).map(row => row.front).sort()).toEqual(["school", "학교"]);
+    then("the word's cards are found, and the card for how it is pronounced", async ({webApp}) => {
+      expect((await webApp.browse.getRows()).map(row => row.front).sort()).toEqual(["school", "학교", "학교"]);
     });
   });
 

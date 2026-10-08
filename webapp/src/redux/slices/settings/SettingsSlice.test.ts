@@ -24,6 +24,8 @@ it("starts with a daily goal of twenty cards, each deck on the default limits an
     dailyGoalCards: 20,
     deckLimits: {
       "ko-starter": limits,
+      "ko-pronunciation": limits,
+      "ko-sounds-alike": limits,
       "ja-hiragana": limits,
       "ja-hiragana-combined": limits,
       "ja-katakana": limits,
@@ -32,6 +34,8 @@ it("starts with a daily goal of twenty cards, each deck on the default limits an
     },
     deckPreferences: {
       "ko-starter": preferences,
+      "ko-pronunciation": preferences,
+      "ko-sounds-alike": preferences,
       "ja-hiragana": preferences,
       "ja-hiragana-combined": preferences,
       "ja-katakana": preferences,

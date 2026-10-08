@@ -1,8 +1,7 @@
 import {beforeEach, expect, given, then, when} from "@src/acceptance-criteria-mapping/AcceptanceCriteriaMapping";
+import {CARDS_IN_EVERY_DECK} from "@src/shared/CardsInEveryDeck";
 
 const CARDS_IN_THE_STARTER_DECK = 20;
-/** The starter deck and the two kana decks, 482 cards between them, before any card the learner makes. */
-const CARDS_IN_EVERY_DECK = 482;
 
 given("the learner has made a card for 코끼리, elephant, kokkiri", () => {
   beforeEach(async ({webApp}) => {

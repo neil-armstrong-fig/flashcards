@@ -1,7 +1,6 @@
 import {openStudyDatabase} from "@src/redux/slices/study/storage/indexed-db/OpenStudyDatabase";
-import {requestResult} from "@src/redux/shared/indexed-db/RequestResult";
+import {readRecordChange} from "@flashcards/shared/sync/records/RecordChange";
 import {STUDY_STORES} from "@src/redux/slices/study/storage/indexed-db/StudyStores";
-import {transactionDone} from "@src/redux/shared/indexed-db/TransactionDone";
 import type {RecordChange} from "@flashcards/shared/sync/records/RecordChange";
 
 /**
@@ -13,13 +12,15 @@ export async function forgetSentRecords(sent: readonly RecordChange[]): Promise<
   const transaction = database.transaction(STUDY_STORES.unsentRecords, "readwrite");
   const store = transaction.objectStore(STUDY_STORES.unsentRecords);
 
+  const deletions: Promise<void>[] = [];
+
   for (const {kind, id, at} of sent) {
-    const waiting = await requestResult<{readonly at?: unknown} | undefined>(store.get([kind, id]));
+    const waiting = readRecordChange(await store.get([kind, id]));
 
     if (waiting?.at === at) {
-      store.delete([kind, id]);
+      deletions.push(store.delete([kind, id]));
     }
   }
 
-  await transactionDone(transaction);
+  await Promise.all([...deletions, transaction.done]);
 }

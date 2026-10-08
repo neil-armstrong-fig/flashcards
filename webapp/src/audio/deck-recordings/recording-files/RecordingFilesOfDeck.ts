@@ -1,9 +1,10 @@
+import {meaningIsSpoken} from "@flashcards/content/cards/MeaningIsSpoken";
 import type {AudioManifest} from "@flashcards/content/audio/types/AudioManifest";
 import type {Deck} from "@flashcards/content/types/Deck";
 
 /**
  * Every recording a deck can play, each once, as paths under `audio/`: every version of each word and of what it is mistaken for (a
- * learner may switch voice or speed at any card), and each English meaning, except the sound of a kana, which is never spoken. A text the
+ * learner may switch voice or speed at any card), and each English meaning, except the sound of a kana and the way a pronunciation is said, which are never spoken. A text the
  * manifest has no recording of is left out. It is what keeping a deck offline fetches.
  */
 export function recordingFilesOfDeck(deck: Deck, manifest: AudioManifest): string[] {
@@ -14,7 +15,7 @@ export function recordingFilesOfDeck(deck: Deck, manifest: AudioManifest): strin
       addAll(files, manifest[note.language]?.[text]);
     }
 
-    if (note.kind !== "kana") {
+    if (meaningIsSpoken(note)) {
       addAll(files, manifest["en"]?.[note.meaning]);
     }
   }

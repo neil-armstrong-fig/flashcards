@@ -1,7 +1,6 @@
 import {openStudyDatabase} from "@src/redux/slices/study/storage/indexed-db/OpenStudyDatabase";
 import {STUDY_STORES} from "@src/redux/slices/study/storage/indexed-db/StudyStores";
 import {putEvents} from "@src/redux/slices/study/storage/indexed-db/PutEvents";
-import {transactionDone} from "@src/redux/shared/indexed-db/TransactionDone";
 import type {CardEvent} from "@flashcards/shared/sync/card-events/CardEvent";
 import type {ReviewLogEntry} from "@src/spaced-repetition/scheduling/types/ReviewLogEntry";
 import type {StoredCard} from "@src/redux/slices/study/storage/types/StoredCard";
@@ -19,10 +18,10 @@ export async function recordAnswer(
     "readwrite",
   );
 
-  transaction.objectStore(STUDY_STORES.cards).put({id: card.id, state: card.state} satisfies StoredCard);
-  transaction.objectStore(STUDY_STORES.log).put(entry);
-
-  putEvents(transaction, events);
-
-  await transactionDone(transaction);
+  await Promise.all([
+    transaction.objectStore(STUDY_STORES.cards).put({id: card.id, state: card.state} satisfies StoredCard),
+    transaction.objectStore(STUDY_STORES.log).put(entry),
+    putEvents(transaction, events),
+    transaction.done,
+  ]);
 }

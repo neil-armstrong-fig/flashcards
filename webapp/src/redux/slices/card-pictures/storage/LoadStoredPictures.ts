@@ -1,7 +1,6 @@
 import {openPictureDatabase} from "@src/redux/slices/card-pictures/indexed-db/OpenPictureDatabase";
 import {PICTURE_STORE} from "@src/redux/slices/card-pictures/indexed-db/PictureStore";
 import {readStoredPicture} from "@src/redux/slices/card-pictures/stored-picture/ReadStoredPicture";
-import {requestResult} from "@src/redux/shared/indexed-db/RequestResult";
 import type {KeptPicture} from "@src/redux/slices/card-pictures/types/KeptPicture";
 
 /**
@@ -10,11 +9,7 @@ import type {KeptPicture} from "@src/redux/slices/card-pictures/types/KeptPictur
  */
 export async function loadStoredPictures(): Promise<Readonly<Record<string, KeptPicture>>> {
   const database = await openPictureDatabase();
-  const store = database.transaction(PICTURE_STORE, "readonly").objectStore(PICTURE_STORE);
-  const [keys, values] = await Promise.all([
-    requestResult<IDBValidKey[]>(store.getAllKeys()),
-    requestResult<unknown[]>(store.getAll()),
-  ]);
+  const [keys, values] = await Promise.all([database.getAllKeys(PICTURE_STORE), database.getAll(PICTURE_STORE)]);
   const pictures: Record<string, KeptPicture> = {};
 
   keys.forEach((key, index) => {

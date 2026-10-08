@@ -1,4 +1,4 @@
-/** What a note teaches: a word with a meaning in English, or a kana character with the sound it makes. */
-export const NOTE_KINDS = ["vocab", "kana"] as const;
+/** What a note teaches: a word with a meaning in English, a kana character with the sound it makes, a word whose spelling is not how it is said, or one of two words told apart by ear. */
+export const NOTE_KINDS = ["vocab", "kana", "pronunciation", "sounds-alike"] as const;
 
 export type NoteKind = (typeof NOTE_KINDS)[number];

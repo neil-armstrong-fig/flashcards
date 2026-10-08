@@ -1,21 +1,20 @@
+import {openDB} from "idb";
 import {PICTURE_STORE} from "@src/redux/slices/card-pictures/indexed-db/PictureStore";
+import type {IDBPDatabase} from "idb";
+import type {PictureDatabase} from "@src/redux/slices/card-pictures/indexed-db/types/PictureDatabase";
 
 const DATABASE_NAME = "flashcards-pictures";
 const DATABASE_VERSION = 1;
 
 /** Opened once, on first use, and kept for as long as the page lives. */
-let database: Promise<IDBDatabase> | undefined;
+let database: Promise<IDBPDatabase<PictureDatabase>> | undefined;
 
 /** The pictures' own IndexedDB database, so the study database's version and upgrade are left alone. */
-export function openPictureDatabase(): Promise<IDBDatabase> {
-  database ??= new Promise((resolve, reject) => {
-    const request = indexedDB.open(DATABASE_NAME, DATABASE_VERSION);
-
-    request.onupgradeneeded = (): void => {
-      request.result.createObjectStore(PICTURE_STORE);
-    };
-    request.onsuccess = (): void => resolve(request.result);
-    request.onerror = (): void => reject(request.error);
+export function openPictureDatabase(): Promise<IDBPDatabase<PictureDatabase>> {
+  database ??= openDB<PictureDatabase>(DATABASE_NAME, DATABASE_VERSION, {
+    upgrade(upgrading): void {
+      upgrading.createObjectStore(PICTURE_STORE);
+    },
   });
 
   return database;

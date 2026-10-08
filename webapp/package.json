@@ -23,6 +23,7 @@
     "@flashcards/shared": "workspace:*",
     "@reduxjs/toolkit": "catalog:",
     "clsx": "catalog:",
+    "idb": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-redux": "catalog:",

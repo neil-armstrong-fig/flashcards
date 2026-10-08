@@ -85,3 +85,25 @@ it("needs four recordings of a kana in the Japanese voices, and none for its Lat
   });
   expect(jobs.find(job => job.variant === "male-normal")).toMatchObject({voiceName: "ja-JP-NaokiNeural"});
 });
+
+it("needs four recordings of a pronunciation's spelling, and none for the way it is said", () => {
+  const pronunciation: Deck = {
+    id: "ko-test",
+    name: "Pronunciation",
+    language: "ko",
+    notes: [
+      {
+        id: "ko-pronunciation-jota",
+        kind: "pronunciation",
+        language: "ko",
+        word: "좋다",
+        meaning: "조타",
+        romanisation: "jota",
+      },
+    ],
+  };
+  const jobs = recordingsNeeded([pronunciation]);
+
+  expect(jobs).toHaveLength(4);
+  expect(jobs.every(job => job.language === "ko" && job.text === "좋다")).toBe(true);
+});

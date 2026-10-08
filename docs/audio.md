@@ -93,3 +93,26 @@ A recording is identified by its text, voice (`female` or `male`) and speed (`no
 The app stays on GitHub Pages. A Worker is the API in front of Azure, so the key is never in the browser, and it checks the allowed
 origin (`ALLOWED_ORIGINS`). The app never depends on the Worker to play a card it has already kept, and acceptance specs fake the
 Worker.
+
+## The two Anki pronunciation packages (provenance and a listening test)
+
+`private-source/Korean Pronunciation trainer.apkg` (37 notes) and `Korean Pronunciation gotchas.apkg` (60 notes) are minimal
+pairs and sound-alike words. Unpacked (not committed) with `private-source/scripts/extract-apkg-media.mjs` and
+`inspect-apkg.mjs` into `private-source/anki-inspect/`; the package audio is 76 files (trainer) and 60 (gotchas).
+
+- **Licence: none is recorded in either package.** The deck names (`Disabled::2 Korean::1 Pronunciation trainer`) and the notes carry
+  no author, source or licence field. The recordings are therefore all rights reserved until the original author is found; do
+  not ship them, and do not assume fair use for a public repository. Reusing only the *word lists* (a list of words is not a
+  recording, and the minimal pairs are linguistic facts) is much safer, and generating our own audio makes the question go away.
+- **The listening test is ready, not judged.** `private-source/scripts/compare-anki-tts.mjs` generated every word with Azure in
+  two Korean voices (JiMin, BongJin: 76 + 60 words each, 272 files) beside the package's file. Open
+  `private-source/audio-comparison/anki/index.html` and play package, jimin and bongjin side by side. **I cannot listen, so
+  whether the pronunciations match, and whether the Azure voice keeps the tense and aspirated distinction (ㅂ ㅃ ㅍ, ㄷ ㄸ ㅌ)
+  in the pairs, is for you to judge.** Those pairs are the point: a voice that blurs 불/풀 or 방/빵 is no use for a pronunciation deck.
+- **Decided 2026-10-08 (the developer, after listening): use the generated audio.** It is clearer than the package's. The package audio is
+  not used or shipped. The Korean pronunciation deck (`content/src/korean/pronunciation/`) is built from our own list of words by the
+  sound rules, with our own explanations and pronunciations, not from the gotchas package's words or notes, because the package has no
+  licence (`content/AGENTS.md`: nothing is pasted from a source whose licence is unknown). Its card: the spelling with no audio; then the
+  spelling, the sound in hangul, the romanisation, the rule, and the word spoken. The trainer package's minimal pairs (바르다/빠르다,
+  방/빵) are the job of `soundSimilars` and are not in this deck; say if they should be added to the starter words as similars.
+- If Azure fails on a pair, the fallback is the SSML `<phoneme>` or a different voice per pair, not the package audio.
