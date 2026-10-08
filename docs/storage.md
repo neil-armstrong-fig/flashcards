@@ -32,6 +32,8 @@ Tests: `fake-indexeddb` (Apache-2.0, 6.x) would let the real IndexedDB code run 
 stand-ins (`MemoryStudyStorage`, `MemoryCardPictures`) could go and the real module be tested instead. Check whether that is a
 win before removing them: the stand-ins also serve the acceptance-free unit tests of thunks.
 
+Every `index-db/` module now has a real test beside it (study, pictures, sync events, sync records); the stand-ins stay for the thunk tests.
+
 `fake-indexeddb` 6.2.5 is added (a dev dependency of `webapp`, approved). `idb` is pinned at **8.0.3**, not
 the newest 8.0.4, which was published on 2026-10-06 and so falls inside the seven-day window.
 

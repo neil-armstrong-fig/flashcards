@@ -73,9 +73,9 @@ using real account data.
 - [ ] Sync is built, deployed and tried on two devices (`docs/sync.md`). Left: delete my data and JSON export. **Do before the app is
   opened to anyone beyond the sole OAuth test user.**
 
-- [~] Storage (`docs/storage.md`): `idb` adopted, and IndexedDB and localStorage moved out of `redux/` into `webapp/src/storage/`.
-  `fake-indexeddb` is in: the database upgrades, clearing and a record-then-load round trip run against it. Open: more of the real
-  `storage/index-db/` modules (pictures, sync events and records) are still tested only through the in-memory stand-ins.
+- [x] Storage (`docs/storage.md`): `idb` adopted, and IndexedDB and localStorage moved out of `redux/` into `webapp/src/storage/`.
+  Every `storage/index-db/` module (study, pictures, sync events and records) now has a test beside it against `fake-indexeddb`,
+  mutation-checked. The in-memory stand-ins stay for the thunk unit tests.
 - [ ] Open content (`docs/open-content.md`, needs a decision on CC BY-SA): Tatoeba import tool, Dutch reading deck by spelling pattern
   (needs Dutch voices first), textbook-friendly learner cards for Korean and Dutch sentences.
 - [x] Anki pronunciation packages (`docs/audio.md`): Azure chosen over the package audio (no licence); Korean pronunciation deck built from our own words.
