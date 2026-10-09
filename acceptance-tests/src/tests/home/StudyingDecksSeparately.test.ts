@@ -18,11 +18,8 @@ given("the learner starts a session on the hiragana deck", () => {
     expect(await webApp.review.getCardsRemaining()).toBe(20);
   });
 
-  then("the kana is spoken in the Japanese voice, and only the kana", async ({webApp}) => {
-    const recordings = await webApp.review.sound.getRecordingsPlayed();
-
-    expect(recordings).toHaveLength(1);
-    expect(recordings[0]).toMatchObject({language: "ja", voice: "male", speed: "normal", found: true});
+  then("the kana is not spoken until the answer is shown", async ({webApp}) => {
+    expect(await webApp.review.sound.getRecordingsPlayed()).toHaveLength(0);
   });
 
   when("they show the answer", () => {
@@ -32,6 +29,13 @@ given("the learner starts a session on the hiragana deck", () => {
 
     then("it is the sound alone, with no empty brackets for a romanisation a kana does not have", async ({webApp}) => {
       expect(await webApp.review.getBackText()).toBe("a");
+    });
+
+    then("the kana is spoken in the Japanese voice, and only the kana", async ({webApp}) => {
+      const recordings = await webApp.review.sound.getRecordingsPlayed();
+
+      expect(recordings).toHaveLength(1);
+      expect(recordings[0]).toMatchObject({language: "ja", voice: "male", speed: "normal", found: true});
     });
   });
 });

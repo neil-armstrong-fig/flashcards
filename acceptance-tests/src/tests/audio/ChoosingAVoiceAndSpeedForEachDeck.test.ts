@@ -22,6 +22,7 @@ given("the learner opens the settings", () => {
     when("they review the hiragana deck", () => {
       beforeEach(async ({webApp}) => {
         await webApp.home.startReviewing("ja-hiragana");
+        await webApp.review.showAnswer();
       });
 
       then("it is spoken by the female voice, slower", async ({webApp}) => {
@@ -35,6 +36,7 @@ given("the learner opens the settings", () => {
       beforeEach(async ({webApp}) => {
         await webApp.reload();
         await webApp.home.startReviewing("ja-hiragana");
+        await webApp.review.showAnswer();
       });
 
       then("the choice was kept", async ({webApp}) => {
@@ -84,6 +86,7 @@ given("the learner is reviewing the starter deck and switches to the female voic
     beforeEach(async ({webApp}) => {
       await webApp.review.leaveSession();
       await webApp.home.startReviewing("ja-hiragana");
+      await webApp.review.showAnswer();
     });
 
     then("that deck is still the male voice", async ({webApp}) => {

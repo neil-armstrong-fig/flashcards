@@ -19,7 +19,7 @@ src/audio/     AudioRecordings (the manifest as typed data), recordings.json. Re
 src/CardDirection.ts   the two directions a card asks
 ```
 
-**A `kana` note** (`VocabNote.kind`) is a character and its sound: the sound in `meaning` is shown, never spoken, so its cards have no audio on that side. Ids are `ja-hiragana-<romaji>` and `ja-katakana-<romaji>` whichever deck the note is in, so moving a note between decks keeps a learner's progress.
+**A `kana` note** (`VocabNote.kind`) is a character and its sound: the sound in `meaning` is shown, never spoken, so its cards have no audio on that side. A card is silent until its answer is shown, then the kana is spoken in Japanese; hearing it on the Japanese front would give the answer away. Ids are `ja-hiragana-<romaji>` and `ja-katakana-<romaji>` whichever deck the note is in, so moving a note between decks keeps a learner's progress.
 
 **A `pronunciation` note** is a word read aloud from its spelling (좋다 is said 조타). It has **one card only** (`directionsOfNote`), by the
 developer's design: the front is the spelling with no audio, so the learner reads it first; the answer shows the spelling, how it is
@@ -36,7 +36,7 @@ spoken (`meaningIsSpoken`). A note's id is its pair's written-out id and `-a` or
 explanations are ours, not the unlicensed Anki list's. The first note of every pair is introduced before any pair's second note, so the
 two answers are kept apart.
 
-**A `sheet-music` note** is one natural pitch drawn on a staff (`VocabNote.notation`: a clef and a pitch such as `C4`). `word` is the pitch's name and is what is played, so `language` is `music` (a `Subject`, beside the languages taught) and the audio manifest holds its tones under `music`. One card (`directionsOfNote`): the front has no text and shows the staff (`DeckCard.notation`), the answer shows the name and plays the note; there is no English (`meaningIsSpoken`). Ids are `music-<clef>-<pitch>` (`music-treble-c4`), so middle C has a card on each staff. The tones are generated, not spoken (`docs/audio.md`). The deck sets `Deck.offersVoiceAndSpeed: false`, which removes the voice and speed choices from its settings, its review screen and its browse list; any deck can do the same.
+**A `sheet-music` note** is one natural pitch drawn on a staff (`VocabNote.notation`: a clef and a pitch such as `C4`). `word` is the pitch's name and is what is played, so `language` is `music` (a `Subject`, beside the languages taught) and the audio manifest holds its tones under `music`. One card (`directionsOfNote`): the front has no text and shows the staff (`DeckCard.notation`), the answer shows the name and plays the note; there is no English (`meaningIsSpoken`). The two clefs and distant pitches are mixed. Active ids are `music-<clef>-<pitch>-v2` (`music-treble-c4-v2`), so middle C has a card on each staff; the original ascending deck's ids are kept in `Deck.retiredNoteIds` after its requested progress reset. The tones are generated, not spoken (`docs/audio.md`). The deck sets `Deck.offersVoiceAndSpeed: false`, which removes the voice and speed choices from its settings, its review screen and its browse list; any deck can do the same.
 
 **A note is not a card.** A word is stored once, as a `VocabNote`, and studied as **two cards: target language to English
 (reading it) and English to target language (saying it).** Every note type that follows (sentences, grammar, kana) generates
@@ -45,7 +45,9 @@ word's two cards are never next to each other and seeing one is not the answer t
 
 - **Ids are for ever.** Learner progress is stored by card id, so a deck update may add notes and cards but must never
   change, reuse or remove an id that has shipped. A note's id is `<language>-<kind>-<slug>` (`ko-vocab-water`), and a card's id
-  is the note's and its direction (`ko-vocab-water/to-english`), so the note's id must never change either.
+  is the note's and its direction (`ko-vocab-water/to-english`), so the note's id must never change either. An explicitly requested
+  progress reset gives the replacement a new id and retains the old one in `Deck.retiredNoteIds`, so its history still belongs to
+  the right deck.
 - **Deck order is the order new cards are introduced in.**
 - **Every deck has a test** that note ids and card ids are unique and well formed.
 - **Provenance goes in `REFERENCES.md` in the same change.** Anything copied or adapted from a dataset, word list or recording

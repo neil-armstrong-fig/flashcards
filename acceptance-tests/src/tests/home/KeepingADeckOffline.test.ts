@@ -61,6 +61,7 @@ given("the learner has not kept anything offline", () => {
 given("the learner studies a card without keeping anything offline", () => {
   beforeEach(async ({webApp}) => {
     await webApp.home.startReviewing("ja-hiragana");
+    await webApp.review.showAnswer();
   });
 
   then("the recordings they hear are kept as they are played, which is the default", async ({webApp}) => {

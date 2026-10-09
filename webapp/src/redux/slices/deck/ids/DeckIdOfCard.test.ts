@@ -12,3 +12,7 @@ it.each([
 it("puts a card the learner made in the Korean starter deck", () => {
   expect(deckIdOfCard("ko-custom-1b4e/to-english")).toBe("ko-starter");
 });
+
+it("keeps retired sheet music card history with the sheet music deck after its progress reset", () => {
+  expect(deckIdOfCard("music-treble-c4/to-english")).toBe("music-notes");
+});

@@ -49,6 +49,32 @@ export function cardOfNote(note: VocabNote, direction: CardDirection): DeckCard 
     };
   }
 
+  if (note.kind === "kana") {
+    if (direction === "to-english") {
+      return {
+        id: `${note.id}/${direction}`,
+        noteId: note.id,
+        direction,
+        front: note.word,
+        back: note.meaning,
+        frontAudio: undefined,
+        backAudio: target,
+        hint: note.romanisation,
+      };
+    }
+
+    return {
+      id: `${note.id}/${direction}`,
+      noteId: note.id,
+      direction,
+      front: note.meaning,
+      back: note.word,
+      frontAudio: undefined,
+      backAudio: target,
+      hint: note.romanisation,
+    };
+  }
+
   const toEnglish = direction === "to-english";
   const english: SpokenText | undefined = meaningIsSpoken(note) ? {language: "en", text: note.meaning} : undefined;
 

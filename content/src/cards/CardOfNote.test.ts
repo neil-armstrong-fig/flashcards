@@ -41,8 +41,13 @@ it("speaks the English when the card comes up, and the Korean word when the answ
 
 const KA: VocabNote = {id: "ja-hiragana-ka", kind: "kana", language: "ja", word: "か", meaning: "ka", romanisation: ""};
 
-it("speaks only the kana, in Japanese, and never the Latin letters of its sound", () => {
-  expect(cardOfNote(KA, "to-english")).toMatchObject({frontAudio: {language: "ja", text: "か"}, backAudio: undefined});
+it("waits for the answer before speaking a kana in Japanese, and never speaks its Latin letters", () => {
+  expect(cardOfNote(KA, "to-english")).toMatchObject({
+    front: "か",
+    back: "ka",
+    frontAudio: undefined,
+    backAudio: {language: "ja", text: "か"},
+  });
   expect(cardOfNote(KA, "from-english")).toMatchObject({
     front: "ka",
     back: "か",
