@@ -46,6 +46,15 @@ export class SoundDsl {
     }
   }
 
+  /** Whether the side on screen offers a recording to play again. */
+  async canReplay(): Promise<boolean> {
+    try {
+      return await this.playwright.canReplay();
+    } catch (error) {
+      throw new DslError("Failed to tell whether the card can be replayed", error);
+    }
+  }
+
   /** Switches between the female and male voice, which speaks the word again so the two can be compared. */
   async switchVoice(): Promise<void> {
     try {

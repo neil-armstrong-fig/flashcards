@@ -26,6 +26,10 @@ export class HomePlaywright extends BaseComponent {
     };
   }
 
+  async deckHighlighted(deck: DeckId): Promise<boolean> {
+    return (await this.page.getByTestId(`deck-due-highlight-${deck}`).count()) > 0;
+  }
+
   async startReviewingOnly(deck: DeckId, focus: NarrowFocus): Promise<void> {
     await this.page.getByTestId(`study-only-${focus}-${deck}`).click();
     await this.page.getByTestId("review-screen").waitFor();

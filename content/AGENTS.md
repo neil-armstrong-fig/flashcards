@@ -23,8 +23,9 @@ src/CardDirection.ts   the two directions a card asks
 
 **A `pronunciation` note** is a word read aloud from its spelling (좋다 is said 조타). It has **one card only** (`directionsOfNote`), by the
 developer's design: the front is the spelling with no audio, so the learner reads it first; the answer shows the spelling, how it is
-said in hangul (`meaning`, shown as `[조타]`) and the romanisation, and speaks the word. There is nothing to say in English, so
-`meaningIsSpoken` is false for it and it has no English recording. Its ids are written out (`ko-pronunciation-jota`), never worked out from the word.
+said (`meaning`, shown as `[조타]`), its romanisation and its English `translation`, and speaks the word. The translation is not spoken,
+so `meaningIsSpoken` is false for it and it has no English recording. Its ids are written out (`ko-pronunciation-jota`), never worked
+out from the word.
 The words and the rule explanations are our own; the sounds follow the standard pronunciation rules (표준 발음법, `REFERENCES.md`).
 
 **A `sounds-alike` note** is one of two words that differ by a sound (바르다 and 빠르다). A pair is **two notes, so two cards**, by the
@@ -32,7 +33,8 @@ developer's design: both show the same text, `바르다/빠르다` (`meaning`, t
 The answer shows the text again with the word that was said in bold (`DeckCard.emphasis`, which is `word`), plays it again, and offers the other
 word as its sound similar (`soundSimilars`) to compare in the usual panel. One direction only (`directionsOfNote`), and the English is not
 spoken (`meaningIsSpoken`). A note's id is its pair's written-out id and `-a` or `-b` (`ko-sounds-alike-bareuda-ppareuda-a`). The pairs and their
-explanations are ours, not the unlicensed Anki list's.
+explanations are ours, not the unlicensed Anki list's. The first note of every pair is introduced before any pair's second note, so the
+two answers are kept apart.
 
 **A `sheet-music` note** is one natural pitch drawn on a staff (`VocabNote.notation`: a clef and a pitch such as `C4`). `word` is the pitch's name and is what is played, so `language` is `music` (a `Subject`, beside the languages taught) and the audio manifest holds its tones under `music`. One card (`directionsOfNote`): the front has no text and shows the staff (`DeckCard.notation`), the answer shows the name and plays the note; there is no English (`meaningIsSpoken`). Ids are `music-<clef>-<pitch>` (`music-treble-c4`), so middle C has a card on each staff. The tones are generated, not spoken (`docs/audio.md`). The deck sets `Deck.offersVoiceAndSpeed: false`, which removes the voice and speed choices from its settings, its review screen and its browse list; any deck can do the same.
 

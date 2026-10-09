@@ -60,15 +60,21 @@ it("makes a pronunciation card of the spelling, unspoken, then the way it is sai
       word: "좋다",
       meaning: "조타",
       romanisation: "jota",
+      translation: "to be good",
     },
     "to-english",
   );
 
-  expect(card).toMatchObject({front: "좋다", back: "[조타]", hint: "jota", backAudio: {language: "ko", text: "좋다"}});
+  expect(card).toMatchObject({
+    front: "좋다",
+    back: "[조타]",
+    hint: "jota; to be good",
+    backAudio: {language: "ko", text: "좋다"},
+  });
   expect(card.frontAudio).toBeUndefined();
 });
 
-it("shows a pronunciation note's English translation in place of a romanisation, when it has one", () => {
+it("shows a pronunciation note's English translation alone when it has no romanisation", () => {
   const card = cardOfNote(
     {
       id: "nl-pronunciation-bed",

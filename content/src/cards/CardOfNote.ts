@@ -17,7 +17,7 @@ export function cardOfNote(note: VocabNote, direction: CardDirection): DeckCard 
       back: `[${note.meaning}]`,
       frontAudio: undefined,
       backAudio: target,
-      hint: note.translation ?? note.romanisation,
+      hint: pronunciationHintOf(note),
     };
   }
 
@@ -62,4 +62,16 @@ export function cardOfNote(note: VocabNote, direction: CardDirection): DeckCard 
     backAudio: toEnglish ? english : target,
     hint: note.romanisation,
   };
+}
+
+function pronunciationHintOf(note: VocabNote): string {
+  if (note.translation === undefined) {
+    return note.romanisation;
+  }
+
+  if (note.romanisation === "") {
+    return note.translation;
+  }
+
+  return `${note.romanisation}; ${note.translation}`;
 }

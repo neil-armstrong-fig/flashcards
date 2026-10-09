@@ -80,8 +80,9 @@ Key design choices:
   struggling-card loop below. Suspend and bury are built. Undo of the last answer was built and then removed on purpose: the learner
   lives with the decision, which keeps the log and the schedule simple.
 - Look ahead at cards not yet due without changing their schedule, and study only the new or only the struggling ones.
-- Audio on card show, with replay, in both directions. Its colour wash is a per-device setting, initially on for touch-first devices
-  and off otherwise.
+- Audio on card show, with replay where that side has audio, in both directions. Its colour wash is a per-device setting, initially
+  on for touch-first devices and off otherwise.
+- The home screen picks out decks with cards due. Screen transitions use browser history, including leaving a review with Back.
 - Not planned: add-ons, a full deck-options screen, and statistics beyond what a learner needs to keep the habit.
 
 ### Struggling-card feedback loop

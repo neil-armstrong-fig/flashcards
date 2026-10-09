@@ -20,7 +20,9 @@ it("makes two cards of each pair, with their own ids", () => {
 });
 
 it("shows the same text on both cards of a pair, and says a different word on each", () => {
-  const [first, second] = cardsOfDeck(SOUNDS_ALIKE_DECK);
+  const cards = cardsOfDeck(SOUNDS_ALIKE_DECK);
+  const first = cards.find(card => card.noteId === "ko-sounds-alike-bareuda-ppareuda-a");
+  const second = cards.find(card => card.noteId === "ko-sounds-alike-bareuda-ppareuda-b");
 
   expect(first?.front).toBe("바르다/빠르다");
   expect(second?.front).toBe("바르다/빠르다");
@@ -28,6 +30,12 @@ it("shows the same text on both cards of a pair, and says a different word on ea
   expect(second?.frontAudio?.text).toBe("빠르다");
   expect(first?.emphasis).toBe("바르다");
   expect(second?.emphasis).toBe("빠르다");
+});
+
+it("keeps the two cards of each pair apart in the introduction order", () => {
+  const pairOnEachCard = cardsOfDeck(SOUNDS_ALIKE_DECK).map(card => card.back);
+
+  expect(pairOnEachCard.every((pair, index) => index === 0 || pair !== pairOnEachCard[index - 1])).toBe(true);
 });
 
 it("never pairs a word with itself, and explains every pair", () => {

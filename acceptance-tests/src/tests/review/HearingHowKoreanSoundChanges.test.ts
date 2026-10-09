@@ -13,6 +13,10 @@ given("the learner is reviewing the Korean pronunciation deck and the card for �
     expect(await webApp.review.sound.getRecordingsPlayed()).toHaveLength(0);
   });
 
+  then("there is no audio button for the silent side", async ({webApp}) => {
+    expect(await webApp.review.sound.canReplay()).toBe(false);
+  });
+
   then("the way it is said is not shown yet", async ({webApp}) => {
     expect(await webApp.review.isAnswerShown()).toBe(false);
     expect(await webApp.review.getExplanation()).toBe("");
@@ -23,10 +27,15 @@ given("the learner is reviewing the Korean pronunciation deck and the card for �
       await webApp.review.showAnswer();
     });
 
-    then("the spelling stays and the way it is said is written in hangul, with its romanisation", async ({webApp}) => {
+    then("the spelling stays and the answer gives its sound, romanisation and English meaning", async ({webApp}) => {
       expect(await webApp.review.getFrontText()).toBe("좋다");
       expect(await webApp.review.getBackText()).toContain("[조타]");
       expect(await webApp.review.getBackText()).toContain("jota");
+      expect(await webApp.review.getBackText()).toContain("to be good");
+    });
+
+    then("the audio button is shown for the spoken side", async ({webApp}) => {
+      expect(await webApp.review.sound.canReplay()).toBe(true);
     });
 
     then("the word is spoken, once", async ({webApp}) => {

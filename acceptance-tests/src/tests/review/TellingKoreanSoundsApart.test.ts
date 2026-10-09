@@ -66,50 +66,17 @@ given("the learner is reviewing the Korean sounds-alike deck and the first card 
   });
 });
 
-given(
-  "the learner is reviewing the Korean sounds-alike deck and the second card for 바르다 and 빠르다 comes up",
-  () => {
-    let firstFile: string | undefined;
+given("the learner has answered the first card in the Korean sounds-alike deck", () => {
+  beforeEach(async ({webApp}) => {
+    await webApp.home.startReviewing("ko-sounds-alike");
+    await webApp.review.showAnswer();
+    await webApp.review.rate("easy");
+  });
 
-    beforeEach(async ({webApp}) => {
-      await webApp.home.startReviewing("ko-sounds-alike");
-      firstFile = (await webApp.review.sound.getRecordingsPlayed())[0]?.file;
-      await webApp.review.showAnswer();
-      await webApp.review.rate("easy");
-    });
-
-    then("the same text is on the front, 바르다/빠르다", async ({webApp}) => {
-      expect(await webApp.review.getFrontText()).toBe("바르다/빠르다");
-    });
-
-    then("the other word is said this time", async ({webApp}) => {
-      const latest = (await webApp.review.sound.getRecordingsPlayed()).at(-1);
-
-      expect(latest?.file).toBeDefined();
-      expect(latest?.file).not.toBe(firstFile);
-    });
-
-    when("they show the answer", () => {
-      beforeEach(async ({webApp}) => {
-        await webApp.review.showAnswer();
-      });
-
-      then("the other word, 빠르다, is the one in bold", async ({webApp}) => {
-        expect(await webApp.review.getEmphasisedText()).toBe("빠르다");
-      });
-
-      when("they open the similar", () => {
-        beforeEach(async ({webApp}) => {
-          await webApp.review.similar.open();
-        });
-
-        then("the first word, 바르다, is there to compare", async ({webApp}) => {
-          expect(await webApp.review.similar.getWords()).toEqual(["바르다"]);
-        });
-      });
-    });
-  },
-);
+  then("a card from another pair comes next", async ({webApp}) => {
+    expect(await webApp.review.getFrontText()).toBe("물/불");
+  });
+});
 
 given("the learner opens the list of every card and chooses the Korean sounds-alike deck", () => {
   beforeEach(async ({webApp}) => {

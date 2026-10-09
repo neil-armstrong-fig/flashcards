@@ -14,7 +14,7 @@ export function SessionComplete(): React.JSX.Element {
 
   function seeStruggling(): void {
     dispatch(endSession());
-    void navigate(ROUTES.struggling);
+    void navigate(ROUTES.struggling, {replace: true});
   }
 
   return (

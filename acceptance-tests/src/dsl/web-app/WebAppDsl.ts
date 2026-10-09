@@ -174,6 +174,15 @@ export class WebAppDsl {
     }
   }
 
+  /** Uses the browser's own Back control. */
+  async goBack(): Promise<void> {
+    try {
+      await this.playwright.goBack();
+    } catch (error) {
+      throw new DslError("Failed to go back in the browser", error);
+    }
+  }
+
   /** Wipes what the app keeps in this browser, as a new device would have, and reopens it. What is kept online stays. */
   async forgetThisDevice(): Promise<void> {
     try {

@@ -87,6 +87,11 @@ given("the learner opens the settings", () => {
       expect(await webApp.home.getCardsDueToday()).toBe(0);
     });
 
+    then("the deck is no longer highlighted as due", async ({webApp}) => {
+      expect(await webApp.home.isDeckHighlighted("ko-starter")).toBe(false);
+      expect(await webApp.home.isDeckHighlighted("ja-hiragana")).toBe(true);
+    });
+
     when("they open the settings again", () => {
       beforeEach(async ({webApp}) => {
         await webApp.home.openSettings();

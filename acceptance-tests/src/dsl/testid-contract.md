@@ -13,6 +13,7 @@ or removing one means changing both sides in the same commit.
 | `open-struggling`                 | home screen                | Button: open the list of cards the learner keeps forgetting                                                                |
 | `struggling-count`                | home screen                | Inside `open-struggling`: how many cards are on the list                                                                   |
 | `deck-due-<deck id>`              | home screen, deck list     | Cards due today in that deck, within its own limits, digits only                                                           |
+| `deck-due-highlight-<deck id>`    | home screen, deck list     | Visible marker that this deck has cards due today                                                                          |
 | `deck-new-<deck id>`              | home screen, deck list     | Of those, how many are new cards, digits only                                                                              |
 | `deck-learning-<deck id>`         | home screen, deck list     | Of those, how many are being learned or relearned, digits only                                                             |
 | `deck-review-<deck id>`           | home screen, deck list     | Of those, how many are coming back for review, digits only                                                                 |

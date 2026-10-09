@@ -35,10 +35,15 @@ it("makes one card of each note, and gives it an id of its own", () => {
   expect(new Set(ids).size).toBe(ids.length);
 });
 
-it("shows the spelling unspoken, then the way it is said, with the word spoken", () => {
+it("shows the spelling unspoken, then the way it is said and its English meaning, with the word spoken", () => {
   const [card] = cardsOfDeck(PRONUNCIATION_DECK);
 
-  expect(card).toMatchObject({front: "좋다", back: "[조타]", hint: "jota", backAudio: {language: "ko", text: "좋다"}});
+  expect(card).toMatchObject({
+    front: "좋다",
+    back: "[조타]",
+    hint: "jota; to be good",
+    backAudio: {language: "ko", text: "좋다"},
+  });
   expect(card?.frontAudio).toBeUndefined();
 });
 
@@ -46,6 +51,10 @@ it("explains the rule on every note", () => {
   expect(PRONUNCIATION_DECK.notes.every(note => note.explanation !== undefined && note.explanation.length > 20)).toBe(
     true,
   );
+});
+
+it("gives every word an English meaning", () => {
+  expect(PRONUNCIATION_GROUPS.flatMap(group => group.words).every(({translation}) => translation !== "")).toBe(true);
 });
 
 it("says every word as the sound rules give it: what the spelling romanises to is what the pronunciation romanises to", () => {

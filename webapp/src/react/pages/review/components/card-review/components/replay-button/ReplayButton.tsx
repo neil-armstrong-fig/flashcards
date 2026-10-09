@@ -2,11 +2,18 @@ import {buzz} from "@src/haptics/Buzz";
 import {SpeakerIcon} from "@src/react/components/speaker-icon/SpeakerIcon";
 import {useAudioChoices} from "@src/react/audio/hooks/use-audio-choices/UseAudioChoices";
 import {useSpeakCard} from "@src/react/audio/hooks/use-speak-card/UseSpeakCard";
+import {selectSpokenOnScreen} from "@src/redux/slices/deck/selectors/SelectSpokenOnScreen";
+import {useAppSelector} from "@src/redux/shared/Hooks";
 
 /** Plays the card's recording again, for a word that was not heard clearly. */
-export function ReplayButton(): React.JSX.Element {
+export function ReplayButton(): React.JSX.Element | undefined {
   const choices = useAudioChoices();
   const speakCard = useSpeakCard();
+  const spoken = useAppSelector(selectSpokenOnScreen);
+
+  if (spoken === undefined) {
+    return undefined;
+  }
 
   return (
     <button

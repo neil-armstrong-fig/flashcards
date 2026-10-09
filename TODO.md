@@ -16,12 +16,14 @@ using real account data.
 
 **Works today:**
 
-- Nine decks (the sheet music deck: 30 natural notes, C4 to C6 on the treble staff and C2 to C4 on the bass, one card each; the staff is drawn on the front, then the name is shown and the note played, from a tone the audio tool generates, `docs/audio.md`; the Korean "sounds alike" deck: 13 pairs of words told apart by ear, two cards each, the same text on both and a different word said, the answer bolding the one said and offering the other to compare; the Korean pronunciation deck: 84 words that are not said as spelt, one card each, spelling unspoken, then the sound in hangul, the rule and the audio, `docs/audio.md`; Korean starter words; Japanese hiragana and katakana with the 71 basic and voiced kana; combined hiragana and combined
+- Nine decks (the sheet music deck: 30 natural notes, C4 to C6 on the treble staff and C2 to C4 on the bass, one card each; the staff is drawn on the front, then the name is shown and the note played, from a tone the audio tool generates, `docs/audio.md`; the Korean "sounds alike" deck: 13 pairs of words told apart by ear, two cards each, spread through the deck rather than introduced together, the same text on both and a different word said, the answer bolding the one said and offering the other to compare; the Korean pronunciation deck: 84 words that are not said as spelt, one card each, spelling unspoken, then the sound in hangul, romanisation, English meaning, rule and audio, `docs/audio.md`; Korean starter words; Japanese hiragana and katakana with the 71 basic and voiced kana; combined hiragana and combined
   katakana with 33 each; katakana for foreign sounds with 23), each studied both ways and each in its own session with its own limits,
   voice, speed and choice of hiding the word.
 - Review screen: a back button to leave early, tap anywhere but a button to hear the card, male/female (blue/pink, male first) and
   rabbit/turtle switches, the rarely used actions (picture, note, hard, bury, suspend, hide the word) in a "More" dialog, and the
-  similars buttons picked out when a word has a similar to hear.
+  similars buttons picked out when a word has a similar to hear. A side with no audio has no audio controls.
+- Home highlights every deck with cards due. Browser Back leaves a review session and returns home; review back and finish actions use
+  the same history rather than creating dead review entries.
 - Reviews per day are locked to ten for each new card (a deck can unlock them); with no new cards the reviews are left alone.
 - Review loop: four ratings, learning steps and learn-ahead, interval labels on the buttons, keyboard shortcuts, suspend and bury,
   look ahead, and studying only new or only struggling cards.

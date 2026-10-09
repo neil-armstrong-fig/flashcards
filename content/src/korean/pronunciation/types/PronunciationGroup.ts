@@ -6,6 +6,8 @@ export interface PronouncedWord {
   readonly said: string;
   /** The Revised Romanization of how it is said. */
   readonly romanisation: string;
+  /** What the word means in English, shown with the sound. */
+  readonly translation: string;
 }
 
 /** The words that change by one sound rule, and the rule in a sentence or two, shown with each answer. */

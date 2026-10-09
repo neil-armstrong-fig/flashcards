@@ -29,7 +29,8 @@ reads as CSS and is almost always wrong.
 ## Conventions
 
 - **Screens are routes.** `createAppRouter` maps `ROUTES` (a typed value, never a path written out) to pages inside `AppShell`, which lets
-  the learner in (sign-in gate) and takes them to `/review` when a session starts. A link is `<Link to={ROUTES.x}>` and keeps its `data-testid`.
+  the learner in (sign-in gate). The control that starts a session dispatches it and navigates to `/review`, so the screen is added to
+  browser history rather than inferred by the shell. A link is `<Link to={ROUTES.x}>` and keeps its `data-testid`.
   A session is not kept between visits, so `/review` with none goes home (the route's loader).
 - **Every component gets its own file in its own folder**, `components/<thing>/<Thing>.tsx`, however small and however few
   callers. This is the one place "declare functions below their callers" does not apply (that is for plain functions).

@@ -172,6 +172,11 @@ export class WebAppPlaywright extends BasePage {
     await this.page.getByTestId("app-ready").waitFor();
   }
 
+  async goBack(): Promise<void> {
+    await this.page.goBack();
+    await this.page.getByTestId("app-ready").waitFor();
+  }
+
   /** Wipes the small settings and word lists the app keeps in the browser, as a new device would have, then reopens the app. */
   async forgetThisDevice(): Promise<void> {
     await this.page.evaluate(() => localStorage.clear());

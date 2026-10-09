@@ -11,13 +11,14 @@ export const PRONUNCIATION_DECK: Deck = {
   name: "Korean pronunciation",
   language: "ko",
   notes: PRONUNCIATION_GROUPS.flatMap(group =>
-    group.words.map(({id, word, said, romanisation}) => ({
+    group.words.map(({id, word, said, romanisation, translation}) => ({
       id,
       kind: "pronunciation" as const,
       language: "ko" as const,
       word,
       meaning: said,
       romanisation,
+      translation,
       explanation: `${group.rule}: ${group.explanation}`,
     })),
   ),

@@ -42,6 +42,15 @@ export class HomeDsl {
     }
   }
 
+  /** Whether a deck is picked out as having cards waiting today. */
+  async isDeckHighlighted(deck: DeckId): Promise<boolean> {
+    try {
+      return await this.playwright.deckHighlighted(deck);
+    } catch (error) {
+      throw new DslError(`Failed to tell whether ${deck} is highlighted`, error);
+    }
+  }
+
   /** Starts studying only part of a deck's work for today: just its new cards, or just the cards the learner is struggling with. */
   async startReviewingOnly(deck: DeckId, focus: NarrowFocus): Promise<void> {
     try {

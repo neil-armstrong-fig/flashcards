@@ -57,6 +57,10 @@ export class SoundPlaywright extends BaseComponent {
     return await this.page.getByTestId("switch-speed").isVisible();
   }
 
+  async canReplay(): Promise<boolean> {
+    return (await this.page.getByTestId("replay-audio").count()) > 0;
+  }
+
   /** Taps the voice switch and waits until the word has been spoken again. */
   async switchVoice(): Promise<void> {
     await this.switchAndWaitForSound("switch-voice");
