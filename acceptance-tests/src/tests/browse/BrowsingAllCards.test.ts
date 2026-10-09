@@ -14,6 +14,7 @@ given("the learner opens the list of every card", () => {
 
   when("they search for an English meaning", () => {
     beforeEach(async ({webApp}) => {
+      await webApp.browse.chooseDeck("ko-starter");
       await webApp.browse.search("water");
     });
 
@@ -59,6 +60,7 @@ given("the learner opens the list of every card", () => {
 
   when("they play an English card", () => {
     beforeEach(async ({webApp}) => {
+      await webApp.browse.chooseDeck("ko-starter");
       await webApp.browse.play("water");
     });
 

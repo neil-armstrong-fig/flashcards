@@ -17,7 +17,7 @@ export function cardOfNote(note: VocabNote, direction: CardDirection): DeckCard 
       back: `[${note.meaning}]`,
       frontAudio: undefined,
       backAudio: target,
-      hint: note.romanisation,
+      hint: note.translation ?? note.romanisation,
     };
   }
 

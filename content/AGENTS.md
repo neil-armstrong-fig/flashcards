@@ -1,6 +1,6 @@
 # AGENTS.md: content
 
-The words to learn, as typed data, one folder per language (`korean/` now; `japanese/` and `dutch/` as their phases land), and
+The words to learn, as typed data, one folder per language (`korean/`, `japanese/` and `dutch/`), and
 the manifest of recordings made for them. Plain TypeScript and data, no behaviour beyond turning a note into cards: it may not
 import React or Redux, and it may import `@flashcards/shared` and nothing else in the workspace (lint enforces it). The
 webapp, the audio tool and later an API all sit above it.
@@ -12,6 +12,7 @@ It is compiled as raw source by whoever imports it, like `shared`, so one folder
 src/types/     Deck, VocabNote (a word and the facts about it), DeckCard (one question made from a note)
 src/cards/     CardOfNote, CardsOfNote and CardsOfDeck: how a note becomes cards, and the order a deck introduces them in
 src/korean/    StarterDeck.ts and its test; `pronunciation/` (PronunciationDeck: the sound-change deck, with `PronunciationGroups.ts` holding its words by rule); `sounds-alike/` (SoundsAlikeDeck: pairs of words told apart by ear, `SoundsAlikePairs.ts` holding the pairs, `notes/NotesOfSoundsAlikePair` making a pair's two notes)
+src/dutch/     StarterDeck.ts (100 everyday words, nouns without their article, no romanisation since Dutch is already Latin) and its test; `pronunciation/` (PronunciationDeck: words read from their spelling, `PronunciationGroups.ts` holding them by pattern, with a respelling for an English reader in `meaning`)
 src/japanese/  Kana (the table; `kana-table/` holds the basic, voiced, combined and core groups), the five kana decks (core hiragana and katakana of 71 each, combined of 33 each, and `KatakanaForeignDeck` of 23, whose notes keep the ids they had in the two-deck days) and their test, shape-similars/ (the katakana pairs commonly confused by shape, and `shapeSimilarsOf`)
 src/decks/     ShippedDecks: every deck the app ships, in introduction order (the app and the audio tool both read it)
 src/audio/     AudioRecordings (the manifest as typed data), recordings.json. Reading the manifest (which file a text, voice and speed names) is the webapp's (`webapp/src/audio/audio-file/AudioFileOf`)

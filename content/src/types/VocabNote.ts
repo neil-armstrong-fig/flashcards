@@ -15,6 +15,8 @@ export interface VocabNote {
   readonly word: string;
   readonly meaning: string;
   readonly romanisation: string;
+  /** What a Dutch `pronunciation` note means in English, shown beside how it sounds. Written, never spoken: the card says the Dutch word only. */
+  readonly translation?: string;
   /** Words it is easily mistaken for by ear (물 and 불), to hear beside it. Recorded ahead like the word itself; the learner adds more. */
   readonly soundSimilars?: readonly string[];
   /** Characters easily taken for this one by their shape (シ and ツ), shown once the answer is. Only a kana note has them, and they are not spoken. */

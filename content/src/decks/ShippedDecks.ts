@@ -1,3 +1,5 @@
+import {PRONUNCIATION_DECK as DUTCH_PRONUNCIATION_DECK} from "@flashcards/content/dutch/pronunciation/PronunciationDeck";
+import {STARTER_DECK as DUTCH_STARTER_DECK} from "@flashcards/content/dutch/StarterDeck";
 import {HIRAGANA_COMBINED_DECK} from "@flashcards/content/japanese/HiraganaCombinedDeck";
 import {HIRAGANA_DECK} from "@flashcards/content/japanese/HiraganaDeck";
 import {KATAKANA_COMBINED_DECK} from "@flashcards/content/japanese/KatakanaCombinedDeck";
@@ -17,6 +19,8 @@ export const SHIPPED_DECKS: readonly Deck[] = [
   STARTER_DECK,
   PRONUNCIATION_DECK,
   SOUNDS_ALIKE_DECK,
+  DUTCH_STARTER_DECK,
+  DUTCH_PRONUNCIATION_DECK,
   HIRAGANA_DECK,
   HIRAGANA_COMBINED_DECK,
   KATAKANA_DECK,

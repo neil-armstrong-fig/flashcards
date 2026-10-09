@@ -45,6 +45,7 @@ given("the learner opens the similars of 물 from the list of every card", () =>
 
     when("they open the similars on the English card of the same word", () => {
       beforeEach(async ({webApp}) => {
+        await webApp.browse.chooseDeck("ko-starter");
         await webApp.browse.openSimilars("water");
       });
 

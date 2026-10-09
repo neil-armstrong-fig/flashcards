@@ -74,7 +74,7 @@ using real account data.
       Every `storage/index-db/` module (study, pictures, sync events and records) now has a test beside it against `fake-indexeddb`,
       mutation-checked. The in-memory stand-ins stay for the thunk unit tests.
 - [ ] Open content (`docs/open-content.md`, needs a decision on CC BY-SA): Tatoeba import tool, Dutch reading deck by spelling pattern
-      (needs Dutch voices first), textbook-friendly learner cards for Korean and Dutch sentences.
+      (built: `content/src/dutch/pronunciation/`), textbook-friendly learner cards for Korean and Dutch sentences.
 - [x] Anki pronunciation packages (`docs/audio.md`): Azure chosen over the package audio (no licence); Korean pronunciation deck built from our own words.
 - [x] Pronunciation and "sounds alike" decks: a native reader to check the 84 words, the 13 pairs and their explanations; more pairs (the Anki list is unlicensed, so ours); whether the pairs should also be similars of the starter words.
 - [ ] Grammar cards from sentences: the `grammar-check` skill proposes grammar cards with explainers (to `private-source/grammar/`); still to build: the grammar note type to import them into, and the in-app version (an API route with a spend guard).
@@ -82,7 +82,8 @@ using real account data.
 - [ ] Sentence, grammar and cloze note types and their decks, from the learner's own writing; cloze rendering. Naver dictionary links
       need a licence and terms check first.
 - [ ] Very basic Japanese sentences with a furigana or romaji toggle. Find out best modern romisation similar to Korean choice
-- [ ] Dutch content and voices (`AzureVoices` joins `Language` when Dutch does).
+- [x] Dutch content and voices: `nl` joined `Language` and `AzureVoices` (Fenna and Maarten); a 100-word starter deck and a 91-word pronunciation deck (respellings for an English reader).
+- [ ] Dutch follow-ups: a Dutch reader to check the respellings and the starter words; learner-made Dutch cards, similars and the speech API (still Korean-only); more words.
 - [ ] Romanisation: audit every `romanisation` in `content/` against the Revised Romanization as decks grow.
 - [ ] Image resizing in the Worker.
 - [ ] Sound similars for the extended katakana; the learner to listen to the dakuten, combined and extended kana recordings.

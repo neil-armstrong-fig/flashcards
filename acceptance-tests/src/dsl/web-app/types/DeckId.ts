@@ -3,6 +3,8 @@ export const DECK_IDS = [
   "ko-starter",
   "ko-pronunciation",
   "ko-sounds-alike",
+  "nl-starter",
+  "nl-pronunciation",
   "ja-hiragana",
   "ja-hiragana-combined",
   "ja-katakana",

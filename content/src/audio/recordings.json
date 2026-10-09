@@ -727,6 +727,1229 @@
     },
     "Korea": {
       "female-normal": "en/female-normal/3b25f84597632fb8.mp3"
+    },
+    "house": {
+      "female-normal": "en/female-normal/181ebd7dcedb119a.mp3"
+    },
+    "man": {
+      "female-normal": "en/female-normal/caf11058597d1e55.mp3"
+    },
+    "woman": {
+      "female-normal": "en/female-normal/b60bced4ea0738b1.mp3"
+    },
+    "child": {
+      "female-normal": "en/female-normal/b2df5a3f4941383a.mp3"
+    },
+    "name": {
+      "female-normal": "en/female-normal/1c420e80bdbeb156.mp3"
+    },
+    "day": {
+      "female-normal": "en/female-normal/1b38d5693c6f732b.mp3"
+    },
+    "night": {
+      "female-normal": "en/female-normal/97f81d2e2207a1dd.mp3"
+    },
+    "week": {
+      "female-normal": "en/female-normal/7cab9edaee09667c.mp3"
+    },
+    "year": {
+      "female-normal": "en/female-normal/e3a13abf87314208.mp3"
+    },
+    "morning": {
+      "female-normal": "en/female-normal/7f36f2e260419124.mp3"
+    },
+    "evening": {
+      "female-normal": "en/female-normal/0bb0431ba2d897b3.mp3"
+    },
+    "city": {
+      "female-normal": "en/female-normal/664cef294f0ee1f7.mp3"
+    },
+    "street": {
+      "female-normal": "en/female-normal/65e7883b9706b66d.mp3"
+    },
+    "car": {
+      "female-normal": "en/female-normal/e762c81f35d1fd44.mp3"
+    },
+    "bicycle": {
+      "female-normal": "en/female-normal/2af4c7345707db6d.mp3"
+    },
+    "train": {
+      "female-normal": "en/female-normal/073720e4067c4c9f.mp3"
+    },
+    "bus": {
+      "female-normal": "en/female-normal/86ee082dd0d32f92.mp3"
+    },
+    "shop": {
+      "female-normal": "en/female-normal/387c738a30c53e9e.mp3"
+    },
+    "work": {
+      "female-normal": "en/female-normal/511dfc7b78464d27.mp3"
+    },
+    "money": {
+      "female-normal": "en/female-normal/c56b411e2c44d93e.mp3"
+    },
+    "food": {
+      "female-normal": "en/female-normal/7449ff89792dfb31.mp3"
+    },
+    "bread": {
+      "female-normal": "en/female-normal/aec3d3093312fc56.mp3"
+    },
+    "cheese": {
+      "female-normal": "en/female-normal/03e79b7ef931f8ab.mp3"
+    },
+    "milk": {
+      "female-normal": "en/female-normal/d9a100a317d2dac3.mp3"
+    },
+    "coffee": {
+      "female-normal": "en/female-normal/379c74bc83b45afa.mp3"
+    },
+    "tea": {
+      "female-normal": "en/female-normal/e15aadbcc28cfec3.mp3"
+    },
+    "apple": {
+      "female-normal": "en/female-normal/6e25077fd67745ba.mp3"
+    },
+    "egg": {
+      "female-normal": "en/female-normal/63402e9a07547fd3.mp3"
+    },
+    "fish": {
+      "female-normal": "en/female-normal/6ac32614036a7ec3.mp3"
+    },
+    "meat": {
+      "female-normal": "en/female-normal/1adf203142566f3b.mp3"
+    },
+    "table": {
+      "female-normal": "en/female-normal/dc10ffae2a23b115.mp3"
+    },
+    "chair": {
+      "female-normal": "en/female-normal/e17dc05b491412ba.mp3"
+    },
+    "door": {
+      "female-normal": "en/female-normal/2bb58b528905974a.mp3"
+    },
+    "window": {
+      "female-normal": "en/female-normal/17acaade6300202f.mp3"
+    },
+    "room": {
+      "female-normal": "en/female-normal/6c4af60ebd39656a.mp3"
+    },
+    "kitchen": {
+      "female-normal": "en/female-normal/1210faa3bcb4ab29.mp3"
+    },
+    "bed": {
+      "female-normal": "en/female-normal/cd008d74030ef11b.mp3"
+    },
+    "hand": {
+      "female-normal": "en/female-normal/b7ebd00dd6727d27.mp3"
+    },
+    "head": {
+      "female-normal": "en/female-normal/1ba77040c4f2509a.mp3"
+    },
+    "eye": {
+      "female-normal": "en/female-normal/c07ca75aa4b2e5f6.mp3"
+    },
+    "heart": {
+      "female-normal": "en/female-normal/12f5e6ba4590c490.mp3"
+    },
+    "mother": {
+      "female-normal": "en/female-normal/6812adf2df7707ec.mp3"
+    },
+    "father": {
+      "female-normal": "en/female-normal/2b33878eb5b72977.mp3"
+    },
+    "brother": {
+      "female-normal": "en/female-normal/5b28b9b3a6cfeb8c.mp3"
+    },
+    "sister": {
+      "female-normal": "en/female-normal/54baa0912073a060.mp3"
+    },
+    "dog": {
+      "female-normal": "en/female-normal/9fa1893d6c8ba1fe.mp3"
+    },
+    "cat": {
+      "female-normal": "en/female-normal/ff4cba18543e0e2c.mp3"
+    },
+    "sun": {
+      "female-normal": "en/female-normal/385816c87653bb4e.mp3"
+    },
+    "rain": {
+      "female-normal": "en/female-normal/02aec51b2a003d62.mp3"
+    },
+    "sea": {
+      "female-normal": "en/female-normal/cd0a4cfc38781e54.mp3"
+    },
+    "tree": {
+      "female-normal": "en/female-normal/1bedd08e23e3d63d.mp3"
+    },
+    "flower": {
+      "female-normal": "en/female-normal/29bef2a23ffd5714.mp3"
+    },
+    "to be": {
+      "female-normal": "en/female-normal/58bccbd6a92d2cdb.mp3"
+    },
+    "to have": {
+      "female-normal": "en/female-normal/7de391c7072404e2.mp3"
+    },
+    "to go": {
+      "female-normal": "en/female-normal/63e8ced919ee77ec.mp3"
+    },
+    "to come": {
+      "female-normal": "en/female-normal/27396d98d397cef2.mp3"
+    },
+    "to do, to make": {
+      "female-normal": "en/female-normal/4e3d42d66adab276.mp3"
+    },
+    "to see": {
+      "female-normal": "en/female-normal/df19aeb968b8347c.mp3"
+    },
+    "to hear": {
+      "female-normal": "en/female-normal/7079129355b130c3.mp3"
+    },
+    "to speak": {
+      "female-normal": "en/female-normal/bc557babc921c1e0.mp3"
+    },
+    "to eat": {
+      "female-normal": "en/female-normal/482797b585254331.mp3"
+    },
+    "to drink": {
+      "female-normal": "en/female-normal/a6d464b86d5545e6.mp3"
+    },
+    "to sleep": {
+      "female-normal": "en/female-normal/8e74301f8e368544.mp3"
+    },
+    "to read": {
+      "female-normal": "en/female-normal/801245182ab56149.mp3"
+    },
+    "to write": {
+      "female-normal": "en/female-normal/ffaa250f23176a52.mp3"
+    },
+    "to want": {
+      "female-normal": "en/female-normal/36c38dc0b6874cf1.mp3"
+    },
+    "to know (a fact)": {
+      "female-normal": "en/female-normal/e407515f7f2fdcc3.mp3"
+    },
+    "to live (in a place)": {
+      "female-normal": "en/female-normal/0a80376fc0529fe0.mp3"
+    },
+    "to buy": {
+      "female-normal": "en/female-normal/ad3fa2052462bc73.mp3"
+    },
+    "to give": {
+      "female-normal": "en/female-normal/ac27f704b053e530.mp3"
+    },
+    "to take": {
+      "female-normal": "en/female-normal/b2a281d77d97e71d.mp3"
+    },
+    "to learn": {
+      "female-normal": "en/female-normal/d9d94e91e022f197.mp3"
+    },
+    "big": {
+      "female-normal": "en/female-normal/93b9eb7bd59ff0c6.mp3"
+    },
+    "small": {
+      "female-normal": "en/female-normal/d5de550749526dae.mp3"
+    },
+    "good": {
+      "female-normal": "en/female-normal/cef6598628138a40.mp3"
+    },
+    "bad": {
+      "female-normal": "en/female-normal/347618be1a1e0388.mp3"
+    },
+    "new": {
+      "female-normal": "en/female-normal/d19f4067322d86cc.mp3"
+    },
+    "old": {
+      "female-normal": "en/female-normal/fb1583f104d578af.mp3"
+    },
+    "beautiful": {
+      "female-normal": "en/female-normal/0a1dbec17649c469.mp3"
+    },
+    "cold": {
+      "female-normal": "en/female-normal/67cc4e14c880054a.mp3"
+    },
+    "warm": {
+      "female-normal": "en/female-normal/63aa1e9f8e736dd4.mp3"
+    },
+    "expensive": {
+      "female-normal": "en/female-normal/7f5b75b7660a6c46.mp3"
+    },
+    "hello": {
+      "female-normal": "en/female-normal/e004e2f7d0b6ca7a.mp3"
+    },
+    "bye": {
+      "female-normal": "en/female-normal/1b06efc34de78134.mp3"
+    },
+    "please, here you are": {
+      "female-normal": "en/female-normal/fc911d66a7eb6d1a.mp3"
+    },
+    "thank you": {
+      "female-normal": "en/female-normal/5c833458211ce34d.mp3"
+    },
+    "yes": {
+      "female-normal": "en/female-normal/1b5a6ad950d07542.mp3"
+    },
+    "no": {
+      "female-normal": "en/female-normal/3d892621d7acfb30.mp3"
+    },
+    "today": {
+      "female-normal": "en/female-normal/641b4d05e198aee9.mp3"
+    },
+    "tomorrow": {
+      "female-normal": "en/female-normal/b8c45de3d22c59f7.mp3"
+    },
+    "here": {
+      "female-normal": "en/female-normal/d9c5ecb7c4579ef1.mp3"
+    },
+    "very": {
+      "female-normal": "en/female-normal/613b9ef7ed5db8b5.mp3"
+    },
+    "also, too": {
+      "female-normal": "en/female-normal/e6eafa91fa36970e.mp3"
+    }
+  },
+  "nl": {
+    "water": {
+      "male-normal": "nl/male-normal/8491cf106186d691.mp3",
+      "male-slower": "nl/male-slower/8aa295bf4645d252.mp3",
+      "female-normal": "nl/female-normal/00758a83de421bc6.mp3",
+      "female-slower": "nl/female-slower/22282fbc9fccee59.mp3"
+    },
+    "huis": {
+      "male-normal": "nl/male-normal/71817eb0e1c8d647.mp3",
+      "male-slower": "nl/male-slower/31dc5a239d772d10.mp3",
+      "female-normal": "nl/female-normal/9a130bb9d2e8c0d2.mp3",
+      "female-slower": "nl/female-slower/db71c5f28c9e0585.mp3"
+    },
+    "school": {
+      "male-normal": "nl/male-normal/df0217294e3bc55f.mp3",
+      "male-slower": "nl/male-slower/29c9aea89ec782b8.mp3",
+      "female-normal": "nl/female-normal/e9b6ea96f6f73e38.mp3",
+      "female-slower": "nl/female-slower/11c51867fb625e3d.mp3"
+    },
+    "vriend": {
+      "male-normal": "nl/male-normal/63e17eccb97e7fb4.mp3",
+      "male-slower": "nl/male-slower/6a5f21f24130b948.mp3",
+      "female-normal": "nl/female-normal/599a48bc5c09f489.mp3",
+      "female-slower": "nl/female-slower/e9a169807149a5e4.mp3"
+    },
+    "boek": {
+      "male-normal": "nl/male-normal/976a85ffb4686274.mp3",
+      "male-slower": "nl/male-slower/93a03ea45f397b68.mp3",
+      "female-normal": "nl/female-normal/647f7a54d92d01fa.mp3",
+      "female-slower": "nl/female-slower/f0a8536c69c664f8.mp3"
+    },
+    "tijd": {
+      "male-normal": "nl/male-normal/929a028898b87ac7.mp3",
+      "male-slower": "nl/male-slower/34ec0372186f4096.mp3",
+      "female-normal": "nl/female-normal/bd37f235a59e12b3.mp3",
+      "female-slower": "nl/female-slower/c6069d17b8367d12.mp3"
+    },
+    "persoon": {
+      "male-normal": "nl/male-normal/15492107b5a7b812.mp3",
+      "male-slower": "nl/male-slower/cfeebbdd4d056c11.mp3",
+      "female-normal": "nl/female-normal/ad997342334243aa.mp3",
+      "female-slower": "nl/female-slower/9bad742cb5c7cf4d.mp3"
+    },
+    "man": {
+      "male-normal": "nl/male-normal/a33c16cddfe08a35.mp3",
+      "male-slower": "nl/male-slower/69dbc67b013f4fca.mp3",
+      "female-normal": "nl/female-normal/23fd56f0cbe31ba4.mp3",
+      "female-slower": "nl/female-slower/33e6278b1603c813.mp3"
+    },
+    "vrouw": {
+      "male-normal": "nl/male-normal/9b1011aebb981fc7.mp3",
+      "male-slower": "nl/male-slower/2ba01a56feac4197.mp3",
+      "female-normal": "nl/female-normal/e3088702dd1490f7.mp3",
+      "female-slower": "nl/female-slower/6760d5a2d86f1afb.mp3"
+    },
+    "kind": {
+      "male-normal": "nl/male-normal/9c05ad66aaaa8e96.mp3",
+      "male-slower": "nl/male-slower/88f8b9163721a623.mp3",
+      "female-normal": "nl/female-normal/3d2cc2115e995ec9.mp3",
+      "female-slower": "nl/female-slower/b1a305631a809231.mp3"
+    },
+    "naam": {
+      "male-normal": "nl/male-normal/0525e84a85b5d188.mp3",
+      "male-slower": "nl/male-slower/69b1af9ba0e23537.mp3",
+      "female-normal": "nl/female-normal/70a8b58a02db243e.mp3",
+      "female-slower": "nl/female-slower/1355f1aacbaed4c0.mp3"
+    },
+    "dag": {
+      "male-normal": "nl/male-normal/6b952348ae19ac8e.mp3",
+      "male-slower": "nl/male-slower/b64fc3ba978c30fd.mp3",
+      "female-normal": "nl/female-normal/243ba3638f4468a2.mp3",
+      "female-slower": "nl/female-slower/e7983130a2cc4bf0.mp3"
+    },
+    "nacht": {
+      "male-normal": "nl/male-normal/716f0ed3d743b9e2.mp3",
+      "male-slower": "nl/male-slower/32e7717b9199195f.mp3",
+      "female-normal": "nl/female-normal/43ecd59293d2f1d9.mp3",
+      "female-slower": "nl/female-slower/3fd331a85e2065e8.mp3"
+    },
+    "week": {
+      "male-normal": "nl/male-normal/39c8f39c252bd46c.mp3",
+      "male-slower": "nl/male-slower/d4425187ab1718a6.mp3",
+      "female-normal": "nl/female-normal/fd07197010f06093.mp3",
+      "female-slower": "nl/female-slower/33c4c0d5a970da49.mp3"
+    },
+    "jaar": {
+      "male-normal": "nl/male-normal/dfa1894bda7c05f0.mp3",
+      "male-slower": "nl/male-slower/ff2971d6e48e12bb.mp3",
+      "female-normal": "nl/female-normal/7c2ddf448b8d6a44.mp3",
+      "female-slower": "nl/female-slower/130643b3fb09f792.mp3"
+    },
+    "ochtend": {
+      "male-normal": "nl/male-normal/85918237ae02b370.mp3",
+      "male-slower": "nl/male-slower/2dbee5a572565b99.mp3",
+      "female-normal": "nl/female-normal/df050cfb4fa0c44a.mp3",
+      "female-slower": "nl/female-slower/16112a4f46f51a91.mp3"
+    },
+    "avond": {
+      "male-normal": "nl/male-normal/bfef2215de82610f.mp3",
+      "male-slower": "nl/male-slower/415e753daaf959c3.mp3",
+      "female-normal": "nl/female-normal/dc85c3c4a1106551.mp3",
+      "female-slower": "nl/female-slower/f592ea7518debc2f.mp3"
+    },
+    "stad": {
+      "male-normal": "nl/male-normal/8e22c7c1a929d93e.mp3",
+      "male-slower": "nl/male-slower/766246b541f277a5.mp3",
+      "female-normal": "nl/female-normal/691c78f04d1c4caa.mp3",
+      "female-slower": "nl/female-slower/d5139e7ffa8fc6be.mp3"
+    },
+    "land": {
+      "male-normal": "nl/male-normal/aec519e91f33f680.mp3",
+      "male-slower": "nl/male-slower/4fa9969b8c5ed0a9.mp3",
+      "female-normal": "nl/female-normal/87fbf705726a9199.mp3",
+      "female-slower": "nl/female-slower/659d5d80ac001bc4.mp3"
+    },
+    "straat": {
+      "male-normal": "nl/male-normal/f9ba6975653e7d8d.mp3",
+      "male-slower": "nl/male-slower/a3dbcb6f7c2959f2.mp3",
+      "female-normal": "nl/female-normal/2fb3a641b2a1b7c0.mp3",
+      "female-slower": "nl/female-slower/ec2cb497cc80907a.mp3"
+    },
+    "auto": {
+      "male-normal": "nl/male-normal/c6ea6d08cbf6c4fb.mp3",
+      "male-slower": "nl/male-slower/ddde450b8ae06d95.mp3",
+      "female-normal": "nl/female-normal/de01b290298a703d.mp3",
+      "female-slower": "nl/female-slower/3bcec2809938bec1.mp3"
+    },
+    "fiets": {
+      "male-normal": "nl/male-normal/b635924d4f50dd76.mp3",
+      "male-slower": "nl/male-slower/d3637648b43b0477.mp3",
+      "female-normal": "nl/female-normal/0058493ce55f14e5.mp3",
+      "female-slower": "nl/female-slower/879eef2214607e86.mp3"
+    },
+    "trein": {
+      "male-normal": "nl/male-normal/2766744f53daee51.mp3",
+      "male-slower": "nl/male-slower/186fea281cfabd24.mp3",
+      "female-normal": "nl/female-normal/d3ee3efcc97899a6.mp3",
+      "female-slower": "nl/female-slower/800bb3e42e1c8959.mp3"
+    },
+    "bus": {
+      "male-normal": "nl/male-normal/29f5b3427718be3b.mp3",
+      "male-slower": "nl/male-slower/e977068b63796ae6.mp3",
+      "female-normal": "nl/female-normal/562f0928a725766e.mp3",
+      "female-slower": "nl/female-slower/56e69627e1fdef26.mp3"
+    },
+    "winkel": {
+      "male-normal": "nl/male-normal/7947a0d1e405b77b.mp3",
+      "male-slower": "nl/male-slower/a6db626e87581fff.mp3",
+      "female-normal": "nl/female-normal/28398073017024e9.mp3",
+      "female-slower": "nl/female-slower/1dd12912e919a899.mp3"
+    },
+    "werk": {
+      "male-normal": "nl/male-normal/9b9dfb3e16c1c6f6.mp3",
+      "male-slower": "nl/male-slower/0a4ee47cb050079e.mp3",
+      "female-normal": "nl/female-normal/b4dc93348f410a5b.mp3",
+      "female-slower": "nl/female-slower/40a85e57296f5f1b.mp3"
+    },
+    "geld": {
+      "male-normal": "nl/male-normal/458f114999cf2c98.mp3",
+      "male-slower": "nl/male-slower/5d51e992357679ff.mp3",
+      "female-normal": "nl/female-normal/61806b59ca4853a4.mp3",
+      "female-slower": "nl/female-slower/ac7782e425f2c006.mp3"
+    },
+    "eten": {
+      "male-normal": "nl/male-normal/e66b15c874c8ec82.mp3",
+      "male-slower": "nl/male-slower/85e7653986dcdd00.mp3",
+      "female-normal": "nl/female-normal/40b6a2450205b8fb.mp3",
+      "female-slower": "nl/female-slower/98c54d5c93703cd6.mp3"
+    },
+    "brood": {
+      "male-normal": "nl/male-normal/446e56a5193e79c8.mp3",
+      "male-slower": "nl/male-slower/9c173ae9f74088fe.mp3",
+      "female-normal": "nl/female-normal/94c3cffabab55b14.mp3",
+      "female-slower": "nl/female-slower/9bcf1cf0b508d72b.mp3"
+    },
+    "kaas": {
+      "male-normal": "nl/male-normal/11a675915d964286.mp3",
+      "male-slower": "nl/male-slower/4a617f91b3bb1055.mp3",
+      "female-normal": "nl/female-normal/6f760d8c9854f424.mp3",
+      "female-slower": "nl/female-slower/03f98a790db681c0.mp3"
+    },
+    "melk": {
+      "male-normal": "nl/male-normal/a026572218f0e1a9.mp3",
+      "male-slower": "nl/male-slower/0220c56f1c126d8b.mp3",
+      "female-normal": "nl/female-normal/32d79ef7085031cd.mp3",
+      "female-slower": "nl/female-slower/998703e3a9b8443d.mp3"
+    },
+    "koffie": {
+      "male-normal": "nl/male-normal/10cf97d1eb3d2a90.mp3",
+      "male-slower": "nl/male-slower/cd92890ec01d10d1.mp3",
+      "female-normal": "nl/female-normal/a060df757d5d65f3.mp3",
+      "female-slower": "nl/female-slower/a0b1bf04f2f9b480.mp3"
+    },
+    "thee": {
+      "male-normal": "nl/male-normal/7f9a6802556cc353.mp3",
+      "male-slower": "nl/male-slower/29f862925321248b.mp3",
+      "female-normal": "nl/female-normal/66c371184c79a11f.mp3",
+      "female-slower": "nl/female-slower/76f4b208f4a3bb4f.mp3"
+    },
+    "appel": {
+      "male-normal": "nl/male-normal/889aa3e1dc79c5f7.mp3",
+      "male-slower": "nl/male-slower/bce1ce7818fecd9c.mp3",
+      "female-normal": "nl/female-normal/7cdaab4694532011.mp3",
+      "female-slower": "nl/female-slower/a94331550bbe3986.mp3"
+    },
+    "ei": {
+      "male-normal": "nl/male-normal/e9ebb7a141f726dc.mp3",
+      "male-slower": "nl/male-slower/c0a0395d62c7de82.mp3",
+      "female-normal": "nl/female-normal/a6ad2dd8c1504b50.mp3",
+      "female-slower": "nl/female-slower/93b0be0a5e3232ac.mp3"
+    },
+    "vis": {
+      "male-normal": "nl/male-normal/29d4500303585383.mp3",
+      "male-slower": "nl/male-slower/dd157e16cdc90aa3.mp3",
+      "female-normal": "nl/female-normal/b2c3bf3d76e4567b.mp3",
+      "female-slower": "nl/female-slower/3b06c5ab52de4ed5.mp3"
+    },
+    "vlees": {
+      "male-normal": "nl/male-normal/3eebb207ea15982b.mp3",
+      "male-slower": "nl/male-slower/e0ba90835f661219.mp3",
+      "female-normal": "nl/female-normal/42e82fcf60a630ad.mp3",
+      "female-slower": "nl/female-slower/286ea3bb5f6fa934.mp3"
+    },
+    "tafel": {
+      "male-normal": "nl/male-normal/0a0e5a066479e07f.mp3",
+      "male-slower": "nl/male-slower/7b5429882255ee97.mp3",
+      "female-normal": "nl/female-normal/47bf286ffd36af6f.mp3",
+      "female-slower": "nl/female-slower/ad1915dddf69bdba.mp3"
+    },
+    "stoel": {
+      "male-normal": "nl/male-normal/907f8e311db12f3e.mp3",
+      "male-slower": "nl/male-slower/c3c8d903f8a75eb4.mp3",
+      "female-normal": "nl/female-normal/0195acbc89f5acda.mp3",
+      "female-slower": "nl/female-slower/497cde9b11c96ed9.mp3"
+    },
+    "deur": {
+      "male-normal": "nl/male-normal/aefbf819ea69ae74.mp3",
+      "male-slower": "nl/male-slower/3932a6a3dd2e65f6.mp3",
+      "female-normal": "nl/female-normal/0162708d8a2cdadf.mp3",
+      "female-slower": "nl/female-slower/9e6a7847d5ad794e.mp3"
+    },
+    "raam": {
+      "male-normal": "nl/male-normal/17f1ee12dab60bed.mp3",
+      "male-slower": "nl/male-slower/3b5a5b21ca5b56b0.mp3",
+      "female-normal": "nl/female-normal/a4c42019ad213479.mp3",
+      "female-slower": "nl/female-slower/3b487344b37caa24.mp3"
+    },
+    "kamer": {
+      "male-normal": "nl/male-normal/7d08647666fd66f5.mp3",
+      "male-slower": "nl/male-slower/a29a12be2376f437.mp3",
+      "female-normal": "nl/female-normal/9e83332dbe772204.mp3",
+      "female-slower": "nl/female-slower/883350c7e2ef91f5.mp3"
+    },
+    "keuken": {
+      "male-normal": "nl/male-normal/845ff996378a33f0.mp3",
+      "male-slower": "nl/male-slower/bb5b08c4b9117259.mp3",
+      "female-normal": "nl/female-normal/14ba7d2329cddfc3.mp3",
+      "female-slower": "nl/female-slower/c19b2e8c28b1d4f1.mp3"
+    },
+    "bed": {
+      "male-normal": "nl/male-normal/8f18a76013956024.mp3",
+      "male-slower": "nl/male-slower/083b66daaec85466.mp3",
+      "female-normal": "nl/female-normal/9dd5db4b6e7c3e7f.mp3",
+      "female-slower": "nl/female-slower/ec9b440579b5c7ca.mp3"
+    },
+    "hand": {
+      "male-normal": "nl/male-normal/e797c6962c89ef00.mp3",
+      "male-slower": "nl/male-slower/ce8f3ed50ae63fe7.mp3",
+      "female-normal": "nl/female-normal/3ed434ce2c6696a5.mp3",
+      "female-slower": "nl/female-slower/191935683de6010f.mp3"
+    },
+    "hoofd": {
+      "male-normal": "nl/male-normal/d38d2b9344f69e1d.mp3",
+      "male-slower": "nl/male-slower/c02341360f2ebc52.mp3",
+      "female-normal": "nl/female-normal/19c732bd8196ee50.mp3",
+      "female-slower": "nl/female-slower/6ae87ae53cff6f26.mp3"
+    },
+    "oog": {
+      "male-normal": "nl/male-normal/3b1c715750fd600e.mp3",
+      "male-slower": "nl/male-slower/219a011122e86925.mp3",
+      "female-normal": "nl/female-normal/d461b7327248c63c.mp3",
+      "female-slower": "nl/female-slower/3d3430b3c78c9a9a.mp3"
+    },
+    "hart": {
+      "male-normal": "nl/male-normal/46b08ef66ae828d2.mp3",
+      "male-slower": "nl/male-slower/9a62ff58a2473b7d.mp3",
+      "female-normal": "nl/female-normal/2b03f94bade1925c.mp3",
+      "female-slower": "nl/female-slower/ca3e436016ad179f.mp3"
+    },
+    "moeder": {
+      "male-normal": "nl/male-normal/68a01ae4169b3f2b.mp3",
+      "male-slower": "nl/male-slower/438f985542d773b1.mp3",
+      "female-normal": "nl/female-normal/23375b2d69852901.mp3",
+      "female-slower": "nl/female-slower/4b495300e052d9a9.mp3"
+    },
+    "vader": {
+      "male-normal": "nl/male-normal/57fd2a43596a0f30.mp3",
+      "male-slower": "nl/male-slower/ba79b8fc60f45c19.mp3",
+      "female-normal": "nl/female-normal/3c45e0629320ba07.mp3",
+      "female-slower": "nl/female-slower/02facd3004a8e4ce.mp3"
+    },
+    "broer": {
+      "male-normal": "nl/male-normal/bdcc0bde07d845c6.mp3",
+      "male-slower": "nl/male-slower/f589d7280af0a47f.mp3",
+      "female-normal": "nl/female-normal/62f26dd89a80675f.mp3",
+      "female-slower": "nl/female-slower/66141bd8e6a0968c.mp3"
+    },
+    "zus": {
+      "male-normal": "nl/male-normal/2e32e58433f3f93a.mp3",
+      "male-slower": "nl/male-slower/6ebddb5eec33227a.mp3",
+      "female-normal": "nl/female-normal/f25c1a047aa39fd1.mp3",
+      "female-slower": "nl/female-slower/e8bbe450c9eeb7a1.mp3"
+    },
+    "hond": {
+      "male-normal": "nl/male-normal/6950eb62af91f519.mp3",
+      "male-slower": "nl/male-slower/a79b2d87d5d08525.mp3",
+      "female-normal": "nl/female-normal/e08a960d7e75b0d2.mp3",
+      "female-slower": "nl/female-slower/ef7af99041396913.mp3"
+    },
+    "kat": {
+      "male-normal": "nl/male-normal/370eb4ba180ae1eb.mp3",
+      "male-slower": "nl/male-slower/9887d4c4ac402ff5.mp3",
+      "female-normal": "nl/female-normal/b603f87ef1f7a504.mp3",
+      "female-slower": "nl/female-slower/7fc76688173d2a69.mp3"
+    },
+    "zon": {
+      "male-normal": "nl/male-normal/5b3329bc3769deda.mp3",
+      "male-slower": "nl/male-slower/887e31bd2c764b8b.mp3",
+      "female-normal": "nl/female-normal/106b17a599498a21.mp3",
+      "female-slower": "nl/female-slower/305a532fa8f0b9e6.mp3"
+    },
+    "regen": {
+      "male-normal": "nl/male-normal/73a704456e3e9f80.mp3",
+      "male-slower": "nl/male-slower/faf22cec0ee101dc.mp3",
+      "female-normal": "nl/female-normal/4b3f3594525b2523.mp3",
+      "female-slower": "nl/female-slower/9d9fa55c5a2bd2f6.mp3"
+    },
+    "zee": {
+      "male-normal": "nl/male-normal/7b2a3532dc53308e.mp3",
+      "male-slower": "nl/male-slower/28d4d1423b499292.mp3",
+      "female-normal": "nl/female-normal/8241c557b8ac1132.mp3",
+      "female-slower": "nl/female-slower/19d5e8f00d744887.mp3"
+    },
+    "boom": {
+      "male-normal": "nl/male-normal/cb0cbd901cb48fc6.mp3",
+      "male-slower": "nl/male-slower/67a357b2bbb34b23.mp3",
+      "female-normal": "nl/female-normal/130307a6eab20eec.mp3",
+      "female-slower": "nl/female-slower/c1073529637ced2c.mp3"
+    },
+    "bloem": {
+      "male-normal": "nl/male-normal/daed472f3006095a.mp3",
+      "male-slower": "nl/male-slower/892d50b58710fcce.mp3",
+      "female-normal": "nl/female-normal/48282a563b461538.mp3",
+      "female-slower": "nl/female-slower/90b4d5b169f376d6.mp3"
+    },
+    "zijn": {
+      "male-normal": "nl/male-normal/42a78c37593d81ec.mp3",
+      "male-slower": "nl/male-slower/347e957ed3c83b2a.mp3",
+      "female-normal": "nl/female-normal/c628f3ec1f750f5b.mp3",
+      "female-slower": "nl/female-slower/274dc182a8835d56.mp3"
+    },
+    "hebben": {
+      "male-normal": "nl/male-normal/b77097b159d51a42.mp3",
+      "male-slower": "nl/male-slower/b7455d72a61a788d.mp3",
+      "female-normal": "nl/female-normal/3b25d76a3816187d.mp3",
+      "female-slower": "nl/female-slower/4f7d098bc7cccdb3.mp3"
+    },
+    "gaan": {
+      "male-normal": "nl/male-normal/8ab38d6a1a52b2a9.mp3",
+      "male-slower": "nl/male-slower/222272e5865eaba4.mp3",
+      "female-normal": "nl/female-normal/8eedba847fcd5728.mp3",
+      "female-slower": "nl/female-slower/445390fe091016ff.mp3"
+    },
+    "komen": {
+      "male-normal": "nl/male-normal/1717f218845d9d48.mp3",
+      "male-slower": "nl/male-slower/5d30cd2a63573d23.mp3",
+      "female-normal": "nl/female-normal/d44aa5a43a240a64.mp3",
+      "female-slower": "nl/female-slower/b671447d455743ad.mp3"
+    },
+    "doen": {
+      "male-normal": "nl/male-normal/4d396b7a49bd3e68.mp3",
+      "male-slower": "nl/male-slower/ad64d7df497f66aa.mp3",
+      "female-normal": "nl/female-normal/ab9cf189e11eacec.mp3",
+      "female-slower": "nl/female-slower/edbb38b22000989d.mp3"
+    },
+    "zien": {
+      "male-normal": "nl/male-normal/05ea91429b16bc47.mp3",
+      "male-slower": "nl/male-slower/71efd9a3d9e34100.mp3",
+      "female-normal": "nl/female-normal/2af8255f37c3a444.mp3",
+      "female-slower": "nl/female-slower/eb0b089f6b8e81b6.mp3"
+    },
+    "horen": {
+      "male-normal": "nl/male-normal/65837ba4a6285d1d.mp3",
+      "male-slower": "nl/male-slower/ef6ee58eaaa178ce.mp3",
+      "female-normal": "nl/female-normal/8efa7e7048c8297b.mp3",
+      "female-slower": "nl/female-slower/84bfee8507e29756.mp3"
+    },
+    "spreken": {
+      "male-normal": "nl/male-normal/dc41293129bc12a4.mp3",
+      "male-slower": "nl/male-slower/2d020c7081d678fb.mp3",
+      "female-normal": "nl/female-normal/8076204b1e361175.mp3",
+      "female-slower": "nl/female-slower/de6ddbba6f210d2d.mp3"
+    },
+    "drinken": {
+      "male-normal": "nl/male-normal/a33785459ac5b4a2.mp3",
+      "male-slower": "nl/male-slower/8fbb4c733e77fab5.mp3",
+      "female-normal": "nl/female-normal/324810ba3fe2be12.mp3",
+      "female-slower": "nl/female-slower/f9174214519a4fad.mp3"
+    },
+    "slapen": {
+      "male-normal": "nl/male-normal/38bb82f9c5bc7634.mp3",
+      "male-slower": "nl/male-slower/74e896313ff9fbaa.mp3",
+      "female-normal": "nl/female-normal/e136cfd04ca3116c.mp3",
+      "female-slower": "nl/female-slower/eaef3d09de7e2eaa.mp3"
+    },
+    "lezen": {
+      "male-normal": "nl/male-normal/a3d4116888e6000a.mp3",
+      "male-slower": "nl/male-slower/d0909f0089a878f2.mp3",
+      "female-normal": "nl/female-normal/95585f5a51607f37.mp3",
+      "female-slower": "nl/female-slower/c9d6427e2714fcf0.mp3"
+    },
+    "schrijven": {
+      "male-normal": "nl/male-normal/fbbb058e5cca3db1.mp3",
+      "male-slower": "nl/male-slower/85710357a07195c1.mp3",
+      "female-normal": "nl/female-normal/eeac26969586bd33.mp3",
+      "female-slower": "nl/female-slower/d567ff43de8980c2.mp3"
+    },
+    "willen": {
+      "male-normal": "nl/male-normal/fb48c17d303ca866.mp3",
+      "male-slower": "nl/male-slower/c9375bb62df1b70f.mp3",
+      "female-normal": "nl/female-normal/99e7907eead0d8b4.mp3",
+      "female-slower": "nl/female-slower/ffa24d407fe62f43.mp3"
+    },
+    "weten": {
+      "male-normal": "nl/male-normal/2363164c693d488f.mp3",
+      "male-slower": "nl/male-slower/fb89f3af2832fc8f.mp3",
+      "female-normal": "nl/female-normal/99a72a41fbeec2de.mp3",
+      "female-slower": "nl/female-slower/4d5d595704c638f9.mp3"
+    },
+    "wonen": {
+      "male-normal": "nl/male-normal/cdae57f21809b1ba.mp3",
+      "male-slower": "nl/male-slower/1c1e9da1f367035e.mp3",
+      "female-normal": "nl/female-normal/465ad20749d78dde.mp3",
+      "female-slower": "nl/female-slower/888ac1bfbfe29948.mp3"
+    },
+    "kopen": {
+      "male-normal": "nl/male-normal/3e6e1c0ff6980842.mp3",
+      "male-slower": "nl/male-slower/0f85d18a494a5e61.mp3",
+      "female-normal": "nl/female-normal/2bac9e98d562caaf.mp3",
+      "female-slower": "nl/female-slower/cc1369116c483597.mp3"
+    },
+    "geven": {
+      "male-normal": "nl/male-normal/7a0edab2f7b6f14d.mp3",
+      "male-slower": "nl/male-slower/949856203012d178.mp3",
+      "female-normal": "nl/female-normal/0893a3b90534de40.mp3",
+      "female-slower": "nl/female-slower/61d400518fd921b0.mp3"
+    },
+    "nemen": {
+      "male-normal": "nl/male-normal/af86d9320e636f56.mp3",
+      "male-slower": "nl/male-slower/99af457c3119905a.mp3",
+      "female-normal": "nl/female-normal/f0b6bd8dd6abb90a.mp3",
+      "female-slower": "nl/female-slower/bd886b3098a5e6ae.mp3"
+    },
+    "leren": {
+      "male-normal": "nl/male-normal/c417b9f362ccdba6.mp3",
+      "male-slower": "nl/male-slower/b426cce9f2d01241.mp3",
+      "female-normal": "nl/female-normal/df5a2e60a4084f9d.mp3",
+      "female-slower": "nl/female-slower/92e29c94f64c8a7e.mp3"
+    },
+    "groot": {
+      "male-normal": "nl/male-normal/1a3e635ef5a802ff.mp3",
+      "male-slower": "nl/male-slower/41ea9336085e7546.mp3",
+      "female-normal": "nl/female-normal/fc0b0e6bcf99de46.mp3",
+      "female-slower": "nl/female-slower/5eb70fe8e58e4e49.mp3"
+    },
+    "klein": {
+      "male-normal": "nl/male-normal/36c66fa427ea5f0c.mp3",
+      "male-slower": "nl/male-slower/32e02568d50dbbbf.mp3",
+      "female-normal": "nl/female-normal/d5517b3e9c8855dd.mp3",
+      "female-slower": "nl/female-slower/2434f0671ffd0bb0.mp3"
+    },
+    "goed": {
+      "male-normal": "nl/male-normal/94217433389a9f9f.mp3",
+      "male-slower": "nl/male-slower/8eb212fe541435fd.mp3",
+      "female-normal": "nl/female-normal/83d790444efcb5bc.mp3",
+      "female-slower": "nl/female-slower/59fbb4fbdd6481d1.mp3"
+    },
+    "slecht": {
+      "male-normal": "nl/male-normal/93520dd06fa28e57.mp3",
+      "male-slower": "nl/male-slower/c96061727c05f8e2.mp3",
+      "female-normal": "nl/female-normal/6d9e4e10a36003c2.mp3",
+      "female-slower": "nl/female-slower/fe21041169493a5d.mp3"
+    },
+    "nieuw": {
+      "male-normal": "nl/male-normal/b3413bf505771ba6.mp3",
+      "male-slower": "nl/male-slower/acb38dae339d4f10.mp3",
+      "female-normal": "nl/female-normal/125f1b51deaffb62.mp3",
+      "female-slower": "nl/female-slower/399a4b9895ac3015.mp3"
+    },
+    "oud": {
+      "male-normal": "nl/male-normal/fff0772939126452.mp3",
+      "male-slower": "nl/male-slower/f5491f2360f4471d.mp3",
+      "female-normal": "nl/female-normal/b2182cdad98531fc.mp3",
+      "female-slower": "nl/female-slower/97f3e76e899fa54c.mp3"
+    },
+    "mooi": {
+      "male-normal": "nl/male-normal/a2e9f1921843f629.mp3",
+      "male-slower": "nl/male-slower/2060d03ebea3e432.mp3",
+      "female-normal": "nl/female-normal/900752411f5f7e41.mp3",
+      "female-slower": "nl/female-slower/1c83febda37abe62.mp3"
+    },
+    "koud": {
+      "male-normal": "nl/male-normal/487a9400fd864ba7.mp3",
+      "male-slower": "nl/male-slower/f32cb7c9452bd51a.mp3",
+      "female-normal": "nl/female-normal/ffc687e97baa61f4.mp3",
+      "female-slower": "nl/female-slower/43edeeb6a16df168.mp3"
+    },
+    "warm": {
+      "male-normal": "nl/male-normal/85d4ec00c45df704.mp3",
+      "male-slower": "nl/male-slower/de90d77c5ee7a955.mp3",
+      "female-normal": "nl/female-normal/aba26711c4181ca8.mp3",
+      "female-slower": "nl/female-slower/664796f412c00b50.mp3"
+    },
+    "duur": {
+      "male-normal": "nl/male-normal/082f05fa659aa9fd.mp3",
+      "male-slower": "nl/male-slower/9063806ccbbd1fbb.mp3",
+      "female-normal": "nl/female-normal/f36a1df7c16b8fb1.mp3",
+      "female-slower": "nl/female-slower/35f6299edddb3e7d.mp3"
+    },
+    "hallo": {
+      "male-normal": "nl/male-normal/dc3743bc6c7183f1.mp3",
+      "male-slower": "nl/male-slower/7ede7d24edb8edca.mp3",
+      "female-normal": "nl/female-normal/be616f152f22b258.mp3",
+      "female-slower": "nl/female-slower/55eb01ee9baee2b2.mp3"
+    },
+    "doei": {
+      "male-normal": "nl/male-normal/b2dd8db1db489766.mp3",
+      "male-slower": "nl/male-slower/72857b597974bb89.mp3",
+      "female-normal": "nl/female-normal/eda16c340efbfb8c.mp3",
+      "female-slower": "nl/female-slower/755aff6b61b2ae79.mp3"
+    },
+    "alsjeblieft": {
+      "male-normal": "nl/male-normal/f9f24006004cb598.mp3",
+      "male-slower": "nl/male-slower/f97995a2ff5726be.mp3",
+      "female-normal": "nl/female-normal/37ab828f164e1bf2.mp3",
+      "female-slower": "nl/female-slower/d92e2b57ecec33e5.mp3"
+    },
+    "dank je wel": {
+      "male-normal": "nl/male-normal/b1ef0c406f351994.mp3",
+      "male-slower": "nl/male-slower/aadf3502565b34a0.mp3",
+      "female-normal": "nl/female-normal/8cdadeecfcac73e4.mp3",
+      "female-slower": "nl/female-slower/11a6b70fb74876d9.mp3"
+    },
+    "ja": {
+      "male-normal": "nl/male-normal/8aed9f4a00e23b29.mp3",
+      "male-slower": "nl/male-slower/26dae38d1cfde5d3.mp3",
+      "female-normal": "nl/female-normal/814e56cca634242a.mp3",
+      "female-slower": "nl/female-slower/892497b63f2dda4f.mp3"
+    },
+    "nee": {
+      "male-normal": "nl/male-normal/a851edecb32cdcea.mp3",
+      "male-slower": "nl/male-slower/2c7f8dc62ee8aac5.mp3",
+      "female-normal": "nl/female-normal/74342f420f6dea8e.mp3",
+      "female-slower": "nl/female-slower/d22eabdc05452197.mp3"
+    },
+    "vandaag": {
+      "male-normal": "nl/male-normal/1fa4eb8f340f1acb.mp3",
+      "male-slower": "nl/male-slower/05d962c1208ba10d.mp3",
+      "female-normal": "nl/female-normal/69b531aecd248901.mp3",
+      "female-slower": "nl/female-slower/1d72da0b1ab7503b.mp3"
+    },
+    "morgen": {
+      "male-normal": "nl/male-normal/99f4d0e2cb413369.mp3",
+      "male-slower": "nl/male-slower/34babdf1bd5d0de5.mp3",
+      "female-normal": "nl/female-normal/b80085bb2c1a512e.mp3",
+      "female-slower": "nl/female-slower/64d6ca9113f4e630.mp3"
+    },
+    "hier": {
+      "male-normal": "nl/male-normal/cafda278c79d1e4e.mp3",
+      "male-slower": "nl/male-slower/08af8ab9e86cddcd.mp3",
+      "female-normal": "nl/female-normal/b632d40e9ae5e3bb.mp3",
+      "female-slower": "nl/female-slower/51e9d93770201535.mp3"
+    },
+    "heel": {
+      "male-normal": "nl/male-normal/12e0738f55cb5734.mp3",
+      "male-slower": "nl/male-slower/813bb1a32bea3857.mp3",
+      "female-normal": "nl/female-normal/fc6ff62ab9a4868b.mp3",
+      "female-slower": "nl/female-slower/f3c328791a365c09.mp3"
+    },
+    "ook": {
+      "male-normal": "nl/male-normal/4e5aad56e88d0dd0.mp3",
+      "male-slower": "nl/male-slower/5bab63d0c96eb4cf.mp3",
+      "female-normal": "nl/female-normal/f35e4c2a27d3b95c.mp3",
+      "female-slower": "nl/female-slower/584bc8f991e0dd44.mp3"
+    },
+    "bos": {
+      "male-normal": "nl/male-normal/8e4008cd8cc788c3.mp3",
+      "male-slower": "nl/male-slower/8e898101e1be6821.mp3",
+      "female-normal": "nl/female-normal/91e7aaa6bb777960.mp3",
+      "female-slower": "nl/female-slower/c1b294b14f6947ae.mp3"
+    },
+    "maken": {
+      "male-normal": "nl/male-normal/4cb970b2779a7368.mp3",
+      "male-slower": "nl/male-slower/2ba70d2a46430317.mp3",
+      "female-normal": "nl/female-normal/5ae5707028842397.mp3",
+      "female-slower": "nl/female-slower/41f88556aec70470.mp3"
+    },
+    "meten": {
+      "male-normal": "nl/male-normal/9a07b3a0298281f7.mp3",
+      "male-slower": "nl/male-slower/eedc408e92fc2e1b.mp3",
+      "female-normal": "nl/female-normal/1e3522c7adcbc7e3.mp3",
+      "female-slower": "nl/female-slower/a0ab9c53a79d4b26.mp3"
+    },
+    "bomen": {
+      "male-normal": "nl/male-normal/892f7861d3b00ab6.mp3",
+      "male-slower": "nl/male-slower/a199f2bd4eda8a62.mp3",
+      "female-normal": "nl/female-normal/ee3a3ee516d87e49.mp3",
+      "female-slower": "nl/female-slower/b09a90f4cdc34e57.mp3"
+    },
+    "lopen": {
+      "male-normal": "nl/male-normal/c0e99f55c52ffc2f.mp3",
+      "male-slower": "nl/male-slower/87f61c64b46df52c.mp3",
+      "female-normal": "nl/female-normal/a7e062ddbc070ef2.mp3",
+      "female-slower": "nl/female-slower/b857f6b8b8c95230.mp3"
+    },
+    "zeven": {
+      "male-normal": "nl/male-normal/9743bc98db6ee4ae.mp3",
+      "male-slower": "nl/male-slower/40e473370b0e0030.mp3",
+      "female-normal": "nl/female-normal/583603739c6053c6.mp3",
+      "female-slower": "nl/female-slower/46806fec61b5e317.mp3"
+    },
+    "maan": {
+      "male-normal": "nl/male-normal/e5bd0a173aab1ced.mp3",
+      "male-slower": "nl/male-slower/104d0a96e7817a99.mp3",
+      "female-normal": "nl/female-normal/1e88072e2d057c72.mp3",
+      "female-slower": "nl/female-slower/4df3260def6be541.mp3"
+    },
+    "vuur": {
+      "male-normal": "nl/male-normal/c071bb463c6ab3d1.mp3",
+      "male-slower": "nl/male-slower/376cbada441b70e9.mp3",
+      "female-normal": "nl/female-normal/9c599178f94fab09.mp3",
+      "female-slower": "nl/female-slower/71c2331b7592344b.mp3"
+    },
+    "twee": {
+      "male-normal": "nl/male-normal/984c8bbd1dc8ae58.mp3",
+      "male-slower": "nl/male-slower/60c2ae7b5a3b90d6.mp3",
+      "female-normal": "nl/female-normal/a788775cd9328418.mp3",
+      "female-slower": "nl/female-slower/c0041329ab7e4ff5.mp3"
+    },
+    "aan": {
+      "male-normal": "nl/male-normal/056d343aa4cf19a3.mp3",
+      "male-slower": "nl/male-slower/b049728c3bdce944.mp3",
+      "female-normal": "nl/female-normal/af5a949e54ad9787.mp3",
+      "female-slower": "nl/female-slower/ef11c9265b762f7d.mp3"
+    },
+    "ijs": {
+      "male-normal": "nl/male-normal/59b31315c8aa6c4b.mp3",
+      "male-slower": "nl/male-slower/6674cb17bf9d61ae.mp3",
+      "female-normal": "nl/female-normal/868d9df431c05ae6.mp3",
+      "female-slower": "nl/female-slower/def23c854a92aab4.mp3"
+    },
+    "mijn": {
+      "male-normal": "nl/male-normal/638fd7ae7f24dfb4.mp3",
+      "male-slower": "nl/male-slower/318a0bee6f1ad35a.mp3",
+      "female-normal": "nl/female-normal/b254b4be341e74ee.mp3",
+      "female-slower": "nl/female-slower/32e62d03e68fc172.mp3"
+    },
+    "wijn": {
+      "male-normal": "nl/male-normal/195c9d95c93066b4.mp3",
+      "male-slower": "nl/male-slower/a067821cffa0a981.mp3",
+      "female-normal": "nl/female-normal/2aff386072d09afb.mp3",
+      "female-slower": "nl/female-slower/1c6e8d16f7b00817.mp3"
+    },
+    "hout": {
+      "male-normal": "nl/male-normal/467e9c4886b81efe.mp3",
+      "male-slower": "nl/male-slower/1b337c9a5c34265b.mp3",
+      "female-normal": "nl/female-normal/16a30e309b1c74c7.mp3",
+      "female-slower": "nl/female-slower/e8a71a32bf4fae8b.mp3"
+    },
+    "zout": {
+      "male-normal": "nl/male-normal/9c30a69e6465ea3b.mp3",
+      "male-slower": "nl/male-slower/03210eb362f21605.mp3",
+      "female-normal": "nl/female-normal/05d06ce415411791.mp3",
+      "female-slower": "nl/female-slower/732c13d3464a2683.mp3"
+    },
+    "blauw": {
+      "male-normal": "nl/male-normal/0c6af0c41d02c373.mp3",
+      "male-slower": "nl/male-slower/5ee70648809e2f4a.mp3",
+      "female-normal": "nl/female-normal/2999e628f1c07b56.mp3",
+      "female-slower": "nl/female-slower/b0df2c04bfe21807.mp3"
+    },
+    "uit": {
+      "male-normal": "nl/male-normal/9ec1ab41498e8655.mp3",
+      "male-slower": "nl/male-slower/3b5e2bbde7b05f03.mp3",
+      "female-normal": "nl/female-normal/7a59868a789780de.mp3",
+      "female-slower": "nl/female-slower/49caa27da8fa885d.mp3"
+    },
+    "tuin": {
+      "male-normal": "nl/male-normal/8b21db988615387c.mp3",
+      "male-slower": "nl/male-slower/3ed3ab38f1d8ec96.mp3",
+      "female-normal": "nl/female-normal/d2eae435bf86d254.mp3",
+      "female-slower": "nl/female-slower/ece726885c95fb3b.mp3"
+    },
+    "kruis": {
+      "male-normal": "nl/male-normal/371b04aabc0559a0.mp3",
+      "male-slower": "nl/male-slower/6712bfdb3d9ac3d9.mp3",
+      "female-normal": "nl/female-normal/ab592a3c8d463706.mp3",
+      "female-slower": "nl/female-slower/df755253bcb407c1.mp3"
+    },
+    "buiten": {
+      "male-normal": "nl/male-normal/b445a0872cfe018b.mp3",
+      "male-slower": "nl/male-slower/5c30e3740ff81972.mp3",
+      "female-normal": "nl/female-normal/f8f527a9615ad699.mp3",
+      "female-slower": "nl/female-slower/23eab54acd68937e.mp3"
+    },
+    "zuid": {
+      "male-normal": "nl/male-normal/b2e8619bd497c76e.mp3",
+      "male-slower": "nl/male-slower/139867085d3a545a.mp3",
+      "female-normal": "nl/female-normal/9eb8a44ddb332e3d.mp3",
+      "female-slower": "nl/female-slower/d0864b02f92d2072.mp3"
+    },
+    "neus": {
+      "male-normal": "nl/male-normal/fdaa9657d8c9c3ee.mp3",
+      "male-slower": "nl/male-slower/1542b953b50ccb50.mp3",
+      "female-normal": "nl/female-normal/bd64862ee8f47938.mp3",
+      "female-slower": "nl/female-slower/5ee8df2e170b0651.mp3"
+    },
+    "leuk": {
+      "male-normal": "nl/male-normal/0ed1c5c6d03f4cfe.mp3",
+      "male-slower": "nl/male-slower/7a8e683865cde93f.mp3",
+      "female-normal": "nl/female-normal/85a7c27e441d6d78.mp3",
+      "female-slower": "nl/female-slower/8dc0dd15b39fba98.mp3"
+    },
+    "reus": {
+      "male-normal": "nl/male-normal/00c0a1988bb83347.mp3",
+      "male-slower": "nl/male-slower/e90301e869196acf.mp3",
+      "female-normal": "nl/female-normal/8864811753735b5b.mp3",
+      "female-slower": "nl/female-slower/c75fafed3609ab96.mp3"
+    },
+    "voet": {
+      "male-normal": "nl/male-normal/944761f48ab9147f.mp3",
+      "male-slower": "nl/male-slower/9655eeaab1282eb3.mp3",
+      "female-normal": "nl/female-normal/5556743342e7c32d.mp3",
+      "female-slower": "nl/female-slower/c510a871463879d0.mp3"
+    },
+    "hoe": {
+      "male-normal": "nl/male-normal/dbf5507a6ec70f72.mp3",
+      "male-slower": "nl/male-slower/d5619282531aab84.mp3",
+      "female-normal": "nl/female-normal/83d04012b50c1f60.mp3",
+      "female-slower": "nl/female-slower/079d74bee681ddf2.mp3"
+    },
+    "zoeken": {
+      "male-normal": "nl/male-normal/718c151f27595446.mp3",
+      "male-slower": "nl/male-slower/89edad5fcf912e15.mp3",
+      "female-normal": "nl/female-normal/468629b94d113461.mp3",
+      "female-slower": "nl/female-slower/01ce268035cd9772.mp3"
+    },
+    "acht": {
+      "male-normal": "nl/male-normal/f74f5907ea74b15c.mp3",
+      "male-slower": "nl/male-slower/2a51f832c1f5ce00.mp3",
+      "female-normal": "nl/female-normal/2692338a85a2b4da.mp3",
+      "female-slower": "nl/female-slower/62d611b2834af984.mp3"
+    },
+    "licht": {
+      "male-normal": "nl/male-normal/91d0096422804bbe.mp3",
+      "male-slower": "nl/male-slower/09c88909ca46a0e6.mp3",
+      "female-normal": "nl/female-normal/bb99a586e4910bdf.mp3",
+      "female-slower": "nl/female-slower/43c9cb454db98dc5.mp3"
+    },
+    "lachen": {
+      "male-normal": "nl/male-normal/71d945d229e48ebe.mp3",
+      "male-slower": "nl/male-slower/6c0541b9a678426c.mp3",
+      "female-normal": "nl/female-normal/1fdb38b3fb7efd54.mp3",
+      "female-slower": "nl/female-slower/4426f8a93ac7bc73.mp3"
+    },
+    "mogen": {
+      "male-normal": "nl/male-normal/3ffe0b414a62ec5e.mp3",
+      "male-slower": "nl/male-slower/ca87361e11ad85c3.mp3",
+      "female-normal": "nl/female-normal/ab8ed2be69d0b06b.mp3",
+      "female-slower": "nl/female-slower/b35bade87b98970c.mp3"
+    },
+    "negen": {
+      "male-normal": "nl/male-normal/3104fbd48100217e.mp3",
+      "male-slower": "nl/male-slower/635c927280d54204.mp3",
+      "female-normal": "nl/female-normal/b550959fdde7ffde.mp3",
+      "female-slower": "nl/female-slower/fd521d25eab9db13.mp3"
+    },
+    "schip": {
+      "male-normal": "nl/male-normal/995cd739348e154c.mp3",
+      "male-slower": "nl/male-slower/534d108c7380f589.mp3",
+      "female-normal": "nl/female-normal/319f9013372cba34.mp3",
+      "female-slower": "nl/female-slower/aa1574905ddfa0e2.mp3"
+    },
+    "sjaal": {
+      "male-normal": "nl/male-normal/05732d3c26929fd4.mp3",
+      "male-slower": "nl/male-slower/b15f8727fbb52bcf.mp3",
+      "female-normal": "nl/female-normal/4c1f0607228fce63.mp3",
+      "female-slower": "nl/female-slower/85f68939764c1365.mp3"
+    },
+    "sjouwen": {
+      "male-normal": "nl/male-normal/2ed93bd38f7022a2.mp3",
+      "male-slower": "nl/male-slower/6805871f0a6417f2.mp3",
+      "female-normal": "nl/female-normal/242eb71cdd8857b4.mp3",
+      "female-slower": "nl/female-slower/131837d4933deb18.mp3"
+    },
+    "katje": {
+      "male-normal": "nl/male-normal/44a0e4b3b2f82d43.mp3",
+      "male-slower": "nl/male-slower/e0e5bcf6311a108f.mp3",
+      "female-normal": "nl/female-normal/d34a1a1313f9db52.mp3",
+      "female-slower": "nl/female-slower/44dac9c540373bec.mp3"
+    },
+    "lang": {
+      "male-normal": "nl/male-normal/c466300d15db7a51.mp3",
+      "male-slower": "nl/male-slower/a0807be49f3da5a1.mp3",
+      "female-normal": "nl/female-normal/ca9d9a696dc6789d.mp3",
+      "female-slower": "nl/female-slower/0f80d94a30d300f7.mp3"
+    },
+    "ding": {
+      "male-normal": "nl/male-normal/ec4993c6344dbc16.mp3",
+      "male-slower": "nl/male-slower/5a31a91df65ede37.mp3",
+      "female-normal": "nl/female-normal/dcb7f21a77290a84.mp3",
+      "female-slower": "nl/female-slower/833fb1ddfb713f32.mp3"
+    },
+    "bank": {
+      "male-normal": "nl/male-normal/5e5ff1e12d951c08.mp3",
+      "male-slower": "nl/male-slower/66392e852eaff155.mp3",
+      "female-normal": "nl/female-normal/e3ef1a5aded9060e.mp3",
+      "female-slower": "nl/female-slower/fad4fefbd974a17c.mp3"
+    },
+    "denken": {
+      "male-normal": "nl/male-normal/b449dcb62310bcd6.mp3",
+      "male-slower": "nl/male-slower/b6d7768452c1e3b1.mp3",
+      "female-normal": "nl/female-normal/f79d7b0ceceb3a4d.mp3",
+      "female-slower": "nl/female-slower/659e8f9941d8061f.mp3"
+    },
+    "wat": {
+      "male-normal": "nl/male-normal/9acce080c89515b8.mp3",
+      "male-slower": "nl/male-slower/01dc0c02c9886c83.mp3",
+      "female-normal": "nl/female-normal/31ccc247a567a2e2.mp3",
+      "female-slower": "nl/female-slower/cdd8d2f5c879fb8f.mp3"
+    },
+    "wie": {
+      "male-normal": "nl/male-normal/9de71a5f66fed6cf.mp3",
+      "male-slower": "nl/male-slower/f1d5df39d810ba92.mp3",
+      "female-normal": "nl/female-normal/c9ef2e26bd050d78.mp3",
+      "female-slower": "nl/female-slower/3c267b57199fe167.mp3"
+    },
+    "rood": {
+      "male-normal": "nl/male-normal/c8fdddd699d5e7b2.mp3",
+      "male-slower": "nl/male-slower/bb074d5a31efec10.mp3",
+      "female-normal": "nl/female-normal/60d6eecf06bf7513.mp3",
+      "female-slower": "nl/female-slower/4ae22925b22e345d.mp3"
+    },
+    "hard": {
+      "male-normal": "nl/male-normal/cfef0c50a62c2d10.mp3",
+      "male-slower": "nl/male-slower/e639387696e37874.mp3",
+      "female-normal": "nl/female-normal/40e6b5a72b6b4917.mp3",
+      "female-slower": "nl/female-slower/a48fea05ba78a259.mp3"
+    },
+    "web": {
+      "male-normal": "nl/male-normal/d828b3045f550456.mp3",
+      "male-slower": "nl/male-slower/5984283fc7e5bb41.mp3",
+      "female-normal": "nl/female-normal/f1ba741eeecec952.mp3",
+      "female-slower": "nl/female-slower/79beb153071fbbe9.mp3"
+    },
+    "honden": {
+      "male-normal": "nl/male-normal/f722643c8898f39e.mp3",
+      "male-slower": "nl/male-slower/72a75b5d02bf27bc.mp3",
+      "female-normal": "nl/female-normal/566effa60d6d5ef8.mp3",
+      "female-slower": "nl/female-slower/22cbc42595714a0d.mp3"
+    },
+    "de": {
+      "male-normal": "nl/male-normal/79d3cdf75709d6ca.mp3",
+      "male-slower": "nl/male-slower/b222326021288cd0.mp3",
+      "female-normal": "nl/female-normal/0a083acb7930d10f.mp3",
+      "female-slower": "nl/female-slower/790aa219374ba3e3.mp3"
+    },
+    "een": {
+      "male-normal": "nl/male-normal/88dbafbd5328274e.mp3",
+      "male-slower": "nl/male-slower/624faf5e92a7786f.mp3",
+      "female-normal": "nl/female-normal/0891b9e293f45343.mp3",
+      "female-slower": "nl/female-slower/661076ecee447e93.mp3"
+    },
+    "het": {
+      "male-normal": "nl/male-normal/0697eac63c1162c5.mp3",
+      "male-slower": "nl/male-slower/bc1757a4959351f7.mp3",
+      "female-normal": "nl/female-normal/652027180654b275.mp3",
+      "female-slower": "nl/female-slower/0adb65585bbb64ee.mp3"
+    },
+    "mensen": {
+      "male-normal": "nl/male-normal/a01b4fbced6f1a47.mp3",
+      "male-slower": "nl/male-slower/509c50956026e0b1.mp3",
+      "female-normal": "nl/female-normal/b6efdddd06061931.mp3",
+      "female-slower": "nl/female-slower/0204a09355895998.mp3"
+    },
+    "gedaan": {
+      "male-normal": "nl/male-normal/6b05dd5800a39250.mp3",
+      "male-slower": "nl/male-slower/6b5405bf32a1346f.mp3",
+      "female-normal": "nl/female-normal/081b94e7057c3388.mp3",
+      "female-slower": "nl/female-slower/e6654a49354c4e42.mp3"
+    },
+    "bedankt": {
+      "male-normal": "nl/male-normal/5afe175cc9dcb05b.mp3",
+      "male-slower": "nl/male-slower/d2ccb427b45c4c36.mp3",
+      "female-normal": "nl/female-normal/d2159cc840782cbd.mp3",
+      "female-slower": "nl/female-slower/68a62c2f502a0b9b.mp3"
+    },
+    "politie": {
+      "male-normal": "nl/male-normal/459a137605215c98.mp3",
+      "male-slower": "nl/male-slower/6d309adb86093505.mp3",
+      "female-normal": "nl/female-normal/e3d7ea1a788c5cd3.mp3",
+      "female-slower": "nl/female-slower/eb2085d063c9d85e.mp3"
+    },
+    "informatie": {
+      "male-normal": "nl/male-normal/e0ff7329ebab5aa6.mp3",
+      "male-slower": "nl/male-slower/bb55277e52eea8fb.mp3",
+      "female-normal": "nl/female-normal/3b83123361babc94.mp3",
+      "female-slower": "nl/female-slower/3bdc203dedfdb49e.mp3"
+    },
+    "gezellig": {
+      "male-normal": "nl/male-normal/9a74825f7dbb352f.mp3",
+      "male-slower": "nl/male-slower/80fded6706a7cd13.mp3",
+      "female-normal": "nl/female-normal/0a3818db5026954c.mp3",
+      "female-slower": "nl/female-slower/a518056d5d856dbb.mp3"
+    },
+    "vriendelijk": {
+      "male-normal": "nl/male-normal/826852abb5353715.mp3",
+      "male-slower": "nl/male-slower/8b4c6b5cd5d0cd9d.mp3",
+      "female-normal": "nl/female-normal/a8bf8e684e154c7b.mp3",
+      "female-slower": "nl/female-slower/db7c2825665d5c8d.mp3"
+    },
+    "natuurlijk": {
+      "male-normal": "nl/male-normal/58b696ad49f2cffd.mp3",
+      "male-slower": "nl/male-slower/56092abe8a901872.mp3",
+      "female-normal": "nl/female-normal/e54961d393818fdd.mp3",
+      "female-slower": "nl/female-slower/f683ab5a3baf5f96.mp3"
+    },
+    "verjaardag": {
+      "male-normal": "nl/male-normal/2cf5bc7c5fc66e7e.mp3",
+      "male-slower": "nl/male-slower/1f0844bc9e1a7aeb.mp3",
+      "female-normal": "nl/female-normal/dc29afc07d04faaa.mp3",
+      "female-slower": "nl/female-slower/5914dd7215540be5.mp3"
     }
   },
   "ja": {

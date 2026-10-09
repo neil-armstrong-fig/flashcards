@@ -6,6 +6,7 @@ given("the learner says the first card of the deck is hard, then opens the list 
     await webApp.review.struggling.markHard();
     await webApp.reload();
     await webApp.home.openBrowse();
+    await webApp.browse.chooseDeck("ko-starter");
   });
 
   then("that card is marked as struggling", async ({webApp}) => {

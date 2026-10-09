@@ -68,6 +68,23 @@ it("makes a pronunciation card of the spelling, unspoken, then the way it is sai
   expect(card.frontAudio).toBeUndefined();
 });
 
+it("shows a pronunciation note's English translation in place of a romanisation, when it has one", () => {
+  const card = cardOfNote(
+    {
+      id: "nl-pronunciation-bed",
+      kind: "pronunciation",
+      language: "nl",
+      word: "bed",
+      meaning: "bet",
+      romanisation: "",
+      translation: "bed",
+    },
+    "to-english",
+  );
+
+  expect(card).toMatchObject({back: "[bet]", hint: "bed", backAudio: {language: "nl", text: "bed"}});
+});
+
 it("makes a sounds-alike pair card that shows both words, says one, and picks that one out in bold with the answer", () => {
   const card = cardOfNote(
     {

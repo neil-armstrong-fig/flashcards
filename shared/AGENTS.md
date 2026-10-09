@@ -17,7 +17,7 @@ src/sync/       what the app and the API both keep of the learner (`docs/sync.md
 src/theme/      Theme (system, light or dark: the learner's choice of colours, read off one list)
 src/audio/      Voice and Speed (the learner's two choices, each read off one list), RecordingVariant (`female-slower`)
 src/music/      NaturalNote (a pitch such as `C4`, read off its name by `naturalNoteFrom`), used by the sheet music deck, the tone generator and the staff drawing
-src/language/   Subject (a language, or music: what a deck teaches), Language (the languages taught, by ISO code; Japanese and Dutch join as their phases land), the checks on what a learner
+src/language/   Subject (a language, or music: what a deck teaches), Language (the languages taught, by ISO code: Korean, Japanese and Dutch), the checks on what a learner
                 types (KoreanText, EnglishText, RomanisationText) and RomanisationOf (the Revised Romanization of a word, by `koroman`, the one dependency here)
 ```
 

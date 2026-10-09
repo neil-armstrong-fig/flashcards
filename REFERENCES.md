@@ -49,6 +49,9 @@ Audio is generated with Azure AI Speech (`docs/audio.md`). Any real recordings u
   explanations written by us; each pronunciation is checked against `koroman`. The idea of a deck of such words, and the sound
   changes the Korean Wiki Project lists on its [consonant assimilation](https://www.koreanwikiproject.com/wiki/Category:Consonant_assimilation)
   pages, guided what to cover; no text or audio of an Anki package or of that site is copied.
+- **Dutch decks** (`content/src/dutch/`): the starter words and the pronunciation words are chosen and written by us, and the
+  respellings are our own for an English reader. The spelling patterns follow standard Dutch orthography, a fact not a licensed
+  text. No word list, dictionary or recording is copied; the audio is generated (`docs/audio.md`).
 
 ## Test data
 
