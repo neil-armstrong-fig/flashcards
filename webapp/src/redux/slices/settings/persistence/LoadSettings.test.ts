@@ -40,6 +40,7 @@ it("loads the settings that were kept", () => {
     setAsideWhenStruggling: true,
     voice: "male",
     speed: "slower",
+    audioFillEnabled: true,
     reminderEnabled: true,
     reminderHour: 7,
     theme: "light",
@@ -58,6 +59,7 @@ it("gives the audio settings their defaults when what was kept predates them", (
     setAsideWhenStruggling: false,
     voice: "male",
     speed: "normal",
+    audioFillEnabled: false,
     reminderEnabled: false,
     reminderHour: 20,
     theme: "system",
@@ -67,6 +69,7 @@ it("gives the audio settings their defaults when what was kept predates them", (
 it.each([
   ["a voice that does not exist", {voice: "robot"}, {voice: "male"}],
   ["a speed that does not exist", {speed: "glacial"}, {speed: "normal"}],
+  ["an audio colour wash flag that is not a boolean", {audioFillEnabled: "yes"}, {audioFillEnabled: false}],
   ["a struggling threshold out of range", {strugglingAfter: 0}, {strugglingAfter: 8}],
   ["a set-aside flag that is not a boolean", {setAsideWhenStruggling: 1}, {setAsideWhenStruggling: false}],
   ["a retention out of range", {desiredRetentionPercent: 50}, {desiredRetentionPercent: 90}],
@@ -86,7 +89,14 @@ it("starts from the defaults when nothing was kept", () => {
     setAsideWhenStruggling: false,
     voice: "male",
     speed: "normal",
+    audioFillEnabled: false,
   });
+});
+
+it("uses the device default for the audio colour wash when no choice was kept", () => {
+  holding({dailyGoalCards: 45});
+
+  expect(loadSettings(true).audioFillEnabled).toBe(true);
 });
 
 it("falls back to a default for one bad field and keeps the good one", () => {

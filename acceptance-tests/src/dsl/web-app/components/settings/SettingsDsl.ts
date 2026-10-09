@@ -47,6 +47,23 @@ export class SettingsDsl {
     }
   }
 
+  /** Chooses whether a recording beginning washes the screen or card with colour. */
+  async setAudioFill(on: boolean): Promise<void> {
+    try {
+      await this.playwright.setAudioFill(on);
+    } catch (error) {
+      throw new DslError("Failed to set the audio colour wash", error);
+    }
+  }
+
+  async isAudioFillOn(): Promise<boolean> {
+    try {
+      return await this.playwright.audioFillOn();
+    } catch (error) {
+      throw new DslError("Failed to tell whether the audio colour wash is on", error);
+    }
+  }
+
   /** Opens one deck's settings from the settings screen. */
   async openDeck(deck: DeckId): Promise<void> {
     try {

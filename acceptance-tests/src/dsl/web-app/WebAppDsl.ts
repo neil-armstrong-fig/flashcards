@@ -57,6 +57,15 @@ export class WebAppDsl {
     }
   }
 
+  /** Whether this device is primarily driven by touch, as a phone is. */
+  async isTouchDevice(): Promise<boolean> {
+    try {
+      return await this.playwright.isTouchDevice();
+    } catch (error) {
+      throw new DslError("Failed to tell whether this is a touch device", error);
+    }
+  }
+
   /** Reopens the page and looks at it before the app's own scripts have run, as a learner sees it in the first moments of a load. */
   async reloadBeforeTheAppStarts(): Promise<void> {
     try {

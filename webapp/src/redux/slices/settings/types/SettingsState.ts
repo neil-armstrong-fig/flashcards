@@ -15,6 +15,8 @@ export interface SettingsState {
   readonly voice: Voice;
   /** How fast it speaks, where no deck is being studied. */
   readonly speed: Speed;
+  /** Whether a recording beginning washes its screen or card with colour on this device. */
+  readonly audioFillEnabled: boolean;
   /** How many times a card must be forgotten (a lapse) before it counts as struggling. */
   readonly strugglingAfter: number;
   /** Suspend a card the moment it counts as struggling, rather than leaving it in the reviews. */

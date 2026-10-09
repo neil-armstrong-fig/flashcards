@@ -76,6 +76,7 @@ or removing one means changing both sides in the same commit.
 | `daily-goal-input`                | settings screen            | Number field: the daily goal, in cards                                                                                     |
 | `reminder-enabled`                | settings screen            | Checkbox: remind the learner on this device when the daily goal is not reached. Absent where the browser cannot push       |
 | `reminder-hour`                   | settings screen            | Select, shown while the reminder is on: the hour of the day, 0 to 23, it comes at (option values are the plain hour)       |
+| `audio-fill-enabled`              | settings screen            | Checkbox: wash the screen or card with colour when a recording begins                                                      |
 | `close-settings`                  | settings screen            | Button back to the home screen                                                                                             |
 | `back-from-settings`              | settings screen            | Link at the top, back to the home screen                                                                                   |
 | `open-deck-settings-<deck id>`    | settings screen            | Card: opens that deck's settings screen                                                                                    |

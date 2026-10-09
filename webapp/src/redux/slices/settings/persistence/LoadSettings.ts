@@ -3,6 +3,6 @@ import {readSettings} from "@src/redux/slices/settings/persistence/read/ReadSett
 import type {SettingsState} from "@src/redux/slices/settings/types/SettingsState";
 
 /** The settings kept on this device. */
-export function loadSettings(): SettingsState {
-  return readSettings(readStoredSettings());
+export function loadSettings(audioFillEnabledByDefault = false): SettingsState {
+  return readSettings(readStoredSettings(), audioFillEnabledByDefault);
 }

@@ -39,11 +39,11 @@ export type AppDispatch = ThunkDispatch<RootState, undefined, UnknownAction> & D
 export type AppStore = Store<RootState, UnknownAction> & {dispatch: AppDispatch};
 
 /** The store, with the settings, similar words, cards of their own and who last signed in brought back from this device and kept there from now on. */
-export function createStore(): AppStore {
+export function createStore(audioFillEnabledByDefault = false): AppStore {
   const store = configureStore({
     reducer: rootReducer,
     preloadedState: {
-      settings: loadSettings(),
+      settings: loadSettings(audioFillEnabledByDefault),
       cardNotes: loadCardNotes(),
       similar: loadSimilar(),
       deck: loadDeck(),

@@ -16,9 +16,9 @@ import {VOICES} from "@flashcards/shared/audio/Voice";
 import type {SettingsState} from "@src/redux/slices/settings/types/SettingsState";
 
 /** Settings from something stored or received. What arrives is untrusted: a field that does not check out falls back to its default alone. */
-export function readSettings(stored: unknown): SettingsState {
+export function readSettings(stored: unknown, audioFillEnabledByDefault = false): SettingsState {
   if (typeof stored !== "object" || stored === null) {
-    return INITIAL_SETTINGS_STATE;
+    return {...INITIAL_SETTINGS_STATE, audioFillEnabled: audioFillEnabledByDefault};
   }
 
   const {
@@ -30,6 +30,7 @@ export function readSettings(stored: unknown): SettingsState {
     setAsideWhenStruggling,
     voice,
     speed,
+    audioFillEnabled,
     listenOnly,
     reminderEnabled,
     reminderHour,
@@ -53,6 +54,7 @@ export function readSettings(stored: unknown): SettingsState {
     setAsideWhenStruggling: readBoolean(setAsideWhenStruggling) ?? INITIAL_SETTINGS_STATE.setAsideWhenStruggling,
     voice: readOneOf(voice, VOICES) ?? INITIAL_SETTINGS_STATE.voice,
     speed: readOneOf(speed, SPEEDS) ?? INITIAL_SETTINGS_STATE.speed,
+    audioFillEnabled: readBoolean(audioFillEnabled) ?? audioFillEnabledByDefault,
     reminderEnabled: readBoolean(reminderEnabled) ?? INITIAL_SETTINGS_STATE.reminderEnabled,
     reminderHour: readLimitedInteger(reminderHour, REMINDER_HOUR_LIMITS) ?? INITIAL_SETTINGS_STATE.reminderHour,
     theme: readOneOf(theme, THEMES) ?? INITIAL_SETTINGS_STATE.theme,

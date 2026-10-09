@@ -131,6 +131,10 @@ const settingsSlice = createSlice({
       state.speed = action.payload;
     },
 
+    audioFillEnabledChosen: (state, action: PayloadAction<boolean>) => {
+      state.audioFillEnabled = action.payload;
+    },
+
     settingsTaken: (state, action: PayloadAction<TakenSettings["chosen"]>) => {
       Object.assign(state, action.payload);
     },
@@ -174,6 +178,7 @@ export const {
   reminderHourChosen,
   voiceChosen,
   speedChosen,
+  audioFillEnabledChosen,
   deckVoiceChosen,
   deckSpeedChosen,
   deckTargetHiddenChosen,

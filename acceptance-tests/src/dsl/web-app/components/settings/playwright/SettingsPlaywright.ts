@@ -32,6 +32,14 @@ export class SettingsPlaywright extends BaseComponent {
     return "system";
   }
 
+  async setAudioFill(on: boolean): Promise<void> {
+    await this.page.getByTestId("audio-fill-enabled").setChecked(on);
+  }
+
+  async audioFillOn(): Promise<boolean> {
+    return await this.page.getByTestId("audio-fill-enabled").isChecked();
+  }
+
   async close(): Promise<void> {
     if (await this.page.getByTestId("deck-settings-screen").isVisible()) {
       await this.back();

@@ -2,6 +2,9 @@ import {beforeEach, expect, given, then, when} from "@src/acceptance-criteria-ma
 
 given("the learner opens the list of every card", () => {
   beforeEach(async ({webApp}) => {
+    await webApp.home.openSettings();
+    await webApp.settings.setAudioFill(true);
+    await webApp.settings.close();
     await webApp.home.openBrowse();
   });
 

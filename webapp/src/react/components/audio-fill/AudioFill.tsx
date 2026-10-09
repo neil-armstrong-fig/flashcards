@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import {useRecordingsStarted} from "@src/react/audio/hooks/use-recordings-started/UseRecordingsStarted";
+import {useAppSelector} from "@src/redux/shared/Hooks";
 
 interface Props {
   /** What it washes over: the whole screen, or the nearest enclosing box that is `relative` (a card in a list). */
@@ -15,8 +16,9 @@ interface Props {
  */
 export function AudioFill({within, show = true}: Props): React.JSX.Element | undefined {
   const started = useRecordingsStarted();
+  const enabled = useAppSelector(state => state.settings.audioFillEnabled);
 
-  if (started === 0 || !show) {
+  if (!enabled || started === 0 || !show) {
     return undefined;
   }
 

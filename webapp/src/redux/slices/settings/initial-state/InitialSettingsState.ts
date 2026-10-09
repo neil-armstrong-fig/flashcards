@@ -15,6 +15,7 @@ export const INITIAL_SETTINGS_STATE: SettingsState = {
   deckPreferences: Object.fromEntries(SHIPPED_DECKS.map(deck => [deck.id, DEFAULT_DECK_PREFERENCES])),
   voice: "male",
   speed: "normal",
+  audioFillEnabled: false,
   reminderEnabled: false,
   reminderHour: DEFAULT_REMINDER_HOUR,
   theme: "system",

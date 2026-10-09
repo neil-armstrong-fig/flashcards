@@ -46,6 +46,10 @@ export class WebAppPlaywright extends BasePage {
     await this.reload();
   }
 
+  async isTouchDevice(): Promise<boolean> {
+    return await this.page.evaluate(() => navigator.maxTouchPoints > 0);
+  }
+
   async reloadBeforeTheAppStarts(): Promise<void> {
     // The app's service worker would answer the scripts from its cache, past anything a route can hold back, so it goes first.
     await this.page.evaluate(async () => {

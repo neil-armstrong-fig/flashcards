@@ -26,7 +26,8 @@ using real account data.
 - Review loop: four ratings, learning steps and learn-ahead, interval labels on the buttons, keyboard shortcuts, suspend and bury,
   look ahead, and studying only new or only struggling cards.
 - Settings has "Clear this device" (storage, databases and recordings; stays signed in; for testing and a device out of step).
-- One daily goal in cards; desired retention (70 to 97 percent); colours (Match device, Light, Dark); PNG app icons.
+- One daily goal in cards; desired retention (70 to 97 percent); colours (Match device, Light, Dark); an audio colour-wash setting
+  kept per device (on initially for touch-first devices and off otherwise); PNG app icons.
 - Struggling cards (lapse threshold, clearing by three good answers, optional auto-suspend, "This is hard", a Struggling list) and
   memory aids (a note and a picture per card, fading, a prompt on a struggling card).
 - The learner's own Korean cards (browse screen, signed in only), with the romanisation suggested (`docs/romanisation.md`), kept
@@ -37,9 +38,10 @@ using real account data.
 - Online-served model (`docs/online.md`): recordings in a private R2 bucket behind `GET /api/audio/*`, kept on the device as they are
   played, with an opt-in Keep offline per deck. Google sign-in gates the whole app.
 - Phone feel: a back button at the top of the settings, each deck's settings on a card of its own, settings in framed groups, a short
-  buzz and a pressed or pulsing look when a rating or a recording is tapped, a colour wash over the screen (review) or the card
-  (browse) as a recording starts, tap targets of 44px or more on every screen, the page kept out of the notch and home bar, and the
-  second recording of a "this then that" fetched and loaded while the first plays. **Tried on a real phone (confirmed 2026-10-08)**: the
+  buzz and a pressed or pulsing look when a rating or a recording is tapped, an optional 50%-opacity colour wash over the screen
+  (review) or the card (browse) as a recording starts, tap targets of 44px or more on every screen, the page kept out of the notch and
+  home bar, and the second recording of a "this then that" fetched and loaded while the first plays. **Tried on a real phone (confirmed
+  2026-10-08)**: the
   buzz (Android only; iPhone browsers have no vibration), the colour wash and the safe-area padding all work. **The gap between the two
   recordings**: the speech markup asks for no added silence (`mstts:silence`, `SpeechMarkupOf.ts`) and the file name carries a revision so
   devices fetch the new files; the full regeneration is done and the audio uploaded (`upload-audio --remote`, confirmed 2026-10-08).

@@ -10,7 +10,7 @@ if (!root) {
   throw new Error("The page has no #root element to mount the app in.");
 }
 
-const store = createStore();
+const store = createStore(window.matchMedia("(hover: none) and (pointer: coarse)").matches);
 
 createRoot(root).render(
   <StrictMode>

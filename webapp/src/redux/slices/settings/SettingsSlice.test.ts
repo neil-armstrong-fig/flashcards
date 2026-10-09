@@ -1,4 +1,5 @@
 import {
+  audioFillEnabledChosen,
   dailyGoalChosen,
   deckSpeedChosen,
   deckTargetHiddenChosen,
@@ -55,6 +56,7 @@ it("starts with a daily goal of twenty cards, each deck on the default limits an
     setAsideWhenStruggling: false,
     voice: "male",
     speed: "normal",
+    audioFillEnabled: false,
     reminderEnabled: false,
     reminderHour: 20,
     theme: "system",
@@ -133,6 +135,13 @@ it("replaces the colours with the ones chosen", () => {
 
 it("replaces the speed with the one chosen", () => {
   expect(settingsReducer(undefined, speedChosen("slower")).speed).toBe("slower");
+});
+
+it("turns the audio colour wash on and off", () => {
+  const on = settingsReducer(undefined, audioFillEnabledChosen(true));
+
+  expect(on.audioFillEnabled).toBe(true);
+  expect(settingsReducer(on, audioFillEnabledChosen(false)).audioFillEnabled).toBe(false);
 });
 
 it("sets the voice, the speed and whether the words are hidden for one deck, and leaves the other decks alone", () => {
